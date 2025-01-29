@@ -2,3 +2,7 @@
 *.lfs
 *.blg
 *.dvi
+*.fdb_latexmk
+*.out
+*.lot
+*.ps
