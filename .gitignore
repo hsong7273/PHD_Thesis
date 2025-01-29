@@ -6,3 +6,6 @@
 *.out
 *.lot
 *.ps
+*.toc
+*.synctex.gz
+*.aux
