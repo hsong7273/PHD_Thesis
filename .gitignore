@@ -1,5 +1,7 @@
 *.log
 *.lfs
+*.fls
+*.lof
 *.blg
 *.dvi
 *.fdb_latexmk
