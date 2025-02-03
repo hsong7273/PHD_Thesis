@@ -30,8 +30,8 @@ jobs:
         run: |
           # Create a temporary directory for our counting version
           mkdir -p temp_thesis
-          # Copy all files to maintain relative paths
-          cp -r . temp_thesis/
+          # Copy everything except the temp directory itsel
+          rsync -av --exclude 'temp-thesis' . temp_thesis/ 
           cd temp_thesis
           # Create backup of original thesis.tex
           cp thesis.tex thesis.tex.backup
