@@ -78,23 +78,26 @@ jobs:
           # Count words using texcount
           WORD_COUNT=$(texcount -total thesis.tex | grep "Words in text" | awk '{print $4}')
           # Count pages by analyzing the PDF
-          PAGE_COUNT=$(pdfinfo main.pdf | grep "Pages" | awk '{print $2}')
+          PAGE_COUNT=$(pdfinfo thesis.pdf | grep "Pages" | awk '{print $2}')
           # Get current timestamp
           TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           # Create or append to statistics file in the main directory
           echo "$TIMESTAMP | Words: $WORD_COUNT | Pages: $PAGE_COUNT" >> ../thesis_statistics.txt
+          # Save compiled thesis in main directory
+          mv thesis.pdf ../thesis.pdf
           # Restore original thesis.tex
           mv thesis.tex.backup thesis.tex
           cd ..
           rm -rf temp_thesis
-      - name: Commit and push statistics
+      - name: Commit and push statistics and thesis
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add thesis_statistics.txt
+          git add thesis.pdf
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update thesis statistics [skip ci]"
+            git commit -m "Update thesis statistics and thesis.pdf [skip ci]"
             git push origin HEAD:${{ github.ref }}
           fi
