@@ -25,7 +25,7 @@ jobs:
             biber \
             poppler-utils \
             ghostscript
-      - name: Create full thesis version for counting
+      - name: Create temporary directory for counting
         run: |
           # Create a temporary directory for our counting version
           mkdir -p temp_thesis
