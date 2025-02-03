@@ -52,7 +52,7 @@ jobs:
         run: |
           cd temp_thesis
           # Count words using texcount
-          WORD_COUNT=$(texcount -total thesis.tex | grep "Words in text" | awk '{print $4}')
+          WORD_COUNT=$(texcount -total -inc thesis.tex | grep "Words in text" | awk '{print $4}')
           # Count pages by analyzing the PDF
           PAGE_COUNT=$(pdfinfo thesis.pdf | grep "Pages" | awk '{print $2}')
           # Get current timestamp
