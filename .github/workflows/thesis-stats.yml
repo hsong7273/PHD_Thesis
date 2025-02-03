@@ -1,0 +1,80 @@
+name: Thesis Statistics Tracker
+on:
+  push:
+    paths:
+      - '**.tex'
+      - '**.sty'
+    paths-ignore:
+      - 'thesis_statistics.txt'
+  workflow_dispatch:
+jobs:
+  track-thesis-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up TeXLive
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full texcount
+      - name: Create full thesis version for counting
+        run: |
+          # Create a temporary directory for our counting version
+          mkdir -p temp_thesis
+          # Copy all files to maintain relative paths
+          cp -r . temp_thesis/
+          cd temp_thesis
+          # Create backup of original main.tex
+          cp main.tex main.tex.backup
+          # Find all chapter tex files with pattern like [Cc]hapter_*.tex (case insensitive)
+          CHAPTERS=$(find . -type f -iname "chapter_*.tex")
+          # Check if the main file uses input or include for chapters
+          if grep -q "\\input{.*chapter" main.tex || grep -q "\\include{.*chapter" main.tex; then
+            echo "Found existing chapter includes"
+          else
+            # Find the appropriate insertion point (before \end{document})
+            # and add all chapters that aren't already included
+            for chapter in $CHAPTERS; do
+              # Remove ./ from the start of the path if present
+              chapter=${chapter#./}
+              # Check if this chapter is already included
+              if ! grep -q "\\(input\|include\){.*$(basename "$chapter" .tex)" main.tex; then
+                # Insert before \end{document}
+                sed -i "/\\end{document}/i \\\\include{${chapter%.tex}}" main.tex
+              fi
+            done
+          fi
+      - name: Compile full LaTeX document
+        run: |
+          cd temp_thesis
+          # First run to generate aux files
+          pdflatex -interaction=nonstopmode main.tex || true
+          # Second run for references
+          pdflatex -interaction=nonstopmode main.tex
+      - name: Count words and pages
+        run: |
+          cd temp_thesis
+          # Count words using texcount
+          WORD_COUNT=$(texcount -total main.tex | grep "Words in text" | awk '{print $4}')
+          # Count pages by analyzing the PDF
+          PAGE_COUNT=$(pdfinfo main.pdf | grep "Pages" | awk '{print $2}')
+          # Get current timestamp
+          TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
+          # Create or append to statistics file in the main directory
+          echo "$TIMESTAMP | Words: $WORD_COUNT | Pages: $PAGE_COUNT" >> ../thesis_statistics.txt
+          # Restore original main.tex
+          mv main.tex.backup main.tex
+          cd ..
+          rm -rf temp_thesis
+      - name: Commit and push statistics
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add thesis_statistics.txt
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update thesis statistics [skip ci]"
+            git push
+          fi
