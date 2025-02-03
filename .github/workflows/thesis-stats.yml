@@ -11,10 +11,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Set up TeXLive
+      - name: Set up dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-full texcount
+          sudo apt-get install -y \
+            texlive-full \
+            texlive-extra-utils \
+            texlive-latex-extra \
+            texlive-science \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-bibtex-extra \
+            latexmk \
+            biber \
+            poppler-utils \
+            ghostscript
       - name: Create full thesis version for counting
         run: |
           # Create a temporary directory for our counting version
