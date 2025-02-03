@@ -36,32 +36,8 @@ jobs:
           find . -type d -exec mkdir -p {} \;
           # Ensure write permissions for all directories
           chmod -R 777 .
-          # Create backup of original thesis.tex
-          cp thesis.tex thesis.tex.backup
-          # Find all chapter tex files with pattern like [Cc]hapter_*.tex (case insensitive)
-          CHAPTERS=$(find . -type f -iname "chapter_*.tex")
-          # Check if the main file uses input or include for chapters
-          if grep -q "\\input{.*chapter" thesis.tex || grep -q "\\include{.*chapter" thesis.tex; then
-            echo "Found existing chapter includes"
-          else
-            # Find the appropriate insertion point (before \end{document})
-            # and add all chapters that aren't already included
-            for chapter in $CHAPTERS; do
-              # Remove ./ from the start of the path if present
-              chapter=${chapter#./}
-              # Check if this chapter is already included
-              if ! grep -q "\\(input\|include\){.*$(basename "$chapter" .tex)" thesis.tex; then
-                # Insert before \end{document}
-                sed -i "/\\end{document}/i \\\\include{${chapter%.tex}}" thesis.tex
-              fi
-            done
-          fi
       - name: Compile full LaTeX document
         run: |
-          cd temp_thesis
-          # Create directories for all included files
-          mkdir -p 0_Prelim 2_Chapter_KLZ_Detector Appendix
-          chmod -R 777 .
           # Initial run to generate aux files
           pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
           # Run bibtex on main file and chapters
@@ -85,8 +61,6 @@ jobs:
           echo "$TIMESTAMP | Words: $WORD_COUNT | Pages: $PAGE_COUNT" >> ../thesis_statistics.txt
           # Save compiled thesis in main directory
           mv thesis.pdf ../thesis.pdf
-          # Restore original thesis.tex
-          mv thesis.tex.backup thesis.tex
           cd ..
           rm -rf temp_thesis
       - name: Commit and push statistics and thesis
