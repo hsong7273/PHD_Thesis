@@ -1,8 +1,6 @@
 name: Thesis Statistics Tracker
 on:
   push:
-    paths-ignore:
-      - 'thesis_statistics.txt'
   workflow_dispatch:
 jobs:
   track-thesis-stats:
@@ -30,9 +28,13 @@ jobs:
         run: |
           # Create a temporary directory for our counting version
           mkdir -p temp_thesis
-          # Copy everything except the temp directory itsel
-          rsync -av --exclude 'temp-thesis' . temp_thesis/ 
+          # Copy everything except the temp directory itself
+          rsync -av --exclude 'temp_thesis' . temp_thesis/
+          # Create all necessary subdirectories for aux files
           cd temp_thesis
+          find . -type d -exec mkdir -p {} \;
+          # Ensure write permissions for all directories
+          chmod -R 777 .
           # Create backup of original thesis.tex
           cp thesis.tex thesis.tex.backup
           # Find all chapter tex files with pattern like [Cc]hapter_*.tex (case insensitive)
@@ -56,10 +58,19 @@ jobs:
       - name: Compile full LaTeX document
         run: |
           cd temp_thesis
-          # First run to generate aux files
-          pdflatex -interaction=nonstopmode thesis.tex || true
-          # Second run for references
-          pdflatex -interaction=nonstopmode thesis.tex
+          # Create directories for all included files
+          mkdir -p 0_Prelim 2_Chapter_KLZ_Detector Appendix
+          chmod -R 777 .
+          # Initial run to generate aux files
+          pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
+          # Run bibtex on main file and chapters
+          bibtex thesis || true
+          for d in ./*/ ; do
+            [ -f "$d"/*.aux ] && bibtex "$d"/*.aux || true
+          done
+          # Additional runs to resolve references
+          pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
+          pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
       - name: Count words and pages
         run: |
           cd temp_thesis
