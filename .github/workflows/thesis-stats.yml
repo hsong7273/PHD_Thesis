@@ -1,6 +1,9 @@
 name: Thesis Statistics Tracker
 on:
   push:
+    paths:
+      - '**.tex'
+      - '**.sty'
   workflow_dispatch:
 jobs:
   track-thesis-stats:
@@ -30,7 +33,7 @@ jobs:
       - name: Create temporary directory for counting
         run: |
           mkdir -p temp_thesis
-          
+
           # Copy everything except the temp directory itself
           rsync -av --exclude 'temp_thesis' . temp_thesis/
           chmod -R 777 .
