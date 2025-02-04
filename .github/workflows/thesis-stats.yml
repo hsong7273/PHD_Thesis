@@ -10,6 +10,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up dependencies
         run: |
           sudo apt-get update
@@ -25,44 +26,36 @@ jobs:
             biber \
             poppler-utils \
             ghostscript
+
       - name: Create temporary directory for counting
         run: |
-          # Create a temporary directory for our counting version
           mkdir -p temp_thesis
+          
           # Copy everything except the temp directory itself
           rsync -av --exclude 'temp_thesis' . temp_thesis/
-          # Create all necessary subdirectories for aux files
-          cd temp_thesis
-          find . -type d -exec mkdir -p {} \;
-          # Ensure write permissions for all directories
           chmod -R 777 .
+
       - name: Compile full LaTeX document
         run: |
-          # Initial run to generate aux files
-          pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
-          # Run bibtex on main file and chapters
-          bibtex thesis || true
-          for d in ./*/ ; do
-            [ -f "$d"/*.aux ] && bibtex "$d"/*.aux || true
-          done
-          # Additional runs to resolve references
-          pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
-          pdflatex -interaction=nonstopmode -shell-escape thesis.tex || true
+          cd temp_thesis
+          latexmk -pdf -interaction=nonstopmode -file-line-error -shell-escape thesis.tex
+
       - name: Count words and pages
         run: |
           cd temp_thesis
-          # Count words using texcount
+          # Count words using texcount, includng included .tex files
           WORD_COUNT=$(texcount -total -inc thesis.tex | grep "Words in text" | awk '{print $4}')
-          # Count pages by analyzing the PDF
           PAGE_COUNT=$(pdfinfo thesis.pdf | grep "Pages" | awk '{print $2}')
-          # Get current timestamp
-          TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
+
           # Create or append to statistics file in the main directory
+          TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           echo "$TIMESTAMP | Words: $WORD_COUNT | Pages: $PAGE_COUNT" >> ../thesis_statistics.txt
+
           # Save compiled thesis in main directory
           mv thesis.pdf ../thesis.pdf
           cd ..
           rm -rf temp_thesis
+
       - name: Commit and push statistics and thesis
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
