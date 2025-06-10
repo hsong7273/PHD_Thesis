@@ -89,16 +89,52 @@ A schematic diagram of the XeLS handling system is shown in Figure~\ref{fig:xeno
 \end{figure}
 
 \section{Data Acquisition}
+\subsection{KamLAND DAQ}
+KamLAND uses two data acquisition (DAQ) systems in parallel. The first is KamFEE (KamLAND Front End Electronics), which has been used since the start of KamLAND physics data-taking. The other is MoGURA (Module for General-Use Rapid Application). MoGURA is a data acquisition system developed to eliminate the deadtune just after cosmis ray muon events. An overview of this dual scheme data acquisition system is shown in \ref{fig:kamland_daq}. What follows is a brief description of each DAQ system.
+\subsection{KamFEE DAQ}
+KamFEE are the front end electronics that read and control the KamLAND PMTs. The boards are of VME 9U form factor and are synchronized with a 40 MHz clock. The PMT signals are sent along two parallel channels. The first channel is sent to a discriminator which register a PMT hit if the voltage exceeds a predetermined value that corresponds to approximately 1/6th of a single photoelectron. The second channel, is delayed to give some time to process the discriminator signal and is fed into 3 amplifier stages (x20, x4, x0.5), this amplified signal is digitized by two analog Transient Waveform Digitizers (ATWDs). The ATWD is a 10-bit digitizer and samples every 1.5ns, 128 times per waveform. Each pulse takes 128 $\mu$sec to digitize.
+
+The KamFEE boards send a "hitsum" signal to the central KamFEE DAQ trigger, communicating a certain number of hits were received and can be digitized. The trigger board sends a signal back which issues the digitization command to the ATWDs. While the ATWD is digitizing, it cannot record further signals, therefore, two ATWDs are assigned to each channel to reduce deadtime.
+
+\subsection{MoGURA}
+MoGURA is the secondary data acquisition system in KamLAND; it is responsible for after pulses and dealing with PMT waveform overshoots caused cosmic muons. KamLAND has a cosmic muon rate of 0.3 Hz, so it is important to compensate for the effects these high-energy events have on our detector. To accomplish this task, MoGDAQ has a few extra features over KamFEE.
+\begin{itemize}
+	\item \textbf{Baseline Recovery:} After a high energy muon passes through the detector, the DAQ channels are saturated, which means the voltage exceeds the digitization window, so only the maximum value is read. Simultaneously, the voltage "overshoots" as it returns to normal and swings below the nominal value causing difficulties in digitizing signals that occur soon after these muons. 
+	\item \textbf{Adaptive mode:} Activates a special trigger mode after muon events to compensate for large after-pulses post-muon. This special trigger is based on differential PMT hits. 
+\end{itemize}
+
+MoGURA data is used to tag neutrons created from muon spallation. These tagged spallation neutrons are vital in subsequent analyses to tag events that likely originated from these cosmic ray muons. The baseline restoration and neutron tagging will be further improved with the implementation of MoGURA2 trigger system. This is a planned replacement of the KamLAND data acquisition system (KamFEE and MoGDAQ both) for the KamLAND2-ZEN experiment, which is planned to begin physics data-taking in 2028.
 
 \section{KamLAND-ZEN Phases}
-
+The KamLAND-ZEN experiment has undergone multiple phases and renovations.
 \subsection{KamLAND-ZEN 400}
+The inner balloon and XeLS was added to the KamLAND experiment in 2011, starting the phase referred to as KamLAND-ZEN 400. This phase of the detector featured a 3m diameter inner-balloon filled with liquid scintillator loaded with 3\% Xenon by weight. The dissolved Xenon gas had 91\% proportion of Xe$^{136}$.
 
+The KamLAND-ZEN 400 data was split into two data-taking periods. Period-I data was contaminated with a high background of Ag$^{110m}$, the silver appeared to be leeching from the mini-balloon into the XeLS. The Ag$^{110m}$ contamination on the inner balloon was likely due to nuclear fallout from the Fukushima reactor meltdown. The Fukushima meltdown occurred when the inner balloon was being manufactured and in the same geographical region of Japan. Period II started after the XeLS distillation suppressed the Ag$^{110m}$ by a facator of 20. Period II continued data taking for 534.5 total livedays and the combined physics result of Periods I and II produced a \0nbb half-life limit of $T_{1/2}^{0\nu}>1.07\times 10^{25}$ years at 90\% C.L. This half-life limit corresponds to an effective majorana mass limit of $m_{\beta\beta} < 61-165$ meV. 
 \subsection{KamLAND-ZEN 800}
+KamLAND-ZEN 800 was the second phase of KamLAND-ZEN. KamLAND-ZEN took data from January 2019 to August 2024. Over 2kton$\cdot$yrs of exposure was observed. KamLAND-ZEN 800 was decommission in Fall 2024, and is currently being dissassembled. \\
+\textbf{Inner Balloon Manufacturing}\\
+KamLAND-ZEN 800 featured a larger, cleaner inner balloon which was fabricated at Tohoku University in a Class 1 cleanroom. The inner balloon is made from panels of 25 $\mu$m nylon-6. Innerballoon fabrication consisted of multiple steps some of these critical steps are listed here:
+\begin{itemize}
+	\item \textbf{Washing} - the film is cleaned twice in an ultrasonic bathtub, then stored between cover films to prevent dust adhesion
+	\item \textbf{Welding} - the cleaned balloon panels are welded with a semi-automatic welding machine. For delicate areas, such as the balloon neck, a hand welding machine was used. The average tensile strength on the balloon surface was 35 $N/cm$ after welding.
+	\item \textbf{He Leak Check} - Inevitably leaks will occur during the previous assembly procedures. Helium gas was pumped into the balloon to check for these leaks. The cover film of the balloon was peeled off before this leak check. Found leaks were repaired by patching the film. Over 900 leaks were found during the leak check.
+	\item \textbf{Folding} - The inner balloon was folded into a cylinder shape and covered with sheath films to prevent contamination during transport. Teflon sheets and Vectran strings were used to tie the rolled balloon up for shipping.
+	\item \textbf{Shipping} - The inner balloon was shipped within a silver gas bag. All corresponding tools were also shipped in airtight bags.
+\end{itemize}
+The inner balloon was installed on May 10, 2018. A rehearsal installation was performed in a swimming pool before the final deployment. In the final installation, the balloon is deployed through the 50cm port on the neck of the KamLAND detector. After filling the balloon with KamLS, the Teflon sheets, sheath films, and Vectran strings are pulled out of the detector. The whole operation was monitered in real-time via cameras and endoscope.
 
-% Of course, there must be a Table of Contents, List of Figures and List of Tables at the beginning of the thesis, but this is all set up automatically.
+The top of the inner balloon is connected to a corrugated tbue made from PEEK (poly-ether-ether-ketone). Twelve suspending belts support the inner balloon, wrapping around the full height of the balloon. The tension of each of these belts are monitored in real time to guarantee the position and stability of the balloon. A schematic of the balloon structure can be seen in Figure \ref{fig:balloon_structure}. 
+\textbf{Contamination Control}\\
+Once deployed and exposed to the KamLAND scintillators, the inner balloon is very difficult to clean. Thus, maintaining balloon cleanliness is vital. After deployment, the IB was filled with distilled LS while the $^{232}$Th level was measured at $10^{-15}$g/g, exceeding the target background concentration. The PPO distillation tower was suspected to be a source of contamination and was investigated. ICP-MS and neutron activation analysis were used to measure $^{232}$Th contamination at different locations along the distillation system. After meticulous washing and filter replacement, LS purification began to lower the $^{232}$Th background. After two separate distillation campaigns, $^{238}$U and $^{232}$Th levels were reduced by a factor of 10 compared to KamLAND-ZEN 400. The contaminations can be estimated by performing a $^{214}$Bi-$^{214}$Po and $^{212}$Bi-$^{212}$Po coincidence analysis. The coincidence event rates plotted over time are shown in Figure and listed in Table.
 
-{\bf Important}: You will also be using a lot of citations. The format in this template follows the so-called APA style and looks as follows in the document body: \cite{lamport1985:latex}, \cite{Debr01}. There are no numbers in the list of references -- the list is sorted alphabetically according to the first author's last name.
+KamLAND-ZEN 800 was decomissioned in 2024 after observing over 2 kiloton$\cdot$yrs of exposure. The final half-life limit was reported as $T_{1/2}^{0\nu} > 3.8\times 10^{26}$ years at 90\% C.L. This half-life limit corresponds to an effective majorana mass limit range of 28-122 meV. As of Summer 2025, this is the world-leading limit on effective majorana mass from any double-beta decay isotope and is the only limit in the Inverted Mass Ordering region.
+
+\subsection*{KamLAND2-ZEN}
+
+
+
+% {\bf Important}: You will also be using a lot of citations. The format in this template follows the so-called APA style and looks as follows in the document body: \cite{lamport1985:latex}, \cite{Debr01}. There are no numbers in the list of references -- the list is sorted alphabetically according to the first author's last name.
 
 % Other styles of references are allowed by the library as well, e.g., ``plain'' or ``'ieee'', which use numbers in square brackets both in the document body and in the list of references. In order to use another style of references, e.g., ``plain'', follow the steps below:
 % %
