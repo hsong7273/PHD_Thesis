@@ -7,11 +7,11 @@
 % it has a trailing directory separator (i.e., '/')!
 \graphicspath{{3_Chapter_Details/Figures/}}
 
-The use of Type 1 fonts and font embedding into the document are both dependent on a specific Latex installation and even on operating system. There is a good chance that it will work with no problem for you. However, should your thesis PDF be returned, please consider the following remedies discovered by students over many years. 
+KamLAND-ZEN uses detailed simulations defined in KLG4Sim, a GEANT4-based Monte Carlo (MC) simulation software. The MC simulated events are tuned with real calibration events to carefully match real detector response. Simulated and physical events produce detector responses that are reconstructed to extract higher-level information such as energy and position. The reconstructed event information is used for data-selection and spectrum fitting. This chapter discusses the MC simulation and event reconstruction procedures used in KamLAND-ZEN 800.
 
-\section{Type 1 fonts}
-
-All Boston University thesis and dissertation submissions must use only Type 1 fonts to assure high-quality rendering. Type 3 fonts are not acceptable.
+\section*{Analysis Framework}
+\subsection*{Data Flow}
+Figure outlines the data flow in KamLAND-ZEN. PMT signals are digitized in either KamFEE or MoGURA, the two DAQ systems discussed in the previous chapter, the digitized signals are stored in Kinoko Data Format (KDF). KDF files contain trigger information and timestamped, digitized PMT waveforms. KDF files also store run condition information in the header.
 
 For some students adding the following two lines in ``thesis.tex'' preamble has worked:\\
 %
