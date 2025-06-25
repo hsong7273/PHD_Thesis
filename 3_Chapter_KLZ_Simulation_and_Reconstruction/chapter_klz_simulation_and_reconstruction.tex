@@ -2,44 +2,106 @@
 \label{chapter:details}
 \thispagestyle{myheadings}
 
-% set this to the location of the figures for this chapter. it may
-% also want to be ../Figures/2_Body/ or something. make sure that
-% it has a trailing directory separator (i.e., '/')!
-\graphicspath{{3_Chapter_Details/Figures/}}
+\graphicspath{{3_Chapter_KLZ_Simulation_and_Reconstruction/Figures/}}
 
 KamLAND-ZEN uses detailed simulations defined in KLG4Sim, a GEANT4-based Monte Carlo (MC) simulation software. The MC simulated events are tuned with real calibration events to carefully match real detector response. Simulated and physical events produce detector responses that are reconstructed to extract higher-level information such as energy and position. The reconstructed event information is used for data-selection and spectrum fitting. This chapter discusses the MC simulation and event reconstruction procedures used in KamLAND-ZEN 800.
 
-\section*{Analysis Framework}
-\subsection*{Data Flow}
-Figure outlines the data flow in KamLAND-ZEN. PMT signals are digitized in either KamFEE or MoGURA, the two DAQ systems discussed in the previous chapter, the digitized signals are stored in Kinoko Data Format (KDF). KDF files contain trigger information and timestamped, digitized PMT waveforms. KDF files also store run condition information in the header.
+\section{Analysis Framework}
+\subsection{Data Flow}
+Figure \ref{fig:dataflow} outlines the data flow in KamLAND-ZEN. PMT signals are digitized in either KamFEE or MoGURA, the two DAQ systems discussed in the previous chapter, the digitized signals are stored in Kinoko Data Format (KDF). KDF files contain trigger information and timestamped, digitized PMT waveforms. KDF files also store run condition information in the header. The EventBuilder collates the waveforms of a single event and stores them in a serial file. A waveform analyzer reconstructs a hit time and charge (TQ) information for each of these waveforms. The RTQ files hold the Raw-TQ information for each PMT. Event vertices and visible energy are derived from the RTQ files through their respective reconstruction algorithms. There are secondary reconstructions that are also applied to the RTQ files, such as muon track fitting, flasher vetos, double pulse fit, and unphysical event selections. The general vector file (GVF) is used for the main physics analyses like the one presented in this thesis.
 
-For some students adding the following two lines in ``thesis.tex'' preamble has worked:\\
-%
-{\tt
-$\backslash$usepackage[T1]\{fontenc\}\\
-$\backslash$usepackage{pslatex}
-   } 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.3]{dataflow.png}
+	\caption{Data flow in KamLAND from raw waveforms to analysis variables such as energy, vertex, total hit PMTs, etc. \cite{ozaki_phd}}
+	\label{fig:dataflow}
+\end{figure}
+
+GVF files contain the following information:
+\begin{itemize}
+	\item \textbf{run number}
+	\item \textbf{event number}
+	\item \textbf{TimeStamp} based on DAQ clock time (25 nsec for KamFEE, 20 nsec for MoGDAQ)
+	\item \textbf{unixtime} is the number of seconds from January 1st in 1970 and used for some run vetos
+	\item \textbf{trigger type} records which trigger was used
+	\item \textbf{event vertex and badness} event vertices and a radius from detector center is saved, along with a vertex fit quality parameter called badness 
+	\item \textbf{energy/energy17} visible energies given by the fitter, energy17 is the energy estimate only using 17-inch PMTs
+	\item \textbf{TotalChargeID/17/OD} sum of all PMT charges of each PMT type
+	\item \textbf{numhit/numhit17} the number of hit PMTs/17-inch PMTs in each event.
+	\item \textbf{NsumMax} a maximum number of hit PMTs in a single DAQ cycle within each event, a "peak" nhit of the event
+	\item \textbf{N200OD} Maximum number of simultaneous hit OD pmts within 200nsec windows
+	\item \textbf{muon entrance and direction} muon fitter results are recorded.
+\end{itemize}
+
+Finally, MoGURA events are associated with muon events acquired in KamFEE DAQ (FBE) and stored in a Muon-Neutron Vector File (MNVF) to search for neutron capture events that occur shortly after muons.
+
+\section{Event Reconstruction}
+\subsection{Waveform Analysis}
+Each digitized waveform has 128 samples with 1.5ns sample times; this corresponds to a waveform digitization window of 192 ns. The waveforms are processed and TQ reconstructed with the following procedure.
+\begin{itemize}
+	\item \textbf{Smoothing} Each waveform is smoothed via a running-average first derivate.
+	\item \textbf{Baseline adjustment} The baseline of each PMT is collected at the beginning of each run. This baseline is subtracted from each waveform.
+	\item \textbf{Peak finding} Peaks are found with running-averaged 1st, 2nd, and 3rd derivatives.
+	\item \textbf{Leading-edge and Trailing-edge tag} A leading-edge is stamped as 10ns before the peak voltage. The trailing edge is stamped when the waveform returns to baseline. An example of this time-stamping is shown in Figure \ref{fig:waveform_analysis}
+	\item \textbf{Waveform Sum calculation} The waveform is integrated from the leading-edge to the trailing-edge.
+\end{itemize}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{waveform_analysis.png}
+	\caption{An example of waveform analysis from thesis \cite{yoshida_phd}. (left) ADC counts of a real waveform after baseline subtraction. The left cyan line is the leading edge, the center red line is the peak position, and the right dark cyan line is a trailing-edge. (right) Clock calibration example on 25 nsec intervals.}
+	\label{fig:waveform_analysis}
+\end{figure}
+
+When there are mulitple hits in one PMT waveform, the total charge of the hits and the earliest hit time is returned. This simplified information is used for the vertex and energy reconstruction. The multi-pe information is used for a double-pulse fit and a muon shower tag.
+
+\subsection{PMT Corrections}
+\subsection*{Low Gain Problem and HV Reductions}
+Since ~2011, we observed that the gain of some of the 17-inch PMTs gradually decreased. As the gain of the PMTs fell, this compormises signal/background ratio and PMT waveform quality. It was also observed that the PMTs enter a low impedance state before the gain dropped. A HV current and voltage monitor allows for the real-time monitoring of this state. Usually a simple HV power cycle could recover normal PMT behavior. Since 2016, a auto HV power cycle mechanism was implemented to mitigate the low gain problem, but the root case is still unknown.
+
+Each time the PMTs enter the low impedance state, the HV on that channel was reduced in 50-100 V increments. Over time, some of the channels had their HV reduced by 450 V. FIgure \ref{fig:lowgain_trend} shows the trend in low gain 17-inch PMTs.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.3]{lowgain_trend.png}
+	\caption{The trend in the number of low gain 17-inch PMTs, before ZEN-800. The number of low gain channels increased gradually, while the sudden increases are from HV reductions performed since 2017 \cite{ozaki_phd}.}
+	\label{fig:lowgain_trend}
+\end{figure}
+
+%/ TODO
+Note about current low pmt gain analysis.
+
+\subsection*{Bad Channel}
+A channels is considered bad if the PMT meets one or more of the following criteria:
+\begin{itemize}
+	\item PMT pulses less than 0.6\% of the time over all events
+	\item PMT pulses below 0.48\% for non-muon events
+	\item PMT pulses less than 80\% of the time for high-energy muon events
+	\item PMT is missing a waveform more than 10\% of the time
+	\item Large discrepancy between the two ATWD hits
+	\item High muon charge PMTs. A PMT may read much higher charge ($Q_{detected}$) than the average of its surrounding PMTs ($Q_{expected}$). A run is divided into 100 muon intervals, for each interval the criteria is defined as
+	\[\frac{1}{N_{interval}}\sum_{i=1}^{N_{interval}}\left(\frac{1}{N_{muon}}\sum_{j=1}^{N_{muon}}\frac{(Q_{expected}-Q_{detected})^2}{Q_{expected}}\right)>1000\ p.e.\]
+\end{itemize}
+These bad channels are excluded from event reconstruction and physics analyses.
+
+\subsection*{Dark Hit}
+Thermal fluctuations can emit electrons off the photocathode leading to a PMT hit signal. These "dark hits" are an unavoidable hit-level background in PMT detectors, lowering the detector temperature reduces this effect. The dark hit rates are measured from run-to-run and are factored into our likelihood-maximizing reconstruction algorithms. The hit rate observed 50-100 ns before the PMT hittime rising edge is taken as the dark rate, Figure \ref{fig:darkrate} shows the PMT hittime distribution and the dark rate window.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{darkrate.png}
+	\caption{An example pmt hit time distribution from data run 14783, the 50-100 ns leading window is taken to measure the pmt dark hit rate. \cite{li_phd}.}
+	\label{fig:darkrate}
+\end{figure}
+
+\subsection{Primary Vertex Fitter}
+The primary vertex fitter provides a rough estimate of a scintillating event's location. This estimate serves as the input to a more thorough, but complex secondary fitter. The fit works by constructing a hit time residual distribution:
+\[T_{i}^{emit}=T_i-TOF_i = T_i - \frac{\left|R_i-r_{vertex}\right|}{c_eff}\]
+Here $T_i$ is the hit time of the $i^{th}$ PMT, $TOF_i$ is the time it takes for a scintillation photon to traverse from the vertex position to the $i^{th}$ PMT position, $R_i$ is the PMT position, $r_{vertex}$ is the unknown vertex position to fit for, and $c_{eff}$ is the speed of light in the given medium. By fitting $T_i^{emit}$ to match the standard scintillation time profile, a primary $r_{vertex}$ is produced by the fitter.
+\subsection{Secondary Fitter}
+\subsection{Energy Reconstruction}
+\subsection{Muon Reconstruction}
+\subsection{MoGURA Neutron Reconstruction}
+\section{Event Selection}
 
 
-The easiest way to check if fonts are embedded well and of what type, is to use Adobe Acrobat's Preflight -- it shows exactly where the Type 3 fonts are in the thesis. You can learn more here: \url{https://community.adobe.com/t5/acrobat/figure-out-where-a-specific-font-is-used-in-a-pdf/m-p/10880057?page=1#M238035}
-
-If you don't have Adobe Acrobat (BU students get it for free), you can quickly check which fonts have which type by looking into Files $>>$ Properties $>>$ Fonts, but it doesn't tell where the text with a specific font type is.
-
-{\bf Linux/Unix}: If you are using LaTeX or Unix, the problem is that, by default, LaTeX uses Type 3 fonts. Since most users have a tendency to use the default settings, then Type 3 fonts will be used by default. You can try to change the first line in the preamble in ``thesis.tex'' to:\\
-%
-{\tt $\backslash$documentstyle[12pt,times,letterpaper]\{report\}}
-
-\noindent
-since then Times fonts will be used (which are not Type 3). If there are mathematical formulas in the text, it is better to use:\\
-%
-{\tt $\backslash$documentstyle[12pt,times,mathptm,letterpaper]\{report\}}
-
-
-\section{Font embedding}
-
-All fonts must be embedded into the final PDF file. If they are not, sometimes equations may look strange or may not show up at all for several pages. This is often due to unembedded font problem. Should you have a font-embedding issue, this page may prove useful:\\
-%
-\url{https://www.karlrupp.net/2016/01/embed-all-fonts-in-pdfs-latex-pdflatex}
-
-For those using Overleaf, this page might help:
-\url{https://www.overleaf.com/learn/latex/Questions/My_submission_was_rejected_by_the_journal_because_%22Font_XYZ_is_not_embedded%22._What_can_I_do%3F}
