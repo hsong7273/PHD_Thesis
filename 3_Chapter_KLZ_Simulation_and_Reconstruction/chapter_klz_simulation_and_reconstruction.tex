@@ -96,10 +96,61 @@ Thermal fluctuations can emit electrons off the photocathode leading to a PMT hi
 
 \subsection{Primary Vertex Fitter}
 The primary vertex fitter provides a rough estimate of a scintillating event's location. This estimate serves as the input to a more thorough, but complex secondary fitter. The fit works by constructing a hit time residual distribution:
-\[T_{i}^{emit}=T_i-TOF_i = T_i - \frac{\left|R_i-r_{vertex}\right|}{c_eff}\]
+\begin{equation}
+	T_{i}^{emit}=T_i-TOF_i = T_i - \frac{\left|R_i-r_{vertex}\right|}{c_eff}
+	\label{eq:prim_vertex}
+\end{equation}
 Here $T_i$ is the hit time of the $i^{th}$ PMT, $TOF_i$ is the time it takes for a scintillation photon to traverse from the vertex position to the $i^{th}$ PMT position, $R_i$ is the PMT position, $r_{vertex}$ is the unknown vertex position to fit for, and $c_{eff}$ is the speed of light in the given medium. By fitting $T_i^{emit}$ to match the standard scintillation time profile, a primary $r_{vertex}$ is produced by the fitter.
+
 \subsection{Secondary Fitter}
+The secondary V2 fitter uses the $r_{vertex}$ given by the primary fitter to compute $T_0$ according to the equation \ref{eq:sec_v2}
+\begin{equation}
+	T_0 = \frac{\sum_i \left(T_i^{pmt}-TOF^{pmt}_i\right)\times Q_i}{\sum_iQ_i}- const.
+	\label{eq:sec_v2}
+\end{equation}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{pmt_dist.png}
+	\caption{Probability density function of 17-inch and 20-inch PMT hit times calculated from calibration data. The plot is from \cite{ozaki_phd} and originally from a 2005 calibration dataset.}
+	\label{fig:pmt_pdfs}
+\end{figure}
+This $T_0$ is the charge weighted sum of $T_emit$ from \ref{eq:prim_vertex}. This $T_0$ serves as the universal start point of an event. From this time, each pmt hit time is
+\begin{equation}
+	\tau(x,y,z,T_0) = T^{pomt}_i-TOF_i^{pmt}-T_0
+\end{equation}
+Finally, these time-of-flight corrected and centered hit time distributions are used to create probability distributions for the 17 and 20 inch PMTs respectively. These PDFs are shown in Figure \ref{fig:pmt_pdfs}. The likelihood function for an individual PMT is defined as:
+\begin{equation}
+	\phi_i =\frac{\mu\times f_i(\tau_i)+D_i}{\mu\times C_{17/20}+D_i}
+\end{equation}
+Here, $\mu$ is the pulse shape determination factor, $D_i$ is the dark hit rate for the $i^{th}$ PMT and $C_{17/20}$ is the normalization constant for the 17 or 20 inch PMTs. The overall log-likelihood is given by the $log(L)=\sum_ilog(\phi_i)$. The log-likelihood is maximized by the Newton-Raphson method, in which the $x,y,z,T_0$ are adjusted to the best-fit values, giving us the V2 reconstructed vertex.
+
 \subsection{Energy Reconstruction}
+Likelihood maximization is also used to reconstruct the energy of an event. A likelihood PDF is constructed using the number of hits, charge, and hit timing.
+\subsection*{$N_{hit}$ PDF}
+The expectation of the number of photons hitting PMT i, $\mu_i$ is a function of the visible energy and dark charge.
+\begin{equation}
+	\mu_i = a_i(x,y,z)\times E_{vis} +d_i
+\end{equation}
+Here, $a_i(x,y,z)$ is a coefficient that converts the event energy to the number of photons which is calibrated with the neutron events. It is determined by the PMT position $x,y,z$. $d_i$ is the dark noise charge of PMT i, which is electronically measured. The probability that $\mu_i$ photons hit the $i$th PMT $j$ times, $k_{ij}$, is ideally expressed by the poisson distribution:
+\begin{equation}
+	k_{ij}=\frac{(\mu_i)^j}{j!}e^{-\mu}
+\end{equation}
+
+However, in KamLAND waveform analysis, the 1 p.e. detection efficiency is reduced by the 0.3 p.e. software charge threshold. This threshold is set to reduce the acceptance of dark noise but also decreases hit detection efficiency. As a result, the PMT hit probablity is reduced to:
+\begin{equation}
+	P_{hit}=1-v_ie^{-\mu_i}
+\end{equation}
+
+\subsection*{Hit Charge PDF}
+A Gaussian distribution is assumed for the hit charge PDF of each PMT:
+\begin{equation}
+	f_{i,j(q_i)}=\frac{1}{\sqrt{2\pi j\sigma^2}}exp(-\frac{(q_i-j)^2}{2j\sigma^2})
+\end{equation}
+$q_i$ is the observed charge in p.e. units and $\sigma$ is  the charge resolution against 1 p.e. distribution.
+
+\subsection*{Hit Time PDF}
+
+
 \subsection{Muon Reconstruction}
 \subsection{MoGURA Neutron Reconstruction}
 \section{Event Selection}
