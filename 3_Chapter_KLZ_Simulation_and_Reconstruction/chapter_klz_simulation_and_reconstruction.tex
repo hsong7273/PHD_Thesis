@@ -214,13 +214,7 @@ Cosmic ray muon events form tracks as opposed to the point-like events caused by
 	\end{itemize}
 	A "badness" parameter value is assigned to the reconstruction according to this evaluation. With this evaluation, around 15\% of muon candidates are regarded as badly reconstructed though they can still be used in muon-neutron pairing. Bad muon reconstruction is caused by ringing in the PMT signals, muon bundles, and stopped muons.
 \end{enumerate}
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.4]{muon_reco.png}
-	\caption{A schematic of muon track reconstruction in KamLAND.}
-	\label{fig:muon_reco}
-\end{figure}
-The light yields in the muon events are estimated in :
+The light yields in the muon events are estimated in \cite{karino_master}:
 \begin{equation}
 	\langle dQ_C/dX\rangle =28\pm 5\textbf{p.e./cm (Cherenkov muons)}
 \end{equation}
@@ -228,6 +222,54 @@ The light yields in the muon events are estimated in :
 	\langle dQ_S/dX\rangle =338\pm 12\textbf{p.e./cm (Scintillation muons)}
 \end{equation}
 \subsection{MoGURA Neutron Reconstruction}
+Neutrons that are produced during cosmic ray spallation are best detected with the MoGURA DAQ due to the FBE's inability to handle the high after-pulse rate. After pulsing is also present in MoGURA and need to be rejected. An effective number of hits $N_s$ was introduced. The neutron reconstruction procedures is as follows:
+\begin{enumerate}
+	\item A 200ns wide time window is opened. The vertex is reconstructed using LT Vertex using the hit information contained in this window.
+	\item The times of flight to each PMT is calculated assuming the reconstructed vertex. Then the ToF subtracted hit timing distribution is obtained.
+	\item The obtained residual hit time distribution includes neutron capture 2.2 MeV gamma scintillation light and fake signals from after-pulses. To calculate the effective number of hits, $N_{in}$ and $N_{out}$, the number of hits in a 30ns wide "ontime" window and a 170ns wide "offtime" window respectively are counted. $N_s$ is then calculated as
+	\begin{equation}
+		N_s=N_{in}-N_{out}\times\frac{30 nsec}{170 nsec}
+	\end{equation}
+	\item The ontime window is shifted by 20ns, the clock time of MoGDAQ, and step 3 is repeated.
+	\item The 200ns time window is shifted and steps 1-4 are repeated. the 200ns window and 30ns ontime window that maximizes $N_s$ is found. The vertex given by the $N_s$ maximizing time windows is taken as the reconstructed neutron capture event vertex.
+\end{enumerate}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{neutron_reco.png}
+	\caption{A neutron capture events hit times showing the contribution of fake after pulses and the time windows used to calculate $N_s$}
+	\label{fig:neutron_reco}
+\end{figure}
+\subsection{Muon Neutron Correlation}
+The neutron selection process outlined above contains many noise events, thus the sample is only used in background discrimination when coincident with muons. In particular, MoGURA data neutrons are used to improve the rejection of xenon spallation products. The procedure for selecting muon-neutron pairs is:
+\begin{enumerate}
+	\item Check the end unixtime of the previous KamDAQ run and the start unixtime of the current KamDAQ run.
+	\item Collect the MoGURA runs that collected data during this gap. Muon events collected by MoGURA are used in the gaps between KamDAQ runs, during KamDAQ runs muons collected with FBE data are used.
+	\item The delayed coincidence analysis is done to select neutron candidate events in a short time period after muons. The first cuts applied are on $dT>2500\mu $ and $N_{s}=N_{in}-N_{out}<100$, these events are first removed. The subsequent MoGURA neutron selection criteria are outlined below.  
+\end{enumerate}
+
+The neutron selection in MoGURA is outlined in Figure \ref{fig:neutron_selection}. Two quantities are used, $dT$, the time delay between the neutron event and the previous muon, and $N_s$. From the 2D distribution, one sees that the event rate is higher in the short dT region due to noise and after-pulses. The $N_s$ values also tend to be small due to signal loss caused by baseline overshoot in the PMTs. The following criteria were chosen to select MoGURA neutrons:
+\begin{itemize}
+	\item $N_{total}=N_{in}+N_{out}>150$ (Number of hit requirement)
+	\item $N_s>50 \wedge 10<dT<1200\mu s $ (reject after-pulses and accidental events)
+	\item $!((N_s<dT(\mu s)+70\wedge 10<dT<20 \mu s )||N_s<-0.8\times dT(\mu s)+106\wedge20<dT<70\mu s)$
+\end{itemize}
+Figure \ref{fig:neutron_dT} shows the dT distribution of the MoGURA neutrons collected with the above criteria. The histogram is fitted to an exponential between 500 and 1000 $\mu s$, and the fitted function is extrapolated to the rest of the data range. The inefficiency of the neutron tag in the shorter dT period can be seen as the distribution turns off at low dT.
+
+\begin{figure}[htb]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{mog_neutron.png}
+        \caption{distribution showing the $dT$ dependence of $N_s$. The events above the red line are selected as MoGURA neutrons and used for background rejection \cite{takeuchi_phd}}
+        \label{fig:neutron_selection}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[scale=0.3]{mog_neutron_dt.png}
+        \caption{The $dT$ distribution of selected MoGURA neutrons. The fit to an exponential is performed between 500 and 1000 $\mu s$. \cite{takeuchi_phd}}
+        \label{fig:neutron_dT}
+    \end{minipage}
+\end{figure}
 
 \section{Event Selection}
 
