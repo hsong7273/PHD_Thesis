@@ -149,7 +149,48 @@ A Gaussian distribution is assumed for the hit charge PDF of each PMT:
 $q_i$ is the observed charge in p.e. units and $\sigma$ is  the charge resolution against 1 p.e. distribution.
 
 \subsection*{Hit Time PDF}
+PMT hit timing factors into energy reconstruction by helping to discriminate hits unrelated to the physical event. The hit timing model is created using source calibration data. 
+\begin{equation}
+	P_{time,i} = \frac{\psi(t_i)a_i E_{vis}+d_i}{\mu_i}
+\end{equation}
+The PDF is the sum of the signal hit distribution and the constant dark noise.
+\subsection*{Energy Likelihood}
+The likelihood function to be maximized is constructed as 
+\begin{equation}
+	L=\prod_{Not\ hit\ PMTs}P_{no-hit,i}\prod_{Hit\ PMTs}\left[P_{hit,i}\left(\sum_{j=1}^{100}f_{i,j}\right)P_{time, i}\right]
+	\ref{eq:energy_likelihood}
+\end{equation}
+The reconstructed energy is the one which maximizes this likelihood. The Newton-Raphson method is used to search for this energy. This process is implemented independently for the 17-inch PMTs and 20-inc PMTs, then the event energy is calculated with a weighting factor $\alpha$:
+\begin{equation}
+	E_{vis}=(1-\alpha)E_{17inch}+\alpha E_{20inch}
+\end{equation}
+The weighting factor $\alpha=0.3$ was determined to maximizing energy resolution.
+\subsection{Bad Channels in Energy Reconstruction}
+The increase in the number of low gain PMTs has lead to worsening energy resolution over time, as these PMTs are excluded from the typical energy reconstruction described above. In particular, some of the low gain PMTs still detect photons, but proper gain calibration is not possible. A method for utilizing the information from operational low gain PMTs was developed, and the basic strategy is as follows:
+\begin{enumerate}
+	\item The change in gain causes the effect of the 0.3 p.e. threshold on hit probability to change. The no-hit probability was expanded as follows:
+	\begin{equation}
+		P^{\prime}_{no-hit, i} = \left(1+\epsilon_1\mu_i+\epsilon_2\frac{\mu_i^2}{2!}+\epsilon_3\frac{\mu_i^3}{3!}\right)e^{-\lambda\mu_i}
+	\end{equation}
+	This model was originally a simple expansion of $P_{no-hit}$, but in the end was adjusted phenomologically to better reproduce real data. This adjustment is why an additional $e^{-\lambda\mu}$ appears in the model.
+	\item The parameters $\epsilon_1, epsilon_2, epsilon_3,$ and $\lambda$ are estimated with actual data. The events satisfying the following selections are collected and the no-hit probability is calcualted for each expected charge. The expected charge of the i-th PMT $\mu_i$ is estimated using the vertex and total charge of the events that meet the following conditions.
+	\begin{itemize}
+		\item $r<6m$
+		\item Not muons or events within 2 ms after muons
+		\item Events with more than 120 17-inch PMT hits
+		\item PMT waveforms that contain only 1 peak
+	\end{itemize}
+	Figure \ref{fig:nohit_prob} shows the result of fitting this adjusted no-hit probability model. THe fitting is performed run-by-run and for each PMT independently.
+	\item Use the updated no-hit probability pdf in the event energy reconstruction in Equation \ref{eq:energy_likelihood}.
+\end{enumerate}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{no-hitprob.png}
+	\caption{Fitting no hit probability to a low gain PMT against the expected charge $\mu$. The original model is shown with the blue line while the red line is the new model which agrees better with low-gain PMT data.}
+	\label{fig:nohit_prob}
+\end{figure}
 
+Making use of the low-gain PMTs can improve energy resolution by up to 3\% \cite{karino_master}. Further analysis in this work uses energy reconstructed from the combination of normal and low-gain PMTs.
 
 \subsection{Muon Reconstruction}
 \subsection{MoGURA Neutron Reconstruction}
