@@ -158,7 +158,7 @@ The PDF is the sum of the signal hit distribution and the constant dark noise.
 The likelihood function to be maximized is constructed as 
 \begin{equation}
 	L=\prod_{Not\ hit\ PMTs}P_{no-hit,i}\prod_{Hit\ PMTs}\left[P_{hit,i}\left(\sum_{j=1}^{100}f_{i,j}\right)P_{time, i}\right]
-	\ref{eq:energy_likelihood}
+	\label{eq:energy_likelihood}
 \end{equation}
 The reconstructed energy is the one which maximizes this likelihood. The Newton-Raphson method is used to search for this energy. This process is implemented independently for the 17-inch PMTs and 20-inc PMTs, then the event energy is calculated with a weighting factor $\alpha$:
 \begin{equation}
@@ -193,7 +193,42 @@ The increase in the number of low gain PMTs has lead to worsening energy resolut
 Making use of the low-gain PMTs can improve energy resolution by up to 3\% \cite{karino_master}. Further analysis in this work uses energy reconstructed from the combination of normal and low-gain PMTs.
 
 \subsection{Muon Reconstruction}
+The selection and understanding of muon and muon-correlated neutrons are essential to multiple background rejections. This section, describes the special selection criteria and reconstruction methods used for muons and neutrons.
+\subsection*{Muon Selectrion Criteria}
+The muon event selection criteria are as follows:
+\begin{itemize}
+	\item Total charge of 17inch PMTs, $Q_{17}\geq 10000$ p.e.
+	\item $Q_{17geq}$ 500 p.e. and the number of hit OD PMTS $\geq 9$.
+\end{itemize}
+The former criteria selects muons which go through the scintillator volumes of the detector. A total charge of 10,000 p.e. roughly corresponds to an event energy of 30 MeV, which exceeds the energy range of most physical analyses in KamLAND-ZEN. The second selection is for muons that only deposit energy in the outer buffer oil (clipping muons). Muons passing through the buffer oil volumes do not scintillate, as such the 500 p.e. threshold in Chrenkov radiation roughly corresponds to about 40 MeV of energy deposition.
+\subsection{Cosmic Ray Muon Reconstruction}
+Cosmic ray muon events form tracks as opposed to the point-like events caused by single decay events. The process is shown diagramattically in Figure \ref{fig:muon_reco}
+\begin{enumerate}
+	\item The ID PMT which detects the earliest light is identified. If the charge of this hit is low or isolated in time from the many other hits in the event, it is classed as a dark hit and ignored. A line is drawn from the earliest hit muon PMT and the center of the KamLAND detector. The intersection of this line and the outer balloon is marked as the temporary entrance point.
+	\item The PMT whose charge is the largest is identified. The brightest hit PMT should be hit later than the earliest PMT and the neighbors of the earliest PMTs. A line is drawn from the brightest hit PMT and the center of the KamLAND detector. The intersection of this line and the outer balloon is marked as the temporary exit.
+	\item The temporary track is defined as the line connecting the temporary entrance and exit. The temporary track is finally corrected by checking the correlation between the track length and the total charge.
+	\item The reconstruction quality is evaluated by checking the following:
+	\begin{itemize}
+		\item Whether the earliest and the brightest PMTs can be identified
+		\item Whether the mean hit time of PMTs around the entrance is earlier than the around the exit.
+	\end{itemize}
+	A "badness" parameter value is assigned to the reconstruction according to this evaluation. With this evaluation, around 15\% of muon candidates are regarded as badly reconstructed though they can still be used in muon-neutron pairing. Bad muon reconstruction is caused by ringing in the PMT signals, muon bundles, and stopped muons.
+\end{enumerate}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{muon_reco.png}
+	\caption{A schematic of muon track reconstruction in KamLAND.}
+	\label{fig:muon_reco}
+\end{figure}
+The light yields in the muon events are estimated in :
+\begin{equation}
+	\langle dQ_C/dX\rangle =28\pm 5\textbf{p.e./cm (Cherenkov muons)}
+\end{equation}
+\begin{equation}
+	\langle dQ_S/dX\rangle =338\pm 12\textbf{p.e./cm (Scintillation muons)}
+\end{equation}
 \subsection{MoGURA Neutron Reconstruction}
+
 \section{Event Selection}
 
 
