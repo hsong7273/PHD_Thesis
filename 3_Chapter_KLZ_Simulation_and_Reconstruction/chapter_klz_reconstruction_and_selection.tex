@@ -1,5 +1,5 @@
-\chapter{KamLAND-ZEN Simulation and Reconstruction}
-\label{chapter:details}
+\chapter{Event Reconstruction and Selection}
+\label{chapter:reco_select}
 \thispagestyle{myheadings}
 
 \graphicspath{{3_Chapter_KLZ_Simulation_and_Reconstruction/Figures/}}
@@ -275,3 +275,39 @@ Figure \ref{fig:neutron_dT} shows the dT distribution of the MoGURA neutrons col
 Candidate \0nbb events must pass several event selections. The selections are separated into non-physical events and background cuts. In this section, we first describe the event selections used in this analysis. Then, the impact of these selections on signal inefficiency are discussed.
 
 \subsection{Unphysical and Bad Quality Event Rejection}
+Much of the data saved in the KamLAND DAQ systems include "unphysical" events. Furthermore, much of the events associated with real physical processes are of poor quality. This section, describes the criteria by which unphysical events and poor quality events are selected.
+\begin{enumerate}
+	\item Flasher PMT \\
+	PMTs, can occasionally emit light into the detector. These occurances are called PMT flashers. There are multiple potential causes for a PMT to flash, such as the discharge of the dynodes and light emission from the epoxy around the breeder circuit. Figure \ref{fig:flasher} shows the typical event display of a flasher event. Such events have a distint signature, as the PMT that flashes will have exceptionally high charge and cause a huge deposition of charge in the nearest PMTs as well. The PMT flasher selection criteria are as follows:
+	\begin{itemize}
+		\item Total charge of ID PMTs $ > 2500$ p.e.
+		\item Maximum ID PMT charge/Total ID PMT Charge $ >60\%$
+		\item Average charge of the neighboring PMTs $ > 20$ p.e.
+	\end{itemize}
+	\item Post muon events \\
+	Cosmic ray muons deposit a large amount of energy into the detector. As a result, the detecotr behavior is unstable for a period afterwards. In particular, the detector suffers from a high fake event rate due to after-pulsing and the shift of baseline from overshoot. This instability causes not only a large amount of unphyiscal events, but also degrade the reconstructibility of real physical events. Thus, all events in the immediate 2 msec after cosmic ray muons are not uesd for the excited state analysis. Though, these events may be used for other analyses such as spallation background estimation.
+	\item Missing waveform events \\
+	High rate after-pulsing from cosmic ray muons can also cause the ATWD to be busy and the DAQ system to get stuck. When the DAQ electronics are in this state, event waveforms cannot be recorded. These are referred to as "missing waveform" events. In these situations, the number of hit 17-inch PMTs within 125 ns after a trigger issue is recorded as "NsumMax". In properly recorded events, NsumMax should be proportional to the total number of 17inch PMT hits (Nhit17). So the missing waveform events are identified by the ratio between NsumMax and Nhit17. Events tagged by this selection are removed from the excited state physics analysis. The exact selection criteria are as follows:
+	\begin{itemize}
+		\item Nhit17 $<$ NsumMax $\times 0.99-25$
+		\item $dT$ after muon events $< 2$ msec (if NsumMax<1200)
+		\item $dT$ after muon events $< 2$ sec (if NsumMax>1200)
+	\end{itemize}
+	\item Post PPS trigger event \\
+	The PPS trigger is a forced trigger issued once a second used for constant diagnostic monitoring of the detector. However, the PPS trigger has been found to cause an increase in electronics noise and DAQ trigger rate. Thus events 100 $\mu sec$ from the last PPS trigger are removed from the analysis. (see Fig \ref{fig:PPS})
+	\item Badly reconstructed events \\
+	The fit quality of an event's vertex reconstruction is the event's "Badness". The quantity is calculated using nine parameters that describe the deviation of an event's PMT hit and charge distribution from the expectation. A detailed explanation of the Badness calculation can be found in section 3.8.3 of \cite{}. These poorly reconstructed events mostly consist of, noise events and pileup. The events with large Badness are removed from the analysis by the following energy-dependent threshold:
+	\begin{equation}
+		Badness < 25.0\times exp(-4.5\times E_{vis} [MeV]) + 3.1
+	\end{equation}
+	Fig \ref{fig:Badness} shows the Badness distribution of all physical events and the Badness of $^{214}$Bi events selected by the delayed coincidence method.
+\end{enumerate}
+
+\section{Background Rejection}
+\subsection{Uranium/Thorium}
+\subsection{Antineutrinos}
+\subsection{Short-lived Spallation Products}
+\subsection{Shower Veto}
+\subsection{Xenon Spallation Products}
+\subsection{Signal Inefficiency}
+
