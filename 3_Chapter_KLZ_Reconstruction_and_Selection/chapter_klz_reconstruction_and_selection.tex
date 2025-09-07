@@ -125,6 +125,7 @@ Finally, these time-of-flight corrected and centered hit time distributions are 
 Here, $\mu$ is the pulse shape determination factor, $D_i$ is the dark hit rate for the $i^{th}$ PMT and $C_{17/20}$ is the normalization constant for the 17 or 20 inch PMTs. The overall log-likelihood is given by the $log(L)=\sum_ilog(\phi_i)$. The log-likelihood is maximized by the Newton-Raphson method, in which the $x,y,z,T_0$ are adjusted to the best-fit values, giving us the V2 reconstructed vertex.
 
 \subsection{Energy Reconstruction}
+\label{sec:energy_reco}
 Likelihood maximization is also used to reconstruct the energy of an event. A likelihood PDF is constructed using the number of hits, charge, and hit timing.
 \subsection*{$N_{hit}$ PDF}
 The expectation of the number of photons hitting PMT i, $\mu_i$ is a function of the visible energy and dark charge.
@@ -376,13 +377,62 @@ A double pulse fit method has been developed to tag these pile-up events. The me
 	\item Construct a reference time profile.
 	A reference waveform is made from the hit time profile of \2nbb-decay candidates. The events are selected with $1.4 < E_{vis}<1.6$ MeV and $radius < 157$ cm after \0nbb background vetoes. 
 	\item Construct the hit timing profile of \0nbb decay candidates.
+	The hit timing profile of the candidate events (events to be analyzed) are constructed. In the typical analyses and reconstructions, the time of the first hit on a PMT in an event is used. For this procedure, all hit times and hit charges (multi-hit) information is used to effectively separate the two peaks. 
 	\item Fit the event's hit time profile
+	The hit time profile is fitted by the reference waveform. The fit includes 4 parameters; $E_p$ (prompt signal energy), $T_p$ (prompt signal timing), $E_d$ (delayed signal energy), $\Delta T$ (time delay between prompt and delayed signals). Then a maximum likelihood optimization is performed. $\chi^2$ for the fit is defined as:
+	\begin{equation}
+		\chi^2 = 
+		\begin{cases}
+		2\sum_i \left\{ -(x_i-f_i) + x_i \log \frac{x_i}{f_i} \right\} & (n_i > 0) \\
+		2\sum_i \left\{ -(x_i-f_i) \right\} & (n_i = 0)
+		\end{cases}
+		\hspace{2cm} (5.27)
+	\end{equation}
+	where $i, x_i$, and $f_i$ denote the $i$-th bin, the number of hit PMTs in the $i$-th bin and the expectation of hte number of hits in the $i$-th bin, respectively. The time bins are 1 ns wide. $f_i$ can be calculated as the sum of a dark rate $D$ and the reference waveform $R(i)$ as:
+	\begin{equation}
+		F_i = |E_p|R(i-T_p)+|E_d|R(i-T_p-\Delta T) + D
+	\end{equation}
+	Here, the dark rate is a simple global dark rate taken from all the PMTs in the off-time period. The $chi^2$ minimization is performed with MINUIT in the ROOT analysis framework. For all the $(T_p, \Delta T)$ pairs, $E_p$ and $E_d$ are floated, and the optimal four parameters are found.
 	\item Correct the reconstructed energies
+	$E_p$ and $E_d$ are used in the double-pulse fit to scale the reference waveform but they are not accurate individual pulse energy reconstructions. The energy reconstruction described in section \ref{sec:energy_reco} is more accurate. This "official" energy reconstruction is incorporated into the individual pulse energies by:
+	\begin{equation}
+		E_{p^\prime}=E_{vis}\times\frac{E_p}{E_p+E_d}
+	\end{equation}
+	\begin{equation}
+		E_{d^\prime}=E_{vis}\times\frac{E_d}{E_p+E_d}
+	\end{equation}
+	Thus, the double-pulse fit provides the fraction of the total event energy, $E_{vis}$, to assign to the prompt and delayed signals.
 	\item Candidate selection
+	Finally, the pile-up tagged events are selected from the candidate events based on their $\Delta T$ and $E_{d^\prime}$. The selection criteria are determined using MC simulated events while limiting the \0nbb inefficiency to about 0.1\%. Figure \ref{fig:pileup_selection} shows the selection criteria over the MC distributions. The remaining $^{212}$Bi-Po events that pass pile-up are estimated to be $2.3\pm0.5\%$.
 \end{enumerate}
-
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{highE_example_doublepulse.png}
+	\caption{An example double pulse fit result, The green line shows the fit result using a single reference waveform. The red line shows the double-pulse fit. The blue and magenta curves show the prompt and delayed pulses respectively.}
+	\label{fig:dpfit}
+\end{figure}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{dp_selection.png}
+	\caption{The selection criteria over $E_d$ and $\Delta T$ used to tag pileup events. The distributions are of MC \0nbb (left) and $^{212}$Bi-Po (right). The regions enclosed by the red lines are vetoed as pileup events.}
+	\label{fig:pileup_selection}
+\end{figure}
+An example double-pulse fit is shown in Figure \ref{fig:dpfit}. This double-pulse fitting technique has also been used to identify other pile-up like backgrounds. For example, some of the $\beta^+$-decay backgrounds can be rejected by this method. The ortho-positronium decay mode of $\beta^+$-decays has a lifetime of about 3 ns in the liquid scintillator, which produces a pileup-like signal.
 
 \subsection{Antineutrinos}
+The original physics objective of the KamLAND experiment was to observe electon anti-neutrinos produced in nuclear reactors, among other sources. The signature of anti-neutrinos in KamLAND and KamLAND-ZEN is inverse beta decay (IBD):
+\begin{equation}
+	\bar{\nu_e}+p\rightarrow e^+ + n
+\end{equation}
+IBD produces a neutron and a positron. The positron annihilates with an electron to produce gamma rays, 2 511 keV gammas. The neutron scatters in the detector until being captured by protons with an average capture time of $\tau=207\mu s$. This two-stage signal is ideal for tagging with the delayed coincidence method.
+
+In the anti-neutrino analysis, IBD events were originally selected by a likelihood ratio selection; but in KLZ, a simple box cut analysis is applied. The IBD selection criteria are:
+\begin{itemize}
+	\item delayed energy : $E_d>1.5 MeV$
+	\item distance between prompt and delayed vertices : $dR<200cm$
+	\item timing correlation between prompt and delayed vertices : $dT < 1.0msec$
+\end{itemize}
+In the wake of the 2011 Tohoku earthquake and reactor meltdown, the Japanese nuclear power plants were turned off and the rate of anti-neutrino events are less than 0.2 event/day within $r<550$ cm. The efficiency of the IBD box cuts are 99.14\%. Thus, the remaining potential IBD background to the KLZ analyses are negligible.
 \subsection{Short-lived Spallation Products}
 \subsection{Shower Veto}
 \subsection{Xenon Spallation Products}
