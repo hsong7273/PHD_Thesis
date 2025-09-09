@@ -434,7 +434,35 @@ In the anti-neutrino analysis, IBD events were originally selected by a likeliho
 \end{itemize}
 In the wake of the 2011 Tohoku earthquake and reactor meltdown, the Japanese nuclear power plants were turned off and the rate of anti-neutrino events are less than 0.2 event/day within $r<550$ cm. The efficiency of the IBD box cuts are 99.14\%. Thus, the remaining potential IBD background to the KLZ analyses are negligible.
 \subsection{Short-lived Spallation Products}
+High energy cosmic ray muons can break apart nuclei in the detector material into lighter nuclei and produce secondary particles. The spallation products of $^{12}$C are one of the dominant backgrounds in the $2n\beta\beta^*$ search. Multiple tagging methods have been developedfor identifying so-called short-lived spallation products.
+\subsection*{$^{12}$B Veto}
+The $^{12}$B $\beta$-decay has a large contribution to the background in the \0nbb ROI. The rate of muons is $\approxeq 3$ Hz in the KamLAND detector thus $^{12}$B can be removed with a veto after muons. In this analysis, a 150 msec window, corresponding to 5 times the livetime of $^{12}$B, is vetoed and counted as detector deadtime.
+
+\subsection*{MoGURA Neutron Veto}
+Neutrons are also ejected during the muon spallation process. These neutrons are correlated with the spallation products. The MoGURA DAQ system is used to observe neutron captures that occur shortly after cosmic-ray muons. The correlation with these MoGURA neutrons can be used to tag other short-lived spallation products, mainly $^{10}$C, $^{6}$He, and $^{8}$Li. The selection of the MoGURA neutron veto is as follows:
+\begin{itemize}
+	\item distance between candidate decay and spallation neutron : $dR<160$ cm
+	\item timing correlation : $dT < $ 180 sec ( about 5 times the lifetime of $^{10}$C)
+\end{itemize}
+
+\subsection*{$^{137}$Xe Veto}
+Neutrons capturing onto $^{136}$Xe nuclei form $^{137}$Xe. The Q-value of $^{137}$Xe $\beta^-$-decay is 4.2 MeV with a half-life of 3.82 minutes. This decay can be tagged by the triple coincidence of a muon, the neutron capture, and the beta decay itself. The selection criteria is as follows:
+\begin{itemize}
+	\item distance between candidate decay and spallation neutron : $dR<160$ cm
+	\item timing correlation : $dT < $ 1,620 sec
+\end{itemize}
+
+Since the neutron capture gamma on $^{137}$Xe has a gamma energy about 4 MeV, higher than captures on protons, the neutron selection criteria is adjusted slightly. The $^{137}$Xe neutrons are required to have $N_s$ values above 240. A schematic of spallation veto of Carbon and Xenon is shown in Figure \ref{fig:spall_veto}.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{spall_veto.png}
+	\caption{A schematic of spallation veto with MoGURA neutrons}
+	\label{fig:spall_veto}
+\end{figure}
+
 \subsection{Shower Veto}
+
+
 \subsection{Xenon Spallation Products}
 \subsection{Signal Inefficiency}
 
