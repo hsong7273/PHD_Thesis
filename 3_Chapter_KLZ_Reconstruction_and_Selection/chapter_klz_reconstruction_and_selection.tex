@@ -276,6 +276,7 @@ Figure \ref{fig:neutron_dT} shows the dT distribution of the MoGURA neutrons col
 Candidate \0nbb events must pass several event selections. The selections are separated into non-physical events and background cuts. In this section, we first describe the event selections used in this analysis. Then, the impact of these selections on signal inefficiency are discussed.
 
 \subsection{Unphysical and Bad Quality Event Rejection}
+\label{sec:badqualityevents}
 Much of the data saved in the KamLAND DAQ systems include "unphysical" events. Furthermore, much of the events associated with real physical processes are of poor quality. This section, describes the criteria by which unphysical events and poor quality events are selected.
 \begin{enumerate}
 	\item Flasher PMT \\
@@ -370,6 +371,7 @@ Figure \ref{fig:BiPo212} shows the delayed-coincidence veto parameter distributi
 	\label{fig:BiPo212}
 \end{figure}
 \subsection*{Double Pulse Fitter}
+\label{sec:dpfit}
 When the delay time, $dT$, between prompt and delayed events are small enough, Bi-Po sequential events can be stored as a single event in KamLAND's data acquisition window. In these cases, the delayed coincidence selection of two related events does not work. Such events are referred to as pile-up events. Since these pileup events contain the kinetic energy of the initial beta decay and the subsequent alpha decay, the combined deposited energy reaches beyond the \0nbb ROI and becomes an important background to reduce. The energy spectrum of these $^{212}$Bi-Po pile-up events are shown in Figure \ref{fig:BiPo_energy}.
 
 A double pulse fit method has been developed to tag these pile-up events. The method simply searches for events with a hit-timing distribution indicative of two distinct energy depositions, or hit time peaks. The hit time distribution of an event is fitted with 2 reference waveforms by the following procedure:
@@ -461,8 +463,69 @@ Since the neutron capture gamma on $^{137}$Xe has a gamma energy about 4 MeV, hi
 \end{figure}
 
 \subsection{Shower Veto}
+As a cosmic-ray muon passes through the detector, it does not interact with uniform probability through its path. There is a point, where it deposits the most energy and spallates the most nuclei. Secondary decay products are correlated with this position. The shower veto identifies this location of high energy deposition and correlates background with this position.
+\subsection*{PDF$(dE/dX,dL)$}
+$dE/dX$, the distribution of energy deposition along muon tracks, and $dL$, the distance from the muon track to the candidate event, are correlated to the decay candidates. A two dimensional PDF$(dE/dX,dL)$ is constructed from muon data vy the following procedure:
+\begin{enumerate}
+	\item The cosmic ray muons are selected and their tracks reconstructed.
+	\item The time when the muon enetered the ID $T_0$ is calculated.
+	\item THe distance between the muon ID entrance and the generated point $L$ is calculated for each photon. Figure \ref{fig:showerphoton} shows the schematic of photon generation from cosmic muons. 
+	\begin{equation}
+		x^2_2=r^2+s^2_1-2x_1r\cos\theta
+	\end{equation}
+	\begin{equation}
+		x_1+nx_2=c(t-t_0)
+	\end{equation}
+	Here, $n$ is the refractive index of the liquid scintillator. These equations are solved for $x_1$, the distance L can be obtained. For general analysis and reconstruction, only the PMT hit times of the first photons are used. However, for this calculation, multiple photons for each PMT are considered, referred to as multiTQ analysis. $L$ is calculated for each incident photon on each PMT. 
+\end{enumerate}
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{showerphoton.png}
+	\caption{$dE/dx$ reconstruction.}
+	\label{fig:showerphoton}
+\end{figure}
+
+$^{12}$B is used for estimating the PDF$(dE/dX,dL)$ as it can be easily tagged by the $dT$ selection after muon events. Figure \ref{fig:shower_pdf} shows an example of a $dE/dX$ calculation result. The accidental event likelihood can also be calculated using the off-time events. The spalation backgrounds are rejected by calculting a likelihood ratio value of spallation vs accidental. THe log-likelihood ratio threshold used is -1.8, events with spallation-accidental logarithmic ratios below this value are classified as spallation backgrounds and rejected.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.75]{shower_dedx.png}
+	\caption{An example of a calculated $dE/dx$. The muon's largest energy deposit can be seen at $L_{long}=600$ cm.}
+	\label{fig:shower_pdf}
+\end{figure}
 
 \subsection{Xenon Spallation Products}
-\subsection{Signal Inefficiency}
+The spallation products of Xenon are an important background to the \0nbb search. For the $2\nu\beta\beta^*$ search they obscure the endpoint of the \2nbb spectrum. Rejecting this background is important to both double-beta physics searches. However, these heavier nuclei can have half-lives much longer than their Carbon-spallation counterparts, therefore, the MoGURA neutron veto is ineffective against these. 
 
+For these backgrounds, a likelihood selection has been developed specifically for these "long-lived" spallation products. The method involves constructing PDFs of $dT$ (time since muon), $dR$ (spatial distance from the nearest neutron), $ENN$ (Effective Number of Neutrons). This is described in detail in section \ref{sec:LLVeto}.
+\subsection{Signal Inefficiency}
+The effect of all these background vetoes on the \0nbb signal needs to be understood. This signal inefficiency is determined by calculating the livetime of the analysis. 
+
+The livetime calculation is done by applying the same event selections to toy MC events distributed uniformly in time and space. Real detector data is used for the Muon-neutron pairs, delayed coincidence analysis, 1PPS trigger event, and missing waveform events. Livetime is the fraction of runtime leftover after event selection.
+\begin{equation}
+	\text{Livetime} = \frac{\text{\# of Toy MC events after event selection}}{\text{\# of generated Toy MC events}}\times \text{Runtime}
+\end{equation}
+The \2nbb$^*$ spectral fit is performed over long-lived spallation enriched and depleted events simultaneously. A later section describes this selection. For proper relative normalization, the livetime is calculated for both long-lived enriched and depleted samples. The deadtime of the KLZ physics analysis is listed in Table \ref{tab:deadtime}.
+\begin{table}[htbp]
+\centering
+\caption{Summary of the deadtime}
+\label{tab:deadtime}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Event selection} & \textbf{Deadtime ratio [\%]} \\ \hline
+Spallation veto & 14.64 \\ \hline
+MoGURA neutron veto & 4.91 \\ \hline
+$^{8}$Xe veto & 1.33 \\ \hline
+Shower veto & 7.37 \\ \hline
+$^{12}$B veto & 3.11 \\ \hline
+Xe spallation veto & 8.56 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Detector deadtime veto\\(post PPS, after muons and missing waveforms)\end{tabular} & 9.47 \\ \hline
+Hardware related & 0.0078 \\ \hline
+Delayed coincidence Ra veto & 0.0013 \\ \hline
+Delayed coincidence Reactor veto & 0.0010 \\ \hline
+\textbf{Total} & \textbf{29.52} \\ \hline
+\end{tabular}
+\end{table}
+
+The signal inefficiency of the double-pulse fitter and vertex Badness are omitted from table \ref{tab:deadtime}. This is due to the Toy MC livetime study not being done at the PMT hit level. Sections \ref{sec:dpfit} \& \ref{sec:badqualityevents} show that the signal inefficiency from these selections are negligible.
