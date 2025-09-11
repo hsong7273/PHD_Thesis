@@ -166,7 +166,7 @@ The reconstructed energy is the one which maximizes this likelihood. The Newton-
 	E_{vis}=(1-\alpha)E_{17inch}+\alpha E_{20inch}
 \end{equation}
 The weighting factor $\alpha=0.3$ was determined to maximizing energy resolution.
-\subsection{Bad Channels in Energy Reconstruction}
+\subsection*{Bad Channels in Energy Reconstruction}
 The increase in the number of low gain PMTs has lead to worsening energy resolution over time, as these PMTs are excluded from the typical energy reconstruction described above. In particular, some of the low gain PMTs still detect photons, but proper gain calibration is not possible. A method for utilizing the information from operational low gain PMTs was developed, and the basic strategy is as follows:
 \begin{enumerate}
 	\item The change in gain causes the effect of the 0.3 p.e. threshold on hit probability to change. The no-hit probability was expanded as follows:
@@ -202,7 +202,7 @@ The muon event selection criteria are as follows:
 	\item $Q_{17geq}$ 500 p.e. and the number of hit OD PMTS $\geq 9$.
 \end{itemize}
 The former criteria selects muons which go through the scintillator volumes of the detector. A total charge of 10,000 p.e. roughly corresponds to an event energy of 30 MeV, which exceeds the energy range of most physical analyses in KamLAND-ZEN. The second selection is for muons that only deposit energy in the outer buffer oil (clipping muons). Muons passing through the buffer oil volumes do not scintillate, as such the 500 p.e. threshold in Chrenkov radiation roughly corresponds to about 40 MeV of energy deposition.
-\subsection{Cosmic Ray Muon Reconstruction}
+\subsection*{Cosmic Ray Muon Reconstruction}
 Cosmic ray muon events form tracks as opposed to the point-like events caused by single decay events. The process is shown diagramattically in Figure \ref{fig:muon_reco}
 \begin{enumerate}
 	\item The ID PMT which detects the earliest light is identified. If the charge of this hit is low or isolated in time from the many other hits in the event, it is classed as a dark hit and ignored. A line is drawn from the earliest hit muon PMT and the center of the KamLAND detector. The intersection of this line and the outer balloon is marked as the temporary entrance point.
@@ -370,7 +370,7 @@ Figure \ref{fig:BiPo212} shows the delayed-coincidence veto parameter distributi
 	\caption{The delayed coincidence selection parameters for $^{212}$Bi. The distributions of prompt energy, delayed energy, displacement, and delay time are shown. The yellow shaded regions indicate the tagged events. Only events with $dT<10\mu sec$ are used for this selection.}
 	\label{fig:BiPo212}
 \end{figure}
-\subsection*{Double Pulse Fitter}
+\subsection*{Pileup Events}
 \label{sec:dpfit}
 When the delay time, $dT$, between prompt and delayed events are small enough, Bi-Po sequential events can be stored as a single event in KamLAND's data acquisition window. In these cases, the delayed coincidence selection of two related events does not work. Such events are referred to as pile-up events. Since these pileup events contain the kinetic energy of the initial beta decay and the subsequent alpha decay, the combined deposited energy reaches beyond the \0nbb ROI and becomes an important background to reduce. The energy spectrum of these $^{212}$Bi-Po pile-up events are shown in Figure \ref{fig:BiPo_energy}.
 
@@ -496,9 +496,87 @@ $^{12}$B is used for estimating the PDF$(dE/dX,dL)$ as it can be easily tagged b
 \end{figure}
 
 \subsection{Xenon Spallation Products}
-The spallation products of Xenon are an important background to the \0nbb search. For the $2\nu\beta\beta^*$ search they obscure the endpoint of the \2nbb spectrum. Rejecting this background is important to both double-beta physics searches. However, these heavier nuclei can have half-lives much longer than their Carbon-spallation counterparts, therefore, the MoGURA neutron veto is ineffective against these. 
+The spallation products of Xenon are an important background to the \0nbb search. For the $2\nu\beta\beta^*$ search they obscure the endpoint of the \2nbb spectrum. Rejecting this background is important to both double-beta physics searches. However, these heavier nuclei can have half-lives of hours or longer, much longer than their Carbon-spallation counterparts, therefore, the MoGURA neutron veto is ineffective against these. 
 
-For these backgrounds, a likelihood selection has been developed specifically for these "long-lived" spallation products. The method involves constructing PDFs of $dT$ (time since muon), $dR$ (spatial distance from the nearest neutron), $ENN$ (Effective Number of Neutrons). This is described in detail in section \ref{sec:LLVeto}.
+For these backgrounds, a likelihood selection has been developed specifically for these "long-lived" spallation products. The method involves constructing PDFs of $dT$ (time since muon), $dR$ (spatial distance from the nearest neutron created by each muon), $ENN$ (Effective Number of Neutrons).
+
+$^{136}$Xe spallation is characterized by the production of many free neutrons, these post-muon neutron captures are useful in identifying likely long-lived spallation isotopes. However, there is a high rate of accidental neutrons and unphysical detector noise that can be attributed to neutrons. The $ENN$, Effective Number of Neutrons, was developed to define a weighted counting of neutrons by who likely they are to be related to a given event. Each neutron following a muon is assigned a weight based on the spatial distributions of neutron captures from spallation products and accidentals. Figure \ref{fig:ENN_dR} shows the weight over $dR$.
+\begin{equation}
+	\label{eq:ENN}
+	ENN = \sum_{neutrons}\frac{PDF_{spl.}(dR)}{PDF_{spl.}(dR)+PDF_{acc.}(dR)}
+\end{equation}
+The PDFs are the probability distributions of $dR$ which is the spatial distance between a candidate event and a neutron event. Spallation products and neutrons that originate from the same muon have a spatial correlation. The PDFs are shown in Figure \ref{fig:spall_dR}. $PDF_{spl.}(dR)$ is modeled with an exponentially modified Gaussian distribution, while $PDF_{acc.}(dR)$ is simply quadratic, assuming uniform distribution in space of uncorrelated events. The exponentially modified Gaussian function features 3 free parameters:
+\begin{equation}
+	f(x;\mu,\sigma,\lambda)=\frac{\lambda}{2}exp\left(\frac{\lambda}{2}(\mu+\lambda\sigma^2-2x)\right)erfc\left(\frac{\mu+\lambda\sigma^2-x}{\sqrt{2}\sigma}\right)
+\end{equation}
+
+$erfc(x)$ is the complementary error function defined as $erfc(x)=1-erf(x)$. The free parameters are determined using $^{10}$C data. The sum in equation \ref{eq:ENN} is over all the neutrons in a short window after a muon, it is a quantity assigned to each muon.
+
+\begin{figure}[htbp]
+	\centering
+	\subcaptionbox{dR distribution for neutrons associated with spallation products and accidental neutrons\label{fig:spall_dR}}[0.45\textwidth]{
+		\includegraphics[width=0.45\textwidth]{spall_dR.png}}
+	\hfill
+	\subcaptionbox{Long-lived events\label{fig:longlived}}[0.45\textwidth]{
+		\includegraphics[width=0.45\textwidth]{ENN_dR.png}}
+	\caption{Weighting factor function for ENN.}
+	\label{fig:ENN_dR}
+\end{figure}
+
+\subsection*{Long-Lived Spallation Likelihood}
+Long-lived spallation backgrounds are handled not by rejecting out of the analysis outright, but by separating long-lived spallation candidates into a separate spectrum to be fitted alongside the residual events. The long-lived data (LD) and the singles data (SD) are separated by calculating a likelihood ratio threshold. The likelihood ratio is defined as:
+\begin{equation}
+	R_L=\frac{L_{spl.}}{L(acc.)+L(spl.)}
+\end{equation}
+where $L_{acc}$ and $L_{spl}$ are the likelihood functions of accidental events and long-lived spallation backgrounds.
+
+The spallation product likelihood is constructed from:
+\begin{equation}
+	L_{spl.}(dR_{near}, ENN, dT)=\sum_{spl. products}PDF(dT)\times PDF(dR_{near}, ENN)
+\end{equation}
+where the sum is calculated for all spallation isotopes listed in Table \ref{tab:spallproducts}. There is an implicit assumption that the time-component of the likelihood and the $PDF(dR, ENN)$ are independent. $L_{acc}$ is assumed to be uniform in time and is defined as:
+\begin{equation}
+	L_{acc.}(dR, ENN, dT) = PDF(dR, ENN)
+\end{equation}
+
+The likelihoods are constructed from FLUKA simulations and real muon data in KamLAND-ZEN. The long-lived likelihood uses FLUKA simulations of spallation product production and neutron ejection. The accidental likelihood uses events that occur after muons to get a data-informed $dR$ and $ENN$ distribution. Figure \ref{fig:likelihood_dR_ENN} shows the 2D profiles of the two likelihood functions. The differences are clear, in particular that the spallation products are more likely to have higher $ENN$ and lower $dR$. In order to avoid dividing by a joint 0 likelihood in the likelihood ratio, bin-smoothing is done to both likelihoods to extend them into the full range.
+
+\begin{figure}[htbp]
+	\centering
+	\subcaptionbox{Spallation Products\label{fig:spall_dR_ENN}}[0.45\textwidth]{
+		\includegraphics[width=0.45\textwidth]{spall_dR_ENN.png}}
+	\hfill
+	\subcaptionbox{Accidental events\label{fig:acc_dR_ENN}}[0.45\textwidth]{
+		\includegraphics[width=0.45\textwidth]{acc_dR_ENN.png}}
+	\caption{Weighting factor function for ENN.}
+	\label{fig:likelihood_dR_ENN}
+\end{figure}
+
+Figure \ref{fig:LHR} shows the distributions of log-likelihood ratios, calculated from our PDFs from toy-MC trials. $10^6$ events are generated for each PDF. The log-likelihood ratio is $\log_{10}\left(1-\frac{L_{acc}}{L_{acc}+L_{spl}}\right)$, the logarithm is taken to bring all events into a similar range. With this definition, a smaller likelihood ratio or LHR means a higher likelihood of being a long-lived spallation product and a larger LHR indicates a higher likelihood of being an accidental event.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{LHR.png}
+	\caption{Log-Likelihood ratio distributions generated from the PDFs by a ToyMC study. A clear separation between the distributions can be seen.}
+	\label{fig:LHR}
+\end{figure}
+
+\subsection*{Figure of Merit}
+To separate the data events into SD/LD datasets a threshold on the LHR variable must be determined. This threshold is determined by a Figure of Merit calculation (FOM).
+\begin{equation}
+	\text{FOM}=\frac{S(t)}{\sqrt{s(t)+B(t)}}
+\end{equation}
+$S(t)$ and $B(t)$ are the integrated LHR distributions above threshold, $t$, of signal and background generated by the toyMC study above. Due to inconsistent run conditions, including MoGURA livetime and efficiency, the datasets is separated into 3 time periods and a threshold is independently determined for each time period.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{FOM.png}
+	\caption{Long-lived spallation veto Figure of Merit}
+	\label{fig:FOM}
+\end{figure}
+
+\subsection*{Veto Efficiency}
+\subsection*{Uncertainties}
+\subsection*{Spectrum Distortion}
+
 \subsection{Signal Inefficiency}
 The effect of all these background vetoes on the \0nbb signal needs to be understood. This signal inefficiency is determined by calculating the livetime of the analysis. 
 
