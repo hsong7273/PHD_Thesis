@@ -227,6 +227,7 @@ The light yields in the muon events are estimated in \cite{karino_master}:
 	\langle dQ_S/dX\rangle =338\pm 12\textbf{p.e./cm (Scintillation muons)}
 \end{equation}
 \subsection{MoGURA Neutron Reconstruction}
+\label{sec:mogura_neutron_reco}
 Neutrons that are produced during cosmic ray spallation are best detected with the MoGURA DAQ due to the FBE's inability to handle the high after-pulse rate. After-pulsing is also present in MoGURA and needs to be rejected. An effective number of hits $N_s$ was introduced. The neutron reconstruction procedure is as follows:
 \begin{enumerate}
 	\item A 200 ns wide time window is opened. The vertex is reconstructed using LT Vertex with the hit information contained in this window.
@@ -438,6 +439,7 @@ High energy cosmic ray muons can break apart nuclei in the detector material int
 The $^{12}$B $\beta$-decay has a large contribution to the background in the \0nbb ROI. The rate of muons is $\approxeq 3$ Hz in the KamLAND detector thus $^{12}$B can be removed with a veto after muons. In this analysis, a 150 msec window, corresponding to 5 times the livetime of $^{12}$B, is vetoed and counted as detector deadtime.
 
 \subsection*{MoGURA Neutron Veto}
+\label{sec:mogura_neutron_veto}
 Neutrons are also ejected during the muon spallation process. These neutrons are correlated with the spallation products. The MoGURA DAQ system is used to observe neutron captures that occur shortly after cosmic-ray muons. The correlation with these MoGURA neutrons can be used to tag other short-lived spallation products, mainly $^{10}$C, $^{6}$He, and $^{8}$Li. The selection of the MoGURA neutron veto is as follows:
 \begin{itemize}
 	\item distance between candidate decay and spallation neutron : $dR<160$ cm
