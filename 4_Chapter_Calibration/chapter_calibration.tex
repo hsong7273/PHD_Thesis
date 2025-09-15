@@ -225,9 +225,108 @@ where $dL/dx$ is light yield per unit length along particle track, $dE/dx$ is en
 \subsubsection*{Energy Scale}
 The overall energy scale of KamLS and XeLS are tuned by the neutron capture gamma peak of 2.2 MeV. XeLS introduces extra quenching by the xenon which reduces the light yield in XeLS slightly. Figure \ref{fig:neutron_capture_energy} shows the peak energies used. This is the same dataset used for the energy scale time variation check.
 \subsection{FLUKA}
-FLUKA simulation software is used to predict cosmic muon spallation isotope yields and neutron production. The FLUKA version used in this modeling is FLUKA 2011.08.patch. Simulations and the results are described in \cite{klz_zenon_spallation}.
+FLUKA simulation software is used to predict cosmic muon spallation isotope yields and neutron production. The FLUKA version used in this modeling is FLUKA 2011.08.patch. Simulations and the results are described in \cite{klz_xenon_spallation}. Studies and measurements performed in KamLS are outlined in \cite{kamland_spallation_2009}.
 \subsubsection*{Simulation Configuration}
+The FLUKA physics process packages used in these spallation studies are listed in Table \ref{tab:fluka_process}. FLUKA is only used  to generate the production of spallation isotopes and neutrons, their decays and isomer production are disabled. The subsequent decays and neutron capture gammas are simulated in GEANT4. 
+
+Cosmic ray muon spallation is simulated by injecting muons into a cylindrical XeLS volume of 10 m radius and 40 m height. The inner balloon radius is only ~2m. The volume within 10 m from the side and 5m from the exit is excluded from the analysis to avoid boundary effect. The MUSIC package is used to generate the cosmic ray muon energy distribution\cite{MUSIC}. MUSIC takes in the detailed geometric description of the Kamioka mine where KamLAND is located. The generated energy distribution is fed into FLUKA and fired into the simulation's XeLS volume. The mean simulated muon energy is $260\pm1$ GeV. The simulation yields a neutron capture time of $\tau=207.0\pm0.3\mu$sec which is consistent with the previously measured value. The muon charge ratio is taken to be $\mu^+/\mu^-=1.3$ in this simulation\cite{kamei_phd}.
+
+\begin{table}[h]
+\centering
+\caption{FLUKA physics processes. From Ref.\cite{klz_xenon_spallation}.}
+\label{tab:fluka_process}
+\begin{tabular}{lll}
+\hline
+card & Physics & Status \\
+\hline
+DEFAULTS & A set of physics models & PRECISIO(n) \\
+PHOTONNUC(lear) & Gamma interactions with nuclei & Activated \\
+MUPHOTON & Muon photonuclear interaction & Activated \\
+PHYSICS & Emission of light fragments & Activated by COALESCE(nse) \\
+PHYSICS & Emission of heavy fragments & Activated by EVAPORAT(ion) \\
+PHYSICS & Ion electromagnetic dissociation & Activated by EM-DISSO(ciation) \\
+PHYSICS & Decay and isomer production & Activated by RADDECAY \\
+\hline
+\end{tabular}
+\end{table}
 
 \subsubsection*{Radioactive Decays}
-\subsubsection*{Tuning With $^{10}$C}
+As previously described, FLUKA is used only for the direct spallation isotope production and neutron captures. The subsequent radioactive decays are simulated in the "Radioactive Decay" package in Geant4. The GEANT4 version used is Geant4.10.6.p01 with G4ENSDFSTATE2.2 for the Evaluated Nuclear Structure Data File (ENSDF) \cite{ENSDF}. Table \ref{tab:xenon_spallation_products} lists the xenon spallation produts considered in this study. In total, 32 isotopes are selected that have production rates exceeding 0.01/day/XeLS-kton in the Region of Interest (ROI). Figure \ref{fig:xenon_spallation_spectrum} shows the simulated energy spectra. 
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{xenon_spallation_spectra.png}
+	\caption{Simulated energy spectra of $^{136}$Xe spallation products including their decay chain.}
+	\label{fig:xenon_spallation_spectra}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\caption{Breakdown of $^{136}$Xe spallation products. Isotopes with production rates exceeding 0.01 /day/XeLS-kton in the Region of Interest (ROI) were considered and included in the background model.}
+\label{tab:xenon_spallation_products}
+\begin{tabular}{lllccc}
+\hline
+isotope & decay mode & Q-value & half-life & ROI & Total \\
+ & & (MeV) & (s) & (day-kton)$^{-1}$ & (day-kton)$^{-1}$ \\
+\hline
+$^{88}$Y & EC/$\beta^+$/$\gamma$ & 3.62 & $9.212 \times 10^6$ & 0.110 & 0.136 \\
+$^{90m}$Zr & IT & 2.31 & $8.092 \times 10^{-1}$ & 0.012 & 0.093 \\
+$^{90}$Y & EC/$\beta^+$/$\gamma$ & 6.11 & $9.212 \times 10^5$ & 0.024 & 0.095 \\
+$^{96}$Tc & EC/$\beta^+$/$\gamma$ & 2.97 & $3.698 \times 10^5$ & 0.012 & 0.059 \\
+$^{98}$Rh & EC/$\beta^+$/$\gamma$ & 5.06 & $5.232 \times 10^2$ & 0.011 & 0.076 \\
+$^{98}$Rh & EC/$\beta^+$/$\gamma$ & 3.63 & $7.488 \times 10^4$ & 0.088 & 0.234 \\
+$^{103}$Ag & EC/$\beta^+$/$\gamma$ & 4.28 & $4.152 \times 10^3$ & 0.012 & 0.160 \\
+$^{104m}$Ag & EC/$\beta^+$/$\gamma$ & 4.28 & $2.010 \times 10^3$ & 0.018 & 0.111 \\
+$^{107}$Cd & EC/$\beta^+$/$\gamma$ & 3.43 & $1.944 \times 10^3$ & 0.019 & 0.135 \\
+$^{108}$In & EC/$\beta^+$/$\gamma$ & 5.16 & $3.480 \times 10^3$ & 0.089 & 0.194 \\
+$^{110}$In & EC/$\beta^+$/$\gamma$ & 3.89 & $1.771 \times 10^4$ & 0.053 & 0.236 \\
+$^{110m}$In & EC/$\beta^+$/$\gamma$ & 3.89 & $4.146 \times 10^3$ & 0.066 & 0.351 \\
+$^{110}$Sn & EC/$\beta^+$/$\gamma$ & 3.85 & $1.080 \times 10^3$ & 0.027 & 0.122 \\
+$^{113}$Sb & EC/$\beta^+$/$\gamma$ & 3.92 & $4.002 \times 10^2$ & 0.036 & 0.231 \\
+$^{114}$Sb & EC/$\beta^+$/$\gamma$ & 5.88 & $2.094 \times 10^2$ & 0.020 & 0.297 \\
+$^{115}$Sb & EC/$\beta^+$/$\gamma$ & 3.03 & $1.926 \times 10^3$ & 0.031 & 0.839 \\
+$^{116}$Sb & EC/$\beta^+$/$\gamma$ & 4.71 & $9.480 \times 10^2$ & 0.071 & 0.939 \\
+$^{118}$Sb & EC/$\beta^+$/$\gamma$ & 3.66 & $2.160 \times 10^2$ & 0.165 & 1.288 \\
+$^{116}$Te & EC/$\beta^+$/$\gamma$ & 2.90 & $5.201 \times 10^6$ & 0.016 & 0.054 \\
+$^{115}$Te & EC/$\beta^+$/$\gamma$ & 4.64 & $3.489 \times 10^2$ & 0.012 & 0.124 \\
+$^{117}$Te & EC/$\beta^+$/$\gamma$ & 3.54 & $3.720 \times 10^3$ & 0.052 & 0.584 \\
+$^{119}$I & EC/$\beta^+$/$\gamma$ & 3.51 & $1.146 \times 10^3$ & 0.053 & 0.533 \\
+$^{120}$I & EC/$\beta^+$/$\gamma$ & 5.62 & $4.896 \times 10^3$ & 0.091 & 0.953 \\
+$^{122}$I & EC/$\beta^+$/$\gamma$ & 4.23 & $2.178 \times 10^2$ & 0.289 & 1.965 \\
+$^{124}$I & EC/$\beta^+$/$\gamma$ & 3.16 & $3.608 \times 10^5$ & 0.190 & 1.654 \\
+$^{108}$I & $\beta^-$/$\gamma$ & 2.95 & $4.450 \times 10^4$ & 0.195 & 1.188 \\
+$^{132}$I & $\beta^-$/$\gamma$ & 3.58 & $8.262 \times 10^3$ & 0.148 & 0.427 \\
+$^{134}$I & $\beta^-$/$\gamma$ & 4.18 & $3.150 \times 10^3$ & 0.043 & 0.183 \\
+$^{121}$Xe & EC/$\beta^+$/$\gamma$ & 3.75 & $2.406 \times 10^3$ & 0.100 & 0.540 \\
+$^{125}$Cs & EC/$\beta^+$/$\gamma$ & 3.09 & $2.802 \times 10^3$ & 0.012 & 0.266 \\
+$^{126}$Cs & EC/$\beta^+$/$\gamma$ & 4.82 & $9.840 \times 10^1$ & 0.011 & 0.080 \\
+$^{128}$Cs & EC/$\beta^+$/$\gamma$ & 3.93 & $2.196 \times 10^2$ & 0.031 & 0.229 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection*{Tuning With $^{10}$C}
+FLUKA simulations of radioactive decays and neutron capture gamma do not include detector effects and reconstruction performance. The information given by the FLUKA simulation includes the capture points of neutron captures but not the reconstructed vertices. 
+
+To approximate the effect of event reconstruction, the true neutron capture positions from FLUKA are convolved with a Gaussian resolution distribution. The neutron detection efficiency is also emperically modeled by:
+\begin{equation}
+    \epsilon(\log_10Q_\mu)=\epsilon\left(1-\frac{1}{1+e^{-\sigma(\log_10Q_\mu-a)}}+b\right)
+\end{equation}
+The neutron detection efficiency is known to be particularly sensitive to baseline fluctuations in the immediate aftermath of a muon. Since, the baseline recovery time depends on the muon charge, the neutron detection efficiency, $\epsilon$, is assumed ot depend on the charge.
+
+$(1+e^{-\sigma x})^{-1}$ is a sigmoid function which mimics the error function and $Q_{\mu}$ is muon charge. $\sigma$ controls the steepness of the sigmoid function's transition. Free parameters, $\sigma, a, b$ are tuned to reproduce the $dR$ and $ENN$ distributions of $^{10}$C as shown in Figure \ref{fig:fluka_tuning}. $dR$ is the spatial distance to the nearest neutron of a given shower, while $ENN$ is the "effective number of neutrons". Vertex resolution affect both of these variables, while the neutron tagging efficiency primarily affects $ENN$.
+\begin{figure}[htb]
+        \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{c10_tune_dR.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{c10_tune_ENN.png}
+    \end{subfigure}
+    
+    \caption{Tuned $^{10}$C $dR$ (left) and $ENN$ (right) distributions from FLUKA (red curve) and data (black dots) Figures from \cite{miyake_phd}}
+    \label{fig:fluka_tuning}
+\end{figure}
