@@ -5,27 +5,199 @@
 \graphicspath{{1_Chapter_Intro/Figures/}}
 
 \section{Neutrinos in the Standard Model}
-Neutrinos remain the least understood component of the Standard Model of Particle Physics, henceforth referred to as the Standard Model or SM. In 1914, James Chadwick used magnetic spectrometry to resolve the continuous energy spectrum of beta decay. The revelation that the continuous electron energies, in contrast to the constant nuclear recoil energy, emitted from a bound state seemed to violate energy conservation.
+Neutrinos remain the least understood component of the Standard Model (SM) of Particle Physics\cite{lamport1985:latex}. Their elusive nature and extremely weak interactions make them challenging to study, yet they play a crucial role in both particle physics and cosmology. The story of the neutrino began in 1914, when James Chadwick used magnetic spectrometry to resolve the continuous energy spectrum of beta decay, revealing an apparent violation of energy conservation.
 
-In an apologetic attempt to resolve this contradiction, Wolfgang Pauli postulated that a yet undiscovered neutral particle was carrying away the missing energy. In 1930, Pauli addressed his now famous letter to the, "Dear Radioactive Ladies and Gentlemen"\cite{Pauli:1930pc}, a gathering of nuclear scientists at the Gauverin meeting in Tübingen. Enrico Fermi would go on to name Pauli's emitted "neutron" the neutrino or little neutral one. It would take until 1956 for the neutrino to finally be detected in the Cowan-Reines experiment\cite{cowan1956}. Over the next 70 years, the Standard Model has been extended to include the known interactions of massive neutrinos. This section gives a brief introduction to the relevant theoretical foundation of neutrinos in the Standard Model.
+To resolve this, Wolfgang Pauli postulated in 1930 the existence of a neutral, light particle that carried away the missing energy\cite{Pauli:1930pc}. He announced this in his famous letter to the "Radioactive Ladies and Gentlemen." Enrico Fermi later named this particle the "neutrino" ("little neutral one") and incorporated it into his theory of beta decay. The neutrino was finally detected in 1956 by Cowan and Reines\cite{cowan1956}, confirming its existence. Since then, the SM has been extended to include three flavors of neutrinos, each associated with a charged lepton.
+
+The Standard Model is a gauge theory based on the symmetry group $SU(3)_C \times SU(2)_L \times U(1)_Y$\cite{lamport1985:latex}. Neutrinos participate only in the weak interaction, mediated by the $W^\pm$ and $Z^0$ bosons, and are electrically neutral. Their extremely small cross-sections make them difficult to detect, but also allow them to traverse vast distances unimpeded, making them unique cosmic messengers.
 \subsection{Neutrino Interactions}
-\subsection{Neutrino Masses and Mixing}
+
+The SM unifies the strong, weak, and electromagnetic interactions under the $SU(3)_C \times SU(2)_L \times U(1)_Y$ gauge symmetry. The $SU(2)_L \times U(1)_Y$ sector describes the electroweak interaction, with the $W^\pm$ and $Z^0$ bosons mediating the weak force. Neutrinos are part of the left-handed lepton doublets, transforming as weak isospin doublets under $SU(2)_L$:
+
+
+\begin{equation}
+    L_\ell = \begin{pmatrix} \nu_{\ell L} \\ \ell_L \end{pmatrix}, \quad \ell = e, \mu, \tau
+\end{equation}
+where $\nu_{\ell L}$ and $\ell_L$ are the left-handed neutrino and charged lepton fields, respectively. The left-handed projection operator is $P_L = \frac{1-\gamma_5}{2}$, with $\gamma_5 = i\gamma^0\gamma^1\gamma^2\gamma^3$ built from the Dirac matrices.
+
+The electroweak quantum numbers are \textbf{weak isospin} $I$ and \textbf{weak hypercharge} $Y$. The electric charge operator is:
+\begin{equation}
+    Q = I_3 + \frac{Y}{2}
+    \label{eq:charge}
+\end{equation}
+where $I_3$ is the third component of isospin. For the lepton doublet, $I=1/2$, $Y=-1$, so $Q(\nu_{\ell L})=0$ and $Q(\ell_L)=-1$.
+
+% eigen values table
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lclcccc}
+        \hline
+        & & & $I$ & $I_3$ & $Y$ & $Q$ \\
+        \hline
+        lepton doublet & $L_L \equiv$ & $\begin{pmatrix} \nu_{eL} \\ e_L \end{pmatrix}$ & $1/2$ & $1/2$ & $-1$ & $0$ \\
+        & & & $1/2$ & $-1/2$ & $-1$ & $-1$ \\
+        lepton singlet & $e_R$ & & $0$ & $0$ & $-2$ & $-1$ \\
+        quark doublet & $Q_L \equiv$ & $\begin{pmatrix} u_L \\ d_L \end{pmatrix}$ & $1/2$ & $1/2$ & $1/3$ & $2/3$ \\
+        & & & $1/2$ & $-1/2$ & $1/3$ & $-1/3$ \\
+        quark singlets & $u_R$ & & $0$ & $0$ & $4/3$ & $2/3$ \\
+        & $d_R$ & & $0$ & $0$ & $-2/3$ & $-1/3$ \\
+        \hline
+    \end{tabular}
+	\caption{Eigenvalues of the weak isospin $I$, of its third component $I_3$, of the hypercharge $Y$, and of the charge $Q = I_3 + Y/2$ of the fermion doublets and singlets.}
+	\label{tab:weakisospin}
+\end{table}
+
+The neutrino components of lepton doublets are called "active" neutrinos, in contrast to hypothetical sterile neutrinos. Right-handed fermions are singlets under $SU(2)_L$ and do not participate in weak interactions. The SM contains one active neutrino per charged lepton ($e, \mu, \tau$).
+
+$SU(2)_L$ gauge invariance dictates the form of the weak charged current (CC) and neutral current (NC) interactions:
+\begin{align}
+    -\mathcal{L}_{\mathrm{CC}} &= \frac{g}{\sqrt{2}} \sum_{\ell} \bar{\nu}_{\ell L} \gamma^\mu \ell_L W_\mu^+ + \text{h.c.} \\
+    -\mathcal{L}_{\mathrm{NC}} &= \frac{g}{2\cos\theta_W} \sum_{\ell} \bar{\nu}_{\ell L} \gamma^\mu \nu_{\ell L} Z_\mu^0
+    \label{eq:NC}
+\end{align}
+where $g$ is the weak coupling constant and $\theta_W$ is the Weinberg angle. The $Z^0$ decay width into neutrinos constrains the number of light, active neutrinos to $N_\nu = 2.984 \pm 0.008$\cite{lamport1985:latex}, consistent with three generations.
+
+\subsection{Fermion Masses in the Standard Model}
+In the SM, fermion masses arise from Yukawa couplings to the Higgs doublet $\Phi$:
+\begin{equation}
+    -\mathcal{L}_{\text{Yukawa,lep}} = Y_{ij}^\ell \overline{L}_{Li} \Phi E_{Rj} + \text{h.c.}
+\end{equation}
+After spontaneous symmetry breaking ($\langle \Phi \rangle = (0, v/\sqrt{2})^T$), this yields charged lepton masses:
+\begin{equation}
+    m^\ell_{ij} = Y^\ell_{ij} \frac{v}{\sqrt{2}}
+\end{equation}
+where $v \approx 246$ GeV is the Higgs vacuum expectation value. In the absence of right-handed neutrinos, no analogous Yukawa term exists for neutrinos, so they are massless at tree level in the SM.
+
 \section{Neutrino Mass}
-\subsection{Neutrino Mass Heirarchy}
-We know the 12 mass splitting sign from the observation of MSW resonance from solar neutrinos.\cite{kamei_phd}
+The discovery of neutrino oscillations\cite{Nufit} demonstrates that neutrinos have nonzero masses and that flavor eigenstates are mixtures of mass eigenstates. The exact mechanism by which neutrinos acquire mass is unknown. Several extensions to the SM have been proposed, as discussed below.
+
+Here we follow the derivation in \cite{giunti2007}. Landau, Lee and Yang, and Salam showed that a massless fermion can be described by a chiral field via their two-component theory of massless neutrinos. Let us begin that derivation with the Dirac Equation:
+\begin{equation}
+    (i\gamma^\mu \partial_\mu - m)\psi = 0
+\end{equation}
+given a fermion field, $\psi = \psi_L+\psi_R$, the Dirac equation is equivalent to the system of equations:
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_L=m\psi_R
+	\label{eq:left_weyl}
+\end{equation}
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_R=m\psi_L
+	\label{eq:right_weyl}
+\end{equation}
+for the chiral fields, $\psi_L$ and $\psi_R$, whose space-time evolutions are coupled by the mass $m$.
+
+If the fermion is massless, the two equations, \ref{eq:left_weyl} and \ref{eq:right_weyl}, are decoupled:
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_L=0 
+\end{equation}
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_R=0
+\end{equation}
+Thus, a massless fermion can be completely described by a single chiral field (either left-handed or right-handed) which has only two independent components. The equations, \ref{eq:left_weyl} and \ref{eq:right_weyl} are known as the Weyl equations and the spinors $\psi_L$ and $\psi_R$ are the Weyl spinors.
+
+The simplest form of the SM incorporates what is known as the two-component theory of massless neutrinos. Whereby the neutrino is entirely described by the left-handed Weyl spinor which participates in the weak interaction, $\nu_L$, and there are no $\nu_R$ fields.
+
+\subsection{Dirac Masses}
+If right-handed neutrino fields $\nu_{R}$ exist, a Dirac mass term, just like the one for the charged leptons, can be written:
+\begin{equation}
+    -\mathcal{L}_{\text{Dirac}} = Y_{ij}^\nu \overline{L}_{Li} \tilde{\Phi} \nu_{Rj} + \text{h.c.}
+\end{equation}
+where $\tilde{\Phi} = i \sigma_2 \Phi^*$. This yields Dirac masses $m^\nu_{ij} = Y^\nu_{ij} v/\sqrt{2}$. However, the tiny observed neutrino masses ($m_\nu < 1$ eV) would require $Y^\nu_{ij} < 10^{-12}$. The huge discrepancy between the neutrino masses and the other fermions imply the existence of some underlying mechanism which suppresses the neutrino masses. In the abscence of such explanation, the light neutrino masses bring up a naturalness problem. Many neutrino mass models have been proposed that produce light neutrino masses via a more natural mechanism. 
+
 \subsection{Majorana Neutrino Mass}
+Since neutrinos have indeed been shown to have mass, the two-component theory is insufficient. In 1937, Ettore Majorana proposed a new solution to the Dirac equation. His insight was that a massive fermion could be described with a single spinor instead of the two, $\psi=\psi_L+\psi_R$. Majorana made the assumption that the two spinors are not independent, but rather:
+\begin{equation}
+	\psi_R=C\bar{\psi_L}^T
+\end{equation} 
+where $C$ is the charge conjugation operator. By observing that $C$ and the left-handed projection operator $P_L$ have the following relationship,
+\begin{equation}
+	P_L(C\psi_L^T)=0
+\end{equation}
+one can clearly see that $C\psi_L^T$ is a right-handed field. Charge conjugating a left-hadned Weyl spinor converts the spinor to its right-handed form. Modifying the Dirac equation, we now obtain the Majorana equation for the chiral field:
+\begin{equation}
+	i\gamma^\mu\partial_\mu\psi=m\psi^C
+\end{equation}
+$\psi^C$ represents the charge conjugated Majorana field. This implies that, $\psi=\psi_L+\psi_L^C$, which finally leads to the Majorana relation:
+\begin{equation}
+	\psi=\psi^C
+	\label{eq:majorana}
+\end{equation}
+
+Equation \ref{eq:majorana} implies that the particle $\psi$ is its own antiparticle. Since neutrinos interact only through weak interactions, and are electrically neutral, the charge parity of the neutrino field has no physical meaning and can be chosen arbitrarily. Among the elementary fermions, only the neutrinos are neutral and have the potential to be Majorana particles. 
+
+Should the neutrino be Majorana, the neutrino and antineutrino would only be distinguishable by their helicities. It is customary to refer to negative helicity neutrinos as "neutrinos" and positive helicity neutrinos as "antineutrinos".
+
+With majorana neutrinos, the simplest mass term one could construct with SM fields and respecting SM symmetries is the lepton number violating term:
+\begin{equation}
+	\mathcal{L}_5=\frac{c^{ij}}{\Lambda}(L_L^i \Phi)^T\epsilon(L_L^j\Phi)+h.c.
+\end{equation}
+Here, $c^{ij}$ is a 3x3 matrix which controls the mixing between the neutrino masses for each flavor combination, $\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ is the Levi-Civita symbol in 2 dimensions. Finally, $\Lambda$ is the high energy scale at which we should expect new physics, which suppresses the neutrino masses. This lagrangian extension generates the Majorana neutrino mass term:
+\begin{equation}
+	\mathcal{L}_{mass}^M=m_\nu \nu^T_LC\nu_L+h.c.
+\end{equation}
+With the majorana neutrino mass matrix:
+\begin{equation}
+	\mathcal{M}_\nu=\frac{v^2}{\Lambda}c
+\end{equation}
+
+This suppression of the neutrino masses has the same structure as the masses produced by the seesaw mechanism that will be discussed later this chapter.
+
 \subsection{Lepton Number Violation and Leptogenesis}
+
+If neutrinos are Majorana particles, lepton number is not conserved. Lepton number violation is a key ingredient in leptogenesis, a mechanism to explain the observed baryon asymmetry of the universe\cite{PhysRevD.90.033005}. In this scenario, CP-violating decays of heavy Majorana neutrinos in the early universe generate a lepton asymmetry, which is partially converted into a baryon asymmetry via sphaleron processes.
+
 \subsection{Seesaw Mechanism}
 
+The seesaw mechanism provides a natural explanation for the smallness of neutrino masses\cite{PhysRevD.90.033005}. By introducing heavy right-handed Majorana neutrinos, the effective light neutrino mass is suppressed:
+\begin{equation}
+    m_\nu \approx - m_D^T M_R^{-1} m_D
+\end{equation}
+where $m_D$ is the Dirac mass matrix and $M_R$ is the large Majorana mass matrix for the right-handed neutrinos. For $M_R \gg m_D$, the light neutrino masses become very small, even if $m_D$ is of the order of charged lepton or quark masses.
+
+\subsection{Neutrino Mass Hierarchy}
+Oscillation experiments measure only mass-squared differences:
+\begin{align}
+    \Delta m_{21}^2 &\approx 7.4 \times 10^{-5}~\text{eV}^2 \\
+    |\Delta m_{31}^2| &\approx 2.5 \times 10^{-3}~\text{eV}^2
+\end{align}
+The sign of $\Delta m_{21}^2$ is known, but the sign of $\Delta m_{31}^2$ is not, leading to two possible orderings: normal hierarchy ($m_1 < m_2 < m_3$) and inverted hierarchy ($m_3 < m_1 < m_2$)\cite{Nufit}.
+
 \section{Neutrinoless Double Beta Decay}
+
 \subsection{Decay Process}
-\subsection{Black Box Theorem for \0nbb Decay}
+Neutrinoless double beta decay ($0\nu\beta\beta$) is a hypothetical process in which a nucleus emits two electrons but no neutrinos:
+\begin{equation}
+    (A,Z) \rightarrow (A,Z+2) + 2e^-
+\end{equation}
+This process violates lepton number by two units and can only occur if neutrinos are Majorana particles. Observation of $0\nu\beta\beta$ would establish the Majorana nature of neutrinos and provide information on the absolute neutrino mass scale\cite{PhysRevD.90.033005}.
+
+\subsection{Black Box Theorem for $0\nu\beta\beta$ Decay}
+
+The black box theorem\cite{PhysRevD.90.033005} states that the observation of $0\nu\beta\beta$ decay, regardless of the underlying mechanism, implies that neutrinos have a nonzero Majorana mass component. Thus, $0\nu\beta\beta$ is a model-independent probe of lepton number violation.
+
 \subsection{Detection Experiments}
+
+Many experiments search for $0\nu\beta\beta$ decay using different isotopes, such as $^{76}$Ge (GERDA, Majorana), $^{136}$Xe (EXO, KamLAND-Zen\cite{klz800_arxiv,li_phd}), and $^{130}$Te (CUORE). These experiments aim to detect the summed energy of the two emitted electrons at the Q-value of the decay, which would appear as a peak in the energy spectrum.
+
 \subsection{Current Limits}
+
+No experiment has yet observed $0\nu\beta\beta$ decay. Current limits on the half-life are of order $10^{25}$--$10^{26}$ years\cite{klz800_arxiv}, corresponding to upper limits on the effective Majorana neutrino mass $\langle m_{\beta\beta} \rangle$ of about $0.1$--$0.3$ eV, depending on nuclear matrix element calculations. The effective mass is given by:
+\begin{equation}
+    \langle m_{\beta\beta} \rangle = \left| \sum_{i=1}^3 U_{ei}^2 m_i \right|
+\end{equation}
+where $U_{ei}$ are elements of the PMNS matrix and $m_i$ are the neutrino mass eigenvalues.
+
 \subsection{Nuclear Matrix Elements}
+
+The interpretation of $0\nu\beta\beta$ decay experiments depends on the calculation of nuclear matrix elements (NMEs), which are subject to significant theoretical uncertainties\cite{PhysRevD.90.033005}. Different nuclear models (QRPA, shell model, IBM, etc.) yield somewhat different results for the NMEs, affecting the extraction of $\langle m_{\beta\beta} \rangle$ from experimental data.
+
 \section{Double Beta Decay to Excited States}
+
 \subsection{Impact on Nuclear Matrix Elements}
+Double beta decay can also occur to excited states of the daughter nucleus. These transitions are suppressed compared to ground-state transitions but provide complementary information on NMEs and nuclear structure\cite{ENSDF}.
+
 \subsection{Observations and Current Limits}
+A few double beta decay transitions to excited states have been observed in two-neutrino mode ($2\nu\beta\beta$), but no neutrinoless transitions have been detected. Experimental limits on these processes are generally weaker due to lower phase space and detection efficiency\cite{ENSDF}.
 
 
 
