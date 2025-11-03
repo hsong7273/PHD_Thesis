@@ -1,4 +1,4 @@
-\chapter{Introduction}
+\chapter{Theory of \0nbb, Neutrinoless Double-Beta Decay}
 \label{chapter:introduction}
 \thispagestyle{myheadings}
 
@@ -245,51 +245,99 @@ While the Standard Model features all three ingredients, no SM mechanism generat
 \subsection{Neutrino Mass Hierarchy}
 We've discussed open questions relating to neutrino nature; whether they are dirac or majorana, what is the absolute neutrino mass scale, and their potential role in resolving matter-antimatter asymmetry in the Universe. Another open question has to do with the relative ordering of the light neutrino masses.
 
+In the simplified 2-flavor case, the probability of a neutrino "surviving" or being observed in the flavor state in which it was produced, is:
+\begin{equation}
+    P(\nu_e\rightarrow \nu_e)=1-\frac{1}{2}\sin^22\theta_{12}\sin^2\left(\frac{\delta m^2_{21}}{4E}L\right)
+\end{equation}
+Note that while the survival probability or one minus the oscillation probability is is dependent on the absolute value of the squared-mass difference, $\delta m_{ij}^2=m_i^2-m_j^2$, it is insensitvie to its' sign. Solar neutrino oscillation experiments have measured the following squared- mass difference:
+\begin{equation}
+	\delta m_{21}^2=\delta m^2_{sol}\approx 7.39^{+0.21}_{-0.20} \times 10^{-5} eV^2
+\end{equation}
+while observation of atmospheric oscillation data results in:
+\begin{equation}
+	|\delta m_{13}^2| = |\delta m_{23}^2| = \delta m_{atm}^2\approx 2.449^{+0.032}_{-0.030} \times 10^{-3} eV^2
+\end{equation}
 As mentioned previously, oscillation experiments demonstrated that neutrinos have mass, however these experiments only measure the mass-squared differences.
 
-Oscillation experiments measure only mass-squared differences:
-\begin{align}
-    \Delta m_{21}^2 &\approx 7.4 \times 10^{-5}~\text{eV}^2 \\
-    |\Delta m_{31}^2| &\approx 2.5 \times 10^{-3}~\text{eV}^2
-\end{align}
-The sign of $\Delta m_{21}^2$ is known, but the sign of $\Delta m_{31}^2$ is not, leading to two possible orderings: normal hierarchy ($m_1 < m_2 < m_3$) and inverted hierarchy ($m_3 < m_1 < m_2$)\cite{Nufit}.
-
+While observation of neutrino oscilation enhancement in matter determined the sign of $\delta m_{21}^2$, the signs of $\delta m_{13}^2$ and $|\delta m_{23}^2|$ are unknown. This leaves two possible orderings of the three neutrino mass eigenstates.
+\begin{itemize}
+	\item \textbf{Inverted Ordering} with negative $\delta m_{13}^2$ and $m_3 < m_1 < m_2$
+	\item \textbf{Normal Ordering} with positive $\delta m_{13}^2$ and $m_1<m_2<m_3$
+\end{itemize}
+Where $m_1$ is the neutrino mass eigenstate with the highest $\nu_e$ flavor content. According to combined T2K, Super-K atmospheric analysis, the normal ordering is slightly favored \cite{wester_2004}. 
 \section{Neutrinoless Double Beta Decay}
 
-\subsection{Decay Process}
-Neutrinoless double beta decay ($0\nu\beta\beta$) is a hypothetical process in which a nucleus emits two electrons but no neutrinos:
+Neutrinoless Double Beta Decay, \0nbb, is a hypothesized process that has implications for all the open questions about neutrino nature discussed so far. It is the most sensitive probe into whether neutrinos are Dirac or Majorana. 
 \begin{equation}
-    (A,Z) \rightarrow (A,Z+2) + 2e^-
+	(A,Z)\rightarrow (A, Z+2)+2e^-
 \end{equation}
-This process violates lepton number by two units and can only occur if neutrinos are Majorana particles. Observation of $0\nu\beta\beta$ would establish the Majorana nature of neutrinos and provide information on the absolute neutrino mass scale\cite{PhysRevD.90.033005}.
+This lepton number violating process is shown in Fig \ref{fig:0nbb}.
+
+Double Beta Decay, \2nbb, is a rare nuclear process by which two neutrons simultaneously undergo beta decay, emitting a neutrino and electron. First studied by Maria Goeppert-Mayer in 1935, \2nbb is a Standard Model process that has now been observed in multiple isobaric nuclei, nuclei with even numbers of protons and neutrons.
+\begin{equation}
+	(A,Z)\rightarrow (A,Z+2)+2e^-+2\bar{\nu}_e
+\end{equation}
+In some of these isotopes, single beta decay is energetically forbidden. Because the isotope a single-beta decay step away is at a higher energy level than the isotope two steps away. Figure \ref{fig:nuclear_mass} shows how isobaric nuclei can produce this arrangement of nuclear states. As a second-order weak interaction, \2nbb, is the slowest proess in the universe that has been experimentally observed. 
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (n1) at (0,1.5) {$n$};
+      \vertex (n2) at (0,-1.5) {$n$};
+      \vertex (v1) at (2,1.5);
+      \vertex (v2) at (2,-1.5);
+      \vertex (w1) at (4,0.75);
+      \vertex (w2) at (4,-0.75);
+      \vertex (p1) at (6,2) {$p$};
+      \vertex (p2) at (6,-2) {$p$};
+      \vertex (e1) at (6,0.75) {$e^-$};
+      \vertex (e2) at (6,-0.75) {$e^-$};
+      
+      \diagram* {
+        (n1) -- [fermion] (v1) -- [fermion] (p1),
+        (n2) -- [fermion] (v2) -- [fermion] (p2),
+        (v1) -- [boson, edge label=$W$] (w1) -- [fermion] (e1),
+        (v2) -- [boson, edge label'=$W$] (w2) -- [fermion] (e2),
+        (w1) -- [fermion, edge label=$\nu$] (w2),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{Feynman diagram for neutrinoless double beta decay ($0\nu\beta\beta$).}
+  \label{fig:0nbb}
+\end{figure}
+
+In \0nbb, the final state electrons carry away almost the entire decay energy, while the energy is split between electrons and neutrinos in \2nbb. When the easier to observe electron kinetic energies are accumulated, the distribution is as shown in Figure \ref{fig:2nbb_energy}. The sharp peak at the endpoint of the \2nbb decay spectrum is the experimental signature of \0nbb.
+
+The key observable in a \0nbb decay experiment is the half-life of \0nbb. A predicition for the half-life is given by:
+\begin{equation}
+	|T^{0\nu}_{1/2}|^{-1}=G_{0\nu}|M_{0\nu}|^2\left(\frac{m_{\beta\beta}}{m_e}\right)^2
+\end{equation}
+where $G_{0\nu}$ is the phase space integral accounting for the final states of the elctrons and daughter atom, $|M_{0\nu}|$ is the nuclear matrix element of the transition, and $m_{\beta\beta}$ is known as the effective Majorana mass of $\nu_e$,
+\begin{equation}
+m_{\beta\beta} = \left| \sum_i m_i U_{ei}^2 \right| = 
+\left\{
+\begin{array}{ll}
+m_0 c_{12}^2 c_{13}^2 + \sqrt{\Delta m_{21}^2 + m_0^2} s_{12}^2 c_{13}^2 e^{2i(\eta - \eta_1)} \\
+\quad + \sqrt{\Delta m_{32}^2 + \Delta m_{21}^2 + m_0^2} s_{13}^2 e^{-2i(\delta_{\text{CP}} + \eta_1)} & \text{in NO,} \\[2ex]
+m_0 s_{13}^2 + \sqrt{m_0^2 - \Delta m_{32}^2} s_{12}^2 c_{13}^2 e^{2i(\eta_2 + \delta_{\text{CP}})} \\
+\quad + \sqrt{m_0^2 - \Delta m_{32}^2 - \Delta m_{21}^2} c_{12}^2 c_{13}^2 e^{2i(\eta_1 + \delta_{\text{CP}})} & \text{in IO,}
+\end{array}
+\right.
+\end{equation}
+Thus, the effective majorana mass is sensitive to the PMNS parameters which govern neutrino oscillation, such as the neutrino masses and mixing angles. It is also sensitive to the majorana CP violating phases, $\eta_1$ and $\eta_2$, which neutrino oscillations are independent of. 
+
+As the Majorana phases are unknown, there is a range of allowed $m_{\beta\beta}$ bounded by the oscillation parameters. Figure \ref{fig:lobster} shows how the allowed regions vary over $m_{lightest}$.
 
 \subsection{Black Box Theorem for $0\nu\beta\beta$ Decay}
 
-The black box theorem\cite{PhysRevD.90.033005} states that the observation of $0\nu\beta\beta$ decay, regardless of the underlying mechanism, implies that neutrinos have a nonzero Majorana mass component. Thus, $0\nu\beta\beta$ is a model-independent probe of lepton number violation.
-
-\subsection{Detection Experiments}
-
-Many experiments search for $0\nu\beta\beta$ decay using different isotopes, such as $^{76}$Ge (GERDA, Majorana), $^{136}$Xe (EXO, KamLAND-Zen\cite{klz800_arxiv,li_phd}), and $^{130}$Te (CUORE). These experiments aim to detect the summed energy of the two emitted electrons at the Q-value of the decay, which would appear as a peak in the energy spectrum.
-
-\subsection{Current Limits}
-
-No experiment has yet observed $0\nu\beta\beta$ decay. Current limits on the half-life are of order $10^{25}$--$10^{26}$ years\cite{klz800_arxiv}, corresponding to upper limits on the effective Majorana neutrino mass $\langle m_{\beta\beta} \rangle$ of about $0.1$--$0.3$ eV, depending on nuclear matrix element calculations. The effective mass is given by:
-\begin{equation}
-    \langle m_{\beta\beta} \rangle = \left| \sum_{i=1}^3 U_{ei}^2 m_i \right|
-\end{equation}
-where $U_{ei}$ are elements of the PMNS matrix and $m_i$ are the neutrino mass eigenvalues.
+\subsection{Double Beta Decay Experiments}
 
 \subsection{Nuclear Matrix Elements}
-
-The interpretation of $0\nu\beta\beta$ decay experiments depends on the calculation of nuclear matrix elements (NMEs), which are subject to significant theoretical uncertainties\cite{PhysRevD.90.033005}. Different nuclear models (QRPA, shell model, IBM, etc.) yield somewhat different results for the NMEs, affecting the extraction of $\langle m_{\beta\beta} \rangle$ from experimental data.
 
 \section{Double Beta Decay to Excited States}
 
 \subsection{Impact on Nuclear Matrix Elements}
-Double beta decay can also occur to excited states of the daughter nucleus. These transitions are suppressed compared to ground-state transitions but provide complementary information on NMEs and nuclear structure\cite{ENSDF}.
 
-\subsection{Observations and Current Limits}
-A few double beta decay transitions to excited states have been observed in two-neutrino mode ($2\nu\beta\beta$), but no neutrinoless transitions have been detected. Experimental limits on these processes are generally weaker due to lower phase space and detection efficiency\cite{ENSDF}.
-
-
+\subsection{Observations and Current Limits of $2\nu\beta\beta^*$}
 
