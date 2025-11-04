@@ -312,6 +312,7 @@ In \0nbb, the final state electrons carry away almost the entire decay energy, w
 The key observable in a \0nbb decay experiment is the half-life of \0nbb. A predicition for the half-life is given by:
 \begin{equation}
 	|T^{0\nu}_{1/2}|^{-1}=G_{0\nu}|M_{0\nu}|^2\left(\frac{m_{\beta\beta}}{m_e}\right)^2
+	\label{eq:half-life}
 \end{equation}
 where $G_{0\nu}$ is the phase space integral accounting for the final states of the elctrons and daughter atom, $|M_{0\nu}|$ is the nuclear matrix element of the transition, and $m_{\beta\beta}$ is known as the effective Majorana mass of $\nu_e$,
 \begin{equation}
@@ -325,14 +326,36 @@ m_0 s_{13}^2 + \sqrt{m_0^2 - \Delta m_{32}^2} s_{12}^2 c_{13}^2 e^{2i(\eta_2 + \
 \end{array}
 \right.
 \end{equation}
-Thus, the effective majorana mass is sensitive to the PMNS parameters which govern neutrino oscillation, such as the neutrino masses and mixing angles. It is also sensitive to the majorana CP violating phases, $\eta_1$ and $\eta_2$, which neutrino oscillations are independent of. 
+Thus, the effective majorana mass is sensitive to the PMNS parameters which govern neutrino oscillation, such as the neutrino masses and mixing angles. It is also sensitive to the majorana CP violating phases, $\eta_1$ and $\eta_2$, which neutrino oscillations are independent of.
 
 As the Majorana phases are unknown, there is a range of allowed $m_{\beta\beta}$ bounded by the oscillation parameters. Figure \ref{fig:lobster} shows how the allowed regions vary over $m_{lightest}$.
 
 \subsection{Black Box Theorem for $0\nu\beta\beta$ Decay}
+The half-life definition of Eq. \ref{eq:half-life} assumes the light neutrino exchange mechanism for \0nbb shown in Figure \ref{fig:0nbb}. Under this assumption the interaction strength is governed by the effective Majorana mass, $m_{\beta\beta}$. While there are other possible mechanisms that could facility \0nbb, a key insight was given by Schecther and Valle in \cite{blackbox}. In what is now known as the famous Black Box Theorem, they propose that\cite{merle_blackbox}:
+\begin{itemize}
+	\item Should \0nbb be observed, its Feynman diagram must feature two electrons, two up-quark fields, and two down-quark fields. The process connecting these fields is arbitrary and is referred to as the "black box process". The theorem argues that this "black box process" effectively establishes the dimension-9 operator
+	\item The up and down quarks are contracted by the W boson
+	\item On the other end of the W boson propagators, electron fields are converted into neutrino fields
+	\item The entire diagram can be rotated to turn into a process that converts anti-neutrinos to neutrinos as shown in Figure \ref{fig:blackbox}
+	\item Finally, the possible cancelation of this process by other diagrams is dismissed by naturalness arguments.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2]{blackbox.png}
+	\caption{Depiction of the \0nbb black box theorem, the black box represents an arbitrary \0nbb process, which can be used to convert antineutrinos into neutrinos. Figure taken from \cite{merle_blackbox}}
+	\label{fig:blackbox}
+\end{figure}
+
+The key conclusion of the black-box theorem is that should \0nbb be observed, even if the observed mechanism is not light majorana neutrino exchange, the neutrino is a majorana particle. It should be noted that since the theorem's original proposal, counterexamples have been found allowing \0nbb without majorana neutrinos, but the theorem still indicates potential links between \0nbb, Majorana mass, and lepton number violation more broadly.
 
 \subsection{Double Beta Decay Experiments}
-
+\0nbb if it exists has an incredibly long half-life greater than $10^{26}$ years. Should it be discovered, \0nbb would be the slowest natural process observed experimentally. To successfully carry out this rare event search, \0nbb experiments must be designed with crucial criteria in mind:
+\begin{itemize}
+	\item \textbf{High Energy Resolution:} Distinguishing the \0nbb peak at the \2nbb endpoint requires precise energy resolution to reduce ROI (region of interest) contamination from the \2nbb decay spectrum. Modern experiments on the forefront of this design criterion are achieving $\frac{\sigma_E}{E}\approxeq 0.1\%$ resolution, and completely suppressing the \2nbb background. 
+	\item \textbf{High Isotope Loading:}
+	\item \textbf{Low Unrelated Backgrounds:}
+\end{itemize}
 \subsection{Nuclear Matrix Elements}
 
 \section{Double Beta Decay to Excited States}
