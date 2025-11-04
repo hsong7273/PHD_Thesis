@@ -328,7 +328,18 @@ m_0 s_{13}^2 + \sqrt{m_0^2 - \Delta m_{32}^2} s_{12}^2 c_{13}^2 e^{2i(\eta_2 + \
 \end{equation}
 Thus, the effective majorana mass is sensitive to the PMNS parameters which govern neutrino oscillation, such as the neutrino masses and mixing angles. It is also sensitive to the majorana CP violating phases, $\eta_1$ and $\eta_2$, which neutrino oscillations are independent of.
 
-As the Majorana phases are unknown, there is a range of allowed $m_{\beta\beta}$ bounded by the oscillation parameters. Figure \ref{fig:lobster} shows how the allowed regions vary over $m_{lightest}$.
+As the Majorana phases are unknown, there is a range of allowed $m_{\beta\beta}$ bounded by the oscillation parameters. Figure \ref{fig:klz_0nu_limit} shows how the allowed regions vary over $m_{lightest}$.
+
+\subsection{Nuclear Matrix Elements}
+The determination of the nuclear matrix element $M_{0\nu}$ is a theoretical challenge in connecting the experimental observable, $T^{0\nu}_{1/2}$ to the neutrino mass. There are several nuclear structure methods for calculating NMEs, and there reamin signficant differences, upto factors of 3, between the NME values calculated with different methods, and sometimes even between NME values calculated with the same methods. Figure \ref{fig:NMEs} demonstrate the large theoretical uncertainty in \0nbb nuclear matrix elements.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{NMEs.png}
+	\caption{Results from various NME calculation of $M_{0\nu}$ on particular \0nbb decaying isotopes versus atomic mass. Figure taken from \cite{li_phd}}
+	\label{fig:NMEs}
+\end{figure}
+
 
 \subsection{Black Box Theorem for $0\nu\beta\beta$ Decay}
 The half-life definition of Eq. \ref{eq:half-life} assumes the light neutrino exchange mechanism for \0nbb shown in Figure \ref{fig:0nbb}. Under this assumption the interaction strength is governed by the effective Majorana mass, $m_{\beta\beta}$. While there are other possible mechanisms that could facility \0nbb, a key insight was given by Schecther and Valle in \cite{blackbox}. In what is now known as the famous Black Box Theorem, they propose that\cite{merle_blackbox}:
@@ -342,25 +353,61 @@ The half-life definition of Eq. \ref{eq:half-life} assumes the light neutrino ex
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.2]{blackbox.png}
+	\includegraphics[scale=0.5]{blackbox.png}
 	\caption{Depiction of the \0nbb black box theorem, the black box represents an arbitrary \0nbb process, which can be used to convert antineutrinos into neutrinos. Figure taken from \cite{merle_blackbox}}
 	\label{fig:blackbox}
 \end{figure}
 
 The key conclusion of the black-box theorem is that should \0nbb be observed, even if the observed mechanism is not light majorana neutrino exchange, the neutrino is a majorana particle. It should be noted that since the theorem's original proposal, counterexamples have been found allowing \0nbb without majorana neutrinos, but the theorem still indicates potential links between \0nbb, Majorana mass, and lepton number violation more broadly.
 
-\subsection{Double Beta Decay Experiments}
+\subsection{Double Beta Decay to Excited States}
+A related physics process can provide further experimental input into the NME calculations, and aid in the interpretation of \0nbb experiment results, \2nbb to excited states, or \2nbb$^*$. \2nbb$^*$ is a SM process in which the parent isotope undergoes double-beta decay but transitions to an excited state of the daughter nucleus instead of the ground state. These decays are suppressed by orders of magnitude compared to decays to ground states because of the reduced phase space from smaller $Q$ values\cite{exstate_stats}. Mirroring the status of NME calculations, predictions for the decay rates into excited states vary by multiple orders of magnitude, see Figure \ref{fig:ex_halflife}. An observation of this decay in Xenon could inform NME calculations and reduce the theoretical uncertainties.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=1.3]{halflife_pred_ex.jpg}
+	\caption{Predictions of $T_{1/2}^{2\nu^*}$ using various NME calculation methods. Figure taken from \cite{exhalflife_calc}.}
+	\label{fig:ex_halflife}
+\end{figure}
+
+The physical signature of \2nbb$^*$ is of a \2nbb decay immediately, few pico-second delay, followed by a gamma cascade as the daughter nucleus relaxes into its ground state. The task of detecting this rare process becomes one of either particle identification or resolving a distortion in the much larger decay to ground state background.
+
+While neither \2nbb or \2nbb$^*$ has had their decay rates successfully predicted, close correlation between the NMEs of \2nbb and \0nbb have been demonstrated. Figure \ref{fig:corr_2nu_0nu} shows the correlations between \2nbb and \0nbb NME as calculated by two different methods.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{corr_2nu_0nu.png}
+	\caption{Correlation of \2nbb and \0nbb NME as calculated by NSM (Nuclear Shell Model) and pnQRPA (proton-neutron quasiparticle random-phase approximation) methods. Figure taken from \cite{exstate_corr}.}
+	\label{fig:corr_2nu_0nu}
+\end{figure}
+All this further motivates a better understanding of \2nbb and \2nbb$^*$ to aid in theoretical calculations of $M^{0\nu}$.
+\section{Double Beta Decay Experiments}
 \0nbb if it exists has an incredibly long half-life greater than $10^{26}$ years. Should it be discovered, \0nbb would be the slowest natural process observed experimentally. To successfully carry out this rare event search, \0nbb experiments must be designed with crucial criteria in mind:
 \begin{itemize}
 	\item \textbf{High Energy Resolution:} Distinguishing the \0nbb peak at the \2nbb endpoint requires precise energy resolution to reduce ROI (region of interest) contamination from the \2nbb decay spectrum. Modern experiments on the forefront of this design criterion are achieving $\frac{\sigma_E}{E}\approxeq 0.1\%$ resolution, and completely suppressing the \2nbb background. 
-	\item \textbf{High Isotope Loading:}
-	\item \textbf{Low Unrelated Backgrounds:}
+	\item \textbf{High Isotope Loading:} Maximizing the amount of double-beta decaying isotoped in the sensitive regions of the experiment is crucial for achieving sensitivity to long \0nbb half-lives in a reasonable timeframe, usually a decade of data-taking. Modern experiments are instrumenting about a metric ton of double-beta decaying isotope. The limiting factor to this criterion is often budgetary or enrichment capability.
+	\item \textbf{Low Unrelated Backgrounds:} Experiments need to be prepared in environments with low incidental radioactivity. This necessarily means deep underground facilities, with the experiments themselves being constructed with the highest standard of radiopure materials.
 \end{itemize}
-\subsection{Nuclear Matrix Elements}
+The current world leading limit on Majorana neutrino mass has been set by KamLAND-ZEN at $m_{\beta\beta} < (28-122) $ meV, at 90\% C.L. The limits on majorana neutrino mass based on multiple NME calculations can be seen in Figure \ref{fig:klz_0nu_limit}. It is readily apparent that the exact values of the NMEs drastically impact the significance of the latest experimental results. For the highest NMEs, the limits placed by KamLAND-ZEN enter the non-degnerate regions of inverted ordering phase space. While for the lower NMEs, the limits remain in the degenerate region. KamLAND-ZEN is the only \0nbb experiment to place limits in the inverted ordering region for any NME.
 
-\section{Double Beta Decay to Excited States}
-
-\subsection{Impact on Nuclear Matrix Elements}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.35]{klz_0nu_limit.png}
+	\caption{Effective Majorana neutrino mass as a function of the lightest neutrino mass state $m_{lightest}$. The shaded regions are based on best-fit values of neutrino oscilation parameters for (a) the normal ordering (NO) and (b) the inverted ordering (IO), the lighter shaded regions indicate the $3\sigma$ ranges based on oscillation parameter uncertainties. The horizontal lines indicate 90\% C.L. limits on $m_{\beta\beta}$ considering multiple NME calculations. Figure taken from \cite{full_klz_0nu}.}
+	\label{fig:klz_0nu_limit}
+\end{figure}
 
 \subsection{Observations and Current Limits of $2\nu\beta\beta^*$}
+Double beta decay to excited states has been observed in only two isotopes, a minority of the isotopes known to undergo double-beta decay.
+\begin{itemize}
+    \item $^{100}Mo-^{100}Ru(0^+_1)$ : $T_{1/2}=5.9^{+0.9}_{-0.6}\times 10^{20}$ years
+    \item $^{150}Nd-^{150}Sm(0^+_1)$ : $T_{1/2}=1.33^{+0.45}_{-0.26}\times 10^{20}$ years
+\end{itemize}
+\2nbb$^*$ has yet to be observed in $^{136}Xe$ the double beta decaying isotope of the KamLAND-ZEN experiment and the focus of this thesis. The current world-leading limit on this process is $T^{2\nu}_{1/2}(0^+\rightarrow 0^+_1)>1.4\times 10^{24}$ years at 90\% C.L. set by the EXO-200 experiment. This work describes the latest analysis of KamLAND-ZEN 800 data which surpasses this limit.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.35]{exo200_fit.png}
+	\caption{EXO-200's fit over energy spectrum (left) and particle ID discriminator spectrum (right) in two data-taking phases of the excited state signal and background. The decay to excited states was not found, and a lower limit was placed. Figure taken from \cite{exo200}.}
+	\label{fig:exo200_fit}
+\end{figure}
