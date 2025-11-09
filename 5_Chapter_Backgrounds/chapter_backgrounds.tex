@@ -7,15 +7,44 @@
 % it has a trailing directory separator (i.e., '/')!
 \graphicspath{{5_Chapter_Backgrounds/Figures/}}
 
-\section{Instrumental Backgrounds}
-\subsection{Flashers}
-\subsection{Improper Events}
-\subsection{Injected Events}
+In the analysis for excited state decays in KamLAND-ZEN, the signal is searched for via energy spectrum fit. While chapter \ref{chapter:reco_select} described event selections applied in data to reduce backgrounds, this chapter describes how the background energy distributions are modeled and estimated. This chapter describes expected distributions of background events that pass those event selections. These distributions are implemented in the spectral fit of Chapter \ref{chapter:analysis}, along with any independent constraints that can be placed on their intensities.
+
+While in other KamLAND-ZEN analyses, the spatial distribution of the events is used in distinguishing signals from backgrounds, due to issues in the radial distribution modeling, only the innermost part of the detector is used. Further discussion of the volume selection used for the excited state analysis can be found in Chapter \ref{chapter:analysis}
+\section{\2nbb : Double-Beta Decay}
+Two neutrino double-beta decay (\2nbb) is the largest background in the search for \2nbb$^*$ by far. The search for excited state decays is largely reduced to a search for a distortion in the \2nbb decay spectrum. 
+
+In KamLAND-ZEN, two isotopes of Xenon undergo \2nbb, $^{134}$Xe and $^{136}$Xe. Of the Xenon dissolved in the XeLS, approximately 90\% is $^{136}$Xe and 9\% is $^{134}$Xe. $^{136}$Xe decays have been studied in many experiments, the rate of this background is allowed to float freely in this analysis. $^{134}$Xe decays have yet to be observed, the world-leading limit on this isotope's half-life is $T_{1/2}>8.2\times 10^{20}$ years at 90\% C.L.. This rate corresponds to an event rate of $2.7\times 10^4$ events/day/kton in KamLAND-ZEN's XeLS. 
+
+While $^{134}$Xe decay could be a secondary physics goal of KamLAND-ZEN, in practice, the signal is completely masked by residual $^{85}$Kr and $^{210}$Bi contamination in the detector. In addition, theoretical predictions place the expected $^{134}$Xe half-life around 3 orders of magnitude higher than $^{136}$Xe. For these reasons, $^{134}$Xe is neglected in this analysis.
+
 \section{Radioactive Contamination}
-\subsection{$^{238}U$ chain and $^{232}Th$ chain}
-\subsection{BiPo Tagging}
-\subsection{BiPo Pile-up}
-\section{Cosmic Muon Spallation}
-\section{Untagged Backgrounds}
+\subsection{$^{238}$U Series}
+$^{238}$U is a naturally occurring radionuclide with half-life $T_{1/2}=4.468\times 10^9$ years. $^{238}$U is responsible for 40\% of the radioactive heat generated in the earth. As an omnipresent radioactive contaminant it is present in all components of the detector to some degree. 
+
+The decay series of Uranium includes U, Th, Pa, Ra, Rn, Po, At, Pb, Bi, and Tl. All of the radioactive decays with energy spectra above 0.5 MeV are included in the background model. A distinction is made between the decays before $^{222}$Rn, henceforth referred to as "Series 1", and after $^{222}$Rn, henceforth referrred to as "Series 2". $^{238}$Us1 enters the detector as $^{238}$U as radioactive contamination from construction. Thus, all the $^{238}$Us1 decays are in specular equilibrium with each other. $^{238}$Us2 is introduced to the detector as $^{222}$Rn during the original introduction of Xenon into the XeLS. In this and most KamLAND-ZEN analyses, the rates of $^{238}$Us1 and $^{238}$Us2 are fitted independently from each other. $^{238}$Us1 is floated freely and is determined from the spectral fit, while $^{238}$Us2 is constrained by the rate of tagged $^{214}$Bi decays via the delayed-coincidence method described in Chapter \ref{chapter:reco_select}. A penalty term is added to the fit likelihood to implement this constraint.
+\subsection{$^{232}$Th Series}
+$^{232}$Th is another omnipresent radioactive contaminant on earth. 
+\subsection{$^{40}$K}
+\subsection{$^{85}$Kr}
+\subsection{Sequential Th Series Decays}
+
+\section{Carbon Spallation}
+\subsection{Short-Lived Spallation Products}
+\subsection{$^{11}C$ Spallation Estimation}
+
+\section{Long-Lived Xenon Spallation Products}
+second most dominant bacvkground in the \0nbb ROI. Long lived spallation affects the resolution of the \2nbb endpoint which affects the energy scale measurement and the rate of \2nbb overall.
+\subsection{FLUKA Simulation}
+\subsection{ENSDF Database}
+\subsection{Long-Lived Spallation Veto}
+\subsection{Efficiency and Error Estimation}
+\subsection{Spectrum Distortion}
+
+\section{Other Backgrounds}
+\subsection{Solar Neutrinos}
+
+
+
+
 
 Time to get philosophical and wordy.\cite{blackbox}
