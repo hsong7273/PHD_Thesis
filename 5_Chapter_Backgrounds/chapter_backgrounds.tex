@@ -23,9 +23,22 @@ $^{238}$U is a naturally occurring radionuclide with half-life $T_{1/2}=4.468\ti
 
 The decay series of Uranium includes U, Th, Pa, Ra, Rn, Po, At, Pb, Bi, and Tl. All of the radioactive decays with energy spectra above 0.5 MeV are included in the background model. A distinction is made between the decays before $^{222}$Rn, henceforth referred to as "Series 1", and after $^{222}$Rn, henceforth referrred to as "Series 2". $^{238}$Us1 enters the detector as $^{238}$U as radioactive contamination from construction. Thus, all the $^{238}$Us1 decays are in specular equilibrium with each other. $^{238}$Us2 is introduced to the detector as $^{222}$Rn during the original introduction of Xenon into the XeLS. In this and most KamLAND-ZEN analyses, the rates of $^{238}$Us1 and $^{238}$Us2 are fitted independently from each other. $^{238}$Us1 is floated freely and is determined from the spectral fit, while $^{238}$Us2 is constrained by the rate of tagged $^{214}$Bi decays via the delayed-coincidence method described in Chapter \ref{chapter:reco_select}. A penalty term is added to the fit likelihood to implement this constraint.
 \subsection{$^{232}$Th Series}
-$^{232}$Th is another omnipresent radioactive contaminant on earth. 
+$^{232}$Th is another omnipresent radioactive contaminant on earth. Just as in the $^{238}$U model, the $^{232}$Th decay chain is split into 2 series. The decays upstream of $^{228}$Th are henceforth referred to as "Series 1", while the decays downstream of $^{228}$Th are henceforth referred to as "Series 2". Once again the lower energy threshold of 0.5 MeV is used.
+
+The rates of both decay chains are fitted independently in the energy spectral fit. It is worth noting that in the higher-energy window of 3-5 MeV, the dominant contributor is $^{208}$Tl decay. Thus, the rate of $^{208}$Tl can be comparatively well determined by the spectral fit, and the other backgrounds in the decay chain can be determined by the rate of $^{208}$Tl decays in KamLAND-ZEN.
 \subsection{$^{40}$K}
+$^{40}$K is another omnipresent, common radionuclide on earth. It decays via $beta^-$ decay with 89.28\% B.R. and electron capture with 10.72\% B.R. with a half-life of $T_{1/2}=1.28\times 10^9$ years. Like the other backgrounds it is assumed to be present in all the detector materials including XeLS, balloon film, and KamLS. But due to the high level of liquid scintillator purity, it is expected that the contamination of $^{40}$K in the liquid scintillator volumes to be negligible and that the $^{40}$K background to be concentrated on the inner balloon film. In this analysis a special study was done to estimate the amount of film $^{40}$K is present in KamLAND-ZEN.
+
+The most important feature of $^{40}$K decay with regard to the analysis for excited state decays of $^{136}$Xe is the $^{40}$K electron capture gamma peak, $Q=1.5$ MeV. In the KamLS, outside the inner balloon, this peak is prominent enough to resolve on its own.
+
+In order to estimate the amount of film-related $^{40}$K background that gets reconstructed in the innermost XeLS volumes, the radial distribution outside the balloon is measured. The volumes just inside and just outside the inner balloon were separated into equal volume spherical shells. The data in each of these spherical shells was independently fitted with a simplified version of the full KamLAND-ZEN spectral fit. The purpose of each of these fits is to measure the prominence of the $^{40}$K electron-capture gamma peak over the broad \2nbb background. The trend of the individually-fitted rates of $^{40}$K in each of the spherical "volume bins" is compared to the expected radial distribution from KLG4Sim simulations of $^{40}$K. A simple least squares "fit of fits" is performed to determine the measured rate of $^{40}$K from the inner balloon film. 
+
+While an initial deviation from the expected distribution was found, vetoing the upper balloon neck region yielded an excellent qualitative match between the measured and simulated $^{40}$K radial distributions. This independent measurement of the radial distribution supports the hypothesis that the $^{40}$K contamination is mostly limited to inner balloon film itself and much lower in the liquid scintillator volumes. This behavior matches the relative contamination levels of  $^{238}$U and $^{232}$Th.
+
+This indepedently measured rate of $^{40}$K is implemented in the spectral analysis as a penalty term.
+
 \subsection{$^{85}$Kr}
+
 \subsection{Sequential Th Series Decays}
 
 \section{Carbon Spallation}

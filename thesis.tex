@@ -34,14 +34,7 @@
 %linkbordercolor={0 0 1},%          % blue frames around links
 %pdfborder={0 0 112.0}]{hyperref}%  % border-width of frames 
 %                                   % will be multiplied with 0.009 by ps2pdf
-%\hypersetup{
-%  pdfauthor   = {Hasung Song <hwsong@bu.edu>},
-%  pdftitle    = {dissertation.pdf},
-%  pdfsubject  = {doctoral dissertations},
-%  pdfkeywords = {mathematics, science, technology},
-%  pdfcreator  = {LaTeX with hyperref package},
-%  pdfproducer = {dvips + ps2pdf}
-%}
+
 %==========================================================================%
 % customized commands can be placed here
 %\newcommand{\figref}[1]{Figure~\ref{#1}}
@@ -51,6 +44,14 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
 \hypersetup{breaklinks=true,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=cyan}
+\hypersetup{
+ pdfauthor   = {Hasung Song <hwsong@bu.edu>},
+ pdftitle    = {thesis.pdf},
+ pdfsubject  = {doctoral dissertations},
+ pdfkeywords = {mathematics, science, technology},
+ pdfcreator  = {LaTeX with hyperref package},
+ pdfproducer = {dvips + ps2pdf}
+}
 \usepackage{breakurl}
 \usepackage{algorithm}
 \usepackage{tikz}
@@ -93,7 +94,8 @@
 \cleardoublepage
 
 %==========================================================================%
-% Curriculum Vitae
+% Curriculum Vitae (appears as last entry in TOC)
+\phantomsection\addcontentsline{toc}{chapter}{Curriculum Vitae}
 \include{0_Chapter_Prelim/cv} 
 
 %==========================================================================%
