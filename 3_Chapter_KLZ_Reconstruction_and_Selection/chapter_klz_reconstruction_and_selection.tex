@@ -582,18 +582,7 @@ Furthermore, some of the other background rejection methods will simultaneously 
 \end{itemize}
 
 \subsection*{Uncertainties}
-Table \ref{tab:fluka_error} lists the estimated systeamtic errors of the FLUKA simulation of long-lived spallation isotope production. The most significant of these systematic errors is the uncertainty in the FLUKA spallation simulation. In the abscence of dedicated cosmic-ray muon induced xenon-spallation measurements, checking the validity of FLUKA's spallation simulation is difficult. The results of 2 beam experiments are taken into account. The first is an experiment where a 490 GeV $\mu^+$ beam on gaseous xenon reports the production of charged hadrons \cite{mubeam_fluka}. Test FLUKA simulations can reproduce their measurements.
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.35]{distortion.png}
-	\caption{The comparison between FLUKA simulation and Xenon beam experiment data. Red line show the diﬀerence from \cite{xenonbeam_500MeV}. Blue line shows the diﬀerence from \cite{xenonbeam_1GeV}. The red line is adopted as the error and considered in the spectrum ﬁt since the deviation in \0nbb ROI is larger}
-	\label{fig:distortion}
-\end{figure}
-
-Another expriment measured the cross section of a $^{136}$Xe beam on a 1 $cm^3$ liquid-hydrogen target. The incident energy per nucleon used was 500 MeV \cite{xenonbeam_500MeV} and 1 GeV \cite{xenonbeam_1GeV}. The comparison of our FLUKA derived long-lived spallation decay spectrum and these beam measurements are shown in Figure \ref{fig:distortion}. 
-
-
+Table \ref{tab:fluka_error} lists the estimated systeamtic errors of the FLUKA simulation of long-lived spallation isotope production. The most significant of these systematic errors is the uncertainty in the FLUKA spallation simulation. 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{lc}
@@ -610,8 +599,6 @@ Another expriment measured the cross section of a $^{136}$Xe beam on a 1 $cm^3$ 
 	\label{tab:fluka_error}
 \end{table}
 
-\subsection*{Spectrum Distortion}
-The discrepancy shown in Figure \ref{fig:distortion} indicates a potential mismodeling of the long-lived spallation background energy distribution. This uncertainty is implemented in the spectral fit, by introducing a distortion parameter that varies the model of the long-lived spallation background, based on this discrepancy with experiment.
 \subsection{Signal Inefficiency}
 The effect of all these background vetoes on the \0nbb signal needs to be understood. This signal inefficiency is determined by calculating the livetime of the analysis. 
 

@@ -11,7 +11,7 @@ In the analysis for excited state decays in KamLAND-ZEN, the signal is searched 
 
 While in other KamLAND-ZEN analyses, the spatial distribution of the events is used in distinguishing signals from backgrounds, due to issues in the radial distribution modeling, only the innermost part of the detector is used. Further discussion of the volume selection used for the excited state analysis can be found in Chapter \ref{chapter:analysis}
 \section{\2nbb : Double-Beta Decay}
-Two neutrino double-beta decay (\2nbb) is the largest background in the search for \2nbb$^*$ by far. The search for excited state decays is largely reduced to a search for a distortion in the \2nbb decay spectrum. 
+Two neutrino double-beta decay (\2nbb) is the largest background in the search for \2nbbs by far. The search for excited state decays is largely reduced to a search for a distortion in the \2nbb decay spectrum. 
 
 In KamLAND-ZEN, two isotopes of Xenon undergo \2nbb, $^{134}$Xe and $^{136}$Xe. Of the Xenon dissolved in the XeLS, approximately 90\% is $^{136}$Xe and 9\% is $^{134}$Xe. $^{136}$Xe decays have been studied in many experiments, the rate of this background is allowed to float freely in this analysis. $^{134}$Xe decays have yet to be observed, the world-leading limit on this isotope's half-life is $T_{1/2}>8.2\times 10^{20}$ years at 90\% C.L.. This rate corresponds to an event rate of $2.7\times 10^4$ events/day/kton in KamLAND-ZEN's XeLS. 
 
@@ -38,26 +38,179 @@ While an initial deviation from the expected distribution was found, vetoing the
 This indepedently measured rate of $^{40}$K is implemented in the spectral analysis as a penalty term.
 
 \subsection{$^{85}$Kr}
-
-\subsection{Sequential Th Series Decays}
+$^{85}$Kr is a radioactive isotope realeased into the atmosphere when spent nuclear fuel is reprocessed. It decays via $\beta^-$ decay with a half-life of $T_{1/2}=10.76$ years. Despite such a short half-life the atmospheric contribution of $^{85}$Kr continues to increase. $^{85}$Kr is expected to be introduced to KamLAND-ZEN during liquid scintillator purification. Previous KamLAND-400 and KamLAND analyses observed a non-uniformity in the rate of$^{85}$Kr along the z-axis of the detector. In this study, the $^{85}$Kr rate is allowed to float freely in the inner XeLS volume. $^{85}$Kr is a major contributing background in the lower energy region.
 
 \section{Carbon Spallation}
+A major class of backgrounds for both the \0nbb and \twonustar analyses are radioactive isotopes produced when cosmic ray muons spallate Carbon nuclei in the detector. In this work, a distinction is made from the isotopes with half-lives of seconds or minutes, henceforth referred to as "short-lived", and the spallation isotopes, usually from Xenon with much longer half-lives, henceforth referred to as "long-lived". The following sections describe the modeling of the expected contribution of these short-lived isotopes.
 \subsection{Short-Lived Spallation Products}
+The short-lived carbon spallation products, primarily $^{6}$He, $^{8}$B, $^{8}$Li, $^{10}$C, and $^{12}$B are effectively vetoed by the triple coincidence methods described in Chapter \ref{chapter:reco_select}. 
+
+The contribution of the background rate that passes the triple coincidence veto can be simply estimated by Energy-$dT$ fitting. $dT$ is the time delay from the muon event that produces the isotope and the isotope's eventual decay. The event rate of the candidate spallation products over time can be written as 
+\begin{equation}
+	\frac{dN}{dt}=\sum_iN_i\times\exp\left(\frac{-dT}{\tau_i}+C\right)
+\end{equation}
+where $N_i$ is the number of observed events of isotope, $i$. $\tau_i$ is the i-th isotope's average lifetime and $C$ is the rate of accidental events, not cosmic muon related. By fitting the event rates of each of the isotopes and accidentals with the above function, the rate of overall spallation backgrounds can be estimated. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{shortspall_fit.png}
+	\caption{The fit to short-lived spallation backgrounds over Energy and $dT$. While the fit for the spallation rates is performed in the energy range 2-5 MeV, the full expected energy distributions are used in the excited state analysis spectral fit. Figure taken from \cite{miyake_phd}}
+	\label{fig:shortspall_fit}
+\end{figure}
+
+The fit is performed simultaneously over the three energy regions shown in Figure \ref{fig:shortspall_fit}. The residual rate of these backgrounds that are not triple coincidence vetoed are estimated using the fitted rates and the shower likelihood selection efficiency. The estimation was performed with KamLS events, the possible discrepancy between spallation production rates in KamLS and XeLS is included in the systematic errors. The short-lived spallation results are summarized in table \ref{tab:shortspall_tab}.
+
+\begin{table}[htbp]
+\centering
+\caption{Production and background rate of carbon spallation products}
+\small
+\begin{tabular}{cccccc}
+\hline
+ & Energy [MeV] & life-time & \begin{tabular}{c}Production rate\\ (FLUKA prediction)\\ {[}event/day/kton{]}\end{tabular} & \begin{tabular}{c}Background rate\\ {[}event/day/kton{]}\end{tabular} & \begin{tabular}{c}Rejection\\ efficiency [\%]\end{tabular} \\
+\hline
+$^6$He   & 3.51 ($\beta^-$) & 1.16 sec   & $12.36^{+1.22}_{-1.28}$ ($28 \pm 2$)   & $0.33^{+0.23}_{-0.02}$ & $97.56^{+1.65}_{-1.65}$ \\
+$^{10}$C & 3.65 ($\beta^+$) & 27.8 sec   & $18.70^{+0.72}_{-0.64}$ ($23 \pm 2$)   & $0.00^{+0.03}_{-0.00}$ & $100^{+0.00}_{-0.66}$ \\
+$^8$Li   & 16.0 ($\beta^-$) & 1.21 sec   & $25.77^{+0.92}_{-1.04}$ ($47 \pm 3$)   & $0.025^{+0.13}_{-0.14}$ & $99.13^{+0.49}_{-0.46}$ \\
+$^{12}$B & 13.4 ($\beta^-$) & 29.1 msec  & $56.14^{+1.29}_{-1.28}$ ($42 \pm 3$)   & $0.015^{+0.002}_{-0.002}$ & $99.98^{+0.004}_{-0.004}$ \\
+$^8$B    & 18.0 ($\beta^+$) & 1.11 sec   & $0.58^{+0.71}_{-0.44}$ ($11 \pm 1$)     & $0.07^{+0.09}_{-0.07}$ & $88.29^{+14.78}_{-19.77}$ \\
+$^{12}$N & 17.3 ($\beta^+$) & 15.9 msec  & $0.218^{+0.20}_{-0.12}$ ($0.74 \pm 0.06$) & $0^{+0}_{-0}$ & $100^{+0}_{-0.0001}$ \\
+$^9$C    & 16.5 ($\beta^+$) & 182.5 msec & $0.53^{+0.54}_{-0.44}$ ($1.5 \pm 0.1$) & $0^{+0.01}_{-0}$ & $100^{+0.00}_{-0.99}$ \\
+$^8$He   & 10.7 ($\beta^-$) & 171.7 msec & $4.89^{+0.93}_{-0.86}$ ($0.55 \pm 0.04$) & $0^{+0.02}_{-0}$ & $100^{+0}_{-0.31}$ \\
+$^9$Li   & 13.6 ($\beta^-$) & 257.2 msec & $0.00^{+1.19}_{-0}$ ($4.9 \pm 0.4$) & $0^{+0.01}_{-0}$ & - \\
+$^{11}$Be& 11.5 ($\beta^-$) & 19.9 sec   & $1.06^{+0.69}_{-0.21}$ ($1.1 \pm 0.1$)  & $0.00^{+0.26}_{-0}$ & $100^{+0.00}_{-22.13}$ \\
+\hline
+\end{tabular}
+\end{table}
+
 \subsection{$^{11}C$ Spallation Estimation}
+$^{11}C$ is the dominant spalation isotope in KamLAND-ZEN, FLUKA estimates the production of $^{11}C$ to be $679\pm 49$ event/day/kton. The estimated rate is a clear outlier compared to the other short and long-lived isotopes. It is also the dominant background in the medium-energy range of the KamLAND-ZEN analysis, 1-2 MeV, aside from \2nbb itself. Thus, the determination of the $^{11}C$ production rate is key for constraining the \2nbb rate. 
+
+The production rate of $^{11}C$ was measured in previous phases of the experiment in KamLS using muon-coincidence. The measurement was replicated in KamLAND-ZEN 800's XeLS using MoGURA neutron coincidence.
+
+The independent measurement of $^{11}C$ decays is performed by observing $\mu-^{11}C$ pairs in KamLAND-ZEN 800. The following selections were applied to the $^{11}C$ decay candidate events.
+\begin{itemize}
+	\item $dT$, Muon delay from event : $100<dT<18,000$ sec/5 hours
+	\item Event quality cuts as described in Chapter \ref{chapter:reco_select}, excluding Badness veto to include $^{11}C$-orthopositronium decays
+	\item Excluding other spllation-related selections: Longlived veto, MoGURA neutron veto, and $^{137}Xe$
+	\begin{itemize}
+		\item The cut on muon delay, $dT>100s$, excludes most of the short-lived backgrounds. 
+	\end{itemize}
+	\item $dR<80$ cm : Nearest neutron per muon shower
+	\item $0<radius<160$ cm : Fiducal Volume selection for pure XeLS events
+	\item $1.0<E_{vis}<1.6$ MeV : Energy selection for S/B optimization
+\end{itemize} 
+
+Applying the $^{11}C$ selection to the full KamLAND-ZEN 800 dataset, the distribution of $dT$ is observed in Figure \ref{fig:c11_dt_fit}. The accidental background from \2nbb decays is significant, but the $^{11}C$ decay distribution is clear. The distribution is fitted to an exponential decay with fixed $^{11}C$ lifetime $\tau=1,764$ secs, and a linearly sloping background. 
+
+A similar selection was also applied to the KamLS region in KamLAND-ZEN 800. The adjusted selections are on reconstructed event radius $220<r<350$ cm and event energy $1.0<E_{vis}<2.2$ MeV, the KamLS distribution is also shown in \ref{fig:c11_dt_fit}. The $^{11}C$ decay signature is especially clear in KamLS as the relative background is much lower due to the reduction in \2nbb events. 
+
+Another crosscheck is performed with the energy distribution of the selected $^{11}C$ candidate events. The $\mu-^{11}C$ pair $dT$ distribution is seperated into "ontime" and "offtime" bins. Then the energy distribution of the offtime events are subtracted from the energy distribution of the ontime events. The subtracted energy distributions are shown in Figure \ref{fig:c11_energy}. In KamLS, the observation of simulated the $^{11}C$ energy spectrum is clear. While in XeLS, the fluctuations in the significant background worsen the comparison to simulation, the broad $^{11}C$ spectrum is clearly resolved. This crosscheck using an ontime-offtime analysis of the energy distribution gives us confidence that $^{11}C$ is indeed being selected with good purity.
+
+There are many spallation isotopes produced in Xenon-spallation with lifetimes of similar orders of magnitude $10^3-10^4$ seconds as $^{11}C$, $\tau=1,764$ seconds. Instead of estimating the relative production of each of these isotopes, the effect of the cumulative background is modeld with an uncosntrained linear slope to the background. 
+
+\subsection{$^{137}$Xe}
+When neutrons spallated by cosmic ray muons are captured on $^{136}$Xe, $^{137}$Xe is produced. The Q-value of its $\beta^-$ decay is 4.16 MeV with a half-life of $T_{1/2}=229$ sec. The neutron capture cross section calculation yields a production rate of 3.9 event/day/kton. The tagging efficiency of $^{137}$Xe is estimated as $74\pm 7\%$. The long-lived spallation veto, described in the next section, also removes $^{137}$Xe. The veto efficiency by the long-lived spallation veto is estimated from FLUKA simulation to be 42\%. The residual rate in the singles dataset is estimated to be $0.43\pm 0.36$ event/day/kton.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{xe137.png}
+	\caption{The fit to short-lived spallation backgrounds over Energy and $dT$. While the fit for the spallation rates is performed in the energy range 2-5 MeV, the full expected energy distributions are used in the excited state analysis spectral fit. Figure taken from \cite{miyake_phd}}
+	\label{fig:xe137}
+\end{figure}
 
 \section{Long-Lived Xenon Spallation Products}
-second most dominant bacvkground in the \0nbb ROI. Long lived spallation affects the resolution of the \2nbb endpoint which affects the energy scale measurement and the rate of \2nbb overall.
+Spallation products from $^{136}$Xe are the second most dominant bacvkground in the \0nbb ROI. Long lived spallation affects the resolution of the \2nbb endpoint which affects the energy scale resolution and the final rate of \2nbb. 
+
+The half-lives of these isotopes are longer than the carbon spallation products, typically taking hours or days to decay. This makes tagging their decays and estimating their contributions difficult with simple box cuts or coincidence analyses. In the \0nbb analysis, a likelihood-based tagging method was developed to separate the datasets into one with lower spallation background contamination, "Singles data" and one with higher spallation background concentration, "Long-Lived data". In the excited state fit, to reduce systematic uncertainty in the $^{11}C$ background estimation which is a much larger contributor to the excited state energy region, this separation of the dataset based on likelihood of being a long-lived spallation event is not done. Instead, the long-lived background contribution has to be carefully estimated by the methods described in this section.
+
 \subsection{FLUKA Simulation}
+To estimate the production rate of the spallation products, muons are injected into a simplified version of the KamLAND detector. In the FLUKA simulation environment, concentric spheres of XeLS $(0<r<192cm)$, KamLS $(192<r<650cm)$, and Buffer Oil $(r=9m)$ are simulated. Cosmic ray muon flux including angular and energy distributions are taken from the MUSIC simulation of muon flux at the KamLAND site. $10^7$ $\mu^+$ and $\mu^-$ events are simulated which corresponds to 37 years of cosmic ray observation with KamLAND. The muon sign ratio is taken to be $\mu^-/\mu^+=1.3$. Figure \ref{fig:fluka_prod} shows the production rate of each nuclide in XeLS.
+
+\begin{figure}[htb]
+    \centering
+    % Left subplot (A) - Time variation
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fluka_prod.png}
+        \caption{Atomic Mass vs Atomic Number}
+        \label{fig:fluka_prod}
+    \end{subfigure}
+    \hfill
+    % Right subplot (B) - Histogram
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{fluka_mass.png}
+        \caption{Atomic Mass}
+        \label{fig:fluka_mass}
+    \end{subfigure}
+    
+    \caption{Production rates of spallation nuclei in KamLAND-ZEN XeLS. There are two concentrations, one near $^{136}$Xe the original heavy isotope in XeLS, and one near the ligher scintillator components ($A\sim 10$) like Carbon and Oxygen. Figure taken from \cite{takeuchi_phd}.}
+\end{figure}
+
 \subsection{ENSDF Database}
-\subsection{Long-Lived Spallation Veto}
-\subsection{Efficiency and Error Estimation}
+FLUKA is used to simulate the spallation processes, but the radioactive products' final decays are not simulated. Instead the simulation of the decay vertices are done in KLG4Sim just as the other backgrounds and signals. From FLUKA, the relative production rates of the spallation isotopes are collected. The half-lives and branching ratios of each species' decay is read from the ENSDF database and the decay chains are followed using the RadioactiveDecay package in GEANT4 simulation. Then the rates of each background in the excited state region of interest is evaluated. Table \ref{tab:spall_bkgd} shows the rates of the dominant long-lived spallation backgrounds. There are hundreds of produced spallation isotopes, but those listed account for more than 95\% of the expected background contribution. 
 \subsection{Spectrum Distortion}
+In the abscence of dedicated cosmic-ray muon induced xenon-spallation measurements, checking the validity of FLUKA's spallation simulation is difficult. The results of 2 beam experiments are taken into account. The first is an experiment where a 490 GeV $\mu^+$ beam on gaseous xenon reports the production of charged hadrons \cite{mubeam_fluka}. Test FLUKA simulations can reproduce their measurements.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{distortion.png}
+	\caption{The comparison between FLUKA simulation and Xenon beam experiment data. Red line show the diﬀerence from \cite{xenonbeam_500MeV}. Blue line shows the diﬀerence from \cite{xenonbeam_1GeV}. The red line is adopted as the error and considered in the spectrum ﬁt since the deviation in \0nbb ROI is larger}
+	\label{fig:distortion}
+\end{figure}
+
+Another expriment measured the cross section of a $^{136}$Xe beam on a 1 $cm^3$ liquid-hydrogen target. The incident energy per nucleon used was 500 MeV \cite{xenonbeam_500MeV} and 1 GeV \cite{xenonbeam_1GeV}. The comparison of our FLUKA derived long-lived spallation decay spectrum and these beam measurements are shown in Figure \ref{fig:distortion}. 
+
+The discrepancy shown in Figure \ref{fig:distortion} indicates a potential mismodeling of the long-lived spallation background energy distribution. This uncertainty is implemented in the spectral fit, by introducing a distortion parameter that varies the model of the long-lived spallation background, based on this discrepancy with experiment.
 
 \section{Other Backgrounds}
+\subsection{External Gamma-Rays}
+Gamma rays emitted by radioactive isotopes from outside the detector can travel into the sensitive regions and deposit energy. The most dominant of these backgrounds is the 2.6 MeV gamma ray from $^{208}Tl$ in the PMT glass. The energy and spatial distributions are simply estimated from actual experimental data. The external gamma contribution decays exponentially as it travels into the inner regions of the detector, so it can be extrapolated from the outer regions. 
+
+Figure \ref{fig:ext_gamma_radius} shows the radial distribution of external gamma events within the visible energy range of 2.6-2.65 MeV. The distribution is fitted with a sum of exponential and 2nd polynoiail functions (modeling external gamma rays and radially uniform events). Extrapolating the exponential component into the inner detector, the background rate within $r<300$ cm is calculated to be $0.32\pm0.05$ event/day/kton for $z<0$ and $0.69\pm0.12$ event/day/kton for $z>0$. The radius and energy distribution of the external gamma ray modeled background is shown in Figure \ref{fig:ext_gamma_evis_radius}.
+
+\begin{figure}[htb]
+    \centering
+    % Left subplot (A) - Time variation
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{ext_gamma_radius.png}
+        \caption{Fit to the external gamma background over radius. The solid line is the total fit, while the dashed liens show the exponential and 2nd degree polynomial components. Figure taken from \cite{takeuchi_phd}.}
+        \label{fig:ext_gamma_radius}
+    \end{subfigure}
+    \hfill
+    % Right subplot (B) - Histogram
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{ext_gamma_evis_radius.png}
+        \caption{Modeled background of external gamma rays. Note that the 2.6 MeV $^{208}$Tl peak is reconstructed at a higher energy, $\sim 2.8$ MeV. This is due to the higher light-yield of the outer KamLS, and the calibration of $E_{vis}$ to XeLS events. Figure taken from \cite{takeuchi_phd}.}
+        \label{fig:ext_gamma_evis_radius}
+    \end{subfigure}
+\end{figure}
+
+Within the inner FV $r<1.33$m that the excited state analysis is performed in, the external gamma background is expected to be negligible from extrapolation of the fitted exponential distribution. Thus, the external gamma background is not implemented in the spectral fit for the excited state decays.
 \subsection{Solar Neutrinos}
+Neutrino interactions are an irreducible background for the excited state decay search. Notable neutrino fluxes in KamLAND include, solar neutrinos, atmospheric neutrinos, geoneutrinos, and reactor neutrinos. Among those solar neutrinos have the highest flux at energies below 20 MeV. Neutrions interact in the detector either via elastic scattering (ES) or charged current interactions (CC).
 
+In ES, a neutrino scatters off an electron in the detector. The emitted electron then deposits energy in the liquid scintillator. An energy spectum of solar neutrino fluxes is shown in Figure \ref{fig:solar_nu}. Of these, $^{8}$B solar neutrinos are the most significant in the \2nbb endpoint region. While other neutrino fluxes are present at lower energies, they are insignificant compared to the other backgrounds and are neglected in this work.
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{solar_nu.png}
+	\caption{Solar neutrino fluxes. Figure from \cite{2nu_review}}
+	\label{fig:solar_nu}
+\end{figure}
 
+In CC interactions, $^{136}$Xe interacts with neutrinos via inverse $\beta$ decay:
+\begin{equation}
+	^{136}Xe+\nu_e\rightarrow^{136}Cs+e^-
+\end{equation}
+$^{136}$Cs decays to $^{136}$Ba with a half-life of $T_{1/2}=13.01$ days and with $Q=2.55$ MeV. Figure \ref{fig:b8_cs136} shows the expenected visibl energy spectrum of $^{136}$Cs decays. In this excited state decay search, both $^{136}$Cs and $^{8}$B decays are implemented in the spectral fit.
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.35]{b8_cs136.png}
+	\caption{Modeled solar neutrino background included in excited state analysis. Figure from \cite{takeuchi_phd}}
+	\label{fig:b8_cs136}
+\end{figure}
 
-Time to get philosophical and wordy.\cite{blackbox}
