@@ -361,7 +361,7 @@ The half-life definition of Eq. \ref{eq:half-life} assumes the light neutrino ex
 The key conclusion of the black-box theorem is that should \0nbb be observed, even if the observed mechanism is not light majorana neutrino exchange, the neutrino is a majorana particle. It should be noted that since the theorem's original proposal, counterexamples have been found allowing \0nbb without majorana neutrinos, but the theorem still indicates potential links between \0nbb, Majorana mass, and lepton number violation more broadly.
 
 \subsection{Double Beta Decay to Excited States}
-A related physics process can provide further experimental input into the NME calculations, and aid in the interpretation of \0nbb experiment results, \2nbb to excited states, or \2nbb$^*$. \2nbb$^*$ is a SM process in which the parent isotope undergoes double-beta decay but transitions to an excited state of the daughter nucleus instead of the ground state. These decays are suppressed by orders of magnitude compared to decays to ground states because of the reduced phase space from smaller $Q$ values\cite{exstate_stats}. Mirroring the status of NME calculations, predictions for the decay rates into excited states vary by multiple orders of magnitude, see Figure \ref{fig:ex_halflife}. An observation of this decay in Xenon could inform NME calculations and reduce the theoretical uncertainties.
+A related physics process can provide further experimental input into the NME calculations, and aid in the interpretation of \0nbb experiment results, \2nbb to excited states, or \2nbb$^*$. \2nbb$^*$ is a SM process in which the parent isotope undergoes double-beta decay but transitions to an excited state of the daughter nucleus instead of the ground state. These decays are suppressed by orders of magnitude compared to decays to ground states because of the reduced phase space from smaller $Q$ values\cite{exstate_stats}. Mirroring the status of NME calculations, predictions for the decay rates into excited states vary by multiple orders of magnitude, see Figure \ref{fig:ex_halflife}. An observation of this decay in Xenon could inform NME calculations and reduce the theoretical uncertainties. The following discussion of the relationship between \2nbb and \0nbb NMEs follows \cite{excited_nme} closely. This discussin describes how the two calculations are related in the nuclear shell model (NSM) and proton-neutron quasiparticle random-phase approximation (pnQRPA) frameworks.
 
 \begin{figure}[h]
 	\centering
@@ -372,7 +372,50 @@ A related physics process can provide further experimental input into the NME ca
 
 The physical signature of \2nbb$^*$ is of a \2nbb decay immediately, few pico-second delay, followed by a gamma cascade as the daughter nucleus relaxes into its ground state. The task of detecting this rare process becomes one of either particle identification or resolving a distortion in the much larger decay to ground state background.
 
-While neither \2nbb or \2nbb$^*$ has had their decay rates successfully predicted, close correlation between the NMEs of \2nbb and \0nbb have been demonstrated. Figure \ref{fig:corr_2nu_0nu} shows the correlations between \2nbb and \0nbb NME as calculated by two different methods.
+The \2nbb decay half-life, to a very good approximation, depends on a single NME \cite{excited_nme}.
+\begin{equation}
+    M^{2\nu}=-\sum_k\frac{(0^+_f||\sum_a\tau^-_a\sigma_a||1^k_+)(1^k_+||\sum_b\tau^-_b\sigma_b||0^+_i)}{[E_k-(E_i+E_f)/2]/m_e}
+\end{equation}
+where $a$ and $b$ indices run over all nucleons, the isospin operator $\tau^-$ turns neutrons into protons, $\sigma$ is the spin operator, and the denominator involves the energies of the initial, final, and each $kth$ intermediate $1^+$ state. For \0nbb, considering the best motivated light neutrino exchange mechanism, the NME is usually written in terms of three spin structures:
+\begin{equation}
+    M^{0\nu}_L=M^{0\nu}_{GT}-M^{0\nu}_F+M^{0\nu}_T
+\end{equation}
+The three spin structures are referred to Gamow-Teller ($M^{0\nu}_{GT}$), Fermi ($M^{0\nu}_{F}$), and tensor ($M^{0\nu}_{T}$). They correspond to the operators $\mathcal{O}^F_{ab}=\mathds{I}$, $\mathcal{O}^{GT}_{ab}=\sigma_a\cdot\sigma_b$, $\mathcal{O}^T_{ab}=3(\sigma_a\cdot\hat{r}_{ab})(\sigma_b\cdot\hat{r}_{ab})-\sigma_a\cdot\sigma_b$ used in their definitions:
+\begin{equation}
+    M^{0\nu}_K=\sum_{k, ab} (0^+_f||\mathcal{O}^K_{ab}\tau^-_a\tau^-_bH_K(r_{ab})f^2_{SRC}(r_{ab})||0^+_i)
+\end{equation}
+A factor to note here is $r_{ab}$ the distance between nucleon $a$ and nucleon $b$. Used in the neutrino potential:
+\begin{equation}
+    H_K(r_{ab})=\frac{2R}{\pi g^2_A}\int_0^\infty\frac{h_Kj_\lambda(pr_{ab})p^2dp}{\epsilon_K}
+\end{equation}
+with $\epsilon_K=p(p+E_k-(E_i+E_f)/2)$, $g_A=1.27$, and $R=1.2A^{1/3}$fm
+with nucleon number, $A$. It is in these radial distributions, that give the neutrino potentials structure, that the relationship between \0nbb and \2nbb can be explored.
+
+We note that the NME radial distributions are qualitatively similar and that they satisfy:
+\begin{equation}
+    M^{0\nu}_L(1b)=\int^\infty_0 C^{0\nu}(r)dr
+\end{equation}
+satisfy:
+\begin{equation}
+    M^{2\nu}=\int^\infty_0 C^{2\nu}(r)dr
+\end{equation}
+Once again we can split the integral into three terms.
+\begin{equation}
+    C^{0\nu}(r)=C^{0\nu}_{GT}(r)-C^{0\nu}_F(r)+C^{0\nu}_T(r)
+\end{equation}
+\begin{equation}
+    C^{0\nu}_K=\sum_{k,ab}(0^+_f||\mathcal{O}^K_{ab}\tau^-_a\tau^-_bH_K(r_{ab})f^2_{SRC}(r_{ab})\delta(r-r_{ab})||0^+_i)
+\end{equation}
+Jokineimi et.al. found a strong correlation in the radial distributions of \2nbb and \0nbb nuclear matrix elements.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{nme_radial.png}
+	\caption{Radial distributions of \0nbb (top) and \2nbb (bottom) NMEs of $^{76}$Ge obtained via pnQRPA. Figure taken from \cite{excited_nme}.}
+	\label{fig:nme_radial}
+\end{figure}
+
+While neither \2nbb or \2nbb$^*$ has had their decay rates successfully predicted. In fact, the simplest model NMEs are usually adjusted with a "quenching" factor to match the observations of \2nbb half-lives. Without these quenching factors, the models consistently overpredict the half-lives. Close correlation between the NMEs of \2nbb and \0nbb have been demonstrated. Figure \ref{fig:corr_2nu_0nu} shows the correlations between \2nbb and \0nbb NME as calculated by two different methods.
 
 \begin{figure}[h]
 	\centering
@@ -380,7 +423,10 @@ While neither \2nbb or \2nbb$^*$ has had their decay rates successfully predicte
 	\caption{Correlation of \2nbb and \0nbb NME as calculated by NSM (Nuclear Shell Model) and pnQRPA (proton-neutron quasiparticle random-phase approximation) methods. Figure taken from \cite{exstate_corr}.}
 	\label{fig:corr_2nu_0nu}
 \end{figure}
-All this further motivates a better understanding of \2nbb and \2nbb$^*$ to aid in theoretical calculations of $M^{0\nu}$.
+
+These theoretical findings motivates a better understanding of \2nbb and \2nbb$^*$ to aid in theoretical calculations of $M^{0\nu}$, and determination of Majorana neutrino mass.
+
+
 \section{Double Beta Decay Experiments}
 \0nbb if it exists has an incredibly long half-life greater than $10^{26}$ years. Should it be discovered, \0nbb would be the slowest natural process observed experimentally. To successfully carry out this rare event search, \0nbb experiments must be designed with crucial criteria in mind:
 \begin{itemize}

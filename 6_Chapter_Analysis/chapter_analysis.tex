@@ -4,8 +4,64 @@
 
 \graphicspath{{7_Chapter_Analysis/Figures/}}
 
-\section{Analysis}
 
+This chapter describes the data analysis framework used to search for \twonustar. First the KamLAND-ZEN 800 full dataset is described, including any vetoed data-taking periods. This description is followed by an overview of the systematic uncertainties. Then, the energy spectral fitting procedure is outlined, including the definition of the chi-square metric. Finally, the statistical results are presented, culminating in a limit on the \twonustar rate.
+
+\section{Xenon Enrichment in KamLAND-ZEN}
+The amount of xenon gas dissolved into the XeLS is a normalization factor in the final xenon decay rates. The value is determined by subtracting off the xenon that remains after xenon installation:
+\begin{enumerate}
+	\item initial Xe mass : $769\pm1$ kg
+	\item Xe left in LS in tanks and pipe lines : $21.5\pm2.8$ kg
+	\item Xe left in storage bottles : $1\pm 1$ kg
+	\item Xe trapped by charcoal filter or used for sampling : $1.5\pm 0.5$ kg
+\end{enumerate}
+From the above calculation, the installed Xenon gas is determined to be, $745\pm3$ kg. The composition of the enriched xenon is evaluated using a mass spectrometer. The measured values agree well with the values provided by the procurement company. The enrich xenon composition can be seen in Table \ref{tab:xenon_comp}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Enriched Xenon Composition}
+    \label{tab:xenon_comp}
+    \begin{tabular}{lcccc}
+        \hline
+        & $^{136}$Xe & $^{134}$Xe & Others & Total \\
+        \hline
+        Provided ratio [\%] & 90.85 & 8.82 & 0.33 & 100.00 \\
+        Measured ratio [\%] & $90.77 \pm 0.08$ & $8.96 \pm 0.02$ & -- & -- \\
+        Atomic mass [u] & 135.907 & 133.905 & -- & -- \\
+        Total mass [kg] & 677.39 & 64.83 & 2.79 & 745.0 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\section{Full KamLAND-ZEN 800 Dataset}
+The dataset used in this analysis was taken between February 5, 2019 and April 30, 2023, run range : 15431-18691. Unlike the \0nbb analysis, the dataset is not divided by Long-lived spallation background likelihood into a singles and long-lived dataset. Instead all the events are combined into a single energy spectrum for joint fitting.
+
+
+\subsection{Vetoed Data Periods}
+In addition to the regular deadtime due to maintenance, run quality, described in Chapter \ref{chapter:reco_select}, there are additional vetoed data periods specifically for this analysis. 
+\subsection*{Electric Power Supply Instability}
+The run range 16790-16874 are excluded from this analysis because the DAQ was unstable due to AVR (automatic voltage regulator) trouble. The constant restarting of the DAQ leads to short runs which make it difficult to perform the run-by-run calibration described in Chapter \ref{chapter:calibration}. 
+\subsection*{MoGURA disorder period}
+The MoGURA DAQ system was unstable between September-November 2022 and raw data files were corrupted. 
+
+\section{Systematic Uncertainties}
+
+\section{Spectral Fit}
+\subsection{Decaying Backgrounds}
+\subsection{Chi-Square Definition}
+\subsection{Minimizer}
+\subsection{Fit Parameters}
+\subsection{Penalty Terms}
+
+\section{\twonustar  Results}
+\subsection{Sensitivity}
+
+\section{Discussion of Results}
+
+\section{Future Prospects}
+\subsection{Improved Detector Response Calibration}
+\subsection{Improved Event Selection}
+\subsection{KamLAND2-ZEN}
 Time to get philosophical and wordy.\cite{takeuchi_phd}
 
-{\bf Important}: In the list of references at the end of thesis, abbreviated journal and conference titles aren't allowed. Either you must put the full title in each item, or create a List of Abbreviations at the beginning of the references, with the abbreviations in one column on the left (arranged in alphabetical order), and the corresponding full title in a second column on the right.  Some abbreviations, such as IEEE, SIGMOD, ACM, have become standardized and accepted by librarians, so those should not be spelled out in full.
