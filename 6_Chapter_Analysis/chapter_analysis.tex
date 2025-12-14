@@ -43,25 +43,96 @@ In addition to the regular deadtime due to maintenance, run quality, described i
 \subsection*{Electric Power Supply Instability}
 The run range 16790-16874 are excluded from this analysis because the DAQ was unstable due to AVR (automatic voltage regulator) trouble. The constant restarting of the DAQ leads to short runs which make it difficult to perform the run-by-run calibration described in Chapter \ref{chapter:calibration}. 
 \subsection*{MoGURA disorder period}
-The MoGURA DAQ system was unstable between September-November 2022 and raw data files were corrupted. 
+The MoGURA DAQ system was unstable between September-November 2022 and raw data files were corrupted. While the KamDAQ files are readable, the MoGDAQ data is crucial for constructing events near after cosmic ray muons. These events are a key tag for cosmic related spallation backgrounds. Thus, runs 17768-17905 are excluded from this analysis.
 
 \section{Systematic Uncertainties}
+While the \0nbb and \twonustar analyses are statistical uncertainty dominated, this section discusses estimates of several sources of systematic error.
 
+The uncertainty in the total amount of xenon dissolved in the XeLS was estimated in an internal study, the estimated uncertainty is 0.4\%. 
+
+As for the xenon enrichment factor, the 0.1\% difference in the supplier stated enrichment and our measuremed enrichment, described in the previous section, is used as the systematic uncertainty in xenon enrichment.
+
+The detector energy scale varies over time as electronics fail, are repaired, and PMTs degrade. Using the neutron capture gamma peak at 2.2 MeV, a maximum error of 0.9\% was determined.
+
+Finally, the uncertainty in the fiducial volume is the uncertainty in the true volume of events encapsulated by the fiducial volume selection of 157.49 cm. This is determined using the early KLZ-800 data, just after xenon dissolving work. As the xenon is introduced, $^{222}$Rn is incidentally introduced from the atmosphere, $^{222}$Rn has a half-life of 3.8 days, and its decay is soon followed by a $^{214}$Bi-Po sequential decays. Data for a month after xenon is introduced to the XeLS is used and the Bi-Po coincident events are analyzed. The volume ratio between spheres of 157.49cm and 192cm, the inner balloon radius, is 0.5686. While the ratio of Bi-Po events observed in these spherical regions is 0.5454. Since it is expected that the $^{222}$Rn is distributed uniformly throughout the XeLS, a 4.1\% difference is taken as the fiducial volume uncertainty.
 \section{Spectral Fit}
-\subsection{Decaying Backgrounds}
+The \twonustar decay rate is estimated by fitting background and signal models to the energy distribution of reconstructed KLZ-800 data. Namely, the energy distribution of events within the reduced FV of $(r<1.33m)$ and that pass the event selections discussed in Chapter \ref{chapter:reco_select}.
 \subsection{Chi-Square Definition}
+In this study, a binned chi-square, maximum likelihood fit is performed. The chi-square has multiple components, a energy-bin term and penalty terms.
+\begin{equation}
+    \chi^2=(\sum_{energy} \chi^2_{energy}) +\chi^2_{penalty}
+\end{equation}
+Here, $\sum_{energy}$, denotes a sum over each 0.05 MeV energy bin from the range 0.5-4.8 MeV. In each energy bin, the $\chi^2$ is computed.
+\begin{equation}
+\chi^2_{\text{energy}} =
+\begin{cases}
+    2 \sum_{i} \left( \nu_{i} - n_{i} + n_{i} \log \frac{n_{i}}{\nu_{i}} \right) & (n_{i} > 0) \\
+    2 \sum_{i} (\nu_{i} - n_{i}) & (n_{i} = 0)
+\end{cases}
+\end{equation}
+Now, $\nu_i$ is the model expected energy spectrum for the given fit parameters, and $n_i$ denotes the observed number of events in the $i$-th bin. The penalty terms constrains certain parameters that have independent constraints. The fit parameter configuration is summarized in Table \ref{tab:parameters}, and described in more detail in the later sections. The penalty $\chi^2$ terms are simply defined as:
+\begin{equation}
+    \chi^2_{penalty}=\sum_i\left(\frac{O_n-E_n}{\sigma_n}\right)^2
+\end{equation}
+where $O_n$ is the estimated parameter value, $E_n$ are the central expected values, and $\sigma_n$ are the expected parameter errors. 
+
 \subsection{Minimizer}
+The ROOT implementation of the MINUIT package distributed by CERN is the minimization package used for this analysis. 
+
 \subsection{Fit Parameters}
+The spectral rate parameters are divided by origin volume. This analysis is only concerned with backgrounds originating in the XeLS and the inner balloon film. Each of the background described in Chapter \ref{chapter:backgrounds} is implemented in the spectral fit. 
 \subsection{Penalty Terms}
 
-\section{\twonustar  Results}
-\subsection{Sensitivity}
+\begin{table}[htbp]
+    \centering
+    \caption{Fit parameter configuration for the spectral analysis. The fit condition column indicates whether the parameter is free, fixed, scanned, or constrained in the fit.}
+    \label{tab:parameters}
+    \begin{tabular}{lll}
+        \hline
+        Material & Parameter & Fit Condition \\
+        \hline
+        \multirow{12}{*}{XeLS}
+            & $^{136}$Xe 2$\nu\beta\beta^*$ & scan \\
+            & $^{136}$Xe 2$\nu\beta\beta$ & free \\
+            & $^{238}$U series 2 & constrain \\
+            & $^{222}$Rn & constrain \\
+            & $^{232}$Th series 2 & constrain \\
+            & $^{210}$Bi & free \\
+            & $^{85}$Kr & free \\
+            & $^{11}$C & constrain \\
+            & $^{137}$Xe & constrain \\
+            & Xe spallation & free \\
+            & solar $\nu$ ES + CC & fix \\
+            & $^{136}$Cs & constrain \\
+        \hline
+        \multirow{7}{*}{Film}
+            & $^{238}$U series 1 & fix \\
+            & $^{238}$U series 2 & free \\
+            & $^{232}$Th series 1 & free \\
+            & $^{232}$Th series 2 & free \\
+            & $^{40}$K & constrain \\
+            & $^{210}$Bi & free \\
+            & $^{11}$C & free \\
+        \hline
+        \multirow{7}{*}{common}
+            & Energy scale & constrained \\
+            & $k_B, R$ & constrained \\
+            & LL-distortion & constrain \\
+            & $^6$He & fix \\
+            & $^{12}$B & fix \\
+            & $^8$Li & fix \\
+            & $^8$B & fix \\
+        \hline
+    \end{tabular}
+\end{table}
 
-\section{Discussion of Results}
+% \section{\twonustar  Results}
+% \subsection{Sensitivity}
+% \section{Discussion of Results}
 
-\section{Future Prospects}
-\subsection{Improved Detector Response Calibration}
-\subsection{Improved Event Selection}
-\subsection{KamLAND2-ZEN}
+% \section{Future Prospects}
+% \subsection{Improved Detector Response Calibration}
+% \subsection{Improved Event Selection}
+% \subsection{KamLAND2-ZEN}
 Time to get philosophical and wordy.\cite{takeuchi_phd}
 
