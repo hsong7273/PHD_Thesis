@@ -1,0 +1,713 @@
+\chapter{Theory of Neutrinos and Double Beta Decay}
+\label{chapter:theory}
+\thispagestyle{myheadings}
+
+\graphicspath{{2_Chapter_Theory/Figures/}}
+
+While this chapter reviews the theoretical foundations of neutrino mass and lepton number violation, particular emphasis is placed on Standard Model two-neutrino double beta decay ($2\nu\beta\beta$). In addition to serving as an irreducible background to neutrinoless double beta decay ($0\nu\beta\beta$) searches, $2\nu\beta\beta$ to excited nuclear states provides a unique experimental probe of nuclear structure that directly informs the interpretation of $0\nu\beta\beta$ results.
+
+
+\section{Neutrinos in the Standard Model}
+
+Neutrinos remain the least understood component of the Standard Model (SM) of particle physics~\cite{lamport1985:latex}. Their elusive nature and extremely weak interactions make them challenging to study, yet they play a central role in both particle physics and cosmology. The modern understanding of neutrinos began in 1914, when James Chadwick used magnetic spectrometry to measure the energy spectrum of electrons emitted in beta decay. He observed that the spectrum was continuous rather than discrete, implying an apparent violation of energy conservation.
+
+To resolve this puzzle, Pauli postulated in 1930 the existence of a new neutral and very light particle that carried away the missing energy~\cite{Pauli:1930pc}. He introduced this idea in his famous letter addressed to the ``Radioactive Ladies and Gentlemen.'' Enrico Fermi later incorporated Pauli’s proposal into his theory of beta decay and named the particle the neutrino, meaning ``little neutral one.'' The neutrino was experimentally detected in 1956 by Cowan and Reines~\cite{cowan1956}, firmly establishing its existence. Since that time, the Standard Model has been extended to include three flavors of neutrinos, each associated with a corresponding charged lepton.
+
+The Standard Model is a gauge theory based on the symmetry group
+$SU(3)_C \times SU(2)_L \times U(1)_Y$~\cite{lamport1985:latex}. Neutrinos participate only in the weak interaction, which is mediated by the charged $W^\pm$ bosons and the neutral $Z^0$ boson, and they carry no electric charge. Their extremely small interaction cross sections make them difficult to detect, but also allow them to propagate over vast distances with little attenuation. This unique property enables neutrinos to serve as powerful messengers from otherwise inaccessible regions of the universe.
+
+\subsection{Neutrino Interactions}
+
+The Standard Model unifies the strong, weak, and electromagnetic interactions within the gauge symmetry
+$SU(3)_C \times SU(2)_L \times U(1)_Y$. The $SU(3)_C$ sector governs the strong interaction through quantum chromodynamics, while the $SU(2)_L \times U(1)_Y$ sector describes the electroweak interaction. In this framework, the weak interaction is mediated by the charged $W^\pm$ bosons and the neutral $Z^0$ boson.
+
+Neutrinos appear in the Standard Model as components of left handed lepton doublets, which transform as weak isospin doublets under $SU(2)_L$:
+\begin{equation}
+    L_\ell =
+    \begin{pmatrix}
+        \nu_{\ell L} \\
+        \ell_L
+    \end{pmatrix},
+    \quad \ell = e, \mu, \tau .
+\end{equation}
+Here, $\nu_{\ell L}$ and $\ell_L$ denote the neutrino and charged lepton fields of flavor $\ell$, respectively. Only the left handed components of these fermion fields participate in weak interactions. This chiral structure is implemented through the projection operator:
+\begin{equation}
+    P_L = \frac{1 - \gamma_5}{2},
+\end{equation}
+where $\gamma_5 = i\gamma^0\gamma^1\gamma^2\gamma^3$ is constructed from the Dirac matrices.
+
+Electroweak interactions are characterized by two quantum numbers: weak isospin $I$ and weak hypercharge $Y$. The electric charge operator is given by:
+\begin{equation}
+    Q = I_3 + \frac{Y}{2},
+    \label{eq:charge}
+\end{equation}
+where $I_3$ is the third component of weak isospin. For lepton doublets, the total weak isospin is $I = 1/2$ and the hypercharge is $Y = -1$. These assignments correctly reproduce the observed electric charges, yielding $Q = 0$ for neutrinos and $Q = -1$ for charged leptons.
+
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{8pt}
+\setlength{\extrarowheight}{2pt}
+
+\begin{table}[b!]
+\centering
+\begin{tabular}{lclcccc}
+\hline
+ & & & $I$ & $I_3$ & $Y$ & $Q$ \\
+\hline
+
+\multirow{2}{*}{lepton doublet} &
+\multirow{2}{*}{$L_L \equiv$} &
+\rule{0pt}{4ex}\multirow{2}{*}{$\left(\begin{array}{c}
+\nu_{eL} \\
+e_L
+\end{array}\right)$}
+& $1/2$ & $+1/2$ & $-1$ & $0$ \\
+& & & $1/2$ & $-1/2$ & $-1$ & $-1$ \\
+
+lepton singlet & $e_R$ & & $0$ & $0$ & $-2$ & $-1$ \\
+
+\multirow{2}{*}{quark doublet} &
+\multirow{2}{*}{$Q_L \equiv$} &
+\multirow{2}{*}{$\left(\begin{array}{c}
+u_L \\
+d_L
+\end{array}\right)$}
+& $1/2$ & $+1/2$ & $1/3$ & $2/3$ \\
+& & & $1/2$ & $-1/2$ & $1/3$ & $-1/3$ \\
+
+quark singlets & $u_R$ & & $0$ & $0$ & $4/3$ & $2/3$ \\
+& $d_R$ & & $0$ & $0$ & $-2/3$ & $-1/3$ \\
+\hline
+\end{tabular}
+\caption{Weak isospin $I$, third component of weak isospin $I_3$, hypercharge $Y$, and electric charge $Q = I_3 + Y/2$ for fermion doublets and singlets in the Standard Model.}
+\label{tab:weakisospin}
+\end{table}
+
+
+
+
+
+Table~\ref{tab:weakisospin} summarizes the weak isospin, hypercharge, and electric charge assignments for the fermion doublets and singlets in the Standard Model. Right handed charged leptons and quarks are singlets under $SU(2)_L$, with $I = 0$, and therefore do not participate in charged weak interactions. Their hypercharge values are chosen to reproduce the observed electric charges through Eq.~\ref{eq:charge}.
+
+The neutrino components of the lepton doublets are referred to as active neutrinos, reflecting their participation in weak interactions. In contrast, hypothetical sterile neutrinos would be singlets under the full Standard Model gauge group and would not couple to the $W^\pm$ or $Z^0$ bosons. Within the Standard Model, there is exactly one active neutrino associated with each charged lepton flavor: $e$, $\mu$, and $\tau$.
+
+Gauge invariance under $SU(2)_L$ dictates the form of the weak charged current and neutral current interactions involving leptons. These interactions are described by the Lagrangian terms:
+\begin{align}
+    -\mathcal{L}_{\mathrm{CC}} &=
+    \frac{g}{\sqrt{2}}
+    \sum_{\ell}
+    \bar{\nu}_{\ell L} \gamma^\mu \ell_L W_\mu^+
+    + \mathrm{h.c.}, \\
+    -\mathcal{L}_{\mathrm{NC}} &=
+    \frac{g}{2 \cos \theta_W}
+    \sum_{\ell}
+    \bar{\nu}_{\ell L} \gamma^\mu \nu_{\ell L} Z_\mu^0 ,
+    \label{eq:NC}
+\end{align}
+where $g$ is the weak coupling constant and $\theta_W$ is the Weinberg angle. The charged current interaction governs processes such as beta decay and double beta decay, while the neutral current interaction allows neutrinos to scatter elastically from matter without changing flavor.
+
+Precision measurements of the invisible decay width of the $Z^0$ boson provide a direct constraint on the number of light, active neutrino species~\cite{Zdecay}. The experimentally measured value,
+\begin{equation}
+    N_\nu = 2.984 \pm 0.008,
+\end{equation}
+is consistent with three active neutrino flavors and provides strong experimental support for the Standard Model neutrino sector.
+
+The purely left handed nature of weak interactions in the Standard Model has important consequences for neutrino mass and for processes that violate lepton number. Because only left handed neutrino fields appear in the electroweak Lagrangian, no renormalizable mass term for neutrinos can be constructed using Standard Model fields alone. As a result, neutrinos are massless in the minimal Standard Model. Any mechanism that generates neutrino mass must therefore extend the theory, either by introducing new fields or by allowing higher dimensional operators. This chiral structure also plays a central role in double beta decay. In particular, the connection between left handed weak currents, neutrino mass, and lepton number violation underlies the theoretical interpretation of both two neutrino and neutrinoless double beta decay processes, which are discussed in detail in the following sections.
+
+\section{Neutrino Oscillations}
+
+The discovery of neutrino oscillations represents one of the most significant breakthroughs in particle physics in recent decades. This achievement was recognized with the 2015 Nobel Prize in Physics, awarded to Art McDonald of the SNO collaboration and Takaaki Kajita of the Super-Kamiokande collaboration~\cite{nuoscnobel}. The underlying concept of neutrino flavor oscillations was first proposed by Bruno Pontecorvo in the late 1950s, inspired by the phenomenon of neutral kaon mixing, $K^0 \leftrightarrow \overline{K}^0$~\cite{Pontecorvo:1957cp}. Pontecorvo suggested that neutrinos, like kaons, could change identity as they propagate, provided that the states produced in weak interactions were not identical to the states of definite mass.
+
+Neutrino oscillations arise from the misalignment between flavor eigenstates and mass eigenstates. In a weak interaction, a neutrino is produced in a definite flavor state, associated with a charged lepton of the same flavor. However, the flavor eigenstates $\ket{\nu_\alpha}$, with $\alpha = e, \mu, \tau$, are quantum superpositions of mass eigenstates $\ket{\nu_k}$, where $k = 1, 2, 3$:
+\begin{equation}
+ \ket{\nu_{\alpha}} = \sum_k U^*_{\alpha k} \ket{\nu_k}.
+ \label{flavorstate}
+\end{equation}
+
+\noindent This relationship may also be written in matrix form as:
+\begin{equation}
+	\begin{pmatrix}
+		\nu_e \\
+		\nu_\mu \\
+		\nu_\tau
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		U_{e1} & U_{e2} & U_{e3} \\
+		U_{\mu1} & U_{\mu2} & U_{\mu3} \\
+		U_{\tau1} & U_{\tau2} & U_{\tau3}
+	\end{pmatrix}
+	\begin{pmatrix}
+		\nu_1 \\
+		\nu_2 \\
+		\nu_3
+	\end{pmatrix},
+	\label{unitary}
+\end{equation}
+where the coefficients $U_{\alpha k}$ are elements of the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix.
+
+The PMNS matrix is parameterized by three mixing angles, $\theta_{12}$, $\theta_{23}$, and $\theta_{13}$, a Dirac charge parity violating phase $\delta_{CP}$, and two additional phases $\xi_1$ and $\xi_2$ that appear if neutrinos are Majorana particles. A commonly used parameterization of the PMNS matrix is:
+\begin{multline}
+U =
+	\begin{pmatrix}
+	1 & 0 & 0 \\
+    0 & \cos \theta_{23} & \sin \theta_{23} \\
+	0 & -\sin \theta_{23} & \cos \theta_{23}
+	\end{pmatrix}
+	\begin{pmatrix}
+	\cos \theta_{13} & 0 & \sin \theta_{13} e^{-i\delta_{CP}} \\
+	0 & 1 & 0 \\
+	-\sin \theta_{13} e^{i\delta_{CP}} & 0 & \cos \theta_{13}
+	\end{pmatrix} \\
+	\times
+	\begin{pmatrix}
+	\cos \theta_{12} & \sin \theta_{12} & 0 \\
+	-\sin \theta_{12} & \cos \theta_{12} & 0 \\
+	0 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & e^{i\xi_1} & 0 \\
+	0 & 0 & e^{i\xi_2}
+	\end{pmatrix}.
+	\label{pmns}
+\end{multline}
+
+\noindent The final diagonal matrix containing the Majorana phases does not affect neutrino oscillation probabilities, as these phases cancel when forming the inner products relevant for flavor transitions. Nevertheless, they play a crucial role in lepton number violating processes such as neutrinoless double beta decay and therefore remain of central interest in neutrino physics.
+
+To illustrate how neutrino oscillation parameters are extracted experimentally, it is instructive to derive the oscillation probability in vacuum. Unlike quarks, which are confined within hadrons, neutrinos propagate freely over macroscopic distances. The massive neutrino states $\ket{\nu_k}$ can therefore be treated as plane wave solutions to the Schrödinger equation, evolving in time as:
+\begin{equation}
+    \ket{\nu_k(t)} = e^{-iE_k t} \ket{\nu_k},
+    \qquad
+    E_k = \sqrt{m_k^2 + \vec{p}^{\,2}}.
+    \label{pw}
+\end{equation}
+
+\noindent A neutrino produced at time $t = 0$ in a flavor state $\ket{\nu_\alpha}$ evolves as a coherent superposition of mass eigenstates,
+\begin{equation}
+	\ket{\nu_{\alpha}(t)} = \sum_k U^*_{\alpha k} e^{-iE_k t} \ket{\nu_k}.
+	\label{trans}
+\end{equation}
+
+\noindent Using the unitarity of the PMNS matrix, $U^\dagger U = \mathbb{1}$, this expression may be rewritten in the flavor basis as:
+\begin{equation}
+\ket{\nu_{\alpha}(t)} =
+\sum_{\beta = e, \mu, \tau}
+\left(
+\sum_k U^*_{\alpha k} e^{-iE_k t} U_{\beta k}
+\right)
+\ket{\nu_\beta}.
+\label{flavevolve}
+\end{equation}
+
+\noindent The probability that a neutrino produced in flavor state $\nu_\alpha$ is later detected as flavor $\nu_\beta$ is then given by:
+\begin{equation}
+P(\nu_\alpha \rightarrow \nu_\beta)
+=
+|\braket{\nu_\beta | \nu_\alpha(t)}|^2
+=
+\sum_{k,j}
+U^*_{\alpha k} U_{\beta k}
+U_{\alpha j} U^*_{\beta j}
+e^{-i(E_k - E_j)t}.
+\label{tp}
+\end{equation}
+
+\noindent For ultra relativistic neutrinos, where $m_k \ll |\vec{p}|$, the energy may be expanded as:
+\begin{equation}
+E_k \simeq E + \frac{m_k^2}{2E},
+\label{dispapprox}
+\end{equation}
+leading to
+\begin{equation}
+E_k - E_j = \frac{\Delta m^2_{kj}}{2E},
+\qquad
+\Delta m^2_{kj} \equiv m_k^2 - m_j^2.
+\label{obs}
+\end{equation}
+
+\noindent Since oscillation experiments measure the source detector separation $L$ rather than the propagation time, the approximation $t \simeq L$ may be used. The oscillation probability then becomes:
+\begin{equation}
+P(\nu_\alpha \rightarrow \nu_\beta)
+=
+\sum_{k,j}
+U^*_{\alpha k} U_{\beta k}
+U_{\alpha j} U^*_{\beta j}
+e^{-i \Delta m^2_{kj} L / 2E}.
+\label{tp2}
+\end{equation}
+
+\noindent Separating the real and imaginary components yields the familiar form:
+\begin{multline}
+P(\nu_\alpha \rightarrow \nu_\beta)
+=
+\delta_{\alpha\beta}
+- 4 \sum_{k>j}
+\mathfrak{Re}
+\left[
+U^*_{\alpha k} U_{\beta k}
+U_{\alpha j} U^*_{\beta j}
+\right]
+\sin^2 \left( \frac{\Delta m^2_{kj} L}{4E} \right) \\
++ 2 \sum_{k>j}
+\mathfrak{Im}
+\left[
+U^*_{\alpha k} U_{\beta k}
+U_{\alpha j} U^*_{\beta j}
+\right]
+\sin \left( \frac{\Delta m^2_{kj} L}{2E} \right).
+\label{tp3}
+\end{multline}
+
+\noindent The oscillation amplitudes are governed by the elements of the PMNS matrix, while the oscillation frequency is set by the ratio $\Delta m^2_{kj} L / E$. In practical units, this phase may be written as:
+\begin{equation}
+\frac{\Delta m^2_{kj} L}{2E}
+\approx
+1.27
+\frac{\Delta m^2_{kj} \, [\mathrm{eV}^2] \, L \, [\mathrm{km}]}
+{E \, [\mathrm{GeV}]}.
+\label{oscfrequency}
+\end{equation}
+
+Within the past two decades, the majority of neutrino oscillation parameters have been measured with impressive precision. The three mixing angles $\theta_{12}$, $\theta_{23}$, and $\theta_{13}$, along with the two independent squared mass splittings $\Delta m^2_{21}$ and $|\Delta m^2_{31}|$, are now known to the level of a few percent or better. These measurements have been achieved using a diverse set of experiments that study neutrinos originating from the Sun, the Earth’s atmosphere, nuclear reactors, and particle accelerators.
+
+Despite this progress, two fundamental questions remain unresolved within the oscillation framework. The first concerns the value of the charge parity violating phase $\delta_{CP}$, which governs potential differences between neutrino and antineutrino oscillation probabilities. The second is the ordering of the neutrino mass eigenstates, commonly referred to as the neutrino mass hierarchy.
+
+Because oscillation experiments are sensitive only to differences in squared masses, they cannot determine the absolute neutrino mass scale. As a result, two distinct mass orderings remain consistent with current data. In the normal ordering scenario, the third mass eigenstate is the heaviest, with $m_3 > m_2 > m_1$. In the inverted ordering scenario, the third mass eigenstate is the lightest, with $m_2 > m_1 > m_3$. These two possibilities correspond to opposite signs of the atmospheric mass splitting, $\Delta m^2_{31}$ or $\Delta m^2_{32}$, which current experiments have not yet been able to determine conclusively.
+
+Table~\ref{tab:osc_pars} summarizes the current best fit values and one standard deviation uncertainties for the neutrino oscillation parameters, reproduced from the NuFIT version 6.0 global analysis~\cite{Esteban_2024}. This fit incorporates data from a wide range of experiments, including atmospheric neutrino measurements from Super-Kamiokande, and provides results for both normal and inverted mass orderings. The solar mass splitting $\Delta m^2_{21}$ is common to both orderings, while the atmospheric mass splitting $\Delta m^2_{3k}$ differs in sign depending on the assumed hierarchy.  In Table~\ref{tab:osc_pars}, the notation $\Delta m^2_{\mathrm{sol}}$ refers to $\Delta m^2_{21}$, while $\Delta m^2_{\mathrm{atm}}$ denotes either $\Delta m^2_{31}$ or $\Delta m^2_{32}$, depending on the ordering. This convention reflects the historical sensitivity of solar neutrino experiments to $\Delta m^2_{21}$ and of atmospheric neutrino experiments to $|\Delta m^2_{31}| \approx |\Delta m^2_{32}|$.
+
+\renewcommand{\arraystretch}{1.0}
+\setlength{\tabcolsep}{8pt}
+
+\begin{table}[t!]
+  \centering 
+  %\begin{threeparttable}
+    \begin{tabular}{ccc}
+    %{m{15mm} m{70mm} m{18mm}}
+    \midrule
+    Oscillation parameter & Normal & Inverted\\
+    \midrule\midrule
+    $\Delta m_{21}^2 [10^{-5}\, \mathrm{eV^2}]$  &  $7.49^{+0.19}_{-0.19}$ &    $7.49^{+0.19}_{-0.19}$ \\
+     & & \\
+    $\Delta m_{3k}^2 [10^{-3}\, \mathrm{eV^2}]$  &  $+2.513^{+0.021}_{-0.019}$ &    $-2.484^{+0.020}_{-0.020}$ \\
+     & & \\
+    $\sin^2{\theta_{12}}$  &  $0.308^{+0.012}_{-0.011}$ &    $0.308^{+0.012}_{-0.011}$ \\
+     & & \\
+    $\sin^2{\theta_{23}}$  &  $0.470^{+0.17}_{-0.13}$ &    $0.550^{+0.012}_{-0.015}$ \\
+     & & \\
+    $\sin^2{\theta_{13}}$  &  $0.02215^{+0.00056}_{-0.00058}$ &    $0.02231^{+0.00056}_{-0.00056}$ \\
+     & & \\
+    $\delta_{CP}[^{\circ}]$  &  $212^{+26}_{-41}$ &    $274^{+22}_{-25}$ \\
+    \midrule
+    \end{tabular}
+    %\end{threeparttable}
+    \caption[Best-fit values $\pm 1\sigma$ from a global analysis of neutrino oscillation parameters.]{Best-fit values $\pm 1\sigma$ from a global analysis of neutrino oscillation parameters reproduced from NuFIT version 6.0 in Reference~\cite{Esteban_2024}.  Note that $\Delta m^2_{3k} \equiv \Delta m^2_{31} >0$ for normal ordering and $\Delta m^2_{3k} \equiv \Delta m^2_{32} <0$ for inverted ordering. }
+     \label{tab:osc_pars}
+\end{table}
+
+Future experiments are expected to resolve the remaining ambiguities in the oscillation framework. Medium baseline reactor experiments such as JUNO~\cite{Paoloni:2024atc} aim to determine the mass ordering through precision measurements of oscillation interference effects. Long baseline accelerator experiments, including Hyper-Kamiokande~\cite{AliAjmi:2024xus} and DUNE~\cite{Gil-Botella:2024duf}, are designed to probe both the mass ordering and the value of $\delta_{CP}$ through detailed studies of neutrino and antineutrino appearance channels.
+
+Equation~\ref{tp3} shows that neutrino oscillation experiments are sensitive only to differences in the squared neutrino masses, $\Delta m^2_{jk}$, and provide no information on the absolute values of the individual mass eigenstates. As a result, determining the absolute neutrino mass scale requires experimental approaches that are complementary to oscillation measurements.
+
+One such approach is pursued by the KATRIN experiment, which directly probes the kinematics of $\beta$ decay. KATRIN measures the energy spectrum of electrons emitted in the decay of tritium, which has a $Q$-value of 18.6\,keV. If neutrinos are massive, a small but measurable fraction of the available decay energy is carried away by the neutrino. Precise measurements of the endpoint of the electron energy spectrum therefore place a constraint on the effective mass of the electron flavor neutrino, which is a superposition of the neutrino mass eigenstates,
+\begin{equation}
+    m_{\nu_e} = \sqrt{\sum_{i} |U_{ei}|^2 m_i^2}.
+\end{equation}
+
+Achieving sensitivity to this quantity is experimentally challenging and requires sub electron volt energy resolution near the endpoint of the beta decay spectrum. The most stringent direct limit to date has been set by the KATRIN experiment, which reports $m_{\nu_e} < 0.8$\,eV at 90\% confidence level~\cite{KATRIN:2021uub}. Future experiments, such as Project~8, aim to further improve this sensitivity using Cyclotron Radiation Emission Spectroscopy, a technique that measures the frequency of radiation emitted by beta decay electrons spiraling in a magnetic field~\cite{PhysRevLett.131.102502}.
+
+An alternative, indirect probe of neutrino masses is provided by cosmological observations. Neutrinos influence the formation and evolution of large scale structure in the universe due to their relativistic nature in the early universe and their contribution to the total matter density at later times. Measurements of the Cosmic Microwave Background, Baryon Acoustic Oscillations, and Redshift Space Distortions can therefore be combined to constrain the sum of the neutrino mass eigenstates, $\sum m_i = m_1 + m_2 + m_3$. Currently, the strongest cosmological constraint yields an upper limit of $\sum m_i < 0.09$\,eV at 95\% confidence level~\cite{PhysRevD.104.083504}.
+
+A third and potentially most sensitive approach to determining the absolute neutrino mass scale involves $0\nu\beta\beta$ decay. Observation of this decay would not only provide access to an effective neutrino mass parameter, but would also demonstrate the violation of lepton number and establish the Majorana nature of neutrinos. Before discussing aspects of $2\nu\beta\beta$ and $0\nu\beta\beta$ decay, we will first review the theoretical framework of neutrino mass generation that motivates and underpins these searches.
+
+
+
+\section{Neutrino Mass}
+The discovery of neutrino oscillations\cite{Nufit} demonstrates that neutrinos have nonzero masses and that flavor eigenstates are mixtures of mass eigenstates. The exact mechanism by which neutrinos acquire mass is unknown. Several extensions to the SM have been proposed, as discussed below.
+
+Here we follow the derivation in \cite{giunti2007}. Landau, Lee and Yang, and Salam showed that a massless fermion can be described by a chiral field via their two-component theory of massless neutrinos. Let us begin this derivation with the Dirac Equation:
+\begin{equation}
+    (i\gamma^\mu \partial_\mu - m)\psi = 0
+\end{equation}
+given a fermion field, $\psi = \psi_L+\psi_R$, the Dirac equation is equivalent to the system of equations:
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_L=m\psi_R
+	\label{eq:left_weyl}
+\end{equation}
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_R=m\psi_L
+	\label{eq:right_weyl}
+\end{equation}
+for the chiral fields, $\psi_L$ and $\psi_R$, whose space-time evolutions are coupled by the mass $m$.
+
+If the fermion is massless, the two equations, \ref{eq:left_weyl} and \ref{eq:right_weyl}, are decoupled:
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_L=0 
+\end{equation}
+\begin{equation}
+	i\gamma^\mu \partial_\mu\psi_R=0
+\end{equation}
+Thus, a massless fermion can be completely described by a single chiral field (either left-handed or right-handed) which has only two independent components. The equations, \ref{eq:left_weyl} and \ref{eq:right_weyl} are known as the Weyl equations and the spinors $\psi_L$ and $\psi_R$ are the Weyl spinors.
+
+The simplest form of the SM incorporates what is known as the two-component theory of massless neutrinos. Whereby the neutrino is entirely described by the left-handed Weyl spinor which participates in the weak interaction, $\nu_L$, and there are no $\nu_R$ fields.
+
+\subsection{Dirac Masses}
+If right-handed neutrino fields $\nu_{R}$ exist, a Dirac mass term, just like the one for the charged leptons, can be written:
+\begin{equation}
+    -\mathcal{L}_{\text{Dirac}} = Y_{ij}^\nu \overline{L}_{Li} \tilde{\Phi} \nu_{Rj} + \text{h.c.}
+\end{equation}
+where $\tilde{\Phi} = i \sigma_2 \Phi^*$. This yields Dirac masses $m^\nu_{ij} = Y^\nu_{ij} v/\sqrt{2}$. However, the tiny observed neutrino masses ($m_\nu < 1$ eV) would require $Y^\nu_{ij} < 10^{-12}$. The huge discrepancy between the neutrino masses and the other fermions imply the existence of some underlying mechanism which suppresses the neutrino masses. In the abscence of such explanation, the light neutrino masses bring up a naturalness problem. Many neutrino mass models have been proposed that produce light neutrino masses via a more natural mechanism. 
+
+\subsection{Majorana Neutrino Mass}
+Since neutrinos have indeed been shown to have mass, the two-component theory is insufficient. In 1937, Ettore Majorana proposed a new solution to the Dirac equation. His insight was that a massive fermion could be described with a single spinor instead of the two, $\psi=\psi_L+\psi_R$. Majorana made the assumption that the two spinors are not independent, but rather:
+\begin{equation}
+	\psi_R=C\bar{\psi_L}^T
+\end{equation} 
+where $C$ is the charge conjugation operator. By observing that $C$ and the left-handed projection operator $P_L$ have the following relationship,
+\begin{equation}
+	P_L(C\psi_L^T)=0
+\end{equation}
+one can clearly see that $C\psi_L^T$ is a right-handed field. Charge conjugating a left-hadned Weyl spinor converts the spinor to its right-handed form. Modifying the Dirac equation, we now obtain the Majorana equation for the chiral field:
+\begin{equation}
+	i\gamma^\mu\partial_\mu\psi=m\psi^C
+\end{equation}
+$\psi^C$ represents the charge conjugated Majorana field. This implies that, $\psi=\psi_L+\psi_L^C$, which finally leads to the Majorana relation:
+\begin{equation}
+	\psi=\psi^C
+	\label{eq:majorana}
+\end{equation}
+
+Equation \ref{eq:majorana} implies that the particle $\psi$ is its own antiparticle. Since neutrinos interact only through weak interactions, and are electrically neutral, the charge parity of the neutrino field has no physical meaning and can be chosen arbitrarily. Among the elementary fermions, only the neutrinos are neutral and have the potential to be Majorana particles. 
+
+Should the neutrino be Majorana, the neutrino and antineutrino would only be distinguishable by their helicities. It is customary to refer to negative helicity neutrinos as "neutrinos" and positive helicity neutrinos as "antineutrinos".
+
+With majorana neutrinos, the simplest mass term one could construct with SM fields and respecting SM symmetries is the lepton number violating term:
+\begin{equation}
+	\mathcal{L}_5=\frac{Z_{ij}^\nu}{\Lambda}(\bar{L_L^i} \bar{\Phi})(\bar{\Phi}^T L_L^j)+h.c.
+	\label{eq:eff_lagrangian}
+\end{equation}
+Here, $Z_{ij}^\nu$ is a 3x3 matrix which controls the mixing between the neutrino masses for each flavor combination, along with the Yukawa coupling strengths. Finally, $\Lambda$ is the high energy scale at which we should expect new physics, which suppresses the neutrino masses. This lagrangian extension generates the Majorana neutrino mass term:
+\begin{equation}
+	\mathcal{L}_{M_\nu}=\frac{Z_{ij}^\nu}{2}\frac{v^2}{\Lambda}\bar{\nu}_{L_i}\nu^C_{L_j}+h.c.
+\end{equation}
+With the majorana neutrino mass matrix:
+\begin{equation}
+	\mathcal{M}_\nu=Z_{ij}^\nu\frac{v^2}{\Lambda}
+\end{equation}
+
+Comparing the effective lagrangian, equation \ref{eq:eff_lagrangian}, to the charged lepton mass terms, equation \ref{eq:fermion_mass}, our new effective Lagrangian term has two Higgs fields to couple to the extra $L_L$ field. This raises the dimension of this operator to 5, rendering the term non-renormalizable while following the SM gauge transformations. This term hints at new physics beyond the Standard Model at the mass scale $\Lambda$. Also, note that this term is the only possible dimension-5 Lagrangian term to generate neutrino mass. The new physics mass scale, $\Lambda$, suppresses the neutrino masses by $\frac{v^2}{\Lambda}$. This suppression of the neutrino masses has the same structure as the masses produced by the seesaw mechanism that will be discussed in the next section. 
+
+\subsection{Seesaw Mechanism}
+We will now discuss one interesting extension of the Standard Model which produces light active neutrinos, the addition of one or more heavy sterile neutrinos. Adding $m$ new sterile neutrinos, $\nu_{si}\ (i=1,...m)$, leads to two types of mass terms.
+\begin{equation}
+	-\mathcal{L}_{M_\nu}=M_{D_{ij}}\bar{\nu}_{si}\nu_{L_j}+\frac{1}{2}M_{N_{ij}}\bar{\nu}_{si}\nu_{sj}^c+h.c.
+	\label{eq:seesaw_lagrangian}
+\end{equation}
+Here, $M_D$ is a complex matrix of dimension $m\times 3$ and $M_N$ is a symmetric $m\times m$ matrix.
+
+The first term is often referred to as a Dirac mass term, after spontaneous symmetry breaking, the neutrinos acquire a mass through Yukawa couplings, similar to the charged fermions and as discussed in an earlier section. 
+\begin{equation}
+    Y_{ij}^\nu \bar{\nu}_{si} \tilde{\phi}^\dagger L_{Lj} \;\;\Rightarrow\;\; M_{D_{ij}} = Y_{ij}^\nu \frac{v}{\sqrt{2}},
+\end{equation}
+The second term is a lepton number violating Majorana mass term.
+
+Eq. \ref{eq:seesaw_lagrangian} can be rewritten as:
+\begin{equation}
+    -\mathcal{L}_{M_\nu} = \frac{1}{2}
+    \begin{pmatrix}
+        \overline{\nu_L} & \overline{\nu_s}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & M_D^T \\
+        M_D & M_N
+    \end{pmatrix}
+    \begin{pmatrix}
+        \nu_L^c \\
+        \nu_s^c
+    \end{pmatrix}
+    + \text{h.c.}
+    \equiv \overline{\nu} M_\nu \nu + \text{h.c.}
+	\label{eq:seesaw_matrix}
+\end{equation}
+where $\vec{\nu}=\left(\vec{\nu}_L,\vec{\nu^c}_s\right)^T$ is a $(3+m)$-dimensional vector. The matrix $M_\nu$ is complex and symmetric, and can be diagonalized producing mass eigenstates:
+\begin{equation}
+	(V^\nu)^TM_\nu V^\nu=diag(m_1,m_2,...,M_{3+m})
+\end{equation}
+\begin{equation}
+	\vec{\nu}_{mass} = (V^\nu)^\dagger\vec{\nu}
+\end{equation}
+Eq. \ref{eq:seesaw_matrix} can be rewritten in terms of the mass eigenstates:
+\begin{align}
+    -\mathcal{L}_{M_\nu} &= \frac{1}{2} \sum_{k=1}^{3+m} m_k \left( \bar{\nu}_{\text{mass},k}^c \nu_{\text{mass},k} + \bar{\nu}_{\text{mass},k} \nu_{\text{mass},k}^c \right) \\
+    &= \frac{1}{2} \sum_{k=1}^{3+m} m_k \overline{\nu}_{Mk} \nu_{Mk},
+\end{align}
+where $\nu_{Mk} = \nu_{\text{mass},k} + \nu_{\text{mass},k}^c$. Thus, the Majorana condition is satisfied, $\nu_M=\nu_M^c$, and are referred to as Majorana neutrinos. 
+
+In this new neutrino mass basis, the original weak-interacting neutrino fields are:
+\begin{equation}
+	\nu_{Li} = P_L\sum_{j=1}^{3+m}V_{ij}^\nu\nu_{M_j},\ i=1,2,3
+\end{equation}
+
+In the specific case, where the $M_N$ mass eigenvalues are much higher than the scale of electroweak symmetry breaking, $v$, the diagonalization of $M_\nu$ leads to three light neutrinos, $\nu_l$, and $m$ heavy neutrinos $N$:
+\begin{equation}
+	-\mathcal{L}_{M_\nu}=\frac{1}{2}\bar{\nu}_lM^l\nu_l+\frac{1}{2}\bar{N}M^hN
+\end{equation}
+where
+\begin{align}
+    M^l &\simeq -V_l^T M_D^T M_N^{-1} M_D V_l, \\
+    M^h &\simeq V_h^T M_N V_h,
+\end{align}
+\begin{equation}
+    V^\nu \simeq
+    \begin{bmatrix}
+        \left(1 - \frac{1}{2} M_D^\dagger M_N^{*-1} M_N^{-1} M_D \right) V_l & M_D^\dagger M_N^{*-1} V_h \\
+        -M_N^{-1} M_D V_l & \left(1 - \frac{1}{2} M_N^{-1} M_D M_D^\dagger M_N^{*-1} \right) V_h
+    \end{bmatrix},
+\end{equation}
+where $V_l$ and $V_h$ are $3\times 3$ and $m\times m$ matrices respectively that parameterize neutrino mixing between the light nad heavy states. $V_l$ could be thought of as the PMNS, Pontecorve-Maki-Nakagawa-Sakata, matrix which we will discuss in a later section in more detail. We can see that the heavier mass states are proportional to $M_N$, while the lighter mass states are proportional to $M_N^{-1}$. This behavior is where the seesaw mechanism gets its name. This seesaw mechanism is of Type I specifically, where new sterile neutrinos are added. The seesaw mechanism also produces heavy states that are mostly right-handed, while the light states are mostly left-handed.
+
+Thus, the Type I seesaw mechanism is a promising extension to the SM that produces light, weakly interacting, left-handed neutrinos and heavy, sterile, right-handed neutrinos, while providing a more natural suppression of the active neutrino masses. Not to mention that these heavy, right-handed steriles could also be candidates for dark matter.
+\subsection{Lepton Number Violation and Leptogenesis}
+A key consequence of Majorana neutrinos is lepton number violation. Lepton number violation is what is known as an accidental global symmetry in the Standard Model. Where the symmetry is not enforced when constructing the model, but comes about simply because no terms that violate it were included. Many beyond the Standard Model theories include lepton number violation.
+
+Lepton number violation also plays a key role in leptogenesis. Leptogenesis is a proposed solution to one of the most fundamental questions in elementary physics: Why is there more matter than antimatter?
+
+A thorough review of the phenemology of matter-antimatter asymmetry is beyond the scope of this chapter. In lieu of that, here is a highly condensed description of the matter-antimatter asymmetry of our universe.
+
+The value of the baryon asymmetry of the Universe is inferred from two independent observations. The first is of the abundances of light elements, $D$, $^3He$, $^4He$, and $^7Li$, after big bang nucleosynthesis. These abundances depend on the assymmetry parameter, $\eta$, measured to be \cite{Davidson_2008}:
+\begin{equation}
+	\eta^{BBN} \equiv \frac{n_B-n_{\bar{B}}}{n_\gamma}|_0=4.7-6.5\times 10^{-10}
+\end{equation}
+The second observation is of the cosmic microwave background (CMB) anisotropies \cite{Hu_2002}. A key CMB observable is $c_s$, the speed of sound in the photon-baryon fluid. Measuring the temperature fluctuations in the CMB constrain the baryon energy density, $\rho_B$, which is related to $\eta$ by:
+\begin{equation}
+	\Omega_B=\frac{\rho_B}{\rho_{crit}}
+\end{equation}
+\begin{equation}
+	\eta^{CMB}=2.74\times 10^{-8}\Omega_B h^2=6.1^{+0.3}_{-0.2}\times 10^{-10}
+\end{equation}
+where $h=H_0/100$ km $s^{-1}$ Mpc$^{-1}=0.682\pm 0.0028$ is the present Hubble parameter\cite{DESI}. The impressive consistency between the nucleosynthesis and CMB constraints on the baryon density of the Universe is a triumph of hot big-bang cosmology.
+
+Sakharov outlined three conditions for generating a dynamic baryon asymmetry, now referred to as the Sakharov conditions.
+\begin{enumerate}
+	\item Baryon number violation
+	\item C and CP violation
+	\item Out of equilibrium dynamics
+\end{enumerate}
+While the Standard Model features all three ingredients, no SM mechanism generates a large enough baryon asymmetry. Leptogenesis is a beyond the Standard Model theory that introduces the previously discussed singlet neutrinos. Along with new sphaleron processes that can convert lepton number violation into baryon number violation, The Type I seesaw sterile neutrions play a pivotal role in Leptogenesis.
+
+% \subsection{Neutrino Mass Hierarchy}
+% We've discussed open questions relating to neutrino nature; whether they are dirac or majorana, what is the absolute neutrino mass scale, and their potential role in resolving matter-antimatter asymmetry in the Universe. Another open question has to do with the relative ordering of the light neutrino masses.
+
+% In the simplified 2-flavor case, the probability of a neutrino "surviving" or being observed in the flavor state in which it was produced, is:
+% \begin{equation}
+%     P(\nu_e\rightarrow \nu_e)=1-\frac{1}{2}\sin^22\theta_{12}\sin^2\left(\frac{\delta m^2_{21}}{4E}L\right)
+% \end{equation}
+% Note that while the survival probability or one minus the oscillation probability is is dependent on the absolute value of the squared-mass difference, $\delta m_{ij}^2=m_i^2-m_j^2$, it is insensitvie to its' sign. Solar neutrino oscillation experiments have measured the following squared- mass difference:
+% \begin{equation}
+% 	\delta m_{21}^2=\delta m^2_{sol}\approx 7.39^{+0.21}_{-0.20} \times 10^{-5} eV^2
+% \end{equation}
+% while observation of atmospheric oscillation data results in:
+% \begin{equation}
+% 	|\delta m_{13}^2| = |\delta m_{23}^2| = \delta m_{atm}^2\approx 2.449^{+0.032}_{-0.030} \times 10^{-3} eV^2
+% \end{equation}
+% As mentioned previously, oscillation experiments demonstrated that neutrinos have mass, however these experiments only measure the mass-squared differences.
+
+% While observation of neutrino oscilation enhancement in matter determined the sign of $\delta m_{21}^2$, the signs of $\delta m_{13}^2$ and $|\delta m_{23}^2|$ are unknown. This leaves two possible orderings of the three neutrino mass eigenstates.
+% \begin{itemize}
+% 	\item \textbf{Inverted Ordering} with negative $\delta m_{13}^2$ and $m_3 < m_1 < m_2$
+% 	\item \textbf{Normal Ordering} with positive $\delta m_{13}^2$ and $m_1<m_2<m_3$
+% \end{itemize}
+% Where $m_1$ is the neutrino mass eigenstate with the highest $\nu_e$ flavor content. According to combined T2K, Super-K atmospheric analysis, the normal ordering is slightly favored \cite{wester_2004}. 
+
+\section{Neutrinoless Double Beta Decay}
+
+Neutrinoless Double Beta Decay, \0nbb, is a hypothesized process that has implications for all the open questions about neutrino nature discussed so far. It is the most sensitive probe into whether neutrinos are Dirac or Majorana. 
+\begin{equation}
+	(A,Z)\rightarrow (A, Z+2)+2e^-
+\end{equation}
+This lepton number violating process is shown in Fig \ref{fig:0nbb}.
+
+Double Beta Decay, \2nbb, is a rare nuclear process by which two neutrons simultaneously undergo beta decay, emitting a neutrino and electron. First studied by Maria Goeppert-Mayer in 1935, \2nbb is a Standard Model process that has now been observed in multiple isobaric nuclei, nuclei with even numbers of protons and neutrons.
+\begin{equation}
+	(A,Z)\rightarrow (A,Z+2)+2e^-+2\bar{\nu}_e
+\end{equation}
+In some of these isotopes, single beta decay is energetically forbidden. Because the isotope a single-beta decay step away is at a higher energy level than the isotope two steps away. Figure \ref{fig:nuclear_mass} shows how isobaric nuclei can produce this arrangement of nuclear states. As a second-order weak interaction, \2nbb, is the slowest proess in the universe that has been experimentally observed. 
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (n1) at (0,1.5) {$n$};
+      \vertex (n2) at (0,-1.5) {$n$};
+      \vertex (v1) at (2,1.5);
+      \vertex (v2) at (2,-1.5);
+      \vertex (w1) at (4,0.75);
+      \vertex (w2) at (4,-0.75);
+      \vertex (p1) at (6,2) {$p$};
+      \vertex (p2) at (6,-2) {$p$};
+      \vertex (e1) at (6,0.75) {$e^-$};
+      \vertex (e2) at (6,-0.75) {$e^-$};
+      
+      \diagram* {
+        (n1) -- [fermion] (v1) -- [fermion] (p1),
+        (n2) -- [fermion] (v2) -- [fermion] (p2),
+        (v1) -- [boson, edge label=$W$] (w1) -- [fermion] (e1),
+        (v2) -- [boson, edge label'=$W$] (w2) -- [fermion] (e2),
+        (w1) -- [fermion, edge label=$\nu$] (w2),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{Feynman diagram for neutrinoless double beta decay ($0\nu\beta\beta$).}
+  \label{fig:0nbb}
+\end{figure}
+
+In \0nbb, the final state electrons carry away almost the entire decay energy, while the energy is split between electrons and neutrinos in \2nbb. When the easier to observe electron kinetic energies are accumulated, the distribution is as shown in Figure \ref{fig:2nbb_energy}. The sharp peak at the endpoint of the \2nbb decay spectrum is the experimental signature of \0nbb.
+
+The key observable in a \0nbb decay experiment is the half-life of \0nbb. A predicition for the half-life is given by:
+\begin{equation}
+	|T^{0\nu}_{1/2}|^{-1}=G_{0\nu}|M_{0\nu}|^2\left(\frac{m_{\beta\beta}}{m_e}\right)^2
+	\label{eq:half-life}
+\end{equation}
+where $G_{0\nu}$ is the phase space integral accounting for the final states of the elctrons and daughter atom, $|M_{0\nu}|$ is the nuclear matrix element of the transition, and $m_{\beta\beta}$ is known as the effective Majorana mass of $\nu_e$,
+\begin{equation}
+m_{\beta\beta} = \left| \sum_i m_i U_{ei}^2 \right| = 
+\left\{
+\begin{array}{ll}
+m_0 c_{12}^2 c_{13}^2 + \sqrt{\Delta m_{21}^2 + m_0^2} s_{12}^2 c_{13}^2 e^{2i(\eta - \eta_1)} \\
+\quad + \sqrt{\Delta m_{32}^2 + \Delta m_{21}^2 + m_0^2} s_{13}^2 e^{-2i(\delta_{\text{CP}} + \eta_1)} & \text{in NO,} \\[2ex]
+m_0 s_{13}^2 + \sqrt{m_0^2 - \Delta m_{32}^2} s_{12}^2 c_{13}^2 e^{2i(\eta_2 + \delta_{\text{CP}})} \\
+\quad + \sqrt{m_0^2 - \Delta m_{32}^2 - \Delta m_{21}^2} c_{12}^2 c_{13}^2 e^{2i(\eta_1 + \delta_{\text{CP}})} & \text{in IO,}
+\end{array}
+\right.
+\end{equation}
+Thus, the effective majorana mass is sensitive to the PMNS parameters which govern neutrino oscillation, such as the neutrino masses and mixing angles. It is also sensitive to the majorana CP violating phases, $\eta_1$ and $\eta_2$, which neutrino oscillations are independent of.
+
+As the Majorana phases are unknown, there is a range of allowed $m_{\beta\beta}$ bounded by the oscillation parameters. Figure \ref{fig:klz_0nu_limit} shows how the allowed regions vary over $m_{lightest}$.
+
+\subsection{Nuclear Matrix Elements}
+The determination of the nuclear matrix element $M_{0\nu}$ is a theoretical challenge in connecting the experimental observable, $T^{0\nu}_{1/2}$ to the neutrino mass. There are several nuclear structure methods for calculating NMEs, and there reamin signficant differences, upto factors of 3, between the NME values calculated with different methods, and sometimes even between NME values calculated with the same methods. Figure \ref{fig:NMEs} demonstrate the large theoretical uncertainty in \0nbb nuclear matrix elements.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{NMEs.png}
+	\caption{Results from various NME calculation of $M_{0\nu}$ on particular \0nbb decaying isotopes versus atomic mass. Figure taken from \cite{li_phd}}
+	\label{fig:NMEs}
+\end{figure}
+
+
+\subsection{Black Box Theorem for $0\nu\beta\beta$ Decay}
+The half-life definition of Eq. \ref{eq:half-life} assumes the light neutrino exchange mechanism for \0nbb shown in Figure \ref{fig:0nbb}. Under this assumption the interaction strength is governed by the effective Majorana mass, $m_{\beta\beta}$. While there are other possible mechanisms that could facility \0nbb, a key insight was given by Schecther and Valle in \cite{blackbox}. In what is now known as the famous Black Box Theorem, they propose that\cite{merle_blackbox}:
+\begin{itemize}
+	\item Should \0nbb be observed, its Feynman diagram must feature two electrons, two up-quark fields, and two down-quark fields. The process connecting these fields is arbitrary and is referred to as the "black box process". The theorem argues that this "black box process" effectively establishes the dimension-9 operator
+	\item The up and down quarks are contracted by the W boson
+	\item On the other end of the W boson propagators, electron fields are converted into neutrino fields
+	\item The entire diagram can be rotated to turn into a process that converts anti-neutrinos to neutrinos as shown in Figure \ref{fig:blackbox}
+	\item Finally, the possible cancelation of this process by other diagrams is dismissed by naturalness arguments.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{blackbox.png}
+	\caption{Depiction of the \0nbb black box theorem, the black box represents an arbitrary \0nbb process, which can be used to convert antineutrinos into neutrinos. Figure taken from \cite{merle_blackbox}}
+	\label{fig:blackbox}
+\end{figure}
+
+The key conclusion of the black-box theorem is that should \0nbb be observed, even if the observed mechanism is not light majorana neutrino exchange, the neutrino is a majorana particle. It should be noted that since the theorem's original proposal, counterexamples have been found allowing \0nbb without majorana neutrinos, but the theorem still indicates potential links between \0nbb, Majorana mass, and lepton number violation more broadly.
+
+\subsection{Double Beta Decay to Excited States}
+A related physics process can provide further experimental input into the NME calculations, and aid in the interpretation of \0nbb experiment results, \2nbb to excited states, or \2nbb$^*$. \2nbb$^*$ is a SM process in which the parent isotope undergoes double-beta decay but transitions to an excited state of the daughter nucleus instead of the ground state. These decays are suppressed by orders of magnitude compared to decays to ground states because of the reduced phase space from smaller $Q$ values\cite{exstate_stats}. Mirroring the status of NME calculations, predictions for the decay rates into excited states vary by multiple orders of magnitude, see Figure \ref{fig:ex_halflife}. An observation of this decay in Xenon could inform NME calculations and reduce the theoretical uncertainties. The following discussion of the relationship between \2nbb and \0nbb NMEs follows \cite{excited_nme} closely. This discussin describes how the two calculations are related in the nuclear shell model (NSM) and proton-neutron quasiparticle random-phase approximation (pnQRPA) frameworks.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=1.3]{halflife_pred_ex.jpg}
+	\caption{Predictions of $T_{1/2}^{2\nu^*}$ using various NME calculation methods. Figure taken from \cite{exhalflife_calc}.}
+	\label{fig:ex_halflife}
+\end{figure}
+
+The physical signature of \2nbb$^*$ is of a \2nbb decay immediately, few pico-second delay, followed by a gamma cascade as the daughter nucleus relaxes into its ground state. The task of detecting this rare process becomes one of either particle identification or resolving a distortion in the much larger decay to ground state background.
+
+The \2nbb decay half-life, to a very good approximation, depends on a single NME \cite{excited_nme}.
+\begin{equation}
+    M^{2\nu}=-\sum_k\frac{(0^+_f||\sum_a\tau^-_a\sigma_a||1^k_+)(1^k_+||\sum_b\tau^-_b\sigma_b||0^+_i)}{[E_k-(E_i+E_f)/2]/m_e}
+\end{equation}
+where $a$ and $b$ indices run over all nucleons, the isospin operator $\tau^-$ turns neutrons into protons, $\sigma$ is the spin operator, and the denominator involves the energies of the initial, final, and each $kth$ intermediate $1^+$ state. For \0nbb, considering the best motivated light neutrino exchange mechanism, the NME is usually written in terms of three spin structures:
+\begin{equation}
+    M^{0\nu}_L=M^{0\nu}_{GT}-M^{0\nu}_F+M^{0\nu}_T
+\end{equation}
+The three spin structures are referred to Gamow-Teller ($M^{0\nu}_{GT}$), Fermi ($M^{0\nu}_{F}$), and tensor ($M^{0\nu}_{T}$). They correspond to the operators $\mathcal{O}^F_{ab}=\mathds{I}$, $\mathcal{O}^{GT}_{ab}=\sigma_a\cdot\sigma_b$, $\mathcal{O}^T_{ab}=3(\sigma_a\cdot\hat{r}_{ab})(\sigma_b\cdot\hat{r}_{ab})-\sigma_a\cdot\sigma_b$ used in their definitions:
+\begin{equation}
+    M^{0\nu}_K=\sum_{k, ab} (0^+_f||\mathcal{O}^K_{ab}\tau^-_a\tau^-_bH_K(r_{ab})f^2_{SRC}(r_{ab})||0^+_i)
+\end{equation}
+A factor to note here is $r_{ab}$ the distance between nucleon $a$ and nucleon $b$. Used in the neutrino potential:
+\begin{equation}
+    H_K(r_{ab})=\frac{2R}{\pi g^2_A}\int_0^\infty\frac{h_Kj_\lambda(pr_{ab})p^2dp}{\epsilon_K}
+\end{equation}
+with $\epsilon_K=p(p+E_k-(E_i+E_f)/2)$, $g_A=1.27$, and $R=1.2A^{1/3}$fm
+with nucleon number, $A$. It is in these radial distributions, that give the neutrino potentials structure, that the relationship between \0nbb and \2nbb can be explored.
+
+We note that the NME radial distributions are qualitatively similar and that they satisfy:
+\begin{equation}
+    M^{0\nu}_L(1b)=\int^\infty_0 C^{0\nu}(r)dr
+\end{equation}
+satisfy:
+\begin{equation}
+    M^{2\nu}=\int^\infty_0 C^{2\nu}(r)dr
+\end{equation}
+Once again we can split the integral into three terms.
+\begin{equation}
+    C^{0\nu}(r)=C^{0\nu}_{GT}(r)-C^{0\nu}_F(r)+C^{0\nu}_T(r)
+\end{equation}
+\begin{equation}
+    C^{0\nu}_K=\sum_{k,ab}(0^+_f||\mathcal{O}^K_{ab}\tau^-_a\tau^-_bH_K(r_{ab})f^2_{SRC}(r_{ab})\delta(r-r_{ab})||0^+_i)
+\end{equation}
+Jokineimi et.al. found a strong correlation in the radial distributions of \2nbb and \0nbb nuclear matrix elements.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{nme_radial.png}
+	\caption{Radial distributions of \0nbb (top) and \2nbb (bottom) NMEs of $^{76}$Ge obtained via pnQRPA. Figure taken from \cite{excited_nme}.}
+	\label{fig:nme_radial}
+\end{figure}
+
+While neither \2nbb or \2nbb$^*$ has had their decay rates successfully predicted. In fact, the simplest model NMEs are usually adjusted with a "quenching" factor to match the observations of \2nbb half-lives. Without these quenching factors, the models consistently overpredict the half-lives. Close correlation between the NMEs of \2nbb and \0nbb have been demonstrated. Figure \ref{fig:corr_2nu_0nu} shows the correlations between \2nbb and \0nbb NME as calculated by two different methods.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{corr_2nu_0nu.png}
+	\caption{Correlation of \2nbb and \0nbb NME as calculated by NSM (Nuclear Shell Model) and pnQRPA (proton-neutron quasiparticle random-phase approximation) methods. Figure taken from \cite{exstate_corr}.}
+	\label{fig:corr_2nu_0nu}
+\end{figure}
+
+These theoretical findings motivates a better understanding of \2nbb and \2nbb$^*$ to aid in theoretical calculations of $M^{0\nu}$, and determination of Majorana neutrino mass.
+
+
+\section{Double Beta Decay Experiments}
+\0nbb if it exists has an incredibly long half-life greater than $10^{26}$ years. Should it be discovered, \0nbb would be the slowest natural process observed experimentally. To successfully carry out this rare event search, \0nbb experiments must be designed with crucial criteria in mind:
+\begin{itemize}
+	\item \textbf{High Energy Resolution:} Distinguishing the \0nbb peak at the \2nbb endpoint requires precise energy resolution to reduce ROI (region of interest) contamination from the \2nbb decay spectrum. Modern experiments on the forefront of this design criterion are achieving $\frac{\sigma_E}{E}\approxeq 0.1\%$ resolution, and completely suppressing the \2nbb background. 
+	\item \textbf{High Isotope Loading:} Maximizing the amount of double-beta decaying isotoped in the sensitive regions of the experiment is crucial for achieving sensitivity to long \0nbb half-lives in a reasonable timeframe, usually a decade of data-taking. Modern experiments are instrumenting about a metric ton of double-beta decaying isotope. The limiting factor to this criterion is often budgetary or enrichment capability.
+	\item \textbf{Low Unrelated Backgrounds:} Experiments need to be prepared in environments with low incidental radioactivity. This necessarily means deep underground facilities, with the experiments themselves being constructed with the highest standard of radiopure materials.
+\end{itemize}
+The current world leading limit on Majorana neutrino mass has been set by KamLAND-ZEN at $m_{\beta\beta} < (28-122) $ meV, at 90\% C.L. The limits on majorana neutrino mass based on multiple NME calculations can be seen in Figure \ref{fig:klz_0nu_limit}. It is readily apparent that the exact values of the NMEs drastically impact the significance of the latest experimental results. For the highest NMEs, the limits placed by KamLAND-ZEN enter the non-degnerate regions of inverted ordering phase space. While for the lower NMEs, the limits remain in the degenerate region. KamLAND-ZEN is the only \0nbb experiment to place limits in the inverted ordering region for any NME.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.35]{klz_0nu_limit.png}
+	\caption{Effective Majorana neutrino mass as a function of the lightest neutrino mass state $m_{lightest}$. The shaded regions are based on best-fit values of neutrino oscilation parameters for (a) the normal ordering (NO) and (b) the inverted ordering (IO), the lighter shaded regions indicate the $3\sigma$ ranges based on oscillation parameter uncertainties. The horizontal lines indicate 90\% C.L. limits on $m_{\beta\beta}$ considering multiple NME calculations. Figure taken from \cite{full_klz_0nu}.}
+	\label{fig:klz_0nu_limit}
+\end{figure}
+
+\subsection{Observations and Current Limits of $2\nu\beta\beta^*$}
+Double beta decay to excited states has been observed in only two isotopes, a minority of the isotopes known to undergo double-beta decay.
+\begin{itemize}
+    \item $^{100}Mo-^{100}Ru(0^+_1)$ : $T_{1/2}=5.9^{+0.9}_{-0.6}\times 10^{20}$ years
+    \item $^{150}Nd-^{150}Sm(0^+_1)$ : $T_{1/2}=1.33^{+0.45}_{-0.26}\times 10^{20}$ years
+\end{itemize}
+\2nbb$^*$ has yet to be observed in $^{136}Xe$ the double beta decaying isotope of the KamLAND-ZEN experiment and the focus of this thesis. The current world-leading limit on this process is $T^{2\nu}_{1/2}(0^+\rightarrow 0^+_1)>1.4\times 10^{24}$ years at 90\% C.L. set by the EXO-200 experiment. This work describes the latest analysis of KamLAND-ZEN 800 data which surpasses this limit.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.35]{exo200_fit.png}
+	\caption{EXO-200's fit over energy spectrum (left) and particle ID discriminator spectrum (right) in two data-taking phases of the excited state signal and background. The decay to excited states was not found, and a lower limit was placed. Figure taken from \cite{exo200}.}
+	\label{fig:exo200_fit}
+\end{figure}

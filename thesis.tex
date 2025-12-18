@@ -42,8 +42,8 @@
 %\newcommand{\latex}{\LaTeX\xspace}
 %==========================================================================%
 \usepackage[dvipsnames]{xcolor}
-\usepackage{hyperref}
-\hypersetup{breaklinks=true,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=cyan}
+\usepackage[hidelinks]{hyperref}
+%\hypersetup{breaklinks=true,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=cyan}
 \hypersetup{
  pdfauthor   = {Hasung Song <hwsong@bu.edu>},
  pdftitle    = {thesis.pdf},
@@ -53,11 +53,19 @@
  pdfproducer = {dvips + ps2pdf}
 }
 \usepackage{breakurl}
+\usepackage{cleveref}
 \usepackage{algorithm}
 \usepackage{tikz}
 \usepackage[compat=1.0.0]{tikz-feynman}
 \usepackage{dsfont}
+<<<<<<< HEAD
 \usepackage{multirow}
+=======
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{braket}
+\usepackage{booktabs}
+>>>>>>> 7dd2767fb1d4baaf1b42b2e83247a4290f2dd607
 %==========================================================================%
 % BEGIN
 %==========================================================================%
@@ -69,20 +77,23 @@
 \include{1_Chapter_Intro/chapter_intro}
 \cleardoublepage
 
-\include{2_Chapter_KLZ_Detector/chapter_klz_detector}
+\include{2_Chapter_Theory/chapter_theory}
 \cleardoublepage
 
-\include{3_Chapter_KLZ_Reconstruction_and_Selection/chapter_klz_reconstruction_and_selection}
+\include{3_Chapter_KLZ_Detector/chapter_klz_detector}
 \cleardoublepage
 
-\include{4_Chapter_Calibration/chapter_calibration}
+\include{4_Chapter_KLZ_Reconstruction_and_Selection/chapter_klz_reconstruction_and_selection}
 \cleardoublepage
 
-\include{5_Chapter_Backgrounds/chapter_backgrounds}
+\include{5_Chapter_Calibration/chapter_calibration}
+\cleardoublepage
 
-\include{6_Chapter_Analysis/chapter_analysis}
+\include{6_Chapter_Backgrounds/chapter_backgrounds}
 
-\include{7_Chapter_Conclusions/chapter_conclusions}
+\include{7_Chapter_Analysis/chapter_analysis}
+
+\include{8_Chapter_Conclusions/chapter_conclusions}
 \cleardoublepage
 
 %\appendix
