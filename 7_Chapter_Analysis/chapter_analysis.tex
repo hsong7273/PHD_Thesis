@@ -56,7 +56,11 @@ The detector energy scale varies over time as electronics fail, are repaired, an
 
 Finally, the uncertainty in the fiducial volume is the uncertainty in the true volume of events encapsulated by the fiducial volume selection of 157.49 cm. This is determined using the early KLZ-800 data, just after xenon dissolving work. As the xenon is introduced, $^{222}$Rn is incidentally introduced from the atmosphere, $^{222}$Rn has a half-life of 3.8 days, and its decay is soon followed by a $^{214}$Bi-Po sequential decays. Data for a month after xenon is introduced to the XeLS is used and the Bi-Po coincident events are analyzed. The volume ratio between spheres of 157.49cm and 192cm, the inner balloon radius, is 0.5686. While the ratio of Bi-Po events observed in these spherical regions is 0.5454. Since it is expected that the $^{222}$Rn is distributed uniformly throughout the XeLS, a 4.1\% difference is taken as the fiducial volume uncertainty.
 \section{Spectral Fit}
-The \twonustar decay rate is estimated by fitting background and signal models to the energy distribution of reconstructed KLZ-800 data. Namely, the energy distribution of events within the reduced FV of $(r<1.33m)$ and that pass the event selections discussed in Chapter \ref{chapter:reco_select}.
+The \twonustar  decay rate is estimated by fitting background and signal models to the energy distribution of reconstructed KLZ-800 data. Namely, the energy distribution of events within the reduced FV of $(r<1.33m)$ and that pass the event selections discussed in Chapter \ref{chapter:reco_select}.
+
+Unlike the \0nbb analysis \cite{klz800_arxiv}, the data is not separated into time and hemipsherical volume bins. This is done to reduce systematic uncertainties and simplify the analysis. As this analysis is dominated by the statistics of the \2nbb background, the modeling of time-dependent changes in detector response should be marginal. By reducing the fiducial volume to $(r<1.33m)$ we sacrifice statistics but gain robustness by focusing on the best characterized region of the detector.
+
+Thus, a simple 1-dimensional spectral fit is performed over the energy range (0.5-4.8) MeV wiht 0.05 MeV wide bins. This energy range spans the $^{210}$Bi and $^{85}$Kr peaks, the low-energy portion of the \2nbb spectrum, the $^{11}$C and $^{40}$K decays, the \2nbb endpoint, the \0nbb ROI, the $^{212}$Tl peak, and the $2\nu\beta\beta^\ast$ ROI.
 \subsection{Chi-Square Definition}
 In this study, a binned chi-square, maximum likelihood fit is performed. The chi-square has multiple components, a energy-bin term and penalty terms.
 \begin{equation}
@@ -80,7 +84,7 @@ where $O_n$ is the estimated parameter value, $E_n$ are the central expected val
 The ROOT implementation of the MINUIT package distributed by CERN is the minimization package used for this analysis. 
 
 \subsection{Fit Parameters}
-The spectral rate parameters are divided by origin volume. This analysis is only concerned with backgrounds originating in the XeLS and the inner balloon film. Each of the background described in Chapter \ref{chapter:backgrounds} is implemented in the spectral fit. 
+The spectral rate parameters are divided by origin volume. This analysis is only concerned with backgrounds originating in the XeLS and the inner balloon film. Each of the backgrounds described in Chapter \ref{chapter:backgrounds} is implemented in the spectral fit. 
 \subsection{Penalty Terms}
 
 \begin{table}[htbp]
@@ -112,11 +116,10 @@ The spectral rate parameters are divided by origin volume. This analysis is only
             & $^{232}$Th series 2 & free \\
             & $^{40}$K & constrain \\
             & $^{210}$Bi & free \\
-            & $^{11}$C & free \\
         \hline
-        \multirow{7}{*}{common}
+        \multirow{7}{*}{all}
             & Energy scale & constrained \\
-            & $k_B, R$ & constrained \\
+            & $k_B, R$ & fix \\
             & LL-distortion & constrain \\
             & $^6$He & fix \\
             & $^{12}$B & fix \\
@@ -125,14 +128,94 @@ The spectral rate parameters are divided by origin volume. This analysis is only
         \hline
     \end{tabular}
 \end{table}
+The first penalty terms are on the rate of the constrained background sources. $^{238}$U series 2, $^{222}$Rn, $^{232}$Th series 2 are determined from the rate of coincidence tagged $^{214}$Bi-Po and $^{212}$Bi-Po events. Next, the independent background constraints determined by this study in \ref{chapter:Backgrounds}, $^{11}$C and $^{40}$K. $^{137}$Xe is determined from coincidence with MoGURA neutron captures, the determination of the rate that passes the coincident cut is also described in \ref{chapter:Backgrounds}. 
 
-% \section{\twonustar  Results}
-% \subsection{Sensitivity}
-% \section{Discussion of Results}
+A penalty term is also included for the detector response parameters. An overall energy scale, scales all of the background and signal energy spectra via linear interpolation. The energy scale $\alpha_E=\frac{E_{vis}}{E_{sim}}$ is constrained to $1\pm 0.016$. The Birks constant, $k_B$, and Chrenkov Ratio, $R$, are kept fixed for stability in the fit. In later analyses, the constraints on them should either be tightened or their effect quantified as another systematic uncertainty. 
 
-% \section{Future Prospects}
-% \subsection{Improved Detector Response Calibration}
-% \subsection{Improved Event Selection}
-% \subsection{KamLAND2-ZEN}
-Time to get philosophical and wordy.\cite{takeuchi_phd}
+\section{\twonustar  Results}
+\subsection{Best Fit Result}
+The best fit result for the \twonustar decay rate as given by MINUIT is 0, no significant excess over the background expectation was found. Figure \ref{fig:bestfit} shows the fitted energy spectra. 
 
+Table \ref{tab:fit_result} list the best fit parameter values. Constrained values are within their constraints with no significant biases, a notable deviation from previous analyses is the railing of $^{232}$Th S1 film to 0, this background is also present in the $^{232}$Th S2P film background. Without the radial component to differentiate the two, it is a superfluous parameter in the fit.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{best_fit_thesis.png}
+	\caption{Best fit energy spectrum to full KLZ800 dataset in the reduced FV.}
+	\label{fig:bestfit}
+\end{figure}
+
+\begin{table}
+    \centering
+    \begin{tabular}{c|c|c}
+        Parameter & Value & Fit Condition \\ \hline
+        $^{12}$B Spallation &  0.016 & fix \\
+        $^{8}$B Spallation &  0.239 & fix\\
+        $^{210}$Bi (XeLS) &  26000 & floated\\
+        $^{210}$Bi (film) &  22930 & floated\\
+        $^{11}$C (XeLS) &  983 & constrained\\
+        $^{136}$Cs (XeLS) &  0.8 & fix\\
+        $^{6}$He Spallation &   0.33 & fix\\
+        $^{40}$K (film) &  186 & constrained \\
+        $^{85}$Kr (XeLS) & 41500 & floated \\
+        $^{8}$Li Spallation & 0.525 & fix \\
+        Long-lived (XeLS) & 0.68 & floated \\
+        Monochromatic & 3.4e+07 & fix \\
+        $^{222}$Rn (XeLS) & 8002.15 & constrained \\
+        Signal ($2\nu\beta\beta^*$, XeLS) & 0 & floated \\
+        Solar $\nu$ (XeLS) & 4.87 & fix \\
+        $^{232}$Th S1 (film) & 0 & floated \\
+        $^{232}$Th S2P (XeLS) & 114 & constrained \\
+        $^{232}$Th S2P (film) & 98.7 & floated \\
+        $^{238}$U S1 (film) & 25 & fix \\
+        $^{238}$U S2 (XeLS) & 30.2 & constrained \\
+        $^{238}$U S2 (film) & 61.3 & floated \\
+        $^{136}$Xe $2\nu\beta\beta$ (XeLS) & 107601 & floated \\
+        $^{137}$Xe (XeLS) & 0.980653 & constrained \\
+        Energy Scale $\alpha$ (Internal) & 0.991 & constrained \\
+        LL distortion & 0.118 & constrained \\
+        $R$ (Internal) & 0.018 & fix \\
+        $k_B$ (Internal) & 0.31 & fix
+    \end{tabular}
+    \label{tab:parameters}
+    \caption{The best fit parameter values and their fit conditions.}
+\end{table}
+
+\subsection{\twonustar Half-life Limits}
+In lieu of a positive \twonustar signal, the upper limit on the rate can be determined from the 90\% confidence level (C.L.). We perform a scan over the \twonustar signal rate. The signal rate is fixed to various values and at each value, a new fit of the backgrounds is performed to the data. The worsening of the fit-data match is quantified by the $\Delta\chi^2$, the difference between the NLL test statistic from the best fit and the fit with a fixed signal rate. Figure \ref{fig:chi2scan} shows the scan results.
+
+An estimate of the 90\% C.L. upper limit on the rate is determined by searching for the threshold value of $\Delta\chi^2=2.71$. This threshold is given by Wilks' theorem for the 90\% coverage of the test $\chi^2$ distribution for a single parameter.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{chi2scan.png}
+	\caption{Difference in the NLL test statistic over fixed signal rates, the intersection with the Wilks' Theorem 1-parameter threshold is shown.}
+	\label{fig:chi2scan}
+\end{figure}
+
+This upper limit on the rate is simply converted to a lower limit on the half-life by the following formula:
+\begin{equation}
+    T_{1/2} = \frac{\ln(2)\times N_{Xe136}}{rate \times 365.2}
+\end{equation}
+Where $N_{Xe136}$ is the number of $^{136}$Xe atoms in the XeLS. This can be calculated from the concentration listed in Table \ref{tab:xenon_comp}. 
+\begin{align}
+    C_{Xe} &= \frac{\text{mass of Xe in total XeLS}}{\text{mass of total XeLS}} \\
+           &= \frac{745~\text{kg}}{30.5~\text{m}^3 \times 780.13~\text{kg/m}^3} \times 100 \\
+           &= 3.13 \pm 0.01~(\text{wt}\%)
+\end{align}
+\begin{align}
+N_{^{136}\mathrm{Xe}} &= (\text{1 kton} \times \text{concentration of Xe in XeLS} \times \text{ratio of } ^{136}\mathrm{Xe}) \notag \\
+    &\quad \times N_A / (\text{atomic mass number of mixed Xe}) \notag \\
+    &= 3.13 \times 0.9085 / 135.80 \times 6.022 \times 10^{23} \notag \\
+    &= (1.261 \pm 0.004) \times 10^{29}~(\text{kton-XeLS})^{-1}
+\end{align}
+Here, $N_A$ is Avogrado's number. From these formulae, the upper limit on \twonustar rate is converted to a lower limit on \twonustar half-life.
+
+However, the 90\% C.L. given by Wilks' theorem is likely invalid for this analysis for two reasons. First, the signal rate parameter has a physical boundary at zero, violating the regularity conditions required by Wilks' theorem. Second, the $\chi^2$ profile is not quadratic and falls sharply as the rate approaches zero, indicating that asymptotic approximations may not hold. For these reasons, the Wilks' theorem result should be considered a preliminary and potentially aggressive limit. A later section describes a more accurate determination using the Feldman-Cousins technique.
+
+\subsection{Feldman-Cousins Calculation}
+Given that Wilks' theorem conditions are likely not satisfied for this analysis, the upper limit on the \twonustar rate is determined using the Feldman-Cousins (FC) approach. While Wilks' theorem would allow us to assume -2 log(likelihood ratio) follows a $\chi^2$ distribution asymptotically, the FC method instead constructs confidence intervals by simulating the test statistic distribution under various hypothesized signal rates. This allows us to obtain proper 90\% coverage intervals without relying on asymptotic approximations.
+
+We perform the FC calculation by scanning over \twonustar signal rates. At each signal rate hypothesis, multiple Toy MC datasets are generated with the best fit background levels. For each toy MC dataset, the fit is performed and the $\chi^2$ test statistic value calculated. 
+
+\subsection{Discussion}
+The Feldman-Cousins limit reveals that without additional inputs, this analysis is unable to set a world-leading limit on \twonustar. Better characterization of detector response, and modeling of the film and KamLS backgrounds will allow us to use the full XeLS volume and improve the sensitivity of the analysis. 
