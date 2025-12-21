@@ -104,9 +104,91 @@ Applying the $^{11}C$ selection to the full KamLAND-ZEN 800 dataset, the distrib
 
 A similar selection was also applied to the KamLS region in KamLAND-ZEN 800. The adjusted selections are on reconstructed event radius $220<r<350$ cm and event energy $1.0<E_{vis}<2.2$ MeV, the KamLS distribution is also shown in \ref{fig:c11_dt_fit}. The $^{11}C$ decay signature is especially clear in KamLS as the relative background is much lower due to the reduction in \2nbb events. 
 
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{dT_distribution_allcuts_KamLS.png}
+        \caption{KamLS}
+        \label{fig:dt_dist_kamls}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{dT_distribution_allcuts_XeLS.png}
+        \caption{XeLS}
+        \label{fig:dt_dist_xels}
+    \end{subfigure}
+    \caption{Distribution of $dT$ (time delay from muon to event) for muon-event pairs passing all selection cuts, shown separately for KamLS and XeLS.}
+    \label{fig:c11_dt_fit}
+\end{figure}
+
 Another crosscheck is performed with the energy distribution of the selected $^{11}C$ candidate events. The $\mu-^{11}C$ pair $dT$ distribution is seperated into "ontime" and "offtime" bins. Then the energy distribution of the offtime events are subtracted from the energy distribution of the ontime events. The subtracted energy distributions are shown in Figure \ref{fig:c11_energy}. In KamLS, the observation of simulated the $^{11}C$ energy spectrum is clear. While in XeLS, the fluctuations in the significant background worsen the comparison to simulation, the broad $^{11}C$ spectrum is clearly resolved. This crosscheck using an ontime-offtime analysis of the energy distribution gives us confidence that $^{11}C$ is indeed being selected with good purity.
 
-There are many spallation isotopes produced in Xenon-spallation with lifetimes of similar orders of magnitude $10^3-10^4$ seconds as $^{11}C$, $\tau=1,764$ seconds. Instead of estimating the relative production of each of these isotopes, the effect of the cumulative background is modeld with an uncosntrained linear slope to the background. 
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{energy_distribution_difference_vs_MC_KamLS.png}
+        \caption{KamLS}
+        \label{fig:E_dist_kamls}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{energy_distribution_difference_vs_MC_XeLS.png}
+        \caption{XeLS}
+        \label{fig:E_dist_xels}
+    \end{subfigure}
+    \caption{Subtracted energy distributions compared to MC $^{11}$C in XeLS and KamLS.}
+    \label{fig:c11_energy}
+\end{figure}
+
+There are many spallation isotopes produced in Xenon-spallation with lifetimes of similar orders of magnitude $10^3-10^4$ seconds as $^{11}C$, $\tau=1,764$ seconds. Instead of estimating the relative production of each of these isotopes, the effect of the cumulative background is modeled with an uncosntrained linear slope to the background. 
+
+\subsection*{$^{11}$C Rate Calculation}
+From the exponential fit results of the dT distribution, the production rate of $^{11}C$ in XeLS can be estimated. The calculation of expected number of detected, selected, and correlated $^{11}$C-$\mu$ pairs is modeled as:
+\begin{equation}
+	% I_{C11} = Y_{C11}\times E_{FBE} \times (1-dt_{MoG}) \times P_n(1|^{11}C_{spall}) \times \epsilon_{dR} \times \epsilon_{dT} \times \epsilon_{FV} \times \epsilon_{E}
+	I_{C11} = Y_{C11}\times E_{FBE} \times (1-dt_{MoG}) \times \epsilon_{dR} \times \epsilon_{dT} \times \epsilon_{FV} \times \epsilon_{E}
+\end{equation}
+\begin{itemize}
+	\item $I_{C11}=10,028$: Integral of the exponential component of the fit, "Observed $\mu-^{11}$C pairs"  $[events]$
+	\begin{equation}
+		I_{C11} = A_{C11}\cdot \tau\cdot \frac{e^{\frac{-100}{\tau}}-e^{\frac{-18000}{\tau}}}{(18000-100)/50}
+	\end{equation}
+	\item $Y_{C11}$: \textbf{Final Result} Production rate of $^{11}$C in KamLS, XeLS $[events/kton\cdot days]$
+	\item $E_{FBE}=22.71$: XeLS Exposure $[kton\cdot days]$
+	\item $dt_{MoG}=1.88\%$: MoGURA Deadtime Fraction
+	\item $\epsilon_{dR}=57\%$: $dR<80$ cm cut efficiency (from FLUKA tuned with $^{11}$C), for each data period [unitless]
+	\item $\epsilon_{dT}=94.5\%$: dT $>100$s cut efficiency (from known $^{11}$C half-life) [unitless]
+	\item $\epsilon_{FV-E}=79.7\%$: Fiducial Volume \& Energy Cut Efficiency taken from KLG4Sim [unitless]
+\end{itemize}
+
+From the integrated observed events from the exponential component of the fit, and the estimation of the relevant efficiency factors, the production rate of $^{11}C$ in XeLS is calculated.
+\begin{equation}
+    Y_{C11}=1,050\pm 110\ events/kton\cdot day
+\end{equation}
+
+The uncertainty is estimated by considering a few major sources of uncertainty, the included uncertainties are listed in Table \ref{tab:c11_uncertainty}.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Sources of uncertainty in the $^{11}$C production rate calculation.}
+    \label{tab:c11_uncertainty}
+    \begin{tabular}{lc}
+        \hline
+        Source & Uncertainty (\%) \\
+        \hline
+        Statistical & 5.4 \\
+        Exposure uncertainty & 4.0 \\
+        Exponential fit model choice & 7.0 \\
+        Neutron production & 7.8 \\
+        \hline
+        Total uncertainty & 10.7 \\
+        \hline
+    \end{tabular}
+\end{table}
 
 \subsection{$^{137}$Xe}
 When neutrons spallated by cosmic ray muons are captured on $^{136}$Xe, $^{137}$Xe is produced. The Q-value of its $\beta^-$ decay is 4.16 MeV with a half-life of $T_{1/2}=229$ sec. The neutron capture cross section calculation yields a production rate of 3.9 event/day/kton. The tagging efficiency of $^{137}$Xe is estimated as $74\pm 7\%$. The long-lived spallation veto, described in the next section, also removes $^{137}$Xe. The veto efficiency by the long-lived spallation veto is estimated from FLUKA simulation to be 42\%. The residual rate in the singles dataset is estimated to be $0.43\pm 0.36$ event/day/kton.
