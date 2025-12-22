@@ -323,97 +323,168 @@ A third and potentially most sensitive approach to determining the absolute neut
 
 
 \section{Neutrino Mass}
-The discovery of neutrino oscillations\cite{Nufit} demonstrates that neutrinos have nonzero masses and that flavor eigenstates are mixtures of mass eigenstates. The exact mechanism by which neutrinos acquire mass is unknown. Several extensions to the SM have been proposed, as discussed below.
+The observation of neutrino oscillations establishes that neutrinos possess nonzero masses and that flavor eigenstates are superpositions of mass eigenstates. Despite this, the underlying mechanism responsible for neutrino mass generation remains unknown. Numerous extensions of the Standard Model have been proposed to explain this phenomenon, as discussed below.
 
-Here we follow the derivation in \cite{giunti2007}. Landau, Lee and Yang, and Salam showed that a massless fermion can be described by a chiral field via their two-component theory of massless neutrinos. Let us begin this derivation with the Dirac Equation:
+Here we follow the derivation presented in Ref.~\cite{giunti2007}. Landau, Lee and Yang, and independently Salam, showed that a massless fermion can be consistently described by a chiral field within a two-component theory of massless neutrinos. We begin with the Dirac equation:
 \begin{equation}
-    (i\gamma^\mu \partial_\mu - m)\psi = 0
+    (i\gamma^\mu \partial_\mu - m)\psi = 0,
 \end{equation}
-given a fermion field, $\psi = \psi_L+\psi_R$, the Dirac equation is equivalent to the system of equations:
+for a fermion field $\psi$. Decomposing the Dirac spinor into its left- and right-handed chiral components:
 \begin{equation}
-	i\gamma^\mu \partial_\mu\psi_L=m\psi_R
-	\label{eq:left_weyl}
+    \psi = \psi_L + \psi_R,
+\end{equation}
+where $\psi_{L,R} = P_{L,R}\psi$ and $P_{L,R} = \frac{1}{2}(1 \mp \gamma^5)$ are the chiral projection operators, the Dirac equation can be written as the coupled system:
+\begin{equation}
+    i\gamma^\mu \partial_\mu \psi_L = m \psi_R,
+    \label{eq:left_weyl}
 \end{equation}
 \begin{equation}
-	i\gamma^\mu \partial_\mu\psi_R=m\psi_L
-	\label{eq:right_weyl}
+    i\gamma^\mu \partial_\mu \psi_R = m \psi_L,
+    \label{eq:right_weyl}
 \end{equation}
-for the chiral fields, $\psi_L$ and $\psi_R$, whose space-time evolutions are coupled by the mass $m$.
+where the space-time evolution of the left- and right-handed fields is coupled through the mass term $m$.
 
-If the fermion is massless, the two equations, \ref{eq:left_weyl} and \ref{eq:right_weyl}, are decoupled:
+In the massless limit, $m = 0$, Eqs.~\eqref{eq:left_weyl} and \eqref{eq:right_weyl} decouple:
 \begin{equation}
-	i\gamma^\mu \partial_\mu\psi_L=0 
+    i\gamma^\mu \partial_\mu \psi_L = 0,
 \end{equation}
 \begin{equation}
-	i\gamma^\mu \partial_\mu\psi_R=0
+    i\gamma^\mu \partial_\mu \psi_R = 0.
 \end{equation}
-Thus, a massless fermion can be completely described by a single chiral field (either left-handed or right-handed) which has only two independent components. The equations, \ref{eq:left_weyl} and \ref{eq:right_weyl} are known as the Weyl equations and the spinors $\psi_L$ and $\psi_R$ are the Weyl spinors.
+In this case, a massless fermion may be fully described by a single chiral field (either left-handed or right-handed) which contains only two independent degrees of freedom. These equations are known as the Weyl equations, and the corresponding spinors $\psi_L$ and $\psi_R$ are referred to as Weyl spinors.
 
-The simplest form of the SM incorporates what is known as the two-component theory of massless neutrinos. Whereby the neutrino is entirely described by the left-handed Weyl spinor which participates in the weak interaction, $\nu_L$, and there are no $\nu_R$ fields.
+The minimal formulation of the Standard Model adopts this two-component description for neutrinos, treating them as massless fermions. In this framework, the neutrino is described entirely by a left-handed Weyl spinor, $\nu_L$, which participates in the weak interaction, while no right-handed neutrino field, $\nu_R$, is included.
+
 
 \subsection{Dirac Masses}
-If right-handed neutrino fields $\nu_{R}$ exist, a Dirac mass term, just like the one for the charged leptons, can be written:
+% If right-handed neutrino fields $\nu_{R}$ exist, a Dirac mass term, just like the one for the charged leptons, can be written:
+% \begin{equation}
+%     -\mathcal{L}_{\text{Dirac}} = Y_{ij}^\nu \overline{L}_{Li} \tilde{\Phi} \nu_{Rj} + \text{h.c.}
+% \end{equation}
+% where $\tilde{\Phi} = i \sigma_2 \Phi^*$. This yields Dirac masses $m^\nu_{ij} = Y^\nu_{ij} v/\sqrt{2}$. However, the tiny observed neutrino masses ($m_\nu < 1$ eV) would require $Y^\nu_{ij} < 10^{-12}$. The huge discrepancy between the neutrino masses and the other fermions imply the existence of some underlying mechanism which suppresses the neutrino masses. In the absence of such explanation, the light neutrino masses bring up a naturalness problem. Many neutrino mass models have been proposed that produce light neutrino masses via a more natural mechanism. 
+
+If right-handed neutrino fields $\nu_R$ exist, neutrinos may acquire mass through a Dirac mass term analogous to those of the charged leptons. In this case, a Yukawa interaction can be written as:
 \begin{equation}
-    -\mathcal{L}_{\text{Dirac}} = Y_{ij}^\nu \overline{L}_{Li} \tilde{\Phi} \nu_{Rj} + \text{h.c.}
+    -\mathcal{L}_{\text{Dirac}} =
+    Y_{ij}^\nu \, \overline{L}_{Li} \, \tilde{\Phi} \, \nu_{Rj}
+    + \text{h.c.},
 \end{equation}
-where $\tilde{\Phi} = i \sigma_2 \Phi^*$. This yields Dirac masses $m^\nu_{ij} = Y^\nu_{ij} v/\sqrt{2}$. However, the tiny observed neutrino masses ($m_\nu < 1$ eV) would require $Y^\nu_{ij} < 10^{-12}$. The huge discrepancy between the neutrino masses and the other fermions imply the existence of some underlying mechanism which suppresses the neutrino masses. In the abscence of such explanation, the light neutrino masses bring up a naturalness problem. Many neutrino mass models have been proposed that produce light neutrino masses via a more natural mechanism. 
+where $L_{Li}$ is the left-handed lepton doublet of generation $i$,
+$\tilde{\Phi} = i\sigma_2 \Phi^*$ is the conjugate Higgs doublet, and
+$Y^\nu_{ij}$ are the neutrino Yukawa couplings. After electroweak symmetry breaking, when the Higgs field acquires a vacuum expectation value $v$, this interaction generates Dirac neutrino masses:
+\begin{equation}
+    m^\nu_{ij} = \frac{v}{\sqrt{2}} \, Y^\nu_{ij}.
+\end{equation}
+
+This mechanism is entirely analogous to mass generation for the charged leptons and quarks in the Standard Model, where fermion masses arise through Yukawa couplings to the Higgs field following spontaneous symmetry breaking of the $SU(2)_L \times U(1)_Y$ gauge symmetry. In the unitary gauge, the Higgs doublet may be written as:
+\begin{equation}
+    \Phi = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        0 \\
+        v + h
+    \end{pmatrix},
+\end{equation}
+where $h$ denotes the physical Higgs boson. Coupling this field (or its conjugate) to left- and right-handed fermion fields yields Dirac mass terms proportional to the Higgs vacuum expectation value, as well as Higgs–fermion interaction terms.
+
+Applying this same mechanism to neutrinos, however, presents two conceptual difficulties. First, right-handed neutrino fields are absent from the minimal Standard Model and must be introduced as gauge-singlet states. Such fields do not participate in the weak interaction and are therefore often referred to as \emph{sterile} neutrinos. The inclusion of $\nu_R$ thus constitutes a minimal extension of the Standard Model.
+
+Second, even if right-handed neutrinos exist and neutrinos are purely Dirac fermions, the observed smallness of neutrino masses poses a naturalness problem. Current experimental constraints require neutrino masses to be below the eV scale, implying Yukawa couplings:
+\begin{equation}
+    Y^\nu_{ij} \lesssim 10^{-12},
+\end{equation}
+which are many orders of magnitude smaller than those of the charged fermions. This extreme hierarchy is difficult to justify within the Standard Model framework and stands in sharp contrast to the mass spectrum of the other fermions.
+
+The striking disparity between neutrino masses and those of the charged leptons and quarks strongly suggests the presence of an underlying mechanism that suppresses neutrino masses relative to the electroweak scale. This observation has motivated a wide class of neutrino mass models that extend the Standard Model and generate light neutrino masses in a more natural way. Several such mechanisms are discussed in the following sections.
+
 
 \subsection{Majorana Neutrino Mass}
-Since neutrinos have indeed been shown to have mass, the two-component theory is insufficient. In 1937, Ettore Majorana proposed a new solution to the Dirac equation. His insight was that a massive fermion could be described with a single spinor instead of the two, $\psi=\psi_L+\psi_R$. Majorana made the assumption that the two spinors are not independent, but rather:
+Since neutrinos have been experimentally shown to possess nonzero masses, the two-component theory of massless neutrinos is no longer sufficient. In 1937, Majorana proposed an alternative formulation of the Dirac equation in which a massive fermion can be described by a single spinor field rather than independent left- and right-handed components. The key assumption of the Majorana construction is that the right-handed field is not independent, but instead related to the left-handed field by charge conjugation:
 \begin{equation}
-	\psi_R=C\bar{\psi_L}^T
-\end{equation} 
-where $C$ is the charge conjugation operator. By observing that $C$ and the left-handed projection operator $P_L$ have the following relationship,
-\begin{equation}
-	P_L(C\psi_L^T)=0
+    \psi_R = C \, \overline{\psi_L}^{\,T},
 \end{equation}
-one can clearly see that $C\psi_L^T$ is a right-handed field. Charge conjugating a left-hadned Weyl spinor converts the spinor to its right-handed form. Modifying the Dirac equation, we now obtain the Majorana equation for the chiral field:
+where $C$ is the charge conjugation matrix.
+
+Using the properties of the charge conjugation operator and the chiral projection operators, one finds that:
 \begin{equation}
-	i\gamma^\mu\partial_\mu\psi=m\psi^C
+    P_L \big( C \, \overline{\psi_L}^{\,T} \big) = 0,
 \end{equation}
-$\psi^C$ represents the charge conjugated Majorana field. This implies that, $\psi=\psi_L+\psi_L^C$, which finally leads to the Majorana relation:
+which demonstrates that the charge-conjugated left-handed field transforms as a right-handed field. In other words, charge conjugation converts a left-handed Weyl spinor into a right-handed one.
+
+With this identification, the fermion field may be written entirely in terms of a single chiral component:
 \begin{equation}
-	\psi=\psi^C
-	\label{eq:majorana}
+    \psi = \psi_L + \psi_L^C,
+\end{equation}
+where $\psi_L^C \equiv C \overline{\psi_L}^{\,T}$. The corresponding equation of motion takes the form:
+\begin{equation}
+    i \gamma^\mu \partial_\mu \psi = m \psi^C,
+\end{equation}
+where $\psi^C$ denotes the charge-conjugated field. This leads directly to the Majorana condition:
+\begin{equation}
+    \psi = \psi^C,
+    \label{eq:majorana}
+\end{equation}
+which implies that the fermion is identical to its antiparticle.
+
+Equation~\eqref{eq:majorana} can only be satisfied by electrically neutral fermions. Among the known elementary fermions, only neutrinos meet this criterion, making them unique candidates for Majorana particles. Since neutrinos interact solely through the weak interaction, the overall charge parity of the neutrino field has no observable consequence and may be chosen arbitrarily.
+
+If neutrinos are Majorana particles, neutrinos and antineutrinos are not distinct states but differ only by their helicities. By convention, negative-helicity states are referred to as neutrinos, while positive-helicity states are referred to as antineutrinos.
+
+In the Standard Model framework, the simplest Majorana mass term that can be constructed using only Standard Model fields and respecting gauge symmetries is a lepton-number-violating dimension-five operator:
+\begin{equation}
+    \mathcal{L}_5 =
+    \frac{Z^\nu_{ij}}{\Lambda}
+    \big( \overline{L_L^i} \, \tilde{\Phi} \big)
+    \big( \tilde{\Phi}^T L_L^j \big)
+    + \text{h.c.},
+    \label{eq:eff_lagrangian}
+\end{equation}
+where $Z^\nu_{ij}$ is a dimensionless $3 \times 3$ coupling matrix, $\tilde{\Phi} = i\sigma_2 \Phi^*$ is the conjugate Higgs doublet, and $\Lambda$ denotes the scale of new physics beyond the Standard Model.
+
+After electroweak symmetry breaking, this effective interaction generates a Majorana mass term for the light neutrinos:
+\begin{equation}
+    \mathcal{L}_{M_\nu}
+    = \frac{1}{2} \, \frac{v^2}{\Lambda}
+    Z^\nu_{ij} \,
+    \overline{\nu_{L_i}} \, \nu^C_{L_j}
+    + \text{h.c.},
+\end{equation}
+corresponding to the Majorana neutrino mass matrix:
+\begin{equation}
+    \mathcal{M}_\nu = Z^\nu_{ij} \, \frac{v^2}{\Lambda}.
 \end{equation}
 
-Equation \ref{eq:majorana} implies that the particle $\psi$ is its own antiparticle. Since neutrinos interact only through weak interactions, and are electrically neutral, the charge parity of the neutrino field has no physical meaning and can be chosen arbitrarily. Among the elementary fermions, only the neutrinos are neutral and have the potential to be Majorana particles. 
+Compared to the renormalizable Dirac mass terms of the charged fermions, this effective operator contains two Higgs fields and is therefore of mass dimension five. As a result, it is non-renormalizable and must be interpreted as a low-energy manifestation of new physics at the scale $\Lambda$. Notably, this operator is the only dimension-five operator that can be constructed within the Standard Model field content and gauge symmetries to generate neutrino masses.
 
-Should the neutrino be Majorana, the neutrino and antineutrino would only be distinguishable by their helicities. It is customary to refer to negative helicity neutrinos as "neutrinos" and positive helicity neutrinos as "antineutrinos".
-
-With majorana neutrinos, the simplest mass term one could construct with SM fields and respecting SM symmetries is the lepton number violating term:
-\begin{equation}
-	\mathcal{L}_5=\frac{Z_{ij}^\nu}{\Lambda}(\bar{L_L^i} \bar{\Phi})(\bar{\Phi}^T L_L^j)+h.c.
-	\label{eq:eff_lagrangian}
-\end{equation}
-Here, $Z_{ij}^\nu$ is a 3x3 matrix which controls the mixing between the neutrino masses for each flavor combination, along with the Yukawa coupling strengths. Finally, $\Lambda$ is the high energy scale at which we should expect new physics, which suppresses the neutrino masses. This lagrangian extension generates the Majorana neutrino mass term:
-\begin{equation}
-	\mathcal{L}_{M_\nu}=\frac{Z_{ij}^\nu}{2}\frac{v^2}{\Lambda}\bar{\nu}_{L_i}\nu^C_{L_j}+h.c.
-\end{equation}
-With the majorana neutrino mass matrix:
-\begin{equation}
-	\mathcal{M}_\nu=Z_{ij}^\nu\frac{v^2}{\Lambda}
-\end{equation}
-
-Comparing the effective lagrangian, equation \ref{eq:eff_lagrangian}, to the charged lepton mass terms, equation \ref{eq:fermion_mass}, our new effective Lagrangian term has two Higgs fields to couple to the extra $L_L$ field. This raises the dimension of this operator to 5, rendering the term non-renormalizable while following the SM gauge transformations. This term hints at new physics beyond the Standard Model at the mass scale $\Lambda$. Also, note that this term is the only possible dimension-5 Lagrangian term to generate neutrino mass. The new physics mass scale, $\Lambda$, suppresses the neutrino masses by $\frac{v^2}{\Lambda}$. This suppression of the neutrino masses has the same structure as the masses produced by the seesaw mechanism that will be discussed in the next section. 
+The suppression factor $v^2 / \Lambda$ naturally explains the smallness of neutrino masses if $\Lambda$ lies far above the electroweak scale. This structure mirrors the mass suppression obtained in seesaw mechanisms, which provide explicit ultraviolet completions of the effective operator in Eq.~\eqref{eq:eff_lagrangian}. These mechanisms are discussed in the following section.
+ 
 
 \subsection{Seesaw Mechanism}
-We will now discuss one interesting extension of the Standard Model which produces light active neutrinos, the addition of one or more heavy sterile neutrinos. Adding $m$ new sterile neutrinos, $\nu_{si}\ (i=1,...m)$, leads to two types of mass terms.
-\begin{equation}
-	-\mathcal{L}_{M_\nu}=M_{D_{ij}}\bar{\nu}_{si}\nu_{L_j}+\frac{1}{2}M_{N_{ij}}\bar{\nu}_{si}\nu_{sj}^c+h.c.
-	\label{eq:seesaw_lagrangian}
-\end{equation}
-Here, $M_D$ is a complex matrix of dimension $m\times 3$ and $M_N$ is a symmetric $m\times m$ matrix.
 
-The first term is often referred to as a Dirac mass term, after spontaneous symmetry breaking, the neutrinos acquire a mass through Yukawa couplings, similar to the charged fermions and as discussed in an earlier section. 
+We now discuss an extension of the Standard Model that naturally generates light active neutrino masses through the introduction of one or more heavy sterile neutrinos. Adding $m$ sterile neutrino fields,
+$\nu_{s i}$ $(i = 1,\dots,m)$, allows for two distinct types of neutrino mass terms. The most general neutrino mass Lagrangian can be written as:
 \begin{equation}
-    Y_{ij}^\nu \bar{\nu}_{si} \tilde{\phi}^\dagger L_{Lj} \;\;\Rightarrow\;\; M_{D_{ij}} = Y_{ij}^\nu \frac{v}{\sqrt{2}},
+    -\mathcal{L}_{M_\nu}
+    =
+    M_{D_{ij}} \, \overline{\nu}_{s i} \nu_{L j}
+    + \frac{1}{2} M_{N_{ij}} \, \overline{\nu}_{s i} \nu^{c}_{s j}
+    + \text{h.c.},
+    \label{eq:seesaw_lagrangian}
 \end{equation}
-The second term is a lepton number violating Majorana mass term.
+where $M_D$ is a complex $m \times 3$ Dirac mass matrix and $M_N$ is a complex symmetric $m \times m$ Majorana mass matrix.
 
-Eq. \ref{eq:seesaw_lagrangian} can be rewritten as:
+The first term in Eq.~\eqref{eq:seesaw_lagrangian} corresponds to a Dirac mass term, generated after electroweak symmetry breaking through Yukawa couplings between the sterile neutrinos, the left-handed lepton doublets, and the Higgs field:
 \begin{equation}
-    -\mathcal{L}_{M_\nu} = \frac{1}{2}
+    Y^\nu_{ij} \, \overline{\nu}_{s i} \, \tilde{\Phi}^\dagger L_{L j}
+    \;\;\Rightarrow\;\;
+    M_{D_{ij}} = Y^\nu_{ij} \, \frac{v}{\sqrt{2}}.
+\end{equation}
+The second term is a Majorana mass term for the sterile neutrinos and violates lepton number by two units.
+
+Equation~\eqref{eq:seesaw_lagrangian} may be rewritten in matrix form as:
+\begin{equation}
+    -\mathcal{L}_{M_\nu}
+    =
+    \frac{1}{2}
     \begin{pmatrix}
         \overline{\nu_L} & \overline{\nu_s}
     \end{pmatrix}
@@ -425,75 +496,123 @@ Eq. \ref{eq:seesaw_lagrangian} can be rewritten as:
         \nu_L^c \\
         \nu_s^c
     \end{pmatrix}
-    + \text{h.c.}
-    \equiv \overline{\nu} M_\nu \nu + \text{h.c.}
-	\label{eq:seesaw_matrix}
+    + \text{h.c.},
+    \label{eq:seesaw_matrix}
 \end{equation}
-where $\vec{\nu}=\left(\vec{\nu}_L,\vec{\nu^c}_s\right)^T$ is a $(3+m)$-dimensional vector. The matrix $M_\nu$ is complex and symmetric, and can be diagonalized producing mass eigenstates:
+where $\vec{\nu} = (\vec{\nu}_L , \vec{\nu}_s^{\,c})^T$ is a $(3+m)$-dimensional vector. The full neutrino mass matrix $M_\nu$ is complex and symmetric, and may be diagonalized by a unitary transformation:
 \begin{equation}
-	(V^\nu)^TM_\nu V^\nu=diag(m_1,m_2,...,M_{3+m})
+    (V^\nu)^T M_\nu V^\nu
+    =
+    \mathrm{diag}(m_1, m_2, \dots, m_{3+m}),
 \end{equation}
+with the corresponding mass eigenstates given by:
 \begin{equation}
-	\vec{\nu}_{mass} = (V^\nu)^\dagger\vec{\nu}
-\end{equation}
-Eq. \ref{eq:seesaw_matrix} can be rewritten in terms of the mass eigenstates:
-\begin{align}
-    -\mathcal{L}_{M_\nu} &= \frac{1}{2} \sum_{k=1}^{3+m} m_k \left( \bar{\nu}_{\text{mass},k}^c \nu_{\text{mass},k} + \bar{\nu}_{\text{mass},k} \nu_{\text{mass},k}^c \right) \\
-    &= \frac{1}{2} \sum_{k=1}^{3+m} m_k \overline{\nu}_{Mk} \nu_{Mk},
-\end{align}
-where $\nu_{Mk} = \nu_{\text{mass},k} + \nu_{\text{mass},k}^c$. Thus, the Majorana condition is satisfied, $\nu_M=\nu_M^c$, and are referred to as Majorana neutrinos. 
-
-In this new neutrino mass basis, the original weak-interacting neutrino fields are:
-\begin{equation}
-	\nu_{Li} = P_L\sum_{j=1}^{3+m}V_{ij}^\nu\nu_{M_j},\ i=1,2,3
+    \vec{\nu}_{\text{mass}} = (V^\nu)^\dagger \vec{\nu}.
 \end{equation}
 
-In the specific case, where the $M_N$ mass eigenvalues are much higher than the scale of electroweak symmetry breaking, $v$, the diagonalization of $M_\nu$ leads to three light neutrinos, $\nu_l$, and $m$ heavy neutrinos $N$:
-\begin{equation}
-	-\mathcal{L}_{M_\nu}=\frac{1}{2}\bar{\nu}_lM^l\nu_l+\frac{1}{2}\bar{N}M^hN
-\end{equation}
-where
+\noindent In terms of the mass eigenstates, the neutrino mass Lagrangian becomes:
 \begin{align}
-    M^l &\simeq -V_l^T M_D^T M_N^{-1} M_D V_l, \\
-    M^h &\simeq V_h^T M_N V_h,
+    -\mathcal{L}_{M_\nu}
+    &=
+    \frac{1}{2} \sum_{k=1}^{3+m} m_k
+    \left(
+        \overline{\nu}^c_{\text{mass},k} \nu_{\text{mass},k}
+        +
+        \overline{\nu}_{\text{mass},k} \nu^c_{\text{mass},k}
+    \right) \\
+    &=
+    \frac{1}{2} \sum_{k=1}^{3+m} m_k \,
+    \overline{\nu}_{M_k} \nu_{M_k},
 \end{align}
+where $\nu_{M_k} = \nu_{\text{mass},k} + \nu_{\text{mass},k}^c$ satisfies the Majorana condition
+$\nu_{M_k} = \nu_{M_k}^c$.
+
+In this mass basis, the original weak-interaction neutrino fields are related to the Majorana mass eigenstates by:
+\begin{equation}
+    \nu_{L i}
+    =
+    P_L \sum_{j=1}^{3+m}
+    V^\nu_{i j} \, \nu_{M_j},
+    \qquad i = 1,2,3.
+\end{equation}
+
+\noindent In the phenomenologically relevant limit where the eigenvalues of $M_N$ are much larger than the electroweak scale, $M_N \gg v$, the diagonalization of $M_\nu$ yields three light neutrino states $\nu_l$ and $m$ heavy neutrino states $N$:
+\begin{equation}
+    -\mathcal{L}_{M_\nu}
+    =
+    \frac{1}{2} \, \overline{\nu}_l M^l \nu_l
+    +
+    \frac{1}{2} \, \overline{N} M^h N,
+\end{equation}
+with approximate mass matrices:
+\begin{align}
+    M^l &\simeq - V_l^T \, M_D^T \, M_N^{-1} \, M_D \, V_l, \\
+    M^h &\simeq V_h^T \, M_N \, V_h,
+\end{align}
+and mixing matrix:
 \begin{equation}
     V^\nu \simeq
-    \begin{bmatrix}
-        \left(1 - \frac{1}{2} M_D^\dagger M_N^{*-1} M_N^{-1} M_D \right) V_l & M_D^\dagger M_N^{*-1} V_h \\
-        -M_N^{-1} M_D V_l & \left(1 - \frac{1}{2} M_N^{-1} M_D M_D^\dagger M_N^{*-1} \right) V_h
-    \end{bmatrix},
+    \begin{pmatrix}
+        \left( 1 - \frac{1}{2} M_D^\dagger M_N^{*-1} M_N^{-1} M_D \right) V_l
+        &
+        M_D^\dagger M_N^{*-1} V_h
+        \\
+        - M_N^{-1} M_D V_l
+        &
+        \left( 1 - \frac{1}{2} M_N^{-1} M_D M_D^\dagger M_N^{*-1} \right) V_h
+    \end{pmatrix}.
 \end{equation}
-where $V_l$ and $V_h$ are $3\times 3$ and $m\times m$ matrices respectively that parameterize neutrino mixing between the light nad heavy states. $V_l$ could be thought of as the PMNS, Pontecorve-Maki-Nakagawa-Sakata, matrix which we will discuss in a later section in more detail. We can see that the heavier mass states are proportional to $M_N$, while the lighter mass states are proportional to $M_N^{-1}$. This behavior is where the seesaw mechanism gets its name. This seesaw mechanism is of Type I specifically, where new sterile neutrinos are added. The seesaw mechanism also produces heavy states that are mostly right-handed, while the light states are mostly left-handed.
 
-Thus, the Type I seesaw mechanism is a promising extension to the SM that produces light, weakly interacting, left-handed neutrinos and heavy, sterile, right-handed neutrinos, while providing a more natural suppression of the active neutrino masses. Not to mention that these heavy, right-handed steriles could also be candidates for dark matter.
+\noindent Here, $V_l$ and $V_h$ are $3\times3$ and $m\times m$ unitary matrices that describe mixing among the light and heavy neutrino sectors, respectively. The matrix $V_l$ may be identified with the Pontecorvo–Maki–Nakagawa–Sakata (PMNS) matrix, which is discussed in detail in a later section.
+
+The structure of the mass eigenvalues illustrates the origin of the term \emph{seesaw}: the heavy neutrino masses scale with $M_N$, while the light neutrino masses are suppressed by $M_N^{-1}$. This mechanism is known as the Type-I seesaw, characterized by the introduction of heavy sterile neutrinos. It naturally produces light, predominantly left-handed neutrinos and heavy, predominantly right-handed neutrinos.
+
+The Type-I seesaw mechanism therefore provides a compelling extension of the Standard Model that explains the smallness of neutrino masses without invoking extremely small Yukawa couplings. In addition, the heavy sterile neutrinos introduced in this framework may have important implications for physics beyond the Standard Model, including potential connections to dark matter.
+
+
+
+
 \subsection{Lepton Number Violation and Leptogenesis}
-A key consequence of Majorana neutrinos is lepton number violation. Lepton number violation is what is known as an accidental global symmetry in the Standard Model. Where the symmetry is not enforced when constructing the model, but comes about simply because no terms that violate it were included. Many beyond the Standard Model theories include lepton number violation.
 
-Lepton number violation also plays a key role in leptogenesis. Leptogenesis is a proposed solution to one of the most fundamental questions in elementary physics: Why is there more matter than antimatter?
+A key consequence of Majorana neutrinos is the violation of lepton number. In the Standard Model, lepton number is an accidental global symmetry.  This means that it's not imposed by construction, but instead emerges because no renormalizable operators that violate lepton number are allowed by the gauge symmetries and field content. Many extensions of the Standard Model, however, naturally incorporate lepton number violation.
 
-A thorough review of the phenemology of matter-antimatter asymmetry is beyond the scope of this chapter. In lieu of that, here is a highly condensed description of the matter-antimatter asymmetry of our universe.
+Lepton number violation also plays a central role in leptogenesis, a proposed explanation for one of the most fundamental questions in particle physics: why the observable Universe contains more matter than antimatter.
 
-The value of the baryon asymmetry of the Universe is inferred from two independent observations. The first is of the abundances of light elements, $D$, $^3He$, $^4He$, and $^7Li$, after big bang nucleosynthesis. These abundances depend on the assymmetry parameter, $\eta$, measured to be \cite{Davidson_2008}:
+A comprehensive review of the phenomenology of matter–antimatter asymmetry is beyond the scope of this chapter. Instead, a brief summary of the key observational and theoretical ingredients relevant to leptogenesis is presented here.
+
+The baryon asymmetry of the Universe is inferred from two independent classes of observations. The first arises from measurements of the primordial abundances of light elements, such as $D$, $^3\mathrm{He}$, $^4\mathrm{He}$, and $^7\mathrm{Li}$, produced during Big Bang nucleosynthesis (BBN). These abundances depend on the baryon-to-photon asymmetry parameter $\eta$, which is measured to be~\cite{Davidson_2008}:
 \begin{equation}
-	\eta^{BBN} \equiv \frac{n_B-n_{\bar{B}}}{n_\gamma}|_0=4.7-6.5\times 10^{-10}
+    \eta^{\mathrm{BBN}}
+    \equiv
+    \left. \frac{n_B - n_{\bar{B}}}{n_\gamma} \right|_0
+    =
+    (4.7\text{--}6.5) \times 10^{-10}.
 \end{equation}
-The second observation is of the cosmic microwave background (CMB) anisotropies \cite{Hu_2002}. A key CMB observable is $c_s$, the speed of sound in the photon-baryon fluid. Measuring the temperature fluctuations in the CMB constrain the baryon energy density, $\rho_B$, which is related to $\eta$ by:
-\begin{equation}
-	\Omega_B=\frac{\rho_B}{\rho_{crit}}
-\end{equation}
-\begin{equation}
-	\eta^{CMB}=2.74\times 10^{-8}\Omega_B h^2=6.1^{+0.3}_{-0.2}\times 10^{-10}
-\end{equation}
-where $h=H_0/100$ km $s^{-1}$ Mpc$^{-1}=0.682\pm 0.0028$ is the present Hubble parameter\cite{DESI}. The impressive consistency between the nucleosynthesis and CMB constraints on the baryon density of the Universe is a triumph of hot big-bang cosmology.
 
-Sakharov outlined three conditions for generating a dynamic baryon asymmetry, now referred to as the Sakharov conditions.
-\begin{enumerate}
-	\item Baryon number violation
-	\item C and CP violation
-	\item Out of equilibrium dynamics
+\noindent The second constraint comes from observations of anisotropies in the cosmic microwave background (CMB)~\cite{Hu_2002}. A key CMB observable is the speed of sound $c_s$ in the photon–baryon fluid. Measurements of temperature fluctuations in the CMB determine the baryon energy density $\rho_B$, commonly expressed in terms of the baryon density parameter:
+\begin{equation}
+    \Omega_B = \frac{\rho_B}{\rho_{\mathrm{crit}}}.
+\end{equation}
+The corresponding baryon asymmetry inferred from CMB observations is:
+\begin{equation}
+    \eta^{\mathrm{CMB}}
+    =
+    2.74 \times 10^{-8} \, \Omega_B h^2
+    =
+    6.1^{+0.3}_{-0.2} \times 10^{-10},
+\end{equation}
+\noindent where $h = H_0 / (100\,\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 0.682 \pm 0.0028$ is the dimensionless Hubble parameter~\cite{DESI}. The remarkable agreement between the BBN and CMB determinations of the baryon asymmetry represents a major success of hot Big Bang cosmology.
+
+Any dynamical mechanism responsible for generating the observed baryon asymmetry must satisfy three necessary conditions, first identified by Sakharov and now known as the Sakharov conditions:
+\begin{enumerate}[itemsep=-2pt]
+    \item Baryon number violation
+    \item C and CP violation
+    \item Departure from thermal equilibrium
 \end{enumerate}
-While the Standard Model features all three ingredients, no SM mechanism generates a large enough baryon asymmetry. Leptogenesis is a beyond the Standard Model theory that introduces the previously discussed singlet neutrinos. Along with new sphaleron processes that can convert lepton number violation into baryon number violation, The Type I seesaw sterile neutrions play a pivotal role in Leptogenesis.
+Although the Standard Model contains all three ingredients in principle, it fails to produce a baryon asymmetry of sufficient magnitude.
+
+Leptogenesis provides a compelling beyond-the-Standard-Model framework in which these conditions can be satisfied. In this scenario, the heavy sterile neutrinos introduced in the Type-I seesaw mechanism undergo CP-violating, out-of-equilibrium decays that generate a net lepton asymmetry. Electroweak sphaleron processes subsequently convert a fraction of this lepton asymmetry into a baryon asymmetry, linking the origin of neutrino mass to the matter–antimatter asymmetry of the Universe.
+
 
 % \subsection{Neutrino Mass Hierarchy}
 % We've discussed open questions relating to neutrino nature; whether they are dirac or majorana, what is the absolute neutrino mass scale, and their potential role in resolving matter-antimatter asymmetry in the Universe. Another open question has to do with the relative ordering of the light neutrino masses.
