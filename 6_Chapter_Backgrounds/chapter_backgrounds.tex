@@ -35,6 +35,10 @@ In order to estimate the amount of film-related $^{40}$K background that gets re
 
 While an initial deviation from the expected distribution was found, vetoing the upper balloon neck region yielded an excellent qualitative match between the measured and simulated $^{40}$K radial distributions. This independent measurement of the radial distribution supports the hypothesis that the $^{40}$K contamination is mostly limited to inner balloon film itself and much lower in the liquid scintillator volumes. This behavior matches the relative contamination levels of  $^{238}$U and $^{232}$Th.
 
+\begin{equation}
+    Y_{K40\ film}= 183\pm 13 \text{events/day}
+\end{equation}
+
 This indepedently measured rate of $^{40}$K is implemented in the spectral analysis as a penalty term.
 
 \subsection{$^{85}$Kr}
@@ -63,23 +67,27 @@ The fit is performed simultaneously over the three energy regions shown in Figur
 \begin{table}[htbp]
 \centering
 \caption{Production and background rate of carbon spallation products}
-\small
-\begin{tabular}{cccccc}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{c c c c c c}
 \hline
- & Energy [MeV] & life-time & \begin{tabular}{c}Production rate\\ (FLUKA prediction)\\ {[}event/day/kton{]}\end{tabular} & \begin{tabular}{c}Background rate\\ {[}event/day/kton{]}\end{tabular} & \begin{tabular}{c}Rejection\\ efficiency [\%]\end{tabular} \\
+ & $E$ [MeV] & $\tau$ & Prod. rate & Bkg. rate & Rej. eff. \\
+ & & & [evt/d/kton] & [evt/d/kton] & [\%] \\
 \hline
-$^6$He   & 3.51 ($\beta^-$) & 1.16 sec   & $12.36^{+1.22}_{-1.28}$ ($28 \pm 2$)   & $0.33^{+0.23}_{-0.02}$ & $97.56^{+1.65}_{-1.65}$ \\
-$^{10}$C & 3.65 ($\beta^+$) & 27.8 sec   & $18.70^{+0.72}_{-0.64}$ ($23 \pm 2$)   & $0.00^{+0.03}_{-0.00}$ & $100^{+0.00}_{-0.66}$ \\
-$^8$Li   & 16.0 ($\beta^-$) & 1.21 sec   & $25.77^{+0.92}_{-1.04}$ ($47 \pm 3$)   & $0.025^{+0.13}_{-0.14}$ & $99.13^{+0.49}_{-0.46}$ \\
-$^{12}$B & 13.4 ($\beta^-$) & 29.1 msec  & $56.14^{+1.29}_{-1.28}$ ($42 \pm 3$)   & $0.015^{+0.002}_{-0.002}$ & $99.98^{+0.004}_{-0.004}$ \\
-$^8$B    & 18.0 ($\beta^+$) & 1.11 sec   & $0.58^{+0.71}_{-0.44}$ ($11 \pm 1$)     & $0.07^{+0.09}_{-0.07}$ & $88.29^{+14.78}_{-19.77}$ \\
-$^{12}$N & 17.3 ($\beta^+$) & 15.9 msec  & $0.218^{+0.20}_{-0.12}$ ($0.74 \pm 0.06$) & $0^{+0}_{-0}$ & $100^{+0}_{-0.0001}$ \\
-$^9$C    & 16.5 ($\beta^+$) & 182.5 msec & $0.53^{+0.54}_{-0.44}$ ($1.5 \pm 0.1$) & $0^{+0.01}_{-0}$ & $100^{+0.00}_{-0.99}$ \\
-$^8$He   & 10.7 ($\beta^-$) & 171.7 msec & $4.89^{+0.93}_{-0.86}$ ($0.55 \pm 0.04$) & $0^{+0.02}_{-0}$ & $100^{+0}_{-0.31}$ \\
-$^9$Li   & 13.6 ($\beta^-$) & 257.2 msec & $0.00^{+1.19}_{-0}$ ($4.9 \pm 0.4$) & $0^{+0.01}_{-0}$ & - \\
-$^{11}$Be& 11.5 ($\beta^-$) & 19.9 sec   & $1.06^{+0.69}_{-0.21}$ ($1.1 \pm 0.1$)  & $0.00^{+0.26}_{-0}$ & $100^{+0.00}_{-22.13}$ \\
+$^6$He   & 3.51 ($\beta^-$) & 1.16 s   & $12.36^{+1.22}_{-1.28}$ ($28 \pm 2$)   & $0.33^{+0.23}_{-0.02}$ & $97.6^{+1.7}_{-1.7}$ \\
+$^{10}$C & 3.65 ($\beta^+$) & 27.8 s   & $18.70^{+0.72}_{-0.64}$ ($23 \pm 2$)   & $0.00^{+0.03}_{-0.00}$ & $100^{+0.00}_{-0.66}$ \\
+$^8$Li   & 16.0 ($\beta^-$) & 1.21 s   & $25.77^{+0.92}_{-1.04}$ ($47 \pm 3$)   & $0.025^{+0.13}_{-0.14}$ & $99.1^{+0.5}_{-0.5}$ \\
+$^{12}$B & 13.4 ($\beta^-$) & 29.1 ms  & $56.14^{+1.29}_{-1.28}$ ($42 \pm 3$)   & $0.015^{+0.002}_{-0.002}$ & $100.0^{+0.0}_{-0.0}$ \\
+$^8$B    & 18.0 ($\beta^+$) & 1.11 s   & $0.58^{+0.71}_{-0.44}$ ($11 \pm 1$)     & $0.07^{+0.09}_{-0.07}$ & $88.3^{+14.8}_{-19.8}$ \\
+$^{12}$N & 17.3 ($\beta^+$) & 15.9 ms  & $0.218^{+0.20}_{-0.12}$ ($0.74 \pm 0.06$) & $0^{+0}_{-0}$ & $100^{+0}_{-0.0}$ \\
+$^9$C    & 16.5 ($\beta^+$) & 182.5 ms & $0.53^{+0.54}_{-0.44}$ ($1.5 \pm 0.1$) & $0^{+0.01}_{-0}$ & $100^{+0.0}_{-1.0}$ \\
+$^8$He   & 10.7 ($\beta^-$) & 171.7 ms & $4.89^{+0.93}_{-0.86}$ ($0.55 \pm 0.04$) & $0^{+0.02}_{-0}$ & $100^{+0}_{-0.3}$ \\
+$^9$Li   & 13.6 ($\beta^-$) & 257.2 ms & $0.00^{+1.19}_{-0}$ ($4.9 \pm 0.4$) & $0^{+0.01}_{-0}$ & - \\
+$^{11}$Be& 11.5 ($\beta^-$) & 19.9 s   & $1.06^{+0.69}_{-0.21}$ ($1.1 \pm 0.1$)  & $0.00^{+0.26}_{-0}$ & $100^{+0.0}_{-22.1}$ \\
 \hline
 \end{tabular}
+\label{tab:shortspall_tab}
 \end{table}
 
 \subsection{$^{11}C$ Spallation Estimation}
