@@ -111,7 +111,7 @@ Precision measurements of the invisible decay width of the $Z^0$ boson provide a
 \end{equation}
 is consistent with three active neutrino flavors and provides strong experimental support for the Standard Model neutrino sector.
 
-The purely left handed nature of weak interactions in the Standard Model has important consequences for neutrino mass and for processes that violate lepton number. Because only left handed neutrino fields appear in the electroweak Lagrangian, no renormalizable mass term for neutrinos can be constructed using Standard Model fields alone. As a result, neutrinos are massless in the minimal Standard Model. Any mechanism that generates neutrino mass must therefore extend the theory, either by introducing new fields or by allowing higher dimensional operators. This chiral structure also plays a central role in double beta decay. In particular, the connection between left handed weak currents, neutrino mass, and lepton number violation underlies the theoretical interpretation of both two neutrino and neutrinoless double beta decay processes, which are discussed in detail in the following sections.
+The purely left handed nature of weak interactions in the Standard Model has important consequences for neutrino mass and for processes that violate lepton number. Because only left handed neutrino fields appear in the electroweak Lagrangian, no renormalizable mass term for neutrinos can be constructed using Standard Model fields alone. As a result, neutrinos are massless in the minimal Standard Model. Any mechanism that generates neutrino mass must therefore extend the theory, either by introducing new fields or by allowing higher dimensional operators. This chiral structure also plays a central role in double beta decay. In particular, the connection between left handed weak currents, neutrino mass, and lepton number violation underlies the theoretical interpretation of both $2\nu\beta\beta$ and $0\nu\beta\beta$ decay processes, which are discussed in detail in the following sections.
 
 \section{Neutrino Oscillations}
 
@@ -172,7 +172,7 @@ U =
 	\label{pmns}
 \end{multline}
 
-\noindent The final diagonal matrix containing the Majorana phases does not affect neutrino oscillation probabilities, as these phases cancel when forming the inner products relevant for flavor transitions. Nevertheless, they play a crucial role in lepton number violating processes such as neutrinoless double beta decay and therefore remain of central interest in neutrino physics.
+\noindent The final diagonal matrix containing the Majorana phases does not affect neutrino oscillation probabilities, as these phases cancel when forming the inner products relevant for flavor transitions. Nevertheless, they play a crucial role in lepton number violating processes such as $0\nu\beta\beta$ decay and therefore remain of central interest in neutrino physics.
 
 To illustrate how neutrino oscillation parameters are extracted experimentally, it is instructive to derive the oscillation probability in vacuum. Unlike quarks, which are confined within hadrons, neutrinos propagate freely over macroscopic distances. The massive neutrino states $\ket{\nu_k}$ can therefore be treated as plane wave solutions to the Schrödinger equation, evolving in time as:
 \begin{equation}
@@ -586,12 +586,12 @@ The baryon asymmetry of the Universe is inferred from two independent classes of
     \equiv
     \left. \frac{n_B - n_{\bar{B}}}{n_\gamma} \right|_0
     =
-    (4.7\text{--}6.5) \times 10^{-10}.
+    (4.7\text{--}6.5) \times 10^{-10}
 \end{equation}
 
 \noindent The second constraint comes from observations of anisotropies in the cosmic microwave background (CMB)~\cite{Hu_2002}. A key CMB observable is the speed of sound $c_s$ in the photon–baryon fluid. Measurements of temperature fluctuations in the CMB determine the baryon energy density $\rho_B$, commonly expressed in terms of the baryon density parameter:
 \begin{equation}
-    \Omega_B = \frac{\rho_B}{\rho_{\mathrm{crit}}}.
+    \Omega_B = \frac{\rho_B}{\rho_{\mathrm{crit}}}
 \end{equation}
 The corresponding baryon asymmetry inferred from CMB observations is:
 \begin{equation}
@@ -599,7 +599,7 @@ The corresponding baryon asymmetry inferred from CMB observations is:
     =
     2.74 \times 10^{-8} \, \Omega_B h^2
     =
-    6.1^{+0.3}_{-0.2} \times 10^{-10},
+    6.1^{+0.3}_{-0.2} \times 10^{-10}
 \end{equation}
 \noindent where $h = H_0 / (100\,\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 0.682 \pm 0.0028$ is the dimensionless Hubble parameter~\cite{DESI}. The remarkable agreement between the BBN and CMB determinations of the baryon asymmetry represents a major success of hot Big Bang cosmology.
 
@@ -637,6 +637,155 @@ Leptogenesis provides a compelling beyond-the-Standard-Model framework in which 
 % 	\item \textbf{Normal Ordering} with positive $\delta m_{13}^2$ and $m_1<m_2<m_3$
 % \end{itemize}
 % Where $m_1$ is the neutrino mass eigenstate with the highest $\nu_e$ flavor content. According to combined T2K, Super-K atmospheric analysis, the normal ordering is slightly favored \cite{wester_2004}. 
+
+\section{Double Beta Decay}
+\label{sec:double_beta_decay}
+
+The observation of neutrino oscillations establishes that neutrinos are massive and motivates extensions of the Standard Model that violate lepton number. Double beta decay plays a unique role in this context, providing an experimental probe that is simultaneously sensitive to neutrino properties and to the nuclear many-body dynamics governing rare weak processes. While $0\nu\beta\beta$ decay is the most direct test of lepton number violation and the Majorana nature of neutrinos, its interpretation is fundamentally limited by uncertainties in nuclear matrix elements (NMEs).
+
+Two-neutrino double beta decay, which is allowed within the Standard Model and has been experimentally observed in multiple nuclei, provides a critical experimental anchor for these nuclear calculations. In particular, two-neutrino double beta decay to excited states of the daughter nucleus offers a complementary and underexplored probe of nuclear structure. Measurements or limits on these transitions directly test the same nuclear operators that appear in $0\nu\beta\beta$, making them especially relevant for reducing theoretical uncertainties. This chapter focuses on the theoretical and experimental aspects of two-neutrino double beta decay, with particular emphasis on transitions to excited states and their connection to nuclear matrix elements relevant for $0\nu\beta\beta$ searches.
+
+\section{Two-Neutrino Double Beta Decay}
+
+Most unstable nuclei decay through first-order weak processes such as single $\beta^-$ decay or electron capture, converting a neutron into a proton or vice versa while conserving lepton number. In some even–even nuclei, however, single beta decay is energetically forbidden or strongly suppressed, while a second-order process involving the simultaneous conversion of two neutrons into two protons ($2\nu\beta\beta$) is allowed. The $2\nu\beta\beta$ process was first proposed by Goeppert-Mayer in 1935 and is permitted within the Standard Model~\cite{PhysRev.48.512}.
+
+The canonical $2\nu\beta\beta$ process proceeds as:
+\begin{equation}
+(A,Z) \rightarrow (A,Z+2) + 2e^- + 2\bar{\nu}_e 
+\end{equation}
+conserving total lepton number. The decay changes the nuclear charge by two units while leaving the mass number unchanged and occurs only if the resulting daughter nucleus is more tightly bound than the parent. The available energy, or $Q$ value, is given by:
+\begin{equation}
+Q_{\beta\beta} = m_N(^{A}_{Z}X) - m_{N-2}(^{A}_{Z+2}X') - 2m_e 
+\end{equation}
+which sets the scale for the phase space available to the emitted leptons. Here, $m_e$ is the electron mass in the rest frame, $m_N\left( ^{A}_{Z}X \right)$ is the mass of the mother nucleus in the rest frame, and $m_{N-2}\left( ^{A}_{Z+2}X' \right)$ represents the mass of the daughter nucleus in the rest frame.
+
+Not all nuclei are capable of undergoing double beta decay. Whether a given isotope can decay via the $2\nu\beta\beta$ process is determined by nuclear binding energies and the relative stability of neighboring isobars. Insight into this behavior can be obtained from the semi-empirical description of nuclear masses.
+
+The mass of an atomic nucleus with mass number $A$ and atomic number $Z$ may be written as:
+\begin{equation}
+    M = Z m_p + (A - Z) m_n - E(A,Z)
+\end{equation}
+where $m_p$ and $m_n$ are the proton and neutron rest masses, respectively, and $E(A,Z)$ is the nuclear binding energy. The binding energy is well approximated by the semi-empirical mass formula:
+\begin{equation}
+    E = a_v A - a_s A^{2/3}
+    - a_C \frac{Z(Z - 1)}{A^{1/3}}
+    - a_A \frac{(N - Z)^2}{A}
+    + \delta(N,Z)
+\end{equation}
+which captures the dominant contributions to nuclear stability. The volume and surface terms describe the short-range attractive strong force, the Coulomb term accounts for proton–proton repulsion, and the asymmetry term reflects the energy cost of unequal numbers of protons and neutrons imposed by the Pauli exclusion principle.
+
+The final contribution, $\delta(N,Z)$, represents the pairing energy and depends on whether the nucleus contains even or odd numbers of protons and neutrons:
+\begin{equation}
+    \delta(N,Z) =
+    \begin{cases}
+        -a_p A^{-1/2} & \text{even–even nuclei}, \\
+        0 & \text{even–odd or odd–even nuclei}, \\
+        +a_p A^{-1/2} & \text{odd–odd nuclei}
+    \end{cases}
+\end{equation}
+This term favors nuclei with paired nucleons, making even–even nuclei systematically more tightly bound than their odd–odd neighbors.
+
+As a result, nuclei with odd mass number $A$ typically possess a single stable isobar and undergo ordinary beta decay if energetically allowed. In contrast, nuclei with even mass number exhibit two possible pairing configurations, leading to the familiar parabolic dependence of nuclear mass on $Z$ for fixed $A$ as shown in Figure~\ref{fig:mass_parabola}. In some even–even nuclei, single $\beta^-$ decay is energetically forbidden or strongly suppressed due to angular momentum and parity constraints, while the nucleus two units away in $Z$ is more tightly bound. In such cases, the nucleus may decay directly to this lower-energy configuration through the simultaneous emission of two electrons and two antineutrinos.
+
+\begin{figure}[b!]
+	\centering
+	\includegraphics[scale=0.5]{2_Chapter_Theory/Figures/mass_parabola.png}
+	\caption{Atomic masses of $A = 136$ isotopes. Masses are given as differences with respect to the most bound isotope, $^{136}$Ba. The red (green) levels indicate odd-odd (even-even) nuclei. Figure taken from~\cite{Gomez-Cadenas:2011oep}.}
+	\label{fig:mass_parabola}
+\end{figure}
+
+This structure explains why $2\nu\beta\beta$ decay is observed only in a limited set of even–even nuclei and highlights the close connection between double beta decay and nuclear pairing effects. These same nuclear structure considerations also influence transitions to excited states of the daughter nucleus and play an important role in shaping the nuclear matrix elements relevant for both $2\nu\beta\beta$ and $0\nu\beta\beta$ decay.
+
+The rate of $2\nu\beta\beta$ decay can be calculated using Fermi’s golden rule, treating the process as a second-order weak interaction involving the emission of four leptons in the final state. The inverse half-life for $2\nu\beta\beta$ decay may be written in the standard factorized form:
+\begin{equation}
+    \Gamma^{2\nu}
+    \equiv
+    \left(T^{2\nu}_{1/2}\right)^{-1}
+    =
+    G^{2\nu}(Q_{\beta\beta}, Z)
+    \left|
+        \mathcal{M}^{2\nu}_{GT}
+        +
+        \frac{g_V^2}{g_A^2}
+        \mathcal{M}^{2\nu}_{F}
+    \right|^2 
+\end{equation}
+where $G^{2\nu}(Q_{\beta\beta}, Z)$ is the phase-space factor, $g_V$ and $g_A$ are the vector and axial-vector weak coupling constants, and $\mathcal{M}^{2\nu}_{F}$ and $\mathcal{M}^{2\nu}_{GT}$ are the Fermi and Gamow--Teller nuclear matrix elements, respectively.
+
+The phase-space factor $G^{2\nu}$ accounts for the integration over the energies and angles of the two emitted electrons and two antineutrinos and depends strongly on the available decay energy $Q_{\beta\beta}$ and the nuclear charge $Z$. These phase-space factors can be calculated with relatively high precision using relativistic electron wave functions and Coulomb corrections and are among the best-controlled theoretical inputs to the $2\nu\beta\beta$ decay rate~\cite{Kotija2012,Horoi2018}.
+
+In contrast, the nuclear matrix elements encode the details of nuclear structure and many-body correlations. The Fermi matrix element $\mathcal{M}^{2\nu}_{F}$ corresponds to transitions with no change in nuclear spin and arises from the vector component of the weak interaction, while the Gamow--Teller matrix element $\mathcal{M}^{2\nu}_{GT}$ corresponds to spin-changing transitions mediated by the axial-vector current. For two-neutrino double beta decay, Fermi transitions are strongly suppressed due to isospin conservation, as the dominant contribution proceeds through intermediate $1^+$ states, corresponding to $0^+ \rightarrow 1^+ \rightarrow 0^+$ nuclear transitions. As a result, the decay rate is overwhelmingly dominated by the Gamow--Teller contribution.
+
+Because $2\nu\beta\beta$ decay is a second-order weak process, its half-life is extremely long, with experimentally measured values typically in the range of $10^{19}$ to $10^{22}$ years~\cite{PRITYCHENKO2025101694}. While calculations of $G^{2\nu}$ are robust, theoretical predictions of $\mathcal{M}^{2\nu}_{GT}$ depend sensitively on the nuclear model employed and often fail to reproduce experimental half-lives without additional modifications. To account for this discrepancy, it is common to introduce an effective axial-vector coupling constant, $g_A^{\mathrm{eff}}$, which is quenched relative to the free-nucleon value $g_A$. This is typically implemented through a rescaling of the Gamow--Teller matrix element,
+\begin{equation}
+    \mathcal{M}^{2\nu,\mathrm{eff}}_{GT}
+    =
+    \left( \frac{g_A^{\mathrm{eff}}}{g_A} \right)^2
+    \mathcal{M}^{2\nu}_{GT}.
+\end{equation}
+The magnitude and physical origin of this quenching remain subjects of active investigation and are thought to arise from a combination of missing many-body correlations, non-nucleonic degrees of freedom, and limitations of model spaces used in nuclear calculations~\cite{10.3389/fphy.2019.00029}. Importantly, uncertainties associated with $g_A^{\mathrm{eff}}$ directly impact predictions for both $2\nu\beta\beta$ and $0\nu\beta\beta$ decay rates, further motivating experimental studies of $2\nu\beta\beta$ decay, including transitions to excited nuclear states.
+
+
+
+
+% Because $2\nu\beta\beta$ is a second-order weak process, its decay rate is highly suppressed, with measured half-lives ranging from $10^{19}$ to $10^{22}$ years. Nevertheless, it has now been observed in a number of isotopes and represents the rarest nuclear decay process measured to date. Importantly, $2\nu\beta\beta$ provides the only experimentally accessible double beta decay mode and therefore serves as a benchmark for theoretical models of nuclear structure.
+
+\section{Neutrinoless Double Beta Decay}
+\label{sec:0vbb}
+
+Building on Goeppert-Mayer’s work on $2\nu\beta\beta$ decay, Wendell Furry proposed the neutrinoless mode, now known as $0\nu\beta\beta$ decay \cite{Furry1939a}:
+\begin{equation}
+    (A,Z) \rightarrow (A,Z+2) + 2e^- 
+\end{equation}
+Unlike the two-neutrino mode, this process violates total lepton number by two units and is therefore forbidden within the Standard Model. Observation of $0\nu\beta\beta$ would constitute direct evidence of lepton number violation and establish that neutrinos are Majorana particles.
+
+From an experimental standpoint, $0\nu\beta\beta$ and $2\nu\beta\beta$ share many similarities. Both are second-order weak processes and occur in the same set of even–even nuclei for which single beta decay is energetically forbidden. In both cases, nuclear recoil is negligible, and the decay energy is carried almost entirely by the emitted electrons. The key experimental distinction is that while $2\nu\beta\beta$ produces a continuous electron energy spectrum extending up to the endpoint energy $Q_{\beta\beta}$, $0\nu\beta\beta$ would manifest as a monoenergetic peak at the endpoint, smeared only by detector energy resolution.
+
+Although phase-space considerations alone would favor the neutrinoless mode, the requirement of lepton number violation renders the decay rate extremely small, leading to half-lives exceeding $10^{26}$ years for experimentally accessible isotopes. As a result, $0\nu\beta\beta$ is among the rarest processes sought in modern experimental physics.
+
+In general, several mechanisms beyond the Standard Model could mediate $0\nu\beta\beta$ decay, including heavy particle exchange or other lepton-number-violating interactions. However, a model-independent result known as the Schechter–Valle (or ``black box'') theorem demonstrates that the observation of $0\nu\beta\beta$, regardless of the underlying mechanism, necessarily implies that neutrinos possess a Majorana mass. The theorem does not specify which mechanism dominates the decay rate, nor does it require a direct connection to neutrino oscillation phenomenology.
+
+The most widely studied and experimentally motivated scenario is the light Majorana neutrino exchange mechanism. In this case, the decay proceeds through the exchange of a virtual neutrino between two Standard Model weak vertices. The amplitude is nonzero only if neutrinos are massive and Majorana, as the process requires a helicity flip proportional to the neutrino mass. This mechanism provides a direct link between $0\nu\beta\beta$ decay and the absolute neutrino mass scale.
+
+Under the assumption that light Majorana neutrino exchange dominates, the inverse half-life for $0\nu\beta\beta$ decay can be written in factorized form as:
+\begin{equation}
+    \left(T^{0\nu}_{1/2}\right)^{-1}
+    =
+    G^{0\nu}(Q_{\beta\beta}, Z)
+    \left| \mathcal{M}^{0\nu} \right|^2
+    \left( \frac{m_{\beta\beta}}{m_e} \right)^2 
+\end{equation}
+where $G^{0\nu}$ is the phase-space factor, $\mathcal{M}^{0\nu}$ is the nuclear matrix element, $m_e$ is the electron mass, and $m_{\beta\beta}$ is the effective Majorana neutrino mass:
+\begin{equation}
+    m_{\beta\beta}
+    =
+    \left|
+        \sum_{i=1}^{3} m_i \, U_{ei}^2 \, e^{i\xi_i}
+    \right| 
+\end{equation}
+Here, $m_i$ are the light neutrino mass eigenvalues, $U_{ei}$ are elements of the PMNS mixing matrix, and $\xi_i$ are the Majorana CP-violating phases. Unlike neutrino oscillation experiments, which are insensitive to the absolute mass scale and Majorana phases, $0\nu\beta\beta$ decay probes both.
+
+The unknown values of the Majorana phases lead to allowed bands for $m_{\beta\beta}$ as a function of the lightest neutrino mass, with distinct regions corresponding to normal and inverted mass orderings. As a result, experimental limits on the $0\nu\beta\beta$ half-life translate into ranges of allowed $m_{\beta\beta}$ values rather than a single constraint.
+
+While the phase-space factor $G^{0\nu}$ can be calculated with high precision, the NME $\mathcal{M}^{0\nu}$ remains the largest source of theoretical uncertainty in interpreting $0\nu\beta\beta$ searches. The calculation of $\mathcal{M}^{0\nu}$ requires detailed knowledge of nuclear wave functions and many-body correlations and depends on the treatment of short-range physics, nuclear deformation, and the effective axial-vector coupling.  For the standard light Majorana neutrino exchange mechanism, the NME can be written schematically as a sum of long- and short-range contributions,
+\begin{equation}
+    \mathcal{M}^{0\nu}_{\mathrm{light}}
+    =
+    g_A^4
+    \left(
+        \mathcal{M}^{0\nu}_{\mathrm{long}} + \mathcal{M}^{0\nu}_{\mathrm{short}}
+    \right).
+\end{equation}
+The axial-vector coupling constant $g_A$ governs the long-range weak interaction of nucleons and is factored out explicitly, serving as an important parameter in nuclear many-body calculations. The short-range contribution depends additionally on a two-nucleon coupling, $g^{\mathrm{NN}}$, which is not written explicitly here. As in the case of $2\nu\beta\beta$ decay, the phase-space factors relevant for $0\nu\beta\beta$ are known with high precision for all experimentally relevant isotopes~\cite{Kotija2012,Horoi2018}. In contrast, the NMEs themselves, along with some associated hadronic couplings, remain a dominant source of theoretical uncertainty despite significant recent progress.
+
+
+Current nuclear structure methods, including the nuclear shell model, quasiparticle random-phase approximation, interacting boson model, and energy density functional approaches, yield values of $M^{0\nu}$ that differ by factors of two to three for the same isotope. These discrepancies directly propagate into uncertainties on the extracted limits or measurements of $m_{\beta\beta}$.
+
+As a result, the physics reach of $0\nu\beta\beta$ experiments is no longer limited solely by exposure or background reduction, but increasingly by the reliability of nuclear matrix element calculations. Reducing these uncertainties has therefore become a central goal in the field.
+
+
+
+
 
 \section{Neutrinoless Double Beta Decay}
 
