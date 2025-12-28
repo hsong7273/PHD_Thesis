@@ -62,6 +62,7 @@
 \usepackage{multirow}
 \usepackage{braket}
 \usepackage{booktabs}
+\usepackage{subcaption}
 %==========================================================================%
 % BEGIN
 %==========================================================================%
@@ -93,16 +94,18 @@
 \cleardoublepage
 
 %\appendix
-\begin{appendices}
-\include{Appendix/Appendix}
-\end{appendices}
+% \begin{appendices}
+% \include{Appendix/Appendix}
+% \end{appendices}
 %==========================================================================%
 % Bibliography
 \newpage
 \singlespace
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 
 % each subdirectory can have its own BiBTeX file
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
 \bibliography{thesis}
 \cleardoublepage
 
