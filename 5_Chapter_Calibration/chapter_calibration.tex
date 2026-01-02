@@ -3,15 +3,18 @@
 \thispagestyle{myheadings}
 \graphicspath{{5_Chapter_Calibration/Figures/}}
 
-Accurate modeling of physics events and detector response are essential for correct interpretations of KamLAND-ZEN experimental data. This chapter outlines the detector calibration and Monte-Carlo (MC) tuning methods used. Since the commissioning of KamLAND-ZEN 800, no deployed laser or radioactive source calibration was done. This was to avoid any radioactive contamination from inserting these components into the detector. Thus, known backgrounds are the primary tools for detector calibration.
-\cite{klz800_arxiv}
+Accurate modeling of physics events and detector response is essential for the correct interpretation of KamLAND-Zen experimental data. This chapter describes the detector calibration strategy and Monte Carlo (MC) tuning procedures used in this analysis. Since the commissioning of KamLAND-Zen 800, no deployed laser or radioactive calibration sources have been used. This decision was made to minimize the risk of introducing radioactive contamination into the detector through source deployment systems. As a result, naturally occurring and cosmogenic backgrounds provide the primary tools for detector calibration and performance monitoring.
 
 \section{Detector Calibration}
-The KamLAND detector has taken data for over 20 years. The energy scale, nonlinearity, bias, resolution, and vertex bias and resolutions have been well calibrated and studied. However, it is important to understand the variation of the detector performance over time. Electronics issues, such as HV reduction, channel loss, and detector work can affect our reconstructions. 
-\subsection{Variation of Energy Scale Over Time}
-As PMT channels are lost or deteriorate into bad channels, or have their gains adjusted, the energy scale of the detector can vary over time. Variation from the beginning of the analysis period in 2019 and until the end of KLZ-800 data-taking in 2024, the energy scale varied by 3\%. 
 
-\begin{figure}[htb]
+The KamLAND detector has been in operation for over two decades, during which its energy scale, nonlinearity, resolution, vertex reconstruction bias, and spatial resolution have been extensively calibrated and studied. Nevertheless, long-term variations in detector performance must be continuously monitored. Changes in detector conditions—including photomultiplier tube (PMT) gain adjustments, high-voltage (HV) reductions, channel failures, and maintenance activities—can affect energy and vertex reconstruction if left uncorrected.  This section focuses on monitoring and correcting time-dependent variations in detector performance using intrinsic calibration sources available during normal physics data-taking.
+
+\subsection{Variation of Energy Scale Over Time}
+
+As PMT channels are lost, degrade, or undergo gain adjustments, the detector energy scale can vary over time. Over the analysis period spanning from 2019 to the end of KamLAND-Zen 800 data-taking in 2024, the overall energy scale exhibited variations at the level of approximately 3\%. These variations are corrected using calibration handles that are continuously available throughout data-taking. Figure~\ref{fig:figure51} shows the time dependence of the reconstructed energy scale using $^{40}$K decays originating from detector materials. After correction, residual run-to-run fluctuations are constrained to within approximately 1\%.
+
+
+\begin{figure}[b!]
     \centering
     % Left subplot (A) - Time variation
     \begin{subfigure}[b]{0.48\textwidth}
@@ -29,67 +32,91 @@ As PMT channels are lost or deteriorate into bad channels, or have their gains a
         \label{fig:histogram}
     \end{subfigure}
     
-    \caption{Time variation of $^{40}$K peak after correction. (A) Time variation of 
+    \caption{Time variation of $^{40}$K peak after correction. (LEFT) Time variation of 
     energy scale is corrected using $^{40}$K and this figure is a check using $^{40}$K itself. 
-    (B) Fluctuations among runs are within 1\% (gray band).}
+    (RIGHT) Fluctuations among runs are within 1\% (gray band).}
     \label{fig:figure51}
 \end{figure}
+
+
 \subsubsection*{$^{40}$K PEEK Gammas}
-Reconstructing the $^{40}$K-$\gamma$ peak from balloon PEEK material can help calibrate the energy scale over time. The PEEK material is located 550cm above the center of the detector and is a consistent source of $^{40}$K radioactive decays. The decay energy of the $^{40}$K electron-capture decay to $^{40}$Ar has an energy of $Q_{EC}=1504$ keV. However, as the energy scale of the detector decreases as you move from the center of the detector. This EC-$\gamma$ peak is observed at around $E_{vis}=1.35$ MeV in KamLAND-ZEN. These $^{40}$K PEEK events are selected by the following simple selection:
+Reconstruction of the $^{40}$K $\gamma$-ray peak originating from the polyether ether ketone (PEEK) material used in the balloon support structure provides a stable reference for monitoring the energy scale over time. The PEEK material is located approximately 550\,cm above the detector center and contains trace amounts of naturally occurring $^{40}$K, making it a persistent and well-localized calibration source. The electron-capture decay of $^{40}$K to $^{40}$Ar has a $Q$-value of $Q_{\mathrm{EC}} = 1504$\,keV. Due to position-dependent light collection and optical attenuation, this peak is observed at a lower visible energy, around $E_{\mathrm{vis}} \approx 1.35$\,MeV, at the PEEK location in KamLAND-Zen.  The $^{40}$K PEEK events are selected using the following criteria:
+
 \begin{itemize}
-	\item Passes Flasher Veto
-	\item Passes Muon Veto
-	\item Passes 2msec veto after muons
-	\item cylindrical volume selection around PEEK material ($450<z<600$,$\rho<250$ cm)
+	\item pass the flasher veto,
+	\item pass the muon veto,
+	\item pass a 2\,ms veto following muons,
+	\item satisfy a cylindrical fiducial selection around the PEEK material ($450 < z < 600$\,cm, $\rho < 250$\,cm).
 \end{itemize}
 
+\noindent The stability of the reconstructed $^{40}$K peak provides a sensitive probe of time-dependent variations in detector response.
+
+
 \subsubsection*{Neutron Capture Gammas}
-The KamLAND energy scale is primarily set by neutron captures on Hydrogen. Figure \ref{fig:neutron_capture_energy} shows the variation in neutron capture visible energy over time in XeLS and KamLS. Events are taken simply in a time window following muons. Due to post-muon instability, such as high after-pulsing, PMT ringing, and baseline shifts, the time directly after muons is excluded. An on-off time analysis is performed to subtract any incidental backgrounds and resolve the neutron capture energy distribution.
+
+The absolute energy scale of KamLAND is primarily anchored using the 2.2\,MeV $\gamma$ ray emitted following neutron capture on hydrogen. Figure~\ref{fig:neutron_capture_energy} shows the time variation of the reconstructed neutron capture energy in both the xenon-loaded liquid scintillator (XeLS) and the surrounding KamLAND liquid scintillator (KamLS).  Neutron capture events are selected in a time window following cosmic-ray muons. Due to detector instabilities immediately after muon events—such as elevated after-pulsing rates, PMT ringing, and baseline shifts—the earliest post-muon period is excluded. An on--off time subtraction method is used to remove accidental backgrounds and isolate the neutron capture signal.
+
 \begin{itemize}
-    \item On-time window : $400<dT<1500 \mu sec$
-    \item Off-time window : $2800<dT<4000 \mu sec$
+    \item On-time window: $400 < dT < 1500~\mu$s,
+    \item Off-time window: $2800 < dT < 4000~\mu$s.
 \end{itemize}
-\begin{figure}[htb]
+
+The reconstructed neutron capture peak is observed to be stable within $\pm1\%$ throughout the data-taking period. The energy scale in KamLS is approximately 7\% higher than in XeLS due to the higher intrinsic scintillation light yield in the absence of xenon loading.
+
+\begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.65]{neutron_escale.png}
 	\caption{Neutron capture energy over KLZ-800 data-taking. The blue and orange points correspond to XeLS and KamLS respectively. Gray bands show $\pm1\%$ deviation from the average. Note that the energy scale is 7\% higher in KamLS due to the higher scintillator light-yield.}
 	\label{fig:neutron_capture_energy}
 \end{figure}
+
+
 \subsubsection*{$2\nu\beta\beta$ Rate}
-The tail of the \2nbb decay spectrum is another useful handle on variations in energy scale over time. In the abscence of any XeLS leakage out of the inner balloon, the rate of \2nbb events in an energy range can be used to verify the energy scale. We apply all the \0nbb analysis event selections and a further $1.85<E_{vis}<2.35$ MeV energy selection to select the \2nbb-dominant region. Figure \ref{fig:2nu_stability} shows minor fluctuations, but no clear trend upward or downwards.
-\begin{figure}[htb]
+
+The high-statistics tail of the $2\nu\beta\beta$ decay spectrum provides an additional, independent check of the energy scale stability over time. In the absence of xenon leakage from the inner balloon, the event rate in a fixed energy window is sensitive to shifts in the reconstructed energy scale. All standard \0nbb analysis selections are applied, followed by an additional energy requirement of $1.85 < E_{\mathrm{vis}} < 2.35$\,MeV to isolate a region dominated by $2\nu\beta\beta$ decays. Figure~\ref{fig:2nu_stability} shows that the event rate in this region exhibits only minor statistical fluctuations and no significant long-term trend.
+
+\begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.65]{2nu_trend.png}
 	\caption{The event rate in the \2nbb dominant energy region over KLZ-800 data-taking.}
 	\label{fig:2nu_stability}
 \end{figure}
-\subsection{MoGURA Stability}
-Cosmic ray muon induced spallation reactions are a constant source of well understood background. MoGURA's dead-time-free electronics allow it to observe neutron capture's closer in time to the original muons. This higher tagging efficiency than KAMFEE provides more data that can be used for calibration.
 
-The MoGURA stability performance over time is marked by the neutron capture rate and distributions. Figure \ref{fig:neutron_capture_energy} shows the variation over time of MoGURA's neutron tagging performance. The neutron selection in MoGURA was outline in section \ref{sec:mogura_neutron_reco}.
-\begin{figure}[htb]
+
+\subsection{MoGURA Stability}
+
+Cosmic-ray muon–induced spallation reactions provide a continuous and well-understood source of calibration signals in KamLAND-Zen. The MoGURA data acquisition system, with its dead-time–free readout, is capable of recording neutron capture events occurring much closer in time to the parent muon than is possible with the KamFEE DAQ. This enhanced tagging efficiency results in a larger and cleaner neutron sample, which can be exploited to monitor detector and DAQ stability over time.
+
+The stability of MoGURA performance is characterized primarily by the neutron capture rate and the associated reconstructed energy and timing distributions. Figure~\ref{fig:neutron_capture_trend} shows the time evolution of the neutron capture rate and the neutron tagging efficiency throughout the KamLAND-Zen 800 data-taking period. The neutron reconstruction and selection procedure employed by MoGURA is described in detail in Section~\ref{sec:mogura_neutron_reco}.
+
+\begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{neutron_capture_trend.png}
-	\caption{MoGURA's neutron capture rate and neutron tagging efficiency over KLZ-800 data-taking.}
+	\caption{Time evolution of the neutron capture rate and neutron tagging efficiency measured by MoGURA over KamLAND-Zen 800 data-taking.}
 	\label{fig:neutron_capture_trend}
 \end{figure}
-\subsubsection*{$^{10}$C tagging Stability}
-$^{10}$C is an easily isolated, well-understood background that can be further used to monitor detector stability. $^{10}$C tagging via triple coincidence was described in section \ref{sec:mogura_neutron_veto}. Note that for this study, the $^{10}$C selection was adjusted from the \0nbb analysis for higher signal purity.
+
+\subsubsection*{$^{10}$C Tagging Stability}
+
+The cosmogenic isotope $^{10}$C provides an additional, well-characterized probe of detector and reconstruction stability. Due to its relatively short half-life and distinctive production mechanism, $^{10}$C can be efficiently tagged using a triple-coincidence method involving the parent muon, an associated spallation neutron, and the subsequent $\beta^+$ decay. The $^{10}$C tagging procedure used in the \0nbb background rejection is described in Section~\ref{sec:mogura_neutron_veto}. For the purpose of stability monitoring, the $^{10}$C selection is modified relative to the \0nbb analysis to obtain a higher-purity sample at the expense of overall efficiency. The selection criteria applied in this study are:
+
 \begin{itemize}
-    \item Select events in KamLS volume $(250<r<400 cm)$ and veto the corrugateed tube $(r>250 cm\& z>0)$
-    \item $2.0<E_{vis}<5.0 $ MeV
-    \item On-time window: $10<dT<90$ sec
-    \item Off-time window: $300<dT<1000$ sec
+    \item events reconstructed in the KamLS volume $(250 < r < 400~\mathrm{cm})$, with an additional veto of the corrugated tube region $(r > 250~\mathrm{cm} \ \wedge \ z > 0)$,
+    \item visible energy in the range $2.0 < E_{\mathrm{vis}} < 5.0$\,MeV,
+    \item on-time window: $10 < dT < 90$\,s,
+    \item off-time window: $300 < dT < 1000$\,s.
 \end{itemize}
-The on-time window begins at 10 seconds to exclude the $^{6}$He spallation background with a 1.16 second lifetime and $Q_\beta=3.5$ MeV. Figure \ref{fig:c10_mogura} shows the characteristic distributions that identify the dataset as $^{10}$C. The rate is estimated by fitting an exponential plus constant background to the $dT$ distribution. The $dR$, distance to nearest neutron, distribution is modeled by an $exGaussian$, exponentially modified Gaussian. The variation in $^{10}$C rate and mean of the exGaussian function are shown in Figure \ref{fig:C10_stability}
-\begin{figure}[htb]
+
+The lower bound of the on-time window is chosen to exclude contributions from $^{6}$He, which has a half-life of 1.16\,s and a $\beta$-decay $Q$-value of 3.5\,MeV. The off-time window provides a measure of the accidental background, which is subtracted from the on-time sample. Figure~\ref{fig:c10_mogura} shows the characteristic distributions used to identify the $^{10}$C sample. The decay rate is extracted by fitting an exponential function plus a constant background to the $dT$ distribution. The spatial correlation between $^{10}$C candidates and the nearest neutron capture, quantified by the distance $dR$, is modeled using an exponentially modified Gaussian (\textit{exGaussian}) function. The time evolution of the fitted $^{10}$C decay rate and the mean of the exGaussian $dR$ distribution are shown in Figure~\ref{fig:C10_stability}. The absence of significant long-term trends demonstrates the stability of MoGURA neutron tagging and associated reconstruction performance over the full KamLAND-Zen 800 data-taking period.
+
+\begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{mogura_c10.png}
-	\caption{Characteristic distributions of $^{10}$C decays. Red and blue histograms show on-time and off-time events respectively, and the black markers or grey histograms show the subtracted distributions (on-time - off-time). }
+	\caption{Characteristic distributions of $^{10}$C decay candidates. Red and blue histograms correspond to on-time and off-time events, respectively. The black markers (or gray histograms) show the background-subtracted distributions (on-time minus off-time).}
 	\label{fig:c10_mogura}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t!]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
@@ -100,40 +127,45 @@ The on-time window begins at 10 seconds to exclude the $^{6}$He spallation backg
         \centering
         \includegraphics[width=\textwidth]{c10_dist.png}
     \end{subfigure}
-    
-    \caption{Time variation of $^{10}$C rate and dR distribution shape over KLZ-800 data-taking.}
+    \caption{Time evolution of the $^{10}$C decay rate (left) and the shape of the $dR$ distribution (right) over KamLAND-Zen 800 data-taking.}
     \label{fig:C10_stability}
 \end{figure}
 
-\section{MC Tuning}
-KamLAND physics simulation is built on two simulation tools: GEANT4 and FLUKA. GEANT4 is used to simulate the distributions of signals, backgrounds decays, and scintillation light propagation in KamLAND detector media. KamLAND's GEANT4-based simulation tool chain is called KLG4Sim. FLUKA is used to simulate cosmic-ray muon induced spallation. Namely for neutron multiplicity and topology and spallation isotope production. 
-\subsection{Geant4 (KLG4)}
-KLG4 simulations used in this thesis analysis were tuned in \cite{ozaki_phd} and \cite{takeuchi_phd}. This section describes their prior work in tuning KLG4 parameters.
-\subsubsection*{KamLS Tuning}
-KamLS properties, the outer scintillator volume without dissolved xenon, are tuned using source calibration data taken on January 16, 2018. The calibartion deployment involved moving a composite radioactive soure between -550 and 550 cm in 50cm intervals. With 20 minutes of data-taking at each position. Table \ref{tab:calib_soure} describes the source composition.
 
-\begin{table}[h]
+\section{MC Tuning}
+
+The KamLAND physics simulation framework is built on two complementary simulation tools: \textsc{GEANT4} and \textsc{FLUKA}. \textsc{GEANT4} is used to simulate radioactive signal and background decays, particle propagation, energy deposition, and scintillation light production and transport within the KamLAND detector~\cite{AGOSTINELLI2003250}. The KamLAND-specific \textsc{GEANT4}-based simulation chain is referred to as \texttt{KLG4Sim}.  The \textsc{FLUKA} simulation package is used to model cosmic-ray muon–induced spallation processes, including neutron multiplicity, neutron topology, and spallation isotope production~\cite{FLUKAweb, 10.3389/fphy.2021.788253, Battistoni:2015epi,refId0}. These simulations provide essential inputs for modeling cosmogenic backgrounds and for constructing spallation likelihoods used in background rejection.
+
+\subsection{Geant4 (KLG4)}
+The \texttt{KLG4Sim} parameters used in this analysis were tuned in prior KamLAND-Zen studies, most notably in References~\cite{ozaki_phd} and~\cite{takeuchi_phd}. This section summarizes the calibration data and procedures used in those works to tune the detector response model. No additional tuning was performed specifically for this thesis.
+
+\subsubsection*{KamLS Tuning}
+The properties of KamLAND liquid scintillator (KamLS), which constitutes the outer scintillator volume without dissolved xenon, were tuned using radioactive source calibration data acquired on January~16,~2018. During this calibration campaign, a composite radioactive source was deployed along the detector $z$-axis from $-550$\,cm to $+550$\,cm in 50\,cm increments, with approximately 20 minutes of data-taking at each position. The deployed source, designated Kam-41, consisted of a combination of $^{137}$Cs, $^{68}$Ge, and $^{60}$Co isotopes. The composition and activity of the source at the time of data-taking are summarized in Table~\ref{tab:calib_soure}.
+
+\begin{table}[b!]
 \centering
-\caption{Summary of radioactive source. Estimated intensities are as of January 17, 2018 on which the calibration DAQ was taken.}
+\caption{Summary of the radioactive calibration source. Estimated intensities correspond to January~17,~2018, the date of the calibration DAQ.}
 \label{tab:calib_soure}
 \begin{tabular}{lccc}
 \hline
-Construction date & \multicolumn{3}{c}{Aug. 24, 2015} \\
-DAQ date & \multicolumn{3}{c}{Jan. 16, 2018} \\
+Construction date & \multicolumn{3}{c}{Aug.~24,~2015} \\
+DAQ date & \multicolumn{3}{c}{Jan.~16,~2018} \\
 Source ID & \multicolumn{3}{c}{Kam-41 (composite source)} \\
 \hline
  & $^{137}$Cs & $^{68}$Ge & $^{60}$Co \\
 Particle & 1$\gamma$ & 2$\gamma$ & 2$\gamma$ \\
 Energy (keV) & 661.7 & 511.0 & 1173.2, 1332.5 \\
-Initial Intensity (Bq) & 181 & 419 & 322 \\
-Estimated Intensity (Bq) & 180 & 356 & 234 \\
+Initial intensity (Bq) & 181 & 419 & 322 \\
+Estimated intensity (Bq) & 180 & 356 & 234 \\
 \hline
 \end{tabular}
 \end{table}
-Figure \ref{fig:calib_source} shows the $N_{hit}$ and total charge spectra of the composite source, with clearly visible gamma peaks. The gamma peaks are used to calibrate the nonlinearity of KamLS energy scale. The figure also shows the tuned KLG4 spectra that agrees well with data after tuning.
 
-The energy scale is also tracked through position, via calibration source deployment. The deployment data was used to tune material properties like attenuation length, re-emission probabilities, and scattering probabilities. Figure \ref{fig:calib_source_pos} shows the position dependence of total charge for each source isotope. The variability and simulation reproducibility with tuning is deteriorates as we move from the center of the detector. The physics analysis presented in this thesis focuses on data within 250cm. In this region, the deviation is within 2\%.
-\begin{figure}[htb]
+Figure~\ref{fig:calib_source} shows the distributions of the number of hit PMTs ($N_{\mathrm{hit}}$) and total collected charge for the composite source. Distinct $\gamma$-ray peaks corresponding to the source isotopes are clearly visible. These peaks are used to constrain the energy scale nonlinearity in KamLS. The same figure also shows the tuned \texttt{KLG4Sim} spectra, which reproduce the data well after tuning.
+
+The spatial dependence of the detector response was also studied using the deployed source data. These measurements were used to tune optical properties of the detector, including attenuation length, scattering probability, re-emission probability, and other light-transport parameters. Figure~\ref{fig:calib_source_pos} shows the position dependence of the total charge peak for each source isotope. While deviations between data and simulation increase toward the edge of the detector, the agreement within the central region is within 2\%. The physics analyses presented in this thesis are restricted to events with reconstructed radius $r < 250$\,cm, where the simulation reproducibility is well controlled.
+
+\begin{figure}[t!]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
@@ -144,39 +176,37 @@ The energy scale is also tracked through position, via calibration source deploy
         \centering
         \includegraphics[width=\textwidth]{calib_source_charge.png}
     \end{subfigure}
-    
-    \caption{$N_{hit}$ and total charge distribution of source calibration. Black plots show data and colored histograms (orange: 137 Cs, green: 68Ge, blue: 60 Co) show MC simulation. MC spectra are well tuned to data in both $N_{hit}$ and total charge. Figures from \cite{ozaki_phd}}
+    \caption{$N_{\mathrm{hit}}$ and total charge distributions from source calibration data. Black points show data, while colored histograms (orange: $^{137}$Cs, green: $^{68}$Ge, blue: $^{60}$Co) show MC simulations. The tuned MC reproduces the data well in both observables. Figures from Reference~\cite{ozaki_phd}.}
     \label{fig:calib_source}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{calib_source_pos.png}
-	\caption{Position dependence of total charge peak for each calibration source isotope \cite{ozaki_phd}}
+	\caption{Position dependence of the total charge peak for each calibration source isotope. Figure from Reference~\cite{ozaki_phd}.}
 	\label{fig:calib_source_pos}
 \end{figure}
 
+
 \subsubsection*{XeLS Tuning}
-There are no source calibration located in XeLS. Alternatively, some background sources are available to calibrate the detector. $^{222}$Rn is mixed in XeLS by emanation from pipeline or buffer tanks during xenon resolving work. A sequential decay of daughter isotopes $^{214}$Bi-Po can be tagged using delayed coincidence and they exists only in XeLS. The half life of $^{222}$Rn is 3.8 days and after completion of xenon resolving work, $^{222}$Rn does not supplied. Thus $^{214}$Bi-Po as high statistic calibration source is available only in first several months of KamLAND-Zen 800 observation. Birk's constant, attenuation length, scattering probability, LS time properties, and re-emission for XeLS are tuned using $^{214}$Bi-Po.
+No deployed radioactive calibration sources are available within the xenon-loaded liquid scintillator (XeLS). Instead, naturally occurring backgrounds are used to calibrate the detector response in this volume. During xenon handling and recirculation operations, $^{222}$Rn can be introduced into XeLS through emanation from pipelines or buffer tanks. The subsequent $^{214}$Bi--Po decay sequence can be efficiently tagged using delayed-coincidence techniques and occurs exclusively within XeLS. Because $^{222}$Rn has a half-life of 3.8 days, this calibration handle is available only during the first several months following xenon handling operations. The high-statistics $^{214}$Bi--Po sample collected during this radon-rich period is used to tune XeLS-specific detector parameters, including Birks’ constant, optical attenuation length, scattering probability, scintillator time profile, and re-emission probability.
 
 \subsubsection*{Position-dependent Energy Correction}
 
-Position dependence, over radius and $\theta$, of visible energy in XeLS is observed using the $^{214}$Po $alpha$ decay peak. The deviation from the center of the detector is reproduced in KLG4 as shown in Figure \ref{fig:po214_alpha}. The MC correction factors were tuned to ensure that the MC \0nbb decay peak in XeLS does not have a position dependence.
+A position dependence of the reconstructed visible energy in XeLS is observed as a function of radius and polar angle. This effect is studied using the $\alpha$ decay peak of $^{214}$Po. Figure~\ref{fig:po214_alpha} shows the radius dependence of the total collected charge for data and simulation. The observed deviations from the detector center are reproduced by \texttt{KLG4Sim}. Additional correction factors are applied to the simulation to ensure that the reconstructed \0nbb decay peak in XeLS does not exhibit residual position dependence. Figure~\ref{fig:po214_alpha} illustrates the agreement between data and simulation before and after applying these corrections.
 
-\begin{figure}[htb]
+\begin{figure}[t!]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{po214_data.png}
     \caption{Data}
-    \label{fig:po214_data}
 \end{subfigure}
 \hfill
 \begin{subfigure}[b]{0.45\textwidth}
     \centering
     \includegraphics[width=\textwidth]{po214_mc.png}
     \caption{MC (before correction)}
-    \label{fig:po214_mc_before}
 \end{subfigure}
 
 \vspace{1cm}
@@ -185,29 +215,29 @@ Position dependence, over radius and $\theta$, of visible energy in XeLS is obse
     \centering
     \includegraphics[width=\textwidth]{po214_mc_corr.png}
     \caption{MC (after correction)}
-    \label{fig:po214_mc_after}
 \end{subfigure}
-
-\caption{Radius dependence of total charge of $^{214}$Po. Figures from \cite{ozaki_phd}.}
+\caption{Radius dependence of the total collected charge for $^{214}$Po $\alpha$ decays. Figures from Reference~\cite{ozaki_phd}.}
 \label{fig:po214_alpha}
 \end{figure}
 
+
 \subsubsection*{Energy Non-Linearity}
-The visible energy and the energy deposited by charged particles have a nonlinear relation due to the scintillation quenching and the contribution of Cherenkov light. The following model is well known as Birks formula:
+The relationship between visible energy and deposited energy in liquid scintillator is nonlinear due to scintillation quenching and the contribution of Cherenkov radiation. This behavior is described by Birks’ law:
 \begin{equation}
     \label{eq:birks_law}
-    \frac{dL}{dx}\propto\frac{dE/dx}{1+kB\cdot dE/dx^\prime}
+    \frac{dL}{dx} \propto \frac{dE/dx}{1 + k_B \cdot (dE/dx)},
 \end{equation}
-where $dL/dx$ is light yield per unit length along particle track, $dE/dx$ is energy deposited per unit length, and $kB$ is the Birks' constant which is material dependent. Charged particles also emit cherenkov light, the proportion of the light yield attributed to cherenkov radiation is denoted by the chrenkov-scintillation ratio, $R$. Tagged $^{214}$Bi data is used to tune $kB$ and $R$. The tagged $^{214}$Bi data in XeLS is primarily from the early $^{222}$Rn-rich period. The tuning analysis was performed in \cite{ozaki_phd} and \cite{takeuchi_phd}. Figure \ref{fig:kb_r_chisquare} shows a $\Delta\chi^2$ scan over $kB$ and $R$ and the best fit of $(kB, R)=(0.31, 0.01)$. These are the values used in KLG4 for background and signal simulation. Figure \ref{fig:bipo_tune} shows the result of XeLS tuning. The BiPo decay energies are matched to data and the spatial correlation between the coincident decays agree.
 
-\begin{figure}[htb]
+where $dL/dx$ is the light yield per unit path length, $dE/dx$ is the energy loss per unit length, and $k_B$ is Birks’ constant, which depends on the scintillator composition. Charged particles also produce Cherenkov radiation; the fraction of total light yield attributed to Cherenkov light is parameterized by the Cherenkov-to-scintillation ratio $R$. Tagged $^{214}$Bi decays in XeLS, primarily from the early radon-rich period, are used to tune $k_B$ and $R$. This tuning procedure was performed in References~\cite{ozaki_phd, takeuchi_phd}. Figure~\ref{fig:kb_r_chisquare} shows a $\Delta\chi^2$ scan over $(k_B, R)$, with a best-fit value of $(k_B, R) = (0.31, 0.01)$. These values are used for all signal and background simulations in this analysis. Figure~\ref{fig:bipo_tune} shows the result of the XeLS tuning, demonstrating good agreement between data and simulation for both the $^{214}$Bi $\beta$ energy spectrum and the spatial correlation of delayed-coincidence Bi--Po decays.
+
+\begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{kb_r_chisquare.png}
-	\caption{$\Delta\chi^2$ scan over $kB$ and $R$}
+	\caption{$\Delta\chi^2$ scan over Birks’ constant $k_B$ and the Cherenkov-to-scintillation ratio $R$.}
 	\label{fig:kb_r_chisquare}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[b!]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
@@ -218,51 +248,75 @@ where $dL/dx$ is light yield per unit length along particle track, $dE/dx$ is en
         \centering
         \includegraphics[width=\textwidth]{bipo_dR.png}
     \end{subfigure}
-    
-    \caption{Tuned $^{214}$Bi-$\beta$ decay energy spectrum and spatial correlation of delayed-coincidence Bi-Po decays. Figures from \cite{takeuchi_phd}}
+    \caption{Tuned $^{214}$Bi $\beta$-decay energy spectrum and spatial correlation of delayed-coincidence Bi--Po decays. Figures from Reference~\cite{takeuchi_phd}.}
     \label{fig:bipo_tune}
 \end{figure}
+
 \subsubsection*{Energy Scale}
-The overall energy scale of KamLS and XeLS are tuned by the neutron capture gamma peak of 2.2 MeV. XeLS introduces extra quenching by the xenon which reduces the light yield in XeLS slightly. Figure \ref{fig:neutron_capture_energy} shows the peak energies used. This is the same dataset used for the energy scale time variation check.
+The absolute energy scale in both KamLS and XeLS is calibrated using the 2.2\,MeV $\gamma$ ray emitted following neutron capture on hydrogen. This calibration is identical to that used for monitoring the time dependence of the energy scale, as described in Section~\ref{sec:energy_scale_stability}. Due to additional quenching introduced by dissolved xenon, the light yield in XeLS is slightly reduced relative to KamLS. Figure~\ref{fig:neutron_capture_energy} shows the reconstructed neutron capture peaks used to anchor the absolute energy scale in both scintillator volumes.
+
+
 \subsection{FLUKA}
-FLUKA simulation software is used to predict cosmic muon spallation isotope yields and neutron production. The FLUKA version used in this modeling is FLUKA 2011.08.patch. Simulations and the results are described in \cite{klz_xenon_spallation}. Studies and measurements performed in KamLS are outlined in \cite{kamland_spallation_2009}.
+The FLUKA simulation package is used to model cosmic-ray muon–induced spallation processes in KamLAND-Zen, including the production of radioactive isotopes and secondary neutrons. The FLUKA version used in this analysis is \texttt{FLUKA~2011.08.patch}. Details of the simulation setup and results for xenon spallation are presented in Reference~\cite{klz_xenon_spallation}, while earlier studies and measurements performed in KamLAND liquid scintillator (KamLS) are described in Reference~\cite{kamland_spallation_2009}.
+
 \subsubsection*{Simulation Configuration}
-The FLUKA physics process packages used in these spallation studies are listed in Table \ref{tab:fluka_process}. FLUKA is only used  to generate the production of spallation isotopes and neutrons, their decays and isomer production are disabled. The subsequent decays and neutron capture gammas are simulated in GEANT4. 
+The physics models enabled in the FLUKA spallation simulation are listed in Table~\ref{tab:fluka_process}. FLUKA is used exclusively to simulate the initial muon interactions, including spallation isotope production and neutron generation. Radioactive decays of the produced isotopes, as well as neutron thermalization and capture $\gamma$ emission, are disabled in FLUKA and instead handled by the GEANT4 simulation framework described in the previous section.
 
-Cosmic ray muon spallation is simulated by injecting muons into a cylindrical XeLS volume of 10 m radius and 40 m height. The inner balloon radius is only ~2m. The volume within 10 m from the side and 5m from the exit is excluded from the analysis to avoid boundary effect. The MUSIC package is used to generate the cosmic ray muon energy distribution\cite{MUSIC}. MUSIC takes in the detailed geometric description of the Kamioka mine where KamLAND is located. The generated energy distribution is fed into FLUKA and fired into the simulation's XeLS volume. The mean simulated muon energy is $260\pm1$ GeV. The simulation yields a neutron capture time of $\tau=207.0\pm0.3\mu$sec which is consistent with the previously measured value. The muon charge ratio is taken to be $\mu^+/\mu^-=1.3$ in this simulation\cite{kamei_phd}.
+Cosmic-ray muon spallation is simulated by injecting muons into a cylindrical XeLS volume with a radius of 10\,m and a height of 40\,m. This volume significantly exceeds the physical size of the KamLAND-Zen inner balloon (radius $\sim$2\,m) in order to avoid boundary effects. Events occurring within 10\,m of the cylindrical side walls or within 5\,m of the exit surfaces are excluded from the analysis. The cosmic-ray muon energy and angular distributions are generated using the MUSIC package~\cite{MUSIC}, which incorporates a detailed geometric description of the Kamioka mine. The resulting muon energy spectrum is passed to FLUKA as input. The mean simulated muon energy is $260 \pm 1$\,GeV, consistent with expectations for the Kamioka overburden. The simulation reproduces a neutron capture time of $\tau = 207.0 \pm 0.3~\mu$s, in agreement with the measured value in KamLAND. The muon charge ratio is fixed to $\mu^+/\mu^- = 1.3$, following Reference~\cite{kamei_phd}.
 
-\begin{table}[h]
+
+\begin{table}[b!]
 \centering
-\caption{FLUKA physics processes. From Ref.\cite{klz_xenon_spallation}.}
-\label{tab:fluka_process}
-\begin{tabular}{lll}
-\hline
-card & Physics & Status \\
-\hline
-DEFAULTS & A set of physics models & PRECISIO(n) \\
-PHOTONNUC(lear) & Gamma interactions with nuclei & Activated \\
-MUPHOTON & Muon photonuclear interaction & Activated \\
-PHYSICS & Emission of light fragments & Activated by COALESCE(nse) \\
-PHYSICS & Emission of heavy fragments & Activated by EVAPORAT(ion) \\
-PHYSICS & Ion electromagnetic dissociation & Activated by EM-DISSO(ciation) \\
-PHYSICS & Decay and isomer production & Activated by RADDECAY \\
-\hline
+\begin{tabular}{p{3.5cm} p{6.0cm} p{3.5cm}}
+\toprule
+\textbf{Card} & \textbf{Physics description} & \textbf{Status} \\
+\midrule
+DEFAULTS 
+& A set of physics models 
+& PRECISIO(n) \\
+
+PHOTONNUC(lear) 
+& Gamma interactions with nuclei 
+& Activated \\
+
+MUPHOTON 
+& Muon photonuclear interaction 
+& Activated \\
+
+PHYSICS 
+& Emission of light fragments 
+& Activated by COALESCE(nse) \\
+
+PHYSICS 
+& Emission of heavy fragments 
+& Activated by EVAPORAT(ion) \\
+
+PHYSICS 
+& Ion electromagnetic dissociation 
+& Activated by EM-DISSO(ciation) \\
+
+PHYSICS 
+& Decay and isomer production 
+& Activated by RADDECAY \\
+\bottomrule
 \end{tabular}
+\caption{FLUKA physics processes enabled in the spallation simulation. From Reference~\cite{klz_xenon_spallation}.}
+\label{tab:fluka_process}
 \end{table}
 
 \subsubsection*{Radioactive Decays}
-As previously described, FLUKA is used only for the direct spallation isotope production and neutron captures. The subsequent radioactive decays are simulated in the "Radioactive Decay" package in Geant4. The GEANT4 version used is Geant4.10.6.p01 with G4ENSDFSTATE2.2 for the Evaluated Nuclear Structure Data File (ENSDF) \cite{ENSDF}. Table \ref{tab:xenon_spallation_products} lists the xenon spallation produts considered in this study. In total, 32 isotopes are selected that have production rates exceeding 0.01/day/XeLS-kton in the Region of Interest (ROI). Figure \ref{fig:xenon_spallation_spectrum} shows the simulated energy spectra. 
+As described above, FLUKA provides only the production locations and yields of spallation isotopes and neutrons. The subsequent radioactive decays and neutron capture $\gamma$ rays are simulated using the \texttt{RadioactiveDecay} package in GEANT4. The GEANT4 version used is \texttt{Geant4.10.6.p01}, together with the evaluated nuclear structure data library \texttt{G4ENSDFSTATE2.2}~\cite{ENSDF}.  Table~\ref{tab:xenon_spallation_products} lists the xenon spallation products included in this analysis. Isotopes with production rates exceeding 0.01~(day$\cdot$kton)$^{-1}$ in the Region of Interest (ROI) are selected, resulting in a total of 32 isotopes. The simulated visible energy spectra of these spallation products, including their full decay chains, are shown in Figure~\ref{fig:xenon_spallation_spectra}.
+ 
 
-\begin{figure}[htb]
+\begin{figure}[t!]
 	\centering
-	\includegraphics[scale=0.35]{xenon_spallation_spectra.png}
+	\includegraphics[scale=0.5]{xenon_spallation_spectra.png}
 	\caption{Simulated energy spectra of $^{136}$Xe spallation products including their decay chain.}
 	\label{fig:xenon_spallation_spectra}
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}[t!]
 \centering
-\caption{Breakdown of $^{136}$Xe spallation products. Isotopes with production rates exceeding 0.01 /day/XeLS-kton in the Region of Interest (ROI) were considered and included in the background model.}
 \label{tab:xenon_spallation_products}
 \begin{tabular}{lllccc}
 \hline
@@ -303,20 +357,27 @@ $^{126}$Cs & EC/$\beta^+$/$\gamma$ & 4.82 & $9.840 \times 10^1$ & 0.011 & 0.080 
 $^{128}$Cs & EC/$\beta^+$/$\gamma$ & 3.93 & $2.196 \times 10^2$ & 0.031 & 0.229 \\
 \hline
 \end{tabular}
+\caption{Breakdown of $^{136}$Xe spallation products. Isotopes with production rates exceeding 0.01 /day/XeLS-kton in the Region of Interest (ROI) were considered and included in the background model.}
+\label{tab:spall_bkgd}
 \end{table}
 
 \subsubsection*{Tuning With $^{10}$C}
-FLUKA simulations of radioactive decays and neutron capture gamma do not include detector effects and reconstruction performance. The information given by the FLUKA simulation includes the capture points of neutron captures but not the reconstructed vertices. 
+While FLUKA accurately models spallation production and neutron yields, it does not include detector effects such as vertex reconstruction uncertainty or neutron detection efficiency. In particular, FLUKA outputs the true neutron capture positions rather than reconstructed vertices. To account for reconstruction effects, the true neutron capture positions from FLUKA are convolved with a Gaussian spatial resolution function. In addition, the neutron detection efficiency is modeled empirically as a function of muon charge:
 
-To approximate the effect of event reconstruction, the true neutron capture positions from FLUKA are convolved with a Gaussian resolution distribution. The neutron detection efficiency is also emperically modeled by:
 \begin{equation}
-    \epsilon(\log_10Q_\mu)=\epsilon\left(1-\frac{1}{1+e^{-\sigma(\log_10Q_\mu-a)}}+b\right)
+    \epsilon(\log_{10} Q_\mu)
+    =
+    \epsilon \left(
+    1 - \frac{1}{1 + e^{-\sigma (\log_{10} Q_\mu - a)}} + b
+    \right),
 \end{equation}
-The neutron detection efficiency is known to be particularly sensitive to baseline fluctuations in the immediate aftermath of a muon. Since, the baseline recovery time depends on the muon charge, the neutron detection efficiency, $\epsilon$, is assumed ot depend on the charge.
 
-$(1+e^{-\sigma x})^{-1}$ is a sigmoid function which mimics the error function and $Q_{\mu}$ is muon charge. $\sigma$ controls the steepness of the sigmoid function's transition. Free parameters, $\sigma, a, b$ are tuned to reproduce the $dR$ and $ENN$ distributions of $^{10}$C as shown in Figure \ref{fig:fluka_tuning}. $dR$ is the spatial distance to the nearest neutron of a given shower, while $ENN$ is the "effective number of neutrons". Vertex resolution affect both of these variables, while the neutron tagging efficiency primarily affects $ENN$.
-\begin{figure}[htb]
-        \centering
+\noindent where $Q_\mu$ is the total muon charge. This parameterization reflects the fact that neutron detection efficiency is strongly affected by baseline fluctuations immediately following a muon event. Since the baseline recovery time depends on the muon energy deposition, the efficiency is assumed to depend on $Q_\mu$.
+
+The sigmoid function $(1 + e^{-\sigma x})^{-1}$ approximates an error-function–like turn-on behavior, with $\sigma$ controlling the steepness of the transition. The free parameters $\sigma$, $a$, and $b$ are tuned to reproduce the observed distributions of $^{10}$C decay candidates. Two observables are used in the tuning procedure: $dR$, the spatial distance to the nearest neutron capture associated with a given muon shower, and $ENN$, the effective number of tagged neutrons. The $dR$ distribution is sensitive to vertex resolution, while $ENN$ is primarily influenced by neutron tagging efficiency. Figure~\ref{fig:fluka_tuning} shows the tuned FLUKA predictions compared with data.
+
+\begin{figure}[t!]
+    \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{c10_tune_dR.png}
@@ -326,7 +387,6 @@ $(1+e^{-\sigma x})^{-1}$ is a sigmoid function which mimics the error function a
         \centering
         \includegraphics[width=\textwidth]{c10_tune_ENN.png}
     \end{subfigure}
-    
-    \caption{Tuned $^{10}$C $dR$ (left) and $ENN$ (right) distributions from FLUKA (red curve) and data (black dots) Figures from \cite{miyake_phd}}
+    \caption{Comparison of tuned FLUKA simulations (red curves) and data (black points) for the $^{10}$C $dR$ (left) and $ENN$ (right) distributions. Figures from Ref.~\cite{miyake_phd}.}
     \label{fig:fluka_tuning}
 \end{figure}
