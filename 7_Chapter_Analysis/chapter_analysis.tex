@@ -1,4 +1,4 @@
-\chapter{$2\nu\beta\beta^*$ Analysis}
+\chapter{$2\nu\beta\beta^\ast$ Analysis}
 \label{chapter:Analysis}
 \thispagestyle{myheadings}
 
@@ -84,7 +84,7 @@ where $O_n$ is the estimated parameter value, $E_n$ are the central expected val
 The ROOT implementation of the MINUIT package distributed by CERN is the minimization package used for this analysis. 
 
 \subsection{Fit Parameters}
-The spectral rate parameters are divided by origin volume. This analysis is only concerned with backgrounds originating in the XeLS and the inner balloon film. Each of the backgrounds described in Chapter \ref{chapter:backgrounds} is implemented in the spectral fit. 
+The spectral rate parameters are divided by origin volume. This analysis is only concerned with backgrounds originating in the XeLS and the inner balloon film. Each of the backgrounds described in Chapter \ref{chapter:Backgrounds} is implemented in the spectral fit. 
 \subsection{Penalty Terms}
 
 \begin{table}[htbp]
@@ -132,7 +132,7 @@ The first penalty terms are on the rate of the constrained background sources. $
 
 A penalty term is also included for the detector response parameters. An overall energy scale, scales all of the background and signal energy spectra via linear interpolation. The energy scale $\alpha_E=\frac{E_{vis}}{E_{sim}}$ is constrained to $1\pm 0.016$. The Birks constant, $k_B$, and Chrenkov Ratio, $R$, are kept fixed for stability in the fit. In later analyses, the constraints on them should either be tightened or their effect quantified as another systematic uncertainty. 
 
-\section{\twonustar  Results}
+\section{$2\nu\beta\beta^\ast$ Results}
 \subsection{Best Fit Result}
 The best fit result for the \twonustar decay rate as given by MINUIT is 0, no significant excess over the background expectation was found. Figure \ref{fig:bestfit} shows the fitted energy spectra. 
 
@@ -176,8 +176,8 @@ Table \ref{tab:fit_result} list the best fit parameter values. Constrained value
         $R$ (Internal) & 0.018 & fix \\
         $k_B$ (Internal) & 0.31 & fix
     \end{tabular}
-    \label{tab:fit_result}
     \caption{The best fit parameter values and their fit conditions.}
+    \label{tab:fit_result}
 \end{table}
 
 \subsection{\twonustar \ Half-life Limits}
@@ -215,9 +215,25 @@ However, the 90\% C.L. given by Wilks' theorem is likely invalid for this analys
 \subsection{Feldman-Cousins Calculation}
 Given that Wilks' theorem conditions are likely not satisfied for this analysis, the upper limit on the \twonustar rate is determined using the Feldman-Cousins (FC) approach. While Wilks' theorem would allow us to assume -2 log(likelihood ratio) follows a $\chi^2$ distribution asymptotically, the FC method instead constructs confidence intervals by simulating the test statistic distribution under various hypothesized signal rates. This allows us to obtain proper 90\% coverage intervals without relying on asymptotic approximations.
 
-We perform the FC calculation by scanning over \twonustar signal rates. At each signal rate hypothesis, multiple Toy MC datasets are generated with the best fit background levels. For each toy MC dataset, the fit is performed and the $\chi^2$ test statistic value calculated. 
+We perform the FC calculation by scanning over \twonustar signal rates. At each signal rate hypothesis, multiple Toy MC datasets are generated with the best fit background levels. For each toy MC dataset, the fit is performed and the $\chi^2$ test statistic value calculated. From these fits, the true test statistic distribution can be observed and the 90\% inclusion threshold calculated as a function of signal rate.
+
+The $\chi^2$ scan performed on the real data with fixed signal rate is a single sample from the $\chi^2$ distributions created by the Feldman-Cousins technique. When the observed $\chi^2$ coincides with the 90\% inclusion threshold for a given signal rate, that signal rate is the 90\% C.L. upper limit. The result of the Feldman-Cousins calculation are shown in Figure \ref{fig:FC}. The 90\% C.L. upper limit on the $2\nu\beta\beta^\ast$ half-life is $T_{1/2}>4.25\times 10^{24} yrs$. This limit is slightly more conservative than the Wilks' Thoerem result as expected. 
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[scale=0.7]{FC_Final_Stat.pdf}
+    \caption{The black curve shows the best fit test statistic with each fixed signal rate. The red curve shows the 90\% inclusion threshold for the generated ToyMCs at each signal rate. The intersection point shows which rate distribution is 90\% included by the data's test statistic value.}
+    \label{fig:FC}
+\end{figure}
 
 \subsection{Discussion}
-The Feldman-Cousins limit reveals that without additional inputs, this analysis is unable to set a world-leading limit on \twonustar. Better characterization of detector response, and modeling of the film and KamLS backgrounds will allow us to use the full XeLS volume and improve the sensitivity of the analysis. 
-% Comparison to EXO-200 and KLZ400 Limits
-% Comparison to theoretical predictions
+While preliminary, this analysis sets a world-leading limit on the $2\nu\beta\beta^\ast$ process. Surpassing EXO-200's limit of $T_{1/2}>1.4\times 10^{24}$ yrs\cite{exo200} and this experiment's previous limit set by KLZ-400 of $T_{1/2}>8.3\times 10^{23}$ yrs\cite{KLZ400}.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{limits_and_theory.png}
+    \caption{A comparison of experimental limits of $2\nu\beta\beta^\ast$ to the $0^+_1$ excited state and some theoretical predictions taken from \cite{2nuex_predictions}. The length of the arrows are meaningless and are used to indicate a lower limit on the half-life.}
+    \label{fig:2nuex_limits}
+\end{figure}
+
+Comparing it to a range of theoretical predictions from \cite{2nuex_predictions}, we find this latest result excluding the current QRPA calculations but falling short of the next cluster of theoretical calculations. Figure \ref{fig:2nuex_limits} shows how this and previous experimental limits compare to theoretical predictions. However, considering that previous measurements of $2\nu\beta\beta^\ast$ half-lives in lighter nuclei were much lower than predicted, these exclusion gains are significant.

@@ -103,7 +103,7 @@ $^9$Li   & 13.6 ($\beta^-$) & 257.2 ms & $0.00^{+1.19}_{-0}$ ($4.9 \pm 0.4$) & $
 $^{11}$Be& 11.5 ($\beta^-$) & 19.9 s   & $1.06^{+0.69}_{-0.21}$ ($1.1 \pm 0.1$)  & $0.00^{+0.26}_{-0}$ & $100^{+0.0}_{-22.1}$ \\
 \hline
 \end{tabular}
-\caption{Production and background rate of carbon spallation products.}
+\caption{Production and background rate of carbon spallation products. Values from Reference~\cite{kamland_spallation_2009}.}
 \label{tab:shortspall_tab}
 \end{table}
 
@@ -268,7 +268,7 @@ FLUKA is used to model the muon-induced spallation production process, but it do
 
 For each isotope produced in the FLUKA simulation, the half-life, decay modes, branching ratios, and daughter transitions are taken from the Evaluated Nuclear Structure Data File (ENSDF). The full decay chains are then propagated using the GEANT4 \texttt{RadioactiveDecay} process, and the resulting decay vertices and emitted particles are passed through the same detector-response simulation and reconstruction chain as the analysis data. This procedure yields both the expected \emph{visible-energy spectra} and the expected \emph{relative contributions} of long-lived xenon spallation products in the excited-state analysis window.
 
-Table~\ref{tab:spall_bkgd} summarizes the dominant long-lived spallation contributions used in the fit. While FLUKA produces hundreds of isotopes in total, the subset listed in Table~\ref{tab:spall_bkgd} accounts for more than 95\% of the expected long-lived spallation background in the relevant energy range.
+Table~\ref{tab:xenon_spallation_products} summarizes the dominant long-lived spallation contributions used in the fit. While FLUKA produces hundreds of isotopes in total, the subset listed in Table~\ref{tab:xenon_spallation_products} accounts for more than 95\% of the expected long-lived spallation background in the relevant energy range.
 
 \subsection{Spectrum Distortion}
 In the absence of a dedicated KamLAND-Zen measurement of xenon spallation yields and decay spectra induced by cosmic-ray muons, validating the absolute accuracy of the FLUKA-based long-lived spallation model is challenging. To quantify a realistic model uncertainty, external beam measurements are used as a cross-check on the FLUKA predictions.
@@ -292,20 +292,18 @@ Gamma rays emitted by radioactive isotopes outside the active scintillator volum
 
 The energy and spatial distributions of external gamma-ray backgrounds are estimated directly from data rather than simulation. Events are selected in an energy window around the $^{208}$Tl gamma line, and their radial distribution is modeled as the sum of an exponentially falling component, representing external gamma rays entering the detector, and a second-degree polynomial component, representing radially uniform internal backgrounds.
 
-Figure~\ref{fig:ext_gamma_radius} shows the reconstructed radial distribution of events with visible energies between 2.6 and 2.65~MeV. The fitted exponential component is extrapolated inward to estimate the residual external gamma-ray contribution in the fiducial volume. Using this method, the background rate within $r < 300$~cm is estimated to be $0.32 \pm 0.05$~events/day/kton for $z < 0$ and $0.69 \pm 0.12$~events/day/kton for $z > 0$. The corresponding modeled energy and radius distributions are shown in Figure~\ref{fig:ext_gamma_evis_radius}.
+Figure~\ref{fig:external_gamma} shows the reconstructed radial distribution of events with visible energies between 2.6 and 2.65~MeV. The fitted exponential component is extrapolated inward to estimate the residual external gamma-ray contribution in the fiducial volume. Using this method, the background rate within $r < 300$~cm is estimated to be $0.32 \pm 0.05$~events/day/kton for $z < 0$ and $0.69 \pm 0.12$~events/day/kton for $z > 0$. The corresponding modeled energy and radius distributions are shown in Figure~\ref{fig:external_gamma}.
 
 \begin{figure}[t!]
     \centering
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth]{ext_gamma_radius.png}
-        \label{fig:ext_gamma_radius}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.50\textwidth}
         \centering
         \includegraphics[width=\textwidth]{ext_gamma_evis_radius.png}
-        \label{fig:ext_gamma_evis_radius}
     \end{subfigure}
     \caption{Characterization of external gamma-ray backgrounds in KamLAND-Zen. 
     (Left) Radial distribution of events in the 2.6--2.65~MeV energy window, fitted with the sum of an exponential component (external gamma rays) and a second-degree polynomial component (radially uniform backgrounds). 

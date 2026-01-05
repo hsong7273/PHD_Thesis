@@ -95,9 +95,6 @@ When a PMT repeatedly entered the low-impedance state, the applied high voltage 
 \end{figure}
 
 
-%/ TODO
-% Note about current low pmt gain analysis.
-
 \subsubsection*{Bad Channels}
 
 PMT channels exhibiting abnormal or unstable behavior are classified as bad channels and excluded from event reconstruction and physics analyses. A channel is designated as bad if it satisfies one or more of the following criteria:
@@ -282,7 +279,7 @@ The increasing number of low-gain PMTs over time has led to a gradual degradatio
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{no-hitprob.png}
-	\caption{Fit of the no-hit probability as a function of expected charge $\mu$ for a low-gain PMT. The original model is shown in blue, while the modified model (red) provides improved agreement with data.}
+	\caption{Fit of the no-hit probability as a function of expected charge $\mu$ for a low-gain PMT. The original model is shown in blue, while the modified model (red) provides improved agreement with data. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:nohit_prob}
 \end{figure}
 
@@ -290,7 +287,7 @@ The increasing number of low-gain PMTs over time has led to a gradual degradatio
 
 
 \subsection{Muon Reconstruction}
-
+\label{sec:muon_reco}
 The identification and reconstruction of cosmic-ray muons and muon-correlated neutrons are essential for background rejection in KamLAND-Zen. Although KamLAND is located deep underground, a residual cosmic muon flux remains and produces a variety of backgrounds through spallation processes in the scintillator and surrounding materials. These processes generate radioactive isotopes and free neutrons that can mimic low-energy physics signals if not properly identified and vetoed.  This section describes the selection criteria used to identify muon events, as well as the reconstruction techniques employed to determine muon trajectories through the detector. Accurate muon reconstruction enables effective application of spatial and temporal vetoes and provides the foundation for neutron tagging and spallation background suppression.
 
 \subsection*{Muon Selection Criteria}
@@ -329,8 +326,8 @@ Unlike point-like energy depositions from radioactive decays, cosmic-ray muons t
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{4_Chapter_KLZ_Reconstruction_and_Selection/Figures/muon_reco.png}
-	\caption{A schematic illustration of cosmic-ray muon reconstruction in the KamLAND detector, showing how the muon entrance and exit points are estimated using PMT information.}
-	\label{fig:nohit_prob}
+	\caption{A schematic illustration of cosmic-ray muon reconstruction in the KamLAND detector, showing how the muon entrance and exit points are estimated using PMT information. Figure taken from Reference~\cite{miyake_phd}.}
+	\label{fig:muon_reco}
 \end{figure}
 
 \noindent Approximately 15\% of muon candidates are classified as poorly reconstructed according to the badness metric. These events are typically associated with complex topologies such as muon bundles, stopped muons, or waveform ringing effects in the PMTs. While poorly reconstructed muons are excluded from analyses requiring precise track geometry, they are still retained for muon–neutron correlation studies, where exact track information is less critical.
@@ -375,7 +372,7 @@ Neutron capture signals are best recorded using the MoGURA data acquisition syst
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{neutron_reco.png}
-	\caption{Time residual distribution for a neutron capture event recorded by MoGURA, illustrating contributions from genuine scintillation light and fake PMT after-pulses. The on-time and off-time windows used in the calculation of the effective hit multiplicity \(N_s\) are indicated.}
+	\caption{Time residual distribution for a neutron capture event recorded by MoGURA, illustrating contributions from genuine scintillation light and fake PMT after-pulses. The on-time and off-time windows used in the calculation of the effective hit multiplicity \(N_s\) are indicated. Figure taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:neutron_reco}
 \end{figure}
 
@@ -393,7 +390,7 @@ The neutron selection procedure described in the previous section contains a sub
 	\item A delayed coincidence analysis is performed to identify neutron candidates occurring shortly after muon events. Initial cuts are applied to remove obvious noise and after-pulse-dominated events by rejecting candidates with $dT > 2500\,\mu$s or $N_s < 100$. The remaining events are then subjected to the detailed MoGURA neutron selection criteria described below.
 \end{enumerate}
 
-\noindent The final neutron selection is illustrated in Figure~\ref{fig:neutron_selection}, which shows the two-dimensional distribution of the effective hit multiplicity $N_s$ versus the time delay $dT$ between a neutron candidate and the preceding muon. Two key features are visible in this distribution. At very short $dT$, the event rate is elevated due to PMT after-pulses and electronic noise following muon events. In addition, neutron candidates with small $N_s$ values are prevalent at short $dT$ because baseline overshoot in the PMTs reduces the apparent signal size.  Based on these observations, the following selection criteria are applied to identify neutron capture events suitable for background rejection:
+\noindent The final neutron selection is illustrated in Figure~\ref{fig:mogura_neutron}, which shows the two-dimensional distribution of the effective hit multiplicity $N_s$ versus the time delay $dT$ between a neutron candidate and the preceding muon. Two key features are visible in this distribution. At very short $dT$, the event rate is elevated due to PMT after-pulses and electronic noise following muon events. In addition, neutron candidates with small $N_s$ values are prevalent at short $dT$ because baseline overshoot in the PMTs reduces the apparent signal size.  Based on these observations, the following selection criteria are applied to identify neutron capture events suitable for background rejection:
 
 \begin{itemize}
 	\item $N_{\mathrm{total}} = N_{\mathrm{in}} + N_{\mathrm{out}} > 150$ \quad (minimum hit multiplicity requirement),
@@ -446,7 +443,7 @@ A significant fraction of events recorded by the KamLAND DAQ systems do not corr
 	\begin{figure}[t!]
 		\centering
         \includegraphics[scale=0.45]{flasher.png}
-        \caption{Event display of a PMT flasher event. The left panel shows the charge distribution, where one PMT exhibits an exceptionally large charge along with elevated charge in neighboring PMTs. The right panel shows the hit-time distribution, which is relatively flat since the light does not originate from scintillation. The hit times of the flasher PMT and its neighbors are characteristically early.}
+        \caption{Event display of a PMT flasher event. The left panel shows the charge distribution, where one PMT exhibits an exceptionally large charge along with elevated charge in neighboring PMTs. The right panel shows the hit-time distribution, which is relatively flat since the light does not originate from scintillation. The hit times of the flasher PMT and its neighbors are characteristically early. Figures taken from Reference~\cite{takeuchi_phd}.}
         \label{fig:flasher}
 	\end{figure}
 
@@ -467,7 +464,7 @@ A significant fraction of events recorded by the KamLAND DAQ systems do not corr
     \begin{figure}[t!]
 		\centering
         \includegraphics[scale=0.45]{missing_waveform.png}
-        \caption{\texttt{Nhit17} versus \texttt{NsumMax} distributions for all physics events (left) and $^{214}$Bi-tagged events (right). The missing waveform cut removes events with incomplete waveform acquisition while introducing negligible inefficiency.}
+        \caption{\texttt{Nhit17} versus \texttt{NsumMax} distributions for all physics events (left) and $^{214}$Bi-tagged events (right). The missing waveform cut removes events with incomplete waveform acquisition while introducing negligible inefficiency. Figure taken from Reference~\cite{takeuchi_phd}.}
         \label{fig:missing_waveform}
 	\end{figure}
 
@@ -485,7 +482,7 @@ A significant fraction of events recorded by the KamLAND DAQ systems do not corr
 	\begin{figure}[t!]
 		\centering
         \includegraphics[scale=0.45]{badness.png}
-        \caption{Badness distributions for all physics events (left) and $^{214}$Bi-tagged events (right).}
+        \caption{Badness distributions for all physics events (left) and $^{214}$Bi-tagged events (right). Figure taken from Reference~\cite{takeuchi_phd}.}
         \label{fig:badness}
 	\end{figure}
 \end{enumerate}
@@ -534,7 +531,7 @@ Both $^{214}$Bi and $^{212}$Bi $\beta^-$ decays are followed by the rapid decay 
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.45]{bi214.png}
-	\caption{Delayed-coincidence selection parameter distributions for $^{214}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The blue shaded regions indicate tagged events. Events with $dT < 10~\mu$s are excluded and reserved for $^{212}$Bi--Po selection.}
+	\caption{Delayed-coincidence selection parameter distributions for $^{214}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The blue shaded regions indicate tagged events. Events with $dT < 10~\mu$s are excluded and reserved for $^{212}$Bi--Po selection. Figures taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:BiPo214}
 \end{figure}
 
@@ -543,14 +540,14 @@ Figure~\ref{fig:BiPo212} shows the delayed-coincidence parameter distributions u
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.45]{bi212.png}
-	\caption{Delayed-coincidence selection parameter distributions for $^{212}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The yellow shaded regions indicate tagged events. Only events with $dT < 10~\mu$s are used for this selection.}
+	\caption{Delayed-coincidence selection parameter distributions for $^{212}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The yellow shaded regions indicate tagged events. Only events with $dT < 10~\mu$s are used for this selection. Figures taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:BiPo212}
 \end{figure}
 
 \subsection*{Pileup Events}
 \label{sec:dpfit}
 
-When the delay time $dT$ between the prompt and delayed decays is sufficiently short, Bi--Po sequential decays may be recorded as a single event within the KamLAND DAQ readout window. In these cases, the delayed-coincidence selection of two separate events is ineffective. Such events are referred to as pileup events. Because pileup events contain the combined energy of the initial $\beta$ decay and the subsequent $\alpha$ decay, their reconstructed visible energy can extend beyond the \0nbb region of interest, making them an important background to suppress. The energy spectrum of $^{212}$Bi--Po pileup events is shown in Figure~\ref{fig:BiPo_energy}. To identify these events, a double-pulse fitting method has been developed that searches for hit-time distributions consistent with two distinct energy depositions. The procedure is as follows:
+When the delay time $dT$ between the prompt and delayed decays is sufficiently short, Bi--Po sequential decays may be recorded as a single event within the KamLAND DAQ readout window. In these cases, the delayed-coincidence selection of two separate events is ineffective. Such events are referred to as pileup events. Because pileup events contain the combined energy of the initial $\beta$ decay and the subsequent $\alpha$ decay, their reconstructed visible energy can extend beyond the \0nbb region of interest, making them an important background to suppress. The energy spectrum of $^{212}$Bi--Po pileup events is shown in Figure~\ref{fig:BiPo212}. To identify these events, a double-pulse fitting method has been developed that searches for hit-time distributions consistent with two distinct energy depositions. The procedure is as follows:
 
 A double-pulse fitting method has been developed to identify pileup events in which two energy depositions occur within a single DAQ readout window. This method searches for events whose hit-time distributions exhibit signatures consistent with two temporally separated scintillation pulses. Specifically, the hit-time distribution of each candidate event is fitted using two reference waveforms according to the following procedure:
 
@@ -596,7 +593,7 @@ A double-pulse fitting method has been developed to identify pileup events in wh
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{dp_selection.png}
-	\caption{Selection criteria in the $(E_{d'}, \Delta T)$ plane used to identify pileup events. The distributions are shown for Monte Carlo \0nbb events (left) and $^{212}$Bi--Po events (right). Events within the red boundaries are rejected as pileup.}
+	\caption{Selection criteria in the $(E_{d'}, \Delta T)$ plane used to identify pileup events. The distributions are shown for Monte Carlo \0nbb events (left) and $^{212}$Bi--Po events (right). Events within the red boundaries are rejected as pileup. Figure taken from \cite{takeuchi_phd}.}
 	\label{fig:pileup_selection}
 \end{figure}
 
@@ -659,7 +656,7 @@ Neutrons produced by muon spallation can also be captured on $^{136}$Xe nuclei i
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{spall_veto.png}
-	\caption{Schematic illustration of the spallation veto strategy using MoGURA-tagged neutrons for carbon- and xenon-based spallation products.}
+	\caption{Schematic illustration of the spallation veto strategy using MoGURA-tagged neutrons for carbon- and xenon-based spallation products. Figure taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:spall_veto}
 \end{figure}
 
@@ -690,7 +687,7 @@ The energy deposition per unit length along the muon track, $dE/dX$, and the dis
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{showerphoton.png}
-	\caption{Schematic illustration of photon production along a cosmic-ray muon track and the geometry used for $dE/dX$ reconstruction.}
+	\caption{Schematic illustration of photon production along a cosmic-ray muon track and the geometry used for $dE/dX$ reconstruction. Figure taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:showerphoton}
 \end{figure}
 
@@ -699,7 +696,7 @@ The energy deposition per unit length along the muon track, $dE/dX$, and the dis
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.75]{shower_dedx.png}
-	\caption{Example of a reconstructed $dE/dX$ distribution along a muon track. The region of maximum energy deposition is observed at $L_{\mathrm{long}} \approx 600$\,cm.}
+	\caption{Example of a reconstructed $dE/dX$ distribution along a muon track. The region of maximum energy deposition is observed at $L_{\mathrm{long}} \approx 600$\,cm. Figure taken from Reference ~\cite{miyake_phd}.}
 	\label{fig:shower_pdf}
 \end{figure}
 
@@ -741,7 +738,7 @@ The probability density function $PDF_{\mathrm{spl.}}(dR)$ describing spallation
 	\subcaptionbox{Spatial separation $dR$ for spallation-correlated and accidental neutrons\label{fig:spall_dR}}[0.45\textwidth]{\includegraphics[width=0.45\textwidth]{spall_dR.png}}
 	\hfill
 	\subcaptionbox{Long-lived candidate events\label{fig:longlived}}[0.45\textwidth]{\includegraphics[width=0.45\textwidth]{ENN_dR.png}}
-	\caption{Spatial distributions and weighting functions used in the $ENN$ calculation.}
+	\caption{Spatial distributions and weighting functions used in the $ENN$ calculation. Figures taken from Reference~\cite{miyake_phd}.}
 	\label{fig:ENN_dR}
 \end{figure}
 
@@ -760,7 +757,7 @@ Long-lived spallation backgrounds are not removed via a hard veto. Instead, cand
 	PDF(dT) \times PDF(dR_{\mathrm{near}}, ENN),
 \end{equation}
 
-\noindent where the sum runs over all spallation isotopes listed in Table~\ref{tab:spallproducts}. An implicit assumption is made that the time-dependent component $PDF(dT)$ is independent of the joint spatial–neutron distribution $PDF(dR_{\mathrm{near}}, ENN)$. The accidental likelihood is assumed to be uniform in time and is defined to be:
+\noindent where the sum runs over all spallation isotopes listed in Table~\ref{tab:xenon_spallation_products}. An implicit assumption is made that the time-dependent component $PDF(dT)$ is independent of the joint spatial–neutron distribution $PDF(dR_{\mathrm{near}}, ENN)$. The accidental likelihood is assumed to be uniform in time and is defined to be:
 \begin{equation}
 	L_{\mathrm{acc.}}(dR, ENN, dT) = PDF(dR, ENN).
 \end{equation}
@@ -774,7 +771,7 @@ The likelihood PDFs are constructed using a combination of FLUKA simulations and
 	\hfill
 	\subcaptionbox{Accidental events\label{fig:acc_dR_ENN}}[0.45\textwidth]{
 		\includegraphics[width=0.45\textwidth]{acc_dR_ENN.png}}
-	\caption{Two-dimensional likelihood PDFs in $(dR, ENN)$ space for spallation and accidental hypotheses.}
+	\caption{Two-dimensional likelihood PDFs in $(dR, ENN)$ space for spallation and accidental hypotheses. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:likelihood_dR_ENN}
 \end{figure}
 
@@ -788,7 +785,7 @@ Figure~\ref{fig:LHR} shows the distributions of log-likelihood ratios obtained f
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{LHR.png}
-	\caption{Log-likelihood ratio distributions generated using toy Monte Carlo simulations, demonstrating clear separation between spallation and accidental hypotheses.}
+	\caption{Log-likelihood ratio distributions generated using toy Monte Carlo simulations, demonstrating clear separation between spallation and accidental hypotheses. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:LHR}
 \end{figure}
 
@@ -805,13 +802,13 @@ The optimal threshold on the likelihood ratio is determined using a Figure of Me
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{FOM.png}
-	\caption{Figure of Merit used to determine the optimal likelihood ratio threshold for long-lived spallation background separation.}
+	\caption{Figure of Merit used to determine the optimal likelihood ratio threshold for long-lived spallation background separation. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:FOM}
 \end{figure}
 
 
 \subsection*{Veto Efficiency}
-The veto efficiency for long-lived spallation backgrounds is estimated for each isotope listed in Table~\ref{tab:spall_isotopes} using toy Monte Carlo simulations informed by FLUKA. Simulated isotope production and neutron correlations are convolved with the measured KamLAND-Zen energy and vertex resolution before applying the likelihood selection.
+The veto efficiency for long-lived spallation backgrounds is estimated for each isotope using toy Monte Carlo simulations informed by FLUKA. Simulated isotope production and neutron correlations are convolved with the measured KamLAND-Zen energy and vertex resolution before applying the likelihood selection.
 
 Additional background rejection is provided by other vetoes, including the pileup veto and the MoGURA neutron veto. Their contributions are summarized below:
 
@@ -840,7 +837,7 @@ Table~\ref{tab:fluka_error} summarizes the estimated systematic uncertainties as
 		MoGURA energy resolution & 5.67\% \\
 		\hline
 	\end{tabular}
-	\caption{Systematic uncertainties associated with FLUKA-based simulations of long-lived spallation backgrounds.}
+	\caption{Systematic uncertainties associated with FLUKA-based simulations of long-lived spallation backgrounds. Values taken from Reference~\cite{miyake_phd}.}
 	\label{tab:fluka_error}
 \end{table}
 
@@ -862,7 +859,7 @@ The livetime is determined by applying the full set of event selection criteria 
 
 \begin{table}[t!]
 \centering
-\caption{Summary of deadtime contributions from background rejection vetoes.}
+\caption{Summary of deadtime contributions from background rejection vetoes. Values taken from Reference~\cite{miyake_phd}.}
 \label{tab:deadtime}
 \begin{tabular}{l r}
 \toprule
