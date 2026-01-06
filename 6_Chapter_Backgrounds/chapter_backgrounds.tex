@@ -43,11 +43,64 @@ $^{40}$K is a common naturally occurring radionuclide that decays via $\beta^-$ 
 
 The most relevant feature of $^{40}$K decay for the excited-state analysis is the 1.46~MeV $\gamma$ ray emitted following electron capture. In the KamLS region outside the inner balloon, this monoenergetic peak is sufficiently prominent to be resolved above the continuous \2nbb background. 
 
-To estimate the contribution of film-related $^{40}$K events reconstructed within the innermost XeLS volume, the radial distribution of events near the inner balloon boundary was examined. Spherical shells just inside and just outside the inner balloon were defined with equal volumes, and the energy spectrum in each shell was independently fitted using a simplified version of the full KamLAND-Zen spectral model. The purpose of these fits is to measure the relative strength of the $^{40}$K electron-capture peak as a function of radius. The resulting radial dependence of the fitted $^{40}$K rates is compared with the expected distribution obtained from KLG4Sim simulations. A least-squares ``fit of fits'' procedure is then used to extract the overall $^{40}$K activity associated with the inner balloon film. This fit of fits is shown in Figure \ref{fig:k40}
+To estimate the contribution of film-related $^{40}$K events reconstructed within the innermost XeLS volume, the radial distribution of events near the inner balloon boundary was examined. Spherical shells just inside and just outside the inner balloon were defined with equal volumes, and the energy spectrum in each shell was independently fitted using a simplified version of the full KamLAND-Zen spectral model. 
+
+The fitting model is a simplified version of the full spectral fit described in Chapter ~\ref{chapter:Analysis}. The simplified fit configuration is shown in Table~\ref{tab:k40_fit_config}. The fit model is configured to capture all the major features in the energy spectrum in the lower energy range. The fit is performed from $0.5--2.8$ MeV which contains the low energy $^{85}$Kr and $^{210}$Bi peaks, the $^{11}$C bump, the $^{136}$Xe double-beta decay spectrum and endpoint, and the $^{40}$K gamma peak. The model does not provide accurate estimates of each individual background since many are neglected, but the $^{40}$K peak is prominent and can be estimated. The fit is performed by the same maximum likelihood method as the full spectral fit in Chapter~\ref{chapter:Analysis}. The same $\chi^2$ is minimized with respect to the reduced parameters of this $^{40}$K analysis.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Fit parameter configuration for the $^{40}$K spectral analysis. The fit condition column indicates whether the parameter is free, fixed, scanned, or constrained in the fit.}
+    \label{tab:k40_fit_config}
+    \begin{tabular}{lll}
+        \hline
+        Material & Parameter & Fit Condition \\
+        \hline
+        \multirow{7}{*}{XeLS}
+            & $^{136}$Xe 2$\nu\beta\beta$ & free \\
+            & $^{238}$U series 2 & constrain \\
+            & $^{222}$Rn & constrain \\
+            & $^{210}$Bi & free \\
+            & $^{85}$Kr & free \\
+            & $^{11}$C & free \\
+            & Xe spallation & free \\
+        \hline
+        \multirow{3}{*}{Film}
+            & $^{238}$U series 2 & free \\
+            & $^{232}$Th series 2 & free \\
+            & $^{40}$K & free \\
+        \hline
+        \multirow{4}{*}{KamLS}
+            & $^{11}$C & free \\
+            & $^{210}$Bi & free \\
+            & $^{85}$K & free \\
+            & external gamma & fix \\
+        \hline
+        \multirow{7}{*}{all}
+            & Energy scale & constrained \\
+            & $k_B, R$ & constrained \\
+            & LL-distortion & constrain \\
+            & $^6$He & fix \\
+            & $^{12}$B & fix \\
+            & $^8$Li & fix \\
+            & $^8$B & fix \\
+        \hline
+    \end{tabular}
+\end{table}
+
 
 \begin{figure}[t!]
 	\centering
-	\includegraphics[scale=0.8]{k40fits.png}
+	\includegraphics[scale=0.9]{k40_example_fit.png}
+	\caption{An example $^{40}$K fit performed at $r=15m^3$}, outside the IB. 
+	\label{fig:k40}
+\end{figure}
+
+The purpose of these fits is to measure the relative strength of the $^{40}$K electron-capture peak as a function of radius. Each fit of a radial shell returns a measured number of $^{40}$K events at that radius. The resulting radial dependence of the fitted $^{40}$K events is compared with the expected distribution obtained from KLG4Sim simulations. A least-squares ``fit of fits'' procedure is then used to extract the overall $^{40}$K activity associated with the inner balloon film. This fit of fits is shown in Figure \ref{fig:k40}
+
+
+\begin{figure}[t!]
+	\centering
+	\includegraphics[scale=0.9]{k40fits.png}
 	\caption{The fitted $^{40}$K radial distribution. Each point is the fitted $^{40}$K rate in a spherical section of the detector. The blue curve is the simulated radial distribution of $^{40}$K originated in the inner balloon film. Error increases on and inside the inner balloon film due to large $2\nu\beta\beta$ background.}
 	\label{fig:k40}
 \end{figure}
