@@ -1,17 +1,60 @@
-\chapter{Conclusions}
+\chapter{Conclusion}
 \label{chapter:Conclusions}
 \thispagestyle{myheadings}
 
-% set this to the location of the figures for this chapter. it may
-% also want to be ../Figures/2_Body/ or something. make sure that
-% it has a trailing directory separator (i.e., '/')!
+
 \graphicspath{{8_Chapter_Conclusion/Figures/}}
 
-\section{Conclusion}
-This dissertation presents a preliminary, simplified analysis of the search for $2\nu\beta\beta^\ast$ in KamLAND-Zen 800, using 745kg of $^{136}$Xe isotope instrumed in a liquid scintillator calorimeter detector. Building on previous analyses of KamLAND-Zen 800 data, this thesis presents new estimates of key low energy backgrounds that were previously unconstrained. Namely, $^{11}$C produced by cosmic muon spallation, and innate $^{40}$K contamination of the inner balloon film.
 
-A spectral fit of the KamLAND-Zen 800 data in a reduced fiducial volume was performed and limits were calculated.The Feldman-Cousins calculation gives a preliminary,aggressive limit on the half-life of $2\nu\beta\beta^\ast$, $T_{1/2}>4.25\times 10^{24}$yrs 90\% C.L. which would be a new world-leading limit. But this limit is taken neglecting important detector response systematic uncertainties.
+This dissertation presents a preliminary search for the
+$2\nu\beta\beta^\ast$ decay of $^{136}$Xe using data from the
+KamLAND-Zen~800 experiment, which employs 745~kg of enriched xenon
+dissolved in a liquid scintillator calorimeter. Building upon existing KamLAND-Zen~800 analyses, this work focuses on improving the treatment of previously weakly constrained low-energy background components and assessing their impact on the sensitivity to the
+$2\nu\beta\beta^\ast$ signal.
 
-Subsequent analyses of KamLAND-Zen 800 data will be able to more robustly search for $2\nu\beta\beta^\ast$. Improvements in detector response modeling will reduce systematic uncertainties in detector energy scale. These detector response parameters have an effect on the shape of the ground state double-beta decay background which has large implications for $2\nu\beta\beta^\ast$ sensitivity. Resolving mismodeling of the radial distribution of background near and just beyond the inner balloon will allow the expansion of the fiducial volume and the rejection of film-originating background events.
+In particular, dedicated studies were performed to constrain the rates of $^{11}$C produced by cosmic muon spallation and intrinsic $^{40}$K contamination in the inner balloon film. These backgrounds contribute in the low-energy region relevant for the excited-state decay search and were previously treated with limited external constraints. By introducing data-driven estimates and incorporating them into the spectral model, this analysis reduces degeneracies among background components and improves the robustness of the subsequent fitting procedure.
 
-Finally, machine learning techniques have proven effective at discriminating between single-site energy depositions, such as ground state $2\nu\beta\beta$, and multi-site energy depositions like $2\nu\beta\beta^\ast$, as shown in Reference ~\cite{KamNet}. These classifiers can serve to reduce the predominant $2\nu\beta\beta$ background and improve the signal-to-background ratio by 7.6\%.
+A spectral fit to the KamLAND-Zen~800 data was performed in a reduced
+fiducial volume, and limits on the $2\nu\beta\beta^\ast$ decay rate were derived using a Feldman--Cousins construction. The resulting 90\% confidence level lower limit on the half-life, $T_{1/2} > 4.25 \times 10^{24}$~yr, represents a preliminary but potentially world-leading constraint. However, this limit is obtained under a simplified treatment of detector response and does not yet incorporate the full set of systematic uncertainties associated with
+energy scale, non-linearity, and spatial response, and should therefore be interpreted as an optimistic estimate.
+
+Future analyses of the KamLAND-Zen~800 dataset will enable a more
+comprehensive and robust search for $2\nu\beta\beta^\ast$ decay.
+Improved detector response modeling is expected to reduce systematic
+uncertainties in the energy scale and non-linearity, which directly
+affect the spectral shape of the dominant ground-state $2\nu\beta\beta$ background. Additionally, resolving residual
+mismodeling of the radial distribution of backgrounds near and beyond
+the inner balloon will permit an expansion of the fiducial volume and
+enhanced rejection of film-originating background events, further
+improving sensitivity.Future analyses of the KamLAND-Zen~800 dataset will enable a more comprehensive and robust search for $2\nu\beta\beta^\ast$ decay. Improved detector response modeling is expected to reduce systematic uncertainties in the energy scale and non-linearity, which directly affect the spectral shape of the dominant ground-state $2\nu\beta\beta$ background. In particular, the energy scale can be further constrained using spectral features from long-lived $^{136}$Xe spallation isotopes produced by cosmic muons in the xenon-loaded scintillator. These isotopes provide internally generated calibration handles that are spatially distributed throughout the XeLS volume and span the full duration of KamLAND-Zen~800 data-taking.
+
+Tagged spallation events are identified using a likelihood-based
+selection that exploits correlations between candidate decays and the
+parent muon track, including the time since the muon ($\Delta T$),
+distance to associated neutron captures ($dR$), and the effective
+number of neutrons (ENN). This discriminator enables the isolation of
+specific xenon spallation products whose decay spectra exhibit
+distinctive peak or edge features. By extracting these features in
+data and comparing them to Monte Carlo expectations, the detector
+energy scale and its time dependence can be constrained independently
+of traditional calibration sources.
+
+Because these spallation-derived calibration points populate the same
+energy region relevant for the $2\nu\beta\beta^\ast$ search and are
+present continuously throughout the data-taking period, they provide a powerful means of validating and correcting residual mismodeling of the energy response. Incorporating this information into future analyses is expected to significantly reduce systematic distortions in the background model and improve sensitivity to excited-state double beta decay.
+
+In addition to improvements in detector calibration and background
+modeling, machine learning techniques provide a powerful and
+complementary approach to enhancing sensitivity to
+$2\nu\beta\beta^\ast$ decays. The KamNet framework, a
+spatiotemporal deep neural network developed specifically for
+KamLAND-Zen, has demonstrated strong discrimination power between
+single-site energy depositions and closely spaced multivertex events
+using low-level PMT hit timing and spatial information~\cite{KamNet}. This distinction is particularly relevant for excited-state double-beta decays, which are characterized by prompt $\gamma$ cascades following the primary $\beta\beta$ transition and therefore produce multiple, spatially separated energy deposits in the liquid scintillator.
+
+KamNet exploits the spherical symmetry of the detector geometry through spherical convolutional layers, while simultaneously modeling the time structure of scintillation light using a convolutional LSTM with an attention mechanism. This architecture enables the network to focus on specific regions of the scintillation time profile that carry the most discriminating information. In the case of excited-state decays, KamNet assigns increased attention to time slices associated with delayed energy depositions from $\gamma$ interactions, effectively separating these events from the dominant ground-state $2\nu\beta\beta$ background, which is largely single-site and isotropic.
+
+Using detailed Monte Carlo simulations, KamNet has been shown to improve the signal-to-background ratio for $^{136}$Xe excited-state decays by approximately 70\% relative to a traditional energy-only analysis, corresponding to a substantial gain in experimental sensitivity. Importantly, this improvement is achieved without introducing additional coincidence requirements or hardware upgrades, and the network's attention mechanism provides a degree of
+interpretability by revealing which temporal and spatial features drive the classification. These results demonstrate that machine learning approaches such as KamNet are well suited for excited-state
+double-beta decay searches and represent a promising avenue for future analyses of the KamLAND-Zen~800 dataset.
+

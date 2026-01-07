@@ -39,18 +39,15 @@ The rates of the two $^{232}$Th sub-series are treated as independent free param
 
 
 \subsection{$^{40}$K}
-$^{40}$K is a common naturally occurring radionuclide that decays via $\beta^-$ decay with an 89.28\% branching ratio and via electron capture with a 10.72\% branching ratio. Its half-life is $T_{1/2} = 1.28 \times 10^{9}$ years. As with other primordial radionuclides, $^{40}$K may be present in detector materials such as the XeLS, balloon films, and KamLS. Due to the high level of purification achieved for the liquid scintillator, the contamination of $^{40}$K within the scintillator volumes is expected to be negligible. Consequently, the dominant contribution of $^{40}$K background is assumed to originate from the inner balloon film. A dedicated study was performed to estimate the magnitude of this film-related $^{40}$K contamination.
+$^{40}$K is a common naturally occurring radionuclide that decays via $\beta^-$ decay with an 89.28\% branching ratio and via electron capture with a 10.72\% branching ratio. Its half-life is $T_{1/2} = 1.248 \times 10^{9}$~years. As with other primordial radionuclides, $^{40}$K may be present in detector materials such as the XeLS, balloon films, and KamLS. Due to the high level of purification achieved for the liquid scintillator, the contamination of $^{40}$K within the scintillator volumes is expected to be negligible. Consequently, the dominant contribution of the $^{40}$K background is assumed to originate from the inner balloon film. A dedicated study was performed to estimate the magnitude of this film-related $^{40}$K contamination. The most relevant feature of $^{40}$K decay for the excited-state analysis is the 1.46~MeV $\gamma$ ray emitted following electron capture. In the KamLS region outside the inner balloon, this monoenergetic peak is sufficiently prominent to be resolved above the continuous \2nbb background.
 
-The most relevant feature of $^{40}$K decay for the excited-state analysis is the 1.46~MeV $\gamma$ ray emitted following electron capture. In the KamLS region outside the inner balloon, this monoenergetic peak is sufficiently prominent to be resolved above the continuous \2nbb background. 
+To estimate the contribution of film-related $^{40}$K events reconstructed within the innermost XeLS volume, the radial distribution of events near the inner balloon boundary was examined. Spherical shells just inside and just outside the inner balloon were defined with equal volumes, and the energy spectrum in each shell was independently fitted using a simplified version of the full KamLAND-Zen spectral model.
 
-To estimate the contribution of film-related $^{40}$K events reconstructed within the innermost XeLS volume, the radial distribution of events near the inner balloon boundary was examined. Spherical shells just inside and just outside the inner balloon were defined with equal volumes, and the energy spectrum in each shell was independently fitted using a simplified version of the full KamLAND-Zen spectral model. 
+The fitting model is a reduced version of the full spectral fit described in Chapter~\ref{chapter:Analysis}. The simplified fit configuration is summarized in Table~\ref{tab:k40_fit_config}. The model is designed to capture the dominant spectral features in the low-energy region. The fit is performed over the energy range $0.5$--$2.8$~MeV, which includes the low-energy $^{85}$Kr and $^{210}$Bi contributions, the $^{11}$C bump, the $^{136}$Xe \2nbb spectrum and endpoint, and the $^{40}$K gamma peak. Although the simplified model does not provide accurate estimates for all individual background components, the $^{40}$K electron-capture peak is sufficiently distinct to allow a reliable determination of its contribution. The fit is performed using the same maximum-likelihood method as the full spectral analysis, minimizing the same $\chi^2$ with respect to the reduced set of fit parameters.
 
-The fitting model is a simplified version of the full spectral fit described in Chapter ~\ref{chapter:Analysis}. The simplified fit configuration is shown in Table~\ref{tab:k40_fit_config}. The fit model is configured to capture all the major features in the energy spectrum in the lower energy range. The fit is performed from $0.5--2.8$ MeV which contains the low energy $^{85}$Kr and $^{210}$Bi peaks, the $^{11}$C bump, the $^{136}$Xe double-beta decay spectrum and endpoint, and the $^{40}$K gamma peak. The model does not provide accurate estimates of each individual background since many are neglected, but the $^{40}$K peak is prominent and can be estimated. The fit is performed by the same maximum likelihood method as the full spectral fit in Chapter~\ref{chapter:Analysis}. The same $\chi^2$ is minimized with respect to the reduced parameters of this $^{40}$K analysis.
 
-\begin{table}[htbp]
+\begin{table}[t!]
     \centering
-    \caption{Fit parameter configuration for the $^{40}$K spectral analysis. The fit condition column indicates whether the parameter is free, fixed, scanned, or constrained in the fit.}
-    \label{tab:k40_fit_config}
     \begin{tabular}{lll}
         \hline
         Material & Parameter & Fit Condition \\
@@ -85,34 +82,35 @@ The fitting model is a simplified version of the full spectral fit described in 
             & $^8$B & fix \\
         \hline
     \end{tabular}
+    \caption[Fit parameter configuration for the $^{40}$K spectral analysis.]{Fit parameter configuration for the $^{40}$K spectral analysis. The fit condition column indicates whether the parameter is free, fixed, scanned, or constrained in the fit.}
+    \label{tab:k40_fit_config}
 \end{table}
 
+The purpose of these fits is to measure the relative strength of the $^{40}$K electron-capture peak as a function of radius. Each fit of a radial shell yields a measured number of $^{40}$K events at that radius. The resulting radial dependence is compared with the expected distribution obtained from KLG4Sim simulations. A least-squares ``fit-of-fits'' procedure is then used to extract the overall $^{40}$K activity associated with the inner balloon film.  An example fit is shown in Figure~\ref{fig:k40}.
 
-\begin{figure}[t!]
+
+\begin{figure}[p]
 	\centering
-	\includegraphics[scale=0.9]{k40_example_fit.png}
-	\caption{An example $^{40}$K fit performed at $r=15m^3$}, outside the IB. 
+	\includegraphics[scale=0.8]{k40_example_fit.png}
+	\caption{An example $^{40}$K fit performed at $r=15\,\mathrm{m}^3$, outside the IB. }
 	\label{fig:k40}
 \end{figure}
 
-The purpose of these fits is to measure the relative strength of the $^{40}$K electron-capture peak as a function of radius. Each fit of a radial shell returns a measured number of $^{40}$K events at that radius. The resulting radial dependence of the fitted $^{40}$K events is compared with the expected distribution obtained from KLG4Sim simulations. A least-squares ``fit of fits'' procedure is then used to extract the overall $^{40}$K activity associated with the inner balloon film. This fit of fits is shown in Figure \ref{fig:k40}
 
-
-\begin{figure}[t!]
+\begin{figure}[p]
 	\centering
 	\includegraphics[scale=0.9]{k40fits.png}
-	\caption{The fitted $^{40}$K radial distribution. Each point is the fitted $^{40}$K rate in a spherical section of the detector. The blue curve is the simulated radial distribution of $^{40}$K originated in the inner balloon film. Error increases on and inside the inner balloon film due to large $2\nu\beta\beta$ background.}
+	\caption[The fitted $^{40}$K radial distribution.]{The fitted $^{40}$K radial distribution. Each point is the fitted $^{40}$K rate in a spherical section of the detector. The blue curve is the simulated radial distribution of $^{40}$K originated in the inner balloon film. Error increases on and inside the inner balloon film due to large $2\nu\beta\beta$ background.}
 	\label{fig:k40}
 \end{figure}
 
 
-An initial deviation from the expected radial distribution was observed; however, after vetoing the upper balloon neck region, excellent qualitative agreement between data and simulation was obtained. This result supports the conclusion that the $^{40}$K contamination is predominantly localized on the inner balloon film, with significantly lower contamination in the liquid scintillator volumes. This behavior is consistent with observations for the $^{238}$U and $^{232}$Th series.
-
+An initial deviation from the expected radial distribution was observed, however, after vetoing the upper balloon neck region, excellent qualitative agreement between data and simulation was obtained. This result supports the conclusion that the $^{40}$K contamination is predominantly localized on the inner balloon film, with significantly lower contamination in the liquid scintillator volumes. This behavior is consistent with observations for the $^{238}$U and $^{232}$Th series.  The final $^{40}$K yield from the mini-balloon film is measured to be:
 \begin{equation}
-    Y_{^{40}\mathrm{K},\,\mathrm{film}} = 183 \pm 13~\text{events/day}.
+    Y_{^{40}\mathrm{K},\,\mathrm{film}} = 183 \pm 13~\text{events/day}
 \end{equation}
 
-This independently measured $^{40}$K rate is incorporated into the spectral fit as a penalty term.
+\noindent This independently measured $^{40}$K rate is incorporated into the spectral fit as a penalty term.
 
 
 \subsection{$^{85}$Kr}
@@ -137,7 +135,7 @@ where $N_i$ is the normalization of isotope $i$, $\tau_i$ is its mean lifetime, 
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{shortspall_fit.png}
-	\caption{The fit to short-lived spallation backgrounds over Energy and $dT$. While the fit for the spallation rates is performed in the energy range 2-5 MeV, the full expected energy distributions are used in the excited state analysis spectral fit. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[The fit to short-lived spallation backgrounds over Energy and $dT$.]{The fit to short-lived spallation backgrounds over Energy and $dT$. While the fit for the spallation rates is performed in the energy range 2-5 MeV, the full expected energy distributions are used in the excited state analysis spectral fit. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:shortspall_fit}
 \end{figure}
 
@@ -164,7 +162,7 @@ $^9$Li   & 13.6 ($\beta^-$) & 257.2 ms & $0.00^{+1.19}_{-0}$ ($4.9 \pm 0.4$) & $
 $^{11}$Be& 11.5 ($\beta^-$) & 19.9 s   & $1.06^{+0.69}_{-0.21}$ ($1.1 \pm 0.1$)  & $0.00^{+0.26}_{-0}$ & $100^{+0.0}_{-22.1}$ \\
 \hline
 \end{tabular}
-\caption{Production and background rate of carbon spallation products. Values from Reference~\cite{kamland_spallation_2009}.}
+\caption[Production and background rate of carbon spallation products.]{Production and background rate of carbon spallation products. Values from Reference~\cite{kamland_spallation_2009}.}
 \label{tab:shortspall_tab}
 \end{table}
 
@@ -228,7 +226,7 @@ An independent cross-check of the $^{11}$C selection is performed using the reco
     \label{fig:c11_energy}
 \end{figure}
 
-There are many spallation isotopes produced in Xenon-spallation with lifetimes of similar orders of magnitude $10^3-10^4$ seconds as $^{11}C$, $\tau=1,764$ seconds. Instead of estimating the relative production of each of these isotopes, the effect of the cumulative background is modeled with an uncosntrained linear slope to the background. 
+There are many spallation isotopes produced in Xenon-spallation with lifetimes of similar orders of magnitude $10^3-10^4$ seconds as $^{11}$C, $\tau=1,764$ seconds. Instead of estimating the relative production of each of these isotopes, the effect of the cumulative background is modeled with an uncosntrained linear slope to the background. 
 
 \subsection*{$^{11}$C Rate Calculation}
 The $^{11}$C production rate in XeLS is derived from the exponential component of the $dT$ fit. The expected number of detected, selected, and correlated $\mu$–$^{11}$C pairs is modeled as:
@@ -265,8 +263,8 @@ The $^{11}$C production rate in XeLS is derived from the exponential component o
 
 \begin{table}[b!]
     \centering
-    \caption{Sources of uncertainty in the $^{11}$C production rate calculation.}
-    \label{tab:c11_uncertainty}
+    \setlength{\tabcolsep}{10pt} % Default value: 6pt
+    \renewcommand{\arraystretch}{1.2} % Default value: 1
     \begin{tabular}{lc}
         \hline
         Source & Uncertainty (\%) \\
@@ -279,6 +277,8 @@ The $^{11}$C production rate in XeLS is derived from the exponential component o
         Total uncertainty & 10.7 \\
         \hline
     \end{tabular}
+    \caption{Sources of uncertainty in the $^{11}$C production rate calculation.}
+    \label{tab:c11_uncertainty}
 \end{table}
 
 \subsection{$^{137}$Xe}
@@ -288,7 +288,7 @@ Neutrons produced by cosmic-ray muon spallation can be captured on $^{136}$Xe nu
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.6]{xe137.png}
-	\caption{The fit to short-lived spallation backgrounds over Energy and $dT$. While the fit for the spallation rates is performed in the energy range 2-5 MeV, the full expected energy distributions are used in the excited state analysis spectral fit. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[The fit to short-lived spallation backgrounds over Energy and $dT$.]{The fit to short-lived spallation backgrounds over Energy and $dT$. While the fit for the spallation rates is performed in the energy range 2-5 MeV, the full expected energy distributions are used in the excited state analysis spectral fit. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:xe137}
 \end{figure}
 
@@ -320,7 +320,7 @@ A total of $10^7$ muon events ($\mu^+$ and $\mu^-$) are generated, corresponding
         \label{fig:fluka_mass}
     \end{subfigure}
 
-    \caption{Production rates of spallation nuclei in KamLAND-Zen XeLS. Two concentrations are visible: one near the primary heavy isotope ($^{136}$Xe), and another near lighter scintillator components (e.g., $A\sim 10$) such as carbon- and oxygen-related fragments. Figure adapted from Ref.~\cite{takeuchi_phd}.}
+    \caption[Production rates of spallation nuclei in KamLAND-Zen XeLS.]{Production rates of spallation nuclei in KamLAND-Zen XeLS. Two concentrations are visible: one near the primary heavy isotope ($^{136}$Xe), and another near lighter scintillator components (e.g., $A\sim 10$) such as carbon- and oxygen-related fragments. Figure adapted from Ref.~\cite{takeuchi_phd}.}
 \end{figure}
 
 
@@ -341,7 +341,7 @@ Figure~\ref{fig:distortion} shows the relative difference between the FLUKA-deri
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{distortion.png}
-	\caption{Comparison between FLUKA predictions and xenon beam data constraints. The red curve shows the difference inferred from Reference~\cite{xenonbeam_500MeV}, and the blue curve shows the difference from Reference~\cite{xenonbeam_1GeV}. The red curve is adopted as a conservative distortion uncertainty because it produces the larger deviation near the \0nbb ROI.}
+	\caption[Comparison between FLUKA predictions and xenon beam data constraints.]{Comparison between FLUKA predictions and xenon beam data constraints. The red curve shows the difference inferred from Reference~\cite{xenonbeam_500MeV}, and the blue curve shows the difference from Reference~\cite{xenonbeam_1GeV}. The red curve is adopted as a conservative distortion uncertainty because it produces the larger deviation near the \0nbb ROI.}
 	\label{fig:distortion}
 \end{figure}
 
@@ -366,7 +366,7 @@ Figure~\ref{fig:external_gamma} shows the reconstructed radial distribution of e
         \centering
         \includegraphics[width=\textwidth]{ext_gamma_evis_radius.png}
     \end{subfigure}
-    \caption{Characterization of external gamma-ray backgrounds in KamLAND-Zen. 
+    \caption[Characterization of external gamma-ray backgrounds in KamLAND-Zen. ]{Characterization of external gamma-ray backgrounds in KamLAND-Zen. 
     (Left) Radial distribution of events in the 2.6--2.65~MeV energy window, fitted with the sum of an exponential component (external gamma rays) and a second-degree polynomial component (radially uniform backgrounds). 
     (Right) Modeled energy and radial distributions of external gamma-ray events. The 2.6~MeV $^{208}$Tl gamma peak appears near 2.8~MeV due to the higher light yield of the outer KamLS and the calibration of $E_{\mathrm{vis}}$ to XeLS events. Figures adapted from Reference~\cite{takeuchi_phd}.}
     \label{fig:external_gamma}
@@ -383,7 +383,7 @@ Neutrinos interact in the detector primarily via elastic scattering (ES) on elec
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.45]{solar_nu.png}
-	\caption{Energy spectra of solar neutrino fluxes. Figure adapted from~\cite{2nu_review}.}
+	\caption[Energy spectra of solar neutrino fluxes.]{Energy spectra of solar neutrino fluxes. Figure adapted from~\cite{2nu_review}.}
 	\label{fig:solar_nu}
 \end{figure}
 
@@ -399,7 +399,7 @@ Figure~\ref{fig:b8_cs136} shows the modeled visible-energy spectra of $^{8}$B so
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.5]{b8_cs136.png}
-	\caption{Modeled solar neutrino backgrounds included in the excited-state analysis, including $^{8}$B elastic scattering and $^{136}$Cs beta decay. Figure adapted from~\cite{takeuchi_phd}.}
+	\caption[Modeled solar neutrino backgrounds included in the excited-state analysis, including $^{8}$B elastic scattering and $^{136}$Cs beta decay.]{Modeled solar neutrino backgrounds included in the excited-state analysis, including $^{8}$B elastic scattering and $^{136}$Cs beta decay. Figure adapted from~\cite{takeuchi_phd}.}
 	\label{fig:b8_cs136}
 \end{figure}
 

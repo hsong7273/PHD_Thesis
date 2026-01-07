@@ -23,7 +23,7 @@ Figure~\ref{fig:dataflow} illustrates the data flow in KamLAND-Zen, from raw pho
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.45]{dataflow.png}
-	\caption{Data flow in KamLAND from raw waveforms to analysis variables such as energy, vertex, and total hit PMTs.  Taken from Reference~\cite{ozaki_phd}.}
+	\caption[Data flow in KamLAND from raw waveforms to analysis variables such as energy, vertex, and total hit PMTs. ]{Data flow in KamLAND from raw waveforms to analysis variables such as energy, vertex, and total hit PMTs.  Taken from Reference~\cite{ozaki_phd}.}
 	\label{fig:dataflow}
 \end{figure}
 
@@ -73,7 +73,7 @@ Each PMT waveform digitized by the KamLAND data acquisition system consists of 1
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.5]{waveform_analysis.png}
-	\caption{Example of waveform analysis from Reference~\cite{yoshida_phd}. (Left) ADC counts of a real PMT waveform after baseline subtraction. The left cyan line indicates the leading edge, the red line marks the peak position, and the right dark cyan line denotes the trailing edge. (Right) Clock calibration example illustrating 25\,ns timing intervals.}
+	\caption[Example of waveform analysis.]{Example of waveform analysis from Reference~\cite{yoshida_phd}. (Left) ADC counts of a real PMT waveform after baseline subtraction. The left cyan line indicates the leading edge, the red line marks the peak position, and the right dark cyan line denotes the trailing edge. (Right) Clock calibration example illustrating 25\,ns timing intervals.}
 	\label{fig:waveform_analysis}
 \end{figure}
 
@@ -90,7 +90,7 @@ When a PMT repeatedly entered the low-impedance state, the applied high voltage 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.3]{lowgain_trend.png}
-	\caption{Trend in the number of low-gain 17-inch PMTs prior to KamLAND-Zen 800. The gradual increase reflects long-term PMT behavior, while sudden jumps correspond to HV reductions performed since 2017.  Figure taken from Reference~\cite{ozaki_phd}.}
+	\caption[Trend in the number of low-gain 17-inch PMTs prior to KamLAND-Zen 800.]{Trend in the number of low-gain 17-inch PMTs prior to KamLAND-Zen 800. The gradual increase reflects long-term PMT behavior, while sudden jumps correspond to HV reductions performed since 2017.  Figure taken from Reference~\cite{ozaki_phd}.}
 	\label{fig:lowgain_trend}
 \end{figure}
 
@@ -127,7 +127,7 @@ Thermal emission of electrons from the PMT photocathode can produce spontaneous 
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.4]{darkrate.png}
-	\caption{Example PMT hit-time distribution from data run 14783. The shaded region 50--100\,ns before the rising edge is used to estimate the PMT dark hit rate.  Figure taken from Reference~\cite{li_phd}.}
+	\caption[Example PMT hit-time distribution from data run 14783.]{Example PMT hit-time distribution from data run 14783. The shaded region 50--100\,ns before the rising edge is used to estimate the PMT dark hit rate.  Figure taken from Reference~\cite{li_phd}.}
 	\label{fig:darkrate}
 \end{figure}
 
@@ -169,7 +169,7 @@ $\log \mathcal{L} = \sum_i \log(\phi_i).$ The V2 fitter maximizes this log-likel
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{pmt_dist.png}
-	\caption{Probability density functions of 17-inch and 20-inch PMT hit-time residuals derived from calibration data.  Figure taken from Reference~\cite{ozaki_phd}.}
+	\caption[Probability density functions of 17-inch and 20-inch PMT hit-time residuals derived from calibration data.]{Probability density functions of 17-inch and 20-inch PMT hit-time residuals derived from calibration data.  Figure taken from Reference~\cite{ozaki_phd}.}
 	\label{fig:pmt_pdfs}
 \end{figure}
 
@@ -279,7 +279,7 @@ The increasing number of low-gain PMTs over time has led to a gradual degradatio
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{no-hitprob.png}
-	\caption{Fit of the no-hit probability as a function of expected charge $\mu$ for a low-gain PMT. The original model is shown in blue, while the modified model (red) provides improved agreement with data. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Fit of the no-hit probability as a function of expected charge $\mu$ for a low-gain PMT.]{Fit of the no-hit probability as a function of expected charge $\mu$ for a low-gain PMT. The original model is shown in blue, while the modified model (red) provides improved agreement with data. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:nohit_prob}
 \end{figure}
 
@@ -326,7 +326,7 @@ Unlike point-like energy depositions from radioactive decays, cosmic-ray muons t
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{4_Chapter_KLZ_Reconstruction_and_Selection/Figures/muon_reco.png}
-	\caption{A schematic illustration of cosmic-ray muon reconstruction in the KamLAND detector, showing how the muon entrance and exit points are estimated using PMT information. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[A schematic illustration of cosmic-ray muon reconstruction in the KamLAND detector, showing how the muon entrance and exit points are estimated using PMT information.]{A schematic illustration of cosmic-ray muon reconstruction in the KamLAND detector, showing how the muon entrance and exit points are estimated using PMT information. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:muon_reco}
 \end{figure}
 
@@ -372,7 +372,7 @@ Neutron capture signals are best recorded using the MoGURA data acquisition syst
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.4]{neutron_reco.png}
-	\caption{Time residual distribution for a neutron capture event recorded by MoGURA, illustrating contributions from genuine scintillation light and fake PMT after-pulses. The on-time and off-time windows used in the calculation of the effective hit multiplicity \(N_s\) are indicated. Figure taken from Reference~\cite{takeuchi_phd}.}
+	\caption[Time residual distribution for a neutron capture event recorded by MoGURA, illustrating contributions from genuine scintillation light and fake PMT after-pulses.]{Time residual distribution for a neutron capture event recorded by MoGURA, illustrating contributions from genuine scintillation light and fake PMT after-pulses. The on-time and off-time windows used in the calculation of the effective hit multiplicity \(N_s\) are indicated. Figure taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:neutron_reco}
 \end{figure}
 
@@ -412,7 +412,7 @@ Figure~\ref{fig:mogura_neutron} shows the $dT$ distribution of MoGURA neutron ca
     \includegraphics[scale=0.3]{mog_neutron.png}
     \hfill
     \includegraphics[scale=0.3]{mog_neutron_dt.png}
-    \caption{Muon--neutron correlation using MoGURA data. (Left) Two-dimensional distribution of effective hit multiplicity $N_s$ versus time delay $dT$ between neutron candidates and the preceding muon. Events above the red selection boundary are identified as MoGURA neutrons and used for background rejection. (Right) Time delay ($dT$) distribution of selected MoGURA neutrons, with an exponential fit performed between 500 and 1000\,$\mu$s.  Taken from Reference~\cite{takeuchi_phd}.}
+    \caption[Muon--neutron correlation using MoGURA data. ]{Muon--neutron correlation using MoGURA data. (Left) Two-dimensional distribution of effective hit multiplicity $N_s$ versus time delay $dT$ between neutron candidates and the preceding muon. Events above the red selection boundary are identified as MoGURA neutrons and used for background rejection. (Right) Time delay ($dT$) distribution of selected MoGURA neutrons, with an exponential fit performed between 500 and 1000\,$\mu$s.  Taken from Reference~\cite{takeuchi_phd}.}
     \label{fig:mogura_neutron}
 \end{figure}
 
@@ -443,7 +443,7 @@ A significant fraction of events recorded by the KamLAND DAQ systems do not corr
 	\begin{figure}[t!]
 		\centering
         \includegraphics[scale=0.45]{flasher.png}
-        \caption{Event display of a PMT flasher event. The left panel shows the charge distribution, where one PMT exhibits an exceptionally large charge along with elevated charge in neighboring PMTs. The right panel shows the hit-time distribution, which is relatively flat since the light does not originate from scintillation. The hit times of the flasher PMT and its neighbors are characteristically early. Figures taken from Reference~\cite{takeuchi_phd}.}
+        \caption[Event display of a PMT flasher event. ]{Event display of a PMT flasher event. The left panel shows the charge distribution, where one PMT exhibits an exceptionally large charge along with elevated charge in neighboring PMTs. The right panel shows the hit-time distribution, which is relatively flat since the light does not originate from scintillation. The hit times of the flasher PMT and its neighbors are characteristically early. Figures taken from Reference~\cite{takeuchi_phd}.}
         \label{fig:flasher}
 	\end{figure}
 
@@ -464,7 +464,7 @@ A significant fraction of events recorded by the KamLAND DAQ systems do not corr
     \begin{figure}[t!]
 		\centering
         \includegraphics[scale=0.45]{missing_waveform.png}
-        \caption{\texttt{Nhit17} versus \texttt{NsumMax} distributions for all physics events (left) and $^{214}$Bi-tagged events (right). The missing waveform cut removes events with incomplete waveform acquisition while introducing negligible inefficiency. Figure taken from Reference~\cite{takeuchi_phd}.}
+        \caption[\texttt{Nhit17} versus \texttt{NsumMax} distributions for all physics events (Left) and $^{214}$Bi-tagged events (Right).]{\texttt{Nhit17} versus \texttt{NsumMax} distributions for all physics events (Left) and $^{214}$Bi-tagged events (Right). The missing waveform cut removes events with incomplete waveform acquisition while introducing negligible inefficiency. Figure taken from Reference~\cite{takeuchi_phd}.}
         \label{fig:missing_waveform}
 	\end{figure}
 
@@ -482,7 +482,7 @@ A significant fraction of events recorded by the KamLAND DAQ systems do not corr
 	\begin{figure}[t!]
 		\centering
         \includegraphics[scale=0.45]{badness.png}
-        \caption{Badness distributions for all physics events (left) and $^{214}$Bi-tagged events (right). Figure taken from Reference~\cite{takeuchi_phd}.}
+        \caption[Badness distributions for all physics events (Left) and $^{214}$Bi-tagged events (Right).]{Badness distributions for all physics events (Left) and $^{214}$Bi-tagged events (Right). Figure taken from Reference~\cite{takeuchi_phd}.}
         \label{fig:badness}
 	\end{figure}
 \end{enumerate}
@@ -531,7 +531,7 @@ Both $^{214}$Bi and $^{212}$Bi $\beta^-$ decays are followed by the rapid decay 
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.45]{bi214.png}
-	\caption{Delayed-coincidence selection parameter distributions for $^{214}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The blue shaded regions indicate tagged events. Events with $dT < 10~\mu$s are excluded and reserved for $^{212}$Bi--Po selection. Figures taken from Reference~\cite{takeuchi_phd}.}
+	\caption[Delayed-coincidence selection parameter distributions for $^{214}$Bi.]{Delayed-coincidence selection parameter distributions for $^{214}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The blue shaded regions indicate tagged events. Events with $dT < 10~\mu$s are excluded and reserved for $^{212}$Bi--Po selection. Figures taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:BiPo214}
 \end{figure}
 
@@ -540,7 +540,7 @@ Figure~\ref{fig:BiPo212} shows the delayed-coincidence parameter distributions u
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.45]{bi212.png}
-	\caption{Delayed-coincidence selection parameter distributions for $^{212}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The yellow shaded regions indicate tagged events. Only events with $dT < 10~\mu$s are used for this selection. Figures taken from Reference~\cite{takeuchi_phd}.}
+	\caption[Delayed-coincidence selection parameter distributions for $^{212}$Bi.]{Delayed-coincidence selection parameter distributions for $^{212}$Bi. The distributions of prompt energy, delayed energy, spatial separation, and delay time are shown. The yellow shaded regions indicate tagged events. Only events with $dT < 10~\mu$s are used for this selection. Figures taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:BiPo212}
 \end{figure}
 
@@ -593,7 +593,7 @@ A double-pulse fitting method has been developed to identify pileup events in wh
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{dp_selection.png}
-	\caption{Selection criteria in the $(E_{d'}, \Delta T)$ plane used to identify pileup events. The distributions are shown for Monte Carlo \0nbb events (left) and $^{212}$Bi--Po events (right). Events within the red boundaries are rejected as pileup. Figure taken from \cite{takeuchi_phd}.}
+	\caption[Selection criteria in the $(E_{d'}, \Delta T)$ plane used to identify pileup events.]{Selection criteria in the $(E_{d'}, \Delta T)$ plane used to identify pileup events. The distributions are shown for Monte Carlo \0nbb events (Left) and $^{212}$Bi--Po events (Right). Events within the red boundaries are rejected as pileup. Figure taken from \cite{takeuchi_phd}.}
 	\label{fig:pileup_selection}
 \end{figure}
 
@@ -656,7 +656,7 @@ Neutrons produced by muon spallation can also be captured on $^{136}$Xe nuclei i
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{spall_veto.png}
-	\caption{Schematic illustration of the spallation veto strategy using MoGURA-tagged neutrons for carbon- and xenon-based spallation products. Figure taken from Reference~\cite{takeuchi_phd}.}
+	\caption[Schematic illustration of the spallation veto strategy using MoGURA-tagged neutrons for carbon- and xenon-based spallation products.]{Schematic illustration of the spallation veto strategy using MoGURA-tagged neutrons for carbon- and xenon-based spallation products. Figure taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:spall_veto}
 \end{figure}
 
@@ -687,7 +687,7 @@ The energy deposition per unit length along the muon track, $dE/dX$, and the dis
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{showerphoton.png}
-	\caption{Schematic illustration of photon production along a cosmic-ray muon track and the geometry used for $dE/dX$ reconstruction. Figure taken from Reference~\cite{takeuchi_phd}.}
+	\caption[Schematic illustration of photon production along a cosmic-ray muon track and the geometry used for $dE/dX$ reconstruction.]{Schematic illustration of photon production along a cosmic-ray muon track and the geometry used for $dE/dX$ reconstruction. Figure taken from Reference~\cite{takeuchi_phd}.}
 	\label{fig:showerphoton}
 \end{figure}
 
@@ -696,7 +696,7 @@ The energy deposition per unit length along the muon track, $dE/dX$, and the dis
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.75]{shower_dedx.png}
-	\caption{Example of a reconstructed $dE/dX$ distribution along a muon track. The region of maximum energy deposition is observed at $L_{\mathrm{long}} \approx 600$\,cm. Figure taken from Reference ~\cite{miyake_phd}.}
+	\caption[Example of a reconstructed $dE/dX$ distribution along a muon track.]{Example of a reconstructed $dE/dX$ distribution along a muon track. The region of maximum energy deposition is observed at $L_{\mathrm{long}} \approx 600$\,cm. Figure taken from Reference ~\cite{miyake_phd}.}
 	\label{fig:shower_pdf}
 \end{figure}
 
@@ -738,7 +738,7 @@ The probability density function $PDF_{\mathrm{spl.}}(dR)$ describing spallation
 	\subcaptionbox{Spatial separation $dR$ for spallation-correlated and accidental neutrons\label{fig:spall_dR}}[0.45\textwidth]{\includegraphics[width=0.45\textwidth]{spall_dR.png}}
 	\hfill
 	\subcaptionbox{Long-lived candidate events\label{fig:longlived}}[0.45\textwidth]{\includegraphics[width=0.45\textwidth]{ENN_dR.png}}
-	\caption{Spatial distributions and weighting functions used in the $ENN$ calculation. Figures taken from Reference~\cite{miyake_phd}.}
+	\caption[Spatial distributions and weighting functions used in the $ENN$ calculation.]{Spatial distributions and weighting functions used in the $ENN$ calculation. Figures taken from Reference~\cite{miyake_phd}.}
 	\label{fig:ENN_dR}
 \end{figure}
 
@@ -771,7 +771,7 @@ The likelihood PDFs are constructed using a combination of FLUKA simulations and
 	\hfill
 	\subcaptionbox{Accidental events\label{fig:acc_dR_ENN}}[0.45\textwidth]{
 		\includegraphics[width=0.45\textwidth]{acc_dR_ENN.png}}
-	\caption{Two-dimensional likelihood PDFs in $(dR, ENN)$ space for spallation and accidental hypotheses. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Two-dimensional likelihood PDFs in $(dR, ENN)$ space for spallation and accidental hypotheses.]{Two-dimensional likelihood PDFs in $(dR, ENN)$ space for spallation and accidental hypotheses. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:likelihood_dR_ENN}
 \end{figure}
 
@@ -785,7 +785,7 @@ Figure~\ref{fig:LHR} shows the distributions of log-likelihood ratios obtained f
 \begin{figure}[b!]
 	\centering
 	\includegraphics[scale=0.35]{LHR.png}
-	\caption{Log-likelihood ratio distributions generated using toy Monte Carlo simulations, demonstrating clear separation between spallation and accidental hypotheses. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Log-likelihood ratio distributions generated using toy Monte Carlo simulations, demonstrating clear separation between spallation and accidental hypotheses.]{Log-likelihood ratio distributions generated using toy Monte Carlo simulations, demonstrating clear separation between spallation and accidental hypotheses. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:LHR}
 \end{figure}
 
@@ -802,7 +802,7 @@ The optimal threshold on the likelihood ratio is determined using a Figure of Me
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{FOM.png}
-	\caption{Figure of Merit used to determine the optimal likelihood ratio threshold for long-lived spallation background separation. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Figure of Merit used to determine the optimal likelihood ratio threshold for long-lived spallation background separation.]{Figure of Merit used to determine the optimal likelihood ratio threshold for long-lived spallation background separation. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:FOM}
 \end{figure}
 
@@ -825,7 +825,7 @@ Additional background rejection is provided by other vetoes, including the pileu
 
 Table~\ref{tab:fluka_error} summarizes the estimated systematic uncertainties associated with the FLUKA simulation of long-lived spallation isotope production. The dominant contribution arises from uncertainties in the spallation modeling itself.
 
-\begin{table}[h]
+\begin{table}[b!]
 	\centering
 	\begin{tabular}{lc}
 		\hline
@@ -837,7 +837,7 @@ Table~\ref{tab:fluka_error} summarizes the estimated systematic uncertainties as
 		MoGURA energy resolution & 5.67\% \\
 		\hline
 	\end{tabular}
-	\caption{Systematic uncertainties associated with FLUKA-based simulations of long-lived spallation backgrounds. Values taken from Reference~\cite{miyake_phd}.}
+	\caption[Systematic uncertainties associated with FLUKA-based simulations of long-lived spallation backgrounds.]{Systematic uncertainties associated with FLUKA-based simulations of long-lived spallation backgrounds. Values taken from Reference~\cite{miyake_phd}.}
 	\label{tab:fluka_error}
 \end{table}
 
@@ -859,8 +859,6 @@ The livetime is determined by applying the full set of event selection criteria 
 
 \begin{table}[t!]
 \centering
-\caption{Summary of deadtime contributions from background rejection vetoes. Values taken from Reference~\cite{miyake_phd}.}
-\label{tab:deadtime}
 \begin{tabular}{l r}
 \toprule
 \textbf{Event selection} & \textbf{Deadtime ratio [\%]} \\
@@ -880,6 +878,8 @@ Delayed-coincidence reactor veto    & 0.0010 \\
 \textbf{Total}                      & \textbf{29.52} \\
 \bottomrule
 \end{tabular}
+\caption[Summary of deadtime contributions from background rejection vetoes.]{Summary of deadtime contributions from background rejection vetoes. Values taken from Reference~\cite{miyake_phd}.}
+\label{tab:deadtime}
 \end{table}
 
 

@@ -4,149 +4,176 @@
 
 \graphicspath{{7_Chapter_Analysis/Figures/}}
 
+This chapter describes the analysis framework used to search for the $2\nu\beta\beta^\ast$ decay of $^{136}$Xe in KamLAND-Zen 800. We first summarize the xenon loading and enrichment used to normalize decay rates. We then define the full dataset used in this work, including data-taking periods excluded specifically for the excited-state analysis. Next, we summarize the dominant sources of systematic uncertainty. Finally, we describe the one-dimensional binned spectral fit used to extract (or constrain) the $2\nu\beta\beta^\ast$ rate, and we present both a profile-likelihood (Wilks) limit and a Feldman--Cousins construction to obtain correct 90\% confidence-level coverage.
 
-This chapter describes the data analysis framework used to search for \twonustar. First the KamLAND-ZEN 800 full dataset is described, including any vetoed data-taking periods. This description is followed by an overview of the systematic uncertainties. Then, the energy spectral fitting procedure is outlined, including the definition of the chi-square metric. Finally, the statistical results are presented, culminating in a limit on the \twonustar rate.
-
-\section{Xenon Enrichment in KamLAND-ZEN}
-The amount of xenon gas dissolved into the XeLS is a normalization factor in the final xenon decay rates. The value is determined by subtracting off the xenon that remains after xenon installation:
+\section{Xenon Enrichment in KamLAND-Zen}
+The $^{136}$Xe exposure is a normalization factor for all xenon decay rates. The total mass of xenon dissolved into the XeLS is estimated by accounting for xenon remaining in the handling system after installation:
 \begin{enumerate}
-	\item initial Xe mass : $769\pm1$ kg
-	\item Xe left in LS in tanks and pipe lines : $21.5\pm2.8$ kg
-	\item Xe left in storage bottles : $1\pm 1$ kg
-	\item Xe trapped by charcoal filter or used for sampling : $1.5\pm 0.5$ kg
+    \item initial xenon mass: $769 \pm 1$~kg,
+    \item xenon remaining in LS tanks and pipelines: $21.5 \pm 2.8$~kg,
+    \item xenon remaining in storage bottles: $1 \pm 1$~kg,
+    \item xenon trapped in the charcoal filter and/or used for sampling: $1.5 \pm 0.5$~kg.
 \end{enumerate}
-From the above calculation, the installed Xenon gas is determined to be, $745\pm3$ kg. The composition of the enriched xenon is evaluated using a mass spectrometer. The measured values agree well with the values provided by the procurement company. The enrich xenon composition can be seen in Table \ref{tab:xenon_comp}.
+From these terms, the installed Xenon gas is determined to be, $745\pm3$ kg. The isotopic composition of the enriched xenon is evaluated using a mass spectrometer. The measured values agree with the enrichment specification provided by the supplier. The enrichment fractions and the corresponding $^{136}$Xe mass are summarized in Table~\ref{tab:xenon_comp}.
 
-\begin{table}[htbp]
+\begin{table}[t!]
     \centering
-    \caption{Enriched Xenon Composition}
-    \label{tab:xenon_comp}
+    \setlength{\tabcolsep}{10pt} % Default value: 6pt
+    \renewcommand{\arraystretch}{1.2} % Default value: 1
     \begin{tabular}{lcccc}
         \hline
         & $^{136}$Xe & $^{134}$Xe & Others & Total \\
         \hline
-        Provided ratio [\%] & 90.85 & 8.82 & 0.33 & 100.00 \\
-        Measured ratio [\%] & $90.77 \pm 0.08$ & $8.96 \pm 0.02$ & -- & -- \\
+        Provided fraction [\%] & 90.85 & 8.82 & 0.33 & 100.00 \\
+        Measured fraction [\%] & $90.77 \pm 0.08$ & $8.96 \pm 0.02$ & -- & -- \\
         Atomic mass [u] & 135.907 & 133.905 & -- & -- \\
         Total mass [kg] & 677.39 & 64.83 & 2.79 & 745.0 \\
         \hline
     \end{tabular}
+    \caption{Enriched xenon composition used in this analysis.}
+    \label{tab:xenon_comp}
 \end{table}
 
 
-\section{Full KamLAND-ZEN 800 Dataset}
-The dataset used in this analysis was taken between February 5, 2019 and April 30, 2023, run range : 15431-18691. Unlike the \0nbb analysis, the dataset is not divided by Long-lived spallation background likelihood into a singles and long-lived dataset. Instead all the events are combined into a single energy spectrum for joint fitting.
-
+\section{Full KamLAND-Zen 800 Dataset}
+The dataset used in this analysis was collected between February~5, 2019 and April~30, 2023 (run range 15431--18691). Unlike the primary $0\nu\beta\beta$ analysis, the excited-state search presented here does not subdivide the data by long-lived spallation likelihood. Instead, all events passing the selections in Chapter~\ref{chapter:reco_select} are combined into a single energy spectrum and fitted simultaneously.
 
 \subsection{Vetoed Data Periods}
-In addition to the regular deadtime due to maintenance, run quality, described in Chapter \ref{chapter:reco_select}, there are additional vetoed data periods specifically for this analysis. 
-\subsection*{Electric Power Supply Instability}
-The run range 16790-16874 are excluded from this analysis because the DAQ was unstable due to AVR (automatic voltage regulator) trouble. The constant restarting of the DAQ leads to short runs which make it difficult to perform the run-by-run calibration described in Chapter \ref{chapter:calibration}. 
+In addition to standard run-quality selections and detector deadtime described in Chapter~\ref{chapter:reco_select}, we exclude several data-taking periods that are specific to this analysis.
+
+\subsection*{Electric power supply instability}
+Runs 16790--16874 are excluded because the data acquisition system was unstable due to automatic voltage regulator (AVR) issues. Frequent DAQ restarts produced many short runs, which prevents stable run-by-run calibration as described in Chapter~\ref{chapter:calibration}.
+
 \subsection*{MoGURA disorder period}
-The MoGURA DAQ system was unstable between September-November 2022 and raw data files were corrupted. While the KamDAQ files are readable, the MoGDAQ data is crucial for constructing events near after cosmic ray muons. These events are a key tag for cosmic related spallation backgrounds. Thus, runs 17768-17905 are excluded from this analysis.
+MoGURA data were unstable between September and November 2022 and some raw files were corrupted. While KamDAQ files remain readable, MoGURA information is required to reconstruct and tag events close in time to cosmic-ray muons, which provides key constraints on muon-correlated spallation backgrounds. Therefore, runs 17768--17905 are excluded from this analysis.
 
 \section{Systematic Uncertainties}
-While the \0nbb and \twonustar analyses are statistical uncertainty dominated, this section discusses estimates of several sources of systematic error.
+Although the $2\nu\beta\beta^\ast$ search is dominated by statistical uncertainty from the large $2\nu\beta\beta$ background, several systematic effects contribute non-negligibly to the final limit. The uncertainty in the total xenon mass dissolved in the XeLS is taken as 0.4\% from an internal study. The xenon enrichment uncertainty is taken as the difference between the supplier specification and the mass-spectrometer measurement (0.1\%). The detector energy response drifts slowly over time due to electronics changes and PMT performance. Using the 2.2~MeV neutron-capture peak, we assign a conservative 0.9\% uncertainty on the energy scale.
 
-The uncertainty in the total amount of xenon dissolved in the XeLS was estimated in an internal study, the estimated uncertainty is 0.4\%. 
+Finally, the fiducial-volume (FV) uncertainty reflects the uncertainty in the true volume enclosed by the FV cut. This is evaluated using uniformly distributed $^{222}$Rn introduced during xenon loading, tagged via $^{214}$Bi--Po delayed coincidences. Comparing the expected volume ratio of the FV to the inner balloon volume (0.5686) with the observed Bi--Po ratio (0.5454), we assign a 4.1\% FV uncertainty.
 
-As for the xenon enrichment factor, the 0.1\% difference in the supplier stated enrichment and our measuremed enrichment, described in the previous section, is used as the systematic uncertainty in xenon enrichment.
-
-The detector energy scale varies over time as electronics fail, are repaired, and PMTs degrade. Using the neutron capture gamma peak at 2.2 MeV, a maximum error of 0.9\% was determined.
-
-Finally, the uncertainty in the fiducial volume is the uncertainty in the true volume of events encapsulated by the fiducial volume selection of 157.49 cm. This is determined using the early KLZ-800 data, just after xenon dissolving work. As the xenon is introduced, $^{222}$Rn is incidentally introduced from the atmosphere, $^{222}$Rn has a half-life of 3.8 days, and its decay is soon followed by a $^{214}$Bi-Po sequential decays. Data for a month after xenon is introduced to the XeLS is used and the Bi-Po coincident events are analyzed. The volume ratio between spheres of 157.49cm and 192cm, the inner balloon radius, is 0.5686. While the ratio of Bi-Po events observed in these spherical regions is 0.5454. Since it is expected that the $^{222}$Rn is distributed uniformly throughout the XeLS, a 4.1\% difference is taken as the fiducial volume uncertainty.
 \section{Spectral Fit}
-The \twonustar  decay rate is estimated by fitting background and signal models to the energy distribution of reconstructed KLZ-800 data. Namely, the energy distribution of events within the reduced FV of $(r<1.33m)$ and that pass the event selections discussed in Chapter \ref{chapter:reco_select}.
+The $2\nu\beta\beta^\ast$ decay rate is extracted (or constrained) by fitting signal and background models to the reconstructed visible-energy spectrum of data events within the reduced fiducial volume $r<1.33$~m, after applying the event selections described in Chapter~\ref{chapter:reco_select}.
 
-Unlike the \0nbb analysis \cite{klz800_arxiv}, the data is not separated into time and hemipsherical volume bins. This is done to reduce systematic uncertainties and simplify the analysis. As this analysis is dominated by the statistics of the \2nbb background, the modeling of time-dependent changes in detector response should be marginal. By reducing the fiducial volume to $(r<1.33m)$ we sacrifice statistics but gain robustness by focusing on the best characterized region of the detector.
+In contrast to analyses that bin the data in time and/or hemisphere, we adopt a single one-dimensional spectral fit to reduce complexity and mitigate systematics associated with time-dependent detector response and imperfect spatial modeling. This choice is additionally motivated by the fact that the excited-state search is dominated by the statistical precision of the underlying $2\nu\beta\beta$ spectrum.
 
-Thus, a simple 1-dimensional spectral fit is performed over the energy range (0.5-4.8) MeV wiht 0.05 MeV wide bins. This energy range spans the $^{210}$Bi and $^{85}$Kr peaks, the low-energy portion of the \2nbb spectrum, the $^{11}$C and $^{40}$K decays, the \2nbb endpoint, the \0nbb ROI, the $^{212}$Tl peak, and the $2\nu\beta\beta^\ast$ ROI.
-\subsection{Chi-Square Definition}
-In this study, a binned chi-square, maximum likelihood fit is performed. The chi-square has multiple components, a energy-bin term and penalty terms.
+The fit is performed over $E_{\rm vis}=0.5$--4.8~MeV using 0.05~MeV-wide bins. This window includes the low-energy radioactive backgrounds ($^{85}$Kr and $^{210}$Bi), cosmogenic contributions ($^{11}$C), the $^{40}$K peak, the $2\nu\beta\beta$ endpoint region, and the $2\nu\beta\beta^\ast$ region of interest.
+
+\subsection{Likelihood (NLL) Definition}
+We perform a binned maximum-likelihood fit using Poisson statistics for each energy bin and Gaussian penalty terms for externally constrained parameters. Following the formulation used in the analysis summary slides, the fit minimizes the negative log-likelihood (NLL), written schematically as :contentReference[oaicite:1]{index=1}
 \begin{equation}
-    \chi^2=(\sum_{energy} \chi^2_{energy}) +\chi^2_{penalty}
+    -\ln L(\boldsymbol{\eta},\boldsymbol{\theta})
+    = \sum_{i=1}^{N_{\rm bins}}
+    \left[
+        \nu_i(\boldsymbol{\eta},\boldsymbol{\theta})
+        - n_i \ln \nu_i(\boldsymbol{\eta},\boldsymbol{\theta})
+    \right]
+    + \sum_{j=1}^{N_{\rm constr}}
+    \frac{\left(\theta_j-\theta_{j,0}\right)^2}{2\sigma_j^2}
+    \;+\;{\rm const.},
 \end{equation}
-Here, $\sum_{energy}$, denotes a sum over each 0.05 MeV energy bin from the range 0.5-4.8 MeV. In each energy bin, the $\chi^2$ is computed.
+where $n_i$ is the observed number of events in energy bin $i$, and $\nu_i$ is the expected number of events in that bin given the model parameters. The vector $\boldsymbol{\eta}$ denotes free (or scanned) parameters such as component normalizations, while $\boldsymbol{\theta}$ denotes constrained nuisance parameters (e.g., background rates constrained by independent measurements and detector-response parameters). The Gaussian penalty terms implement external constraints with central values $\theta_{j,0}$ and standard deviations $\sigma_j$.
+
+For numerical stability (including bins with $n_i=0$), the equivalent Poisson deviance form is often used:
 \begin{equation}
-\chi^2_{\text{energy}} =
-\begin{cases}
-    2 \sum_{i} \left( \nu_{i} - n_{i} + n_{i} \log \frac{n_{i}}{\nu_{i}} \right) & (n_{i} > 0) \\
-    2 \sum_{i} (\nu_{i} - n_{i}) & (n_{i} = 0)
-\end{cases}
+    \chi^2_{\rm Poisson}
+    = 2\sum_{i=1}^{N_{\rm bins}}
+    \left[
+        \nu_i - n_i + n_i\ln\left(\frac{n_i}{\nu_i}\right)
+    \right]
 \end{equation}
-Now, $\nu_i$ is the model expected energy spectrum for the given fit parameters, and $n_i$ denotes the observed number of events in the $i$-th bin. The penalty terms constrains certain parameters that have independent constraints. The fit parameter configuration is summarized in Table \ref{tab:parameters}, and described in more detail in the later sections. The penalty $\chi^2$ terms are simply defined as:
+with the convention that the $n_i\ln(n_i/\nu_i)$ term is zero when $n_i=0$. In this work, we report fit quality and profile scans using the test statistic:
 \begin{equation}
-    \chi^2_{penalty}=\sum_i\left(\frac{O_n-E_n}{\sigma_n}\right)^2
+    \Delta\chi^2(\mu) \equiv 2\left[-\ln L(\mu) + \ln L(\hat{\mu})\right]
 \end{equation}
-where $O_n$ is the estimated parameter value, $E_n$ are the central expected values, and $\sigma_n$ are the expected parameter errors. 
+where $\mu$ denotes the fixed (scanned) $2\nu\beta\beta^\ast$ signal rate and $\hat{\mu}$ is its best-fit value.
 
-\subsection{Minimizer}
-The ROOT implementation of the MINUIT package distributed by CERN is the minimization package used for this analysis. 
+\subsection{Model Prediction per Energy Bin}
+The expected bin counts are computed as a sum over templates:
+\begin{equation}
+    \nu_i(\boldsymbol{\eta},\boldsymbol{\theta})
+    =
+    \sum_{k}
+    \eta_k \, T_{k,i}(\boldsymbol{\theta})
+\end{equation}
+where $T_{k,i}$ is the predicted spectral shape (template) for component $k$ in bin $i$, including detector-response effects such as energy scale and nonlinearity. The coefficients $\eta_k$ represent the fitted normalizations (rates) of each background and the signal.
 
-\subsection{Fit Parameters}
-The spectral rate parameters are divided by origin volume. This analysis is only concerned with backgrounds originating in the XeLS and the inner balloon film. Each of the backgrounds described in Chapter \ref{chapter:Backgrounds} is implemented in the spectral fit. 
-\subsection{Penalty Terms}
+An overall energy-scale parameter $\alpha_E$ is implemented by mapping reconstructed energy to simulated energy via $E_{\rm vis} = \alpha_E E_{\rm sim}$ and using linear interpolation of templates to compute $\nu_i$.
 
-\begin{table}[htbp]
+\subsection{Minimization and Fit Configuration}
+The NLL is minimized using the MINUIT package~\cite{James:1975dr} in the ROOT framework~\cite{root}. The fit parameters are grouped by source location (XeLS and inner balloon film). The overall configuration is summarized in Table~\ref{tab:parameters}. This analysis uses 29 fit parameters in total, with a mixture of fixed, free, and constrained parameters.
+
+\begin{table}[p]
     \centering
-    \caption{Fit parameter configuration for the spectral analysis. The fit condition column indicates whether the parameter is free, fixed, scanned, or constrained in the fit.}
-    \label{tab:parameters}
+    \setlength{\tabcolsep}{10pt} % Default value: 6pt
+    \renewcommand{\arraystretch}{1.2} % Default value: 1
     \begin{tabular}{lll}
         \hline
         Material & Parameter & Fit Condition \\
         \hline
         \multirow{12}{*}{XeLS}
-            & $^{136}$Xe 2$\nu\beta\beta^*$ & scan \\
-            & $^{136}$Xe 2$\nu\beta\beta$ & free \\
-            & $^{238}$U series 2 & constrain \\
-            & $^{222}$Rn & constrain \\
-            & $^{232}$Th series 2 & constrain \\
+            & $^{136}$Xe $2\nu\beta\beta^\ast$ & scan \\
+            & $^{136}$Xe $2\nu\beta\beta$ & free \\
+            & $^{238}$U series 2 & constrained \\
+            & $^{222}$Rn & constrained \\
+            & $^{232}$Th series 2 & constrained \\
             & $^{210}$Bi & free \\
             & $^{85}$Kr & free \\
-            & $^{11}$C & constrain \\
-            & $^{137}$Xe & constrain \\
+            & $^{11}$C & constrained \\
+            & $^{137}$Xe & constrained \\
             & Xe spallation & free \\
-            & solar $\nu$ ES + CC & fix \\
-            & $^{136}$Cs & constrain \\
+            & solar $\nu$ (ES+CC) & fixed \\
+            & $^{136}$Cs & constrained \\
         \hline
-        \multirow{7}{*}{Film}
-            & $^{238}$U series 1 & fix \\
+        \multirow{6}{*}{Film}
+            & $^{238}$U series 1 & fixed \\
             & $^{238}$U series 2 & free \\
             & $^{232}$Th series 1 & free \\
             & $^{232}$Th series 2 & free \\
-            & $^{40}$K & constrain \\
+            & $^{40}$K & constrained \\
             & $^{210}$Bi & free \\
         \hline
-        \multirow{7}{*}{all}
-            & Energy scale & constrained \\
-            & $k_B, R$ & fix \\
-            & LL-distortion & constrain \\
-            & $^6$He & fix \\
-            & $^{12}$B & fix \\
-            & $^8$Li & fix \\
-            & $^8$B & fix \\
+        \multirow{7}{*}{All}
+            & Energy scale $\alpha_E$ & constrained \\
+            & $k_B, R$ & fixed \\
+            & LL distortion & constrained \\
+            & $^6$He & fixed \\
+            & $^{12}$B & fixed \\
+            & $^8$Li & fixed \\
+            & $^8$B & fixed \\
         \hline
     \end{tabular}
+    \caption{Fit parameter configuration for the spectral analysis. The fit condition column indicates whether parameters are free, fixed, scanned, or constrained in the fit.}
+    \label{tab:parameters}
 \end{table}
-The first penalty terms are on the rate of the constrained background sources. $^{238}$U series 2, $^{222}$Rn, $^{232}$Th series 2 are determined from the rate of coincidence tagged $^{214}$Bi-Po and $^{212}$Bi-Po events. Next, the independent background constraints determined by this study in \ref{chapter:Backgrounds}, $^{11}$C and $^{40}$K. $^{137}$Xe is determined from coincidence with MoGURA neutron captures, the determination of the rate that passes the coincident cut is also described in \ref{chapter:Backgrounds}. 
 
-A penalty term is also included for the detector response parameters. An overall energy scale, scales all of the background and signal energy spectra via linear interpolation. The energy scale $\alpha_E=\frac{E_{vis}}{E_{sim}}$ is constrained to $1\pm 0.016$. The Birks constant, $k_B$, and Chrenkov Ratio, $R$, are kept fixed for stability in the fit. In later analyses, the constraints on them should either be tightened or their effect quantified as another systematic uncertainty. 
+The constrained radioactive-chain rates ($^{238}$U series 2, $^{222}$Rn, and $^{232}$Th series 2) are obtained from coincidence-tagged Bi--Po events (Chapter~\ref{chapter:reco_select}). The $^{11}$C and $^{40}$K constraints come from independent measurements described in Chapter~\ref{chapter:Backgrounds}. The $^{137}$Xe constraint is derived from its correlation with muon-induced neutrons tagged by MoGURA (Chapter~\ref{chapter:Backgrounds}).
+
+A penalty term is also included for detector-response parameters, most importantly the global energy scale. Although the short-term energy-scale stability, evaluated using the 2.2 MeV neutron-capture peak, is better than 1\%, the global energy-scale parameter in the spectral fit is constrained more conservatively. Following the approach adopted in previous KamLAND-Zen analyses and theses~\cite{ozaki_phd,miyake_phd}, we apply a Gaussian prior of 
+$\alpha_E=1\pm0.016$ to account for residual nonlinearity, spatial dependence, and long-term variations not explicitly modeled in the fit while keeping $k_B$ and the Cherenkov fraction $R$ fixed for fit stability.
+
 
 \section{$2\nu\beta\beta^\ast$ Results}
-\subsection{Best Fit Result}
-The best fit result for the \twonustar decay rate as given by MINUIT is 0, no significant excess over the background expectation was found. Figure \ref{fig:bestfit} shows the fitted energy spectra. 
 
-Table \ref{tab:fit_result} list the best fit parameter values. Constrained values are within their constraints with no significant biases, a notable deviation from previous analyses is the railing of $^{232}$Th S1 film to 0, this background is also present in the $^{232}$Th S2P film background. Without the radial component to differentiate the two, it is a superfluous parameter in the fit.
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.4]{best_fit_thesis.png}
-	\caption{Best fit energy spectrum to full KLZ800 dataset in the reduced FV.}
-	\label{fig:bestfit}
+\subsection{Best-Fit Result}
+
+The spectral fit to the full KamLAND-Zen 800 dataset yields a best-fit $2\nu\beta\beta^\ast$ signal rate consistent with zero, indicating no statistically significant excess above the background-only hypothesis. Figure~\ref{fig:bestfit} shows the fitted energy spectrum in the reduced fiducial volume ($r<1.33$~m), together with the dominant background components and the expected signal shape.
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[scale=0.4]{best_fit_thesis.png}
+    \caption{Best-fit energy spectrum for the full KamLAND-Zen 800 dataset in the reduced fiducial volume $r<1.33$~m.}
+    \label{fig:bestfit}
 \end{figure}
+
+Table~\ref{tab:fit_result} summarizes the best-fit parameter values and their fit conditions. All constrained parameters remain within their assigned prior uncertainties, indicating no significant tension between the data and the background model. A notable feature of the fit is the $^{232}$Th S1 contribution on the mini-balloon film, which is driven to zero. This behavior is expected, as the $^{232}$Th S1 film background is spectrally degenerate with the $^{232}$Th S2P film component in the absence of strong radial discrimination. Since both components originate from the mini-balloon film and exhibit similar spatial and spectral characteristics, the inclusion of both parameters introduces redundancy, with the fit naturally preferring a single effective contribution. Overall, the stability of the fit and the absence of pathological parameter behavior demonstrate that the background model provides an adequate description of the data in the energy region relevant for the $2\nu\beta\beta^\ast$ search.
 
 \begin{table}
     \centering
+    \setlength{\tabcolsep}{10pt} % Default value: 6pt
+    \renewcommand{\arraystretch}{1.2} % Default value: 1
     \begin{tabular}{c|c|c}
+    \hline
         Parameter & Value & Fit Condition \\ \hline
         $^{12}$B Spallation &  0.016 & fix \\
         $^{8}$B Spallation &  0.239 & fix\\
@@ -174,66 +201,134 @@ Table \ref{tab:fit_result} list the best fit parameter values. Constrained value
         Energy Scale $\alpha$ (Internal) & 0.991 & constrained \\
         LL distortion & 0.118 & constrained \\
         $R$ (Internal) & 0.018 & fix \\
-        $k_B$ (Internal) & 0.31 & fix
+        $k_B$ (Internal) & 0.31 & fix \\ \hline
     \end{tabular}
     \caption{The best fit parameter values and their fit conditions.}
     \label{tab:fit_result}
 \end{table}
 
-\subsection{\twonustar \ Half-life Limits}
-In lieu of a positive \twonustar signal, the upper limit on the rate can be determined from the 90\% confidence level (C.L.). We perform a scan over the \twonustar signal rate. The signal rate is fixed to various values and at each value, a new fit of the backgrounds is performed to the data. The worsening of the fit-data match is quantified by the $\Delta\chi^2$, the difference between the NLL test statistic from the best fit and the fit with a fixed signal rate. Figure \ref{fig:chi2scan} shows the scan results.
+\subsection{\twonustar\ Half-life Limits}
 
-An estimate of the 90\% C.L. upper limit on the rate is determined by searching for the threshold value of $\Delta\chi^2=2.71$. This threshold is given by Wilks' theorem for the 90\% coverage of the test $\chi^2$ distribution for a single parameter.
+In the absence of a statistically significant $2\nu\beta\beta^\ast$
+signal, an upper limit on the decay rate is derived at the 90\%
+confidence level (C.L.). This is achieved by performing a profile
+likelihood scan over the $2\nu\beta\beta^\ast$ signal rate. For each fixed signal-rate hypothesis, the remaining background parameters are
+re-optimized to minimize the negative log-likelihood (NLL). The
+degradation in the agreement between the model and the data is quantified by the test statistic:
+\begin{equation}
+    \Delta\chi^2 = 2\left[\mathrm{NLL}(\text{rate}) -
+    \mathrm{NLL}_{\text{best fit}}\right]
+\end{equation}
+\noindent where $\mathrm{NLL}_{\text{best fit}}$ corresponds to the global minimum. The result of this scan is shown in Figure~\ref{fig:chi2scan}.
 
-\begin{figure}[h]
+\begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.7]{chi2scan.png}
-	\caption{Difference in the NLL test statistic over fixed signal rates, the intersection with the Wilks' Theorem 1-parameter 90\% C.L. threshold is shown.}
+	\caption[Difference in the NLL test statistic as a function of fixed $2\nu\beta\beta^\ast$ signal rate.]{Difference in the NLL test statistic as a function of fixed $2\nu\beta\beta^\ast$ signal rate. The horizontal line indicates the Wilks' theorem threshold corresponding to a one-parameter 90\% C.L.}
 	\label{fig:chi2scan}
 \end{figure}
 
-This upper limit on the rate is simply converted to a lower limit on the half-life by the following formula:
+Under the assumptions of Wilks' theorem~\cite{Hardin_2024}, the 90\% C.L. upper limit on the signal rate is obtained by identifying the rate at which
+$\Delta\chi^2 = 2.71$, corresponding to the 90\% quantile of the $\chi^2$ distribution with one degree of freedom. The corresponding lower limit on the $2\nu\beta\beta^\ast$ half-life is calculated as:
 \begin{equation}
-    T_{1/2} = \frac{\ln(2)\times N_{Xe136}}{rate \times 365.2}
+    T_{1/2} = \frac{\ln(2)\,N_{^{136}\mathrm{Xe}}}
+    {\text{(rate)} \times 365.2},
 \end{equation}
-Where $N_{Xe136}$ is the number of $^{136}$Xe atoms in the XeLS. This can be calculated from the concentration listed in Table \ref{tab:xenon_comp}. 
+\noindent where $N_{^{136}\mathrm{Xe}}$ is the number of $^{136}$Xe atoms in the xenon-loaded liquid scintillator (XeLS). The xenon concentration in the XeLS is given by:
 \begin{align}
-    C_{Xe} &= \frac{\text{mass of Xe in total XeLS}}{\text{mass of total XeLS}} \\
-           &= \frac{745~\text{kg}}{30.5~\text{m}^3 \times 780.13~\text{kg/m}^3} \times 100 \\
-           &= 3.13 \pm 0.01~(\text{wt}\%)
+    C_{\mathrm{Xe}} &= \frac{\text{Xe mass}}{\text{total XeLS mass}} \times 100 \\
+    &= \frac{745~\text{kg}}
+    {30.5~\text{m}^3 \times 780.13~\text{kg/m}^3} \times 100 \\
+    &= 3.13 \pm 0.01~\text{wt}\% 
 \end{align}
+
+\noindent Using the $^{136}$Xe enrichment fraction of 90.85\%, the number of
+$^{136}$Xe atoms per kiloton of XeLS is calculated as
 \begin{align}
-N_{^{136}\mathrm{Xe}} &= (\text{1 kton} \times \text{concentration of Xe in XeLS} \times \text{ratio of } ^{136}\mathrm{Xe}) \notag \\
-    &\quad \times N_A / (\text{atomic mass number of mixed Xe}) \notag \\
-    &= 3.13 \times 0.9085 / 135.80 \times 6.022 \times 10^{23} \notag \\
-    &= (1.261 \pm 0.004) \times 10^{29}~(\text{kton-XeLS})^{-1}
+N_{^{136}\mathrm{Xe}} &=
+\left(1~\text{kton} \times C_{\mathrm{Xe}} \times 0.9085\right)
+\frac{N_A}{M_{\mathrm{Xe}}} \notag \\
+&= \frac{3.13 \times 0.9085}{135.80}
+\times 6.022 \times 10^{23} \notag \\
+&= (1.261 \pm 0.004)\times 10^{29}~
+(\text{kton-XeLS})^{-1}
 \end{align}
-Here, $N_A$ is Avogrado's number. From these formulae, the upper limit on \twonustar rate is converted to a lower limit on \twonustar half-life.
+\noindent where $N_A$ is Avogadro's number and $M_{\mathrm{Xe}}$ is the average atomic mass of enriched xenon.
 
-However, the 90\% C.L. given by Wilks' theorem is likely invalid for this analysis for two reasons. First, the signal rate parameter has a physical boundary at zero, violating the regularity conditions required by Wilks' theorem. Second, the $\chi^2$ profile is not quadratic and falls sharply as the rate approaches zero, indicating that asymptotic approximations may not hold. For these reasons, the Wilks' theorem result should be considered a preliminary and potentially aggressive limit. A later section describes a more accurate determination using the Feldman-Cousins technique.
+\subsection{Validity of Wilks' Theorem}
 
-\subsection{Feldman-Cousins Calculation}
-Given that Wilks' theorem conditions are likely not satisfied for this analysis, the upper limit on the \twonustar rate is determined using the Feldman-Cousins (FC) approach. While Wilks' theorem would allow us to assume -2 log(likelihood ratio) follows a $\chi^2$ distribution asymptotically, the FC method instead constructs confidence intervals by simulating the test statistic distribution under various hypothesized signal rates. This allows us to obtain proper 90\% coverage intervals without relying on asymptotic approximations.
+While the Wilks' theorem-based limit provides a useful reference, it is likely not strictly valid for this analysis. First, the
+$2\nu\beta\beta^\ast$ signal rate is bounded from below at zero, violating the regularity conditions required for Wilks' theorem. Second, the observed test statistic profile is non-parabolic near the best-fit point and rises sharply as the signal rate approaches zero. These features indicate that asymptotic $\chi^2$ approximations may not accurately describe the true distribution of the test statistic.
 
-We perform the FC calculation by scanning over \twonustar signal rates. At each signal rate hypothesis, multiple Toy MC datasets are generated with the best fit background levels. For each toy MC dataset, the fit is performed and the $\chi^2$ test statistic value calculated. From these fits, the true test statistic distribution can be observed and the 90\% inclusion threshold calculated as a function of signal rate.
+For these reasons, the Wilks' theorem result should be regarded as a
+preliminary and potentially aggressive estimate. A more reliable
+confidence interval is obtained using the Feldman--Cousins approach,
+described in the following section.
 
-The $\chi^2$ scan performed on the real data with fixed signal rate is a single sample from the $\chi^2$ distributions created by the Feldman-Cousins technique. When the observed $\chi^2$ coincides with the 90\% inclusion threshold for a given signal rate, that signal rate is the 90\% C.L. upper limit. The result of the Feldman-Cousins calculation are shown in Figure \ref{fig:FC}. The 90\% C.L. upper limit on the $2\nu\beta\beta^\ast$ half-life is $T_{1/2}>4.25\times 10^{24} yrs$. This limit is slightly more conservative than the Wilks' Thoerem result as expected. 
 
-\begin{figure}[htb!]
+\subsection{Feldman--Cousins Calculation}
+
+To obtain a statistically robust upper limit with correct coverage, the Feldman--Cousins (FC) method is employed~\cite{feldman-cousins}. Unlike Wilks' theorem, the FC approach does not rely on asymptotic assumptions and explicitly accounts for physical parameter boundaries. The FC construction is performed by scanning over fixed
+$2\nu\beta\beta^\ast$ signal-rate hypotheses in steps of 1~cts/(kt$\cdot$day). At each signal rate, an ensemble of Toy Monte Carlo
+datasets is generated using the best-fit background model. Each Toy
+dataset is fit in the same manner as the real data, and the
+corresponding test statistic is recorded. For each signal-rate
+hypothesis, 10,000 Toy MC fits are performed to construct the test
+statistic distribution, from which the 90\% inclusion threshold is
+determined.
+
+The $\Delta\chi^2$ profile obtained from the real data represents a
+single realization drawn from these distributions. The 90\% C.L. upper limit is defined by the signal rate at which the observed test statistic intersects the FC inclusion threshold. The result of this procedure is shown in Figure~\ref{fig:FC}, where the Feldman--Cousins inclusion threshold is observed to be nearly flat as a function of the assumed $2\nu\beta\beta^\ast$ signal rate. This behavior indicates that the test statistic distribution is dominated by background fluctuations rather than by the signal hypothesis itself, consistent with the background-limited sensitivity of the analysis. The intersection occurs at a signal rate of $R = 56.25$~cts/(kt$\cdot$day).
+
+At large signal rates, the Feldman--Cousins inclusion threshold
+approaches $\Delta\chi^2 \simeq 2.8$, close to the Wilks' theorem
+expectation of 2.71 for a single parameter. However, the pronounced
+non-parabolic shape of the data test statistic near the physical
+boundary at zero signal rate demonstrates the breakdown of asymptotic
+$\chi^2$ assumptions in this regime, motivating the use of the
+Feldman--Cousins construction.
+
+\begin{figure}[t!]
     \centering
     \includegraphics[scale=0.7]{FC_Final_Stat.pdf}
-    \caption{The black curve shows the best fit test statistic with each fixed signal rate. The red curve shows the 90\% inclusion threshold for the generated ToyMCs at each signal rate. The intersection point shows which rate distribution is 90\% included by the data's test statistic value.}
+    \caption[Feldman--Cousins analysis results.]{Feldman--Cousins analysis results. The black curve shows the test statistic obtained from the data as a function of fixed $2\nu\beta\beta^\ast$ signal rate. The red curve indicates the 90\% Feldman--Cousins inclusion threshold derived from Toy MC ensembles. Their intersection defines the 90\% C.L. upper limit.}
     \label{fig:FC}
 \end{figure}
 
-\subsection{Discussion}
-While preliminary, this analysis sets a world-leading limit on the $2\nu\beta\beta^\ast$ process. Surpassing EXO-200's limit of $T_{1/2}>1.4\times 10^{24}$ yrs\cite{exo200} and this experiment's previous limit set by KLZ-400 of $T_{1/2}>8.3\times 10^{23}$ yrs\cite{KLZ400}.
+Using this approach, the 90\% C.L. lower limit on the $2\nu\beta\beta^\ast$ half-life of $^{136}$Xe is found to be:
+\begin{equation}
+    T_{1/2} > 4.25 \times 10^{24}~\text{yr}
+\end{equation}
+\noindent As expected, this result is slightly more conservative than the corresponding Wilks' theorem estimate.  
 
-\begin{figure}[htb]
+\subsection{Discussion}
+
+While preliminary, this analysis establishes a new world-leading limit on the $2\nu\beta\beta^\ast$ decay of $^{136}$Xe to the first excited $0^+_1$ state. The derived half-life limit of $T_{1/2} > 4.25 \times 10^{24}$~yr exceeds the previous best constraint from EXO-200, $T_{1/2} > 1.4 \times 10^{24}$~yr~\cite{exo200}, as well as
+the earlier KamLAND-Zen 400 result, $T_{1/2} > 8.3 \times 10^{23}$~yr~\cite{KLZ400}. This improvement is driven primarily by the increased $^{136}$Xe exposure of the KamLAND-Zen~800 dataset and the enhanced control of backgrounds achieved through improved detector modeling and statistical treatment.
+
+Figure~\ref{fig:2nuex_limits} summarizes the current experimental status of the $2\nu\beta\beta^\ast$ search by comparing the KamLAND-Zen~800 result with previous experimental limits and a representative set of theoretical predictions compiled in Reference~\cite{2nuex_predictions}. The experimental results are shown as arrows, where the arrow tip indicates the 90\% C.L. lower limit on the half-life. The arrow length carries no physical meaning and is used solely to visually indicate that these are lower limits rather than measured values.
+
+\begin{figure}[b!]
     \centering
     \includegraphics[scale=0.9]{limits_and_theory.png}
-    \caption{A comparison of experimental limits of $2\nu\beta\beta^\ast$ to the $0^+_1$ excited state and some theoretical predictions taken from \cite{2nuex_predictions}. The length of the arrows are meaningless and are used to indicate a lower limit on the half-life.}
+    \caption[A comparison of experimental lower limits on the $2\nu\beta\beta^\ast$ decay half-life to the $0^+_1$ excited state in $^{136}$Xe and selected theoretical predictions.]{A comparison of experimental lower limits on the $2\nu\beta\beta^\ast$ decay half-life to the $0^+_1$ excited state in $^{136}$Xe and selected theoretical predictions taken from Reference~\cite{2nuex_predictions}. The experimental results are shown as arrows, where the arrow tip indicates the 90\% C.L. lower limit on the half-life and the arrow length has no physical meaning.
+}
     \label{fig:2nuex_limits}
 \end{figure}
 
-Comparing it to a range of theoretical predictions from \cite{2nuex_predictions}, we find this latest result excluding the current QRPA calculations but falling short of the next cluster of theoretical calculations. Figure \ref{fig:2nuex_limits} shows how this and previous experimental limits compare to theoretical predictions. However, considering that previous measurements of $2\nu\beta\beta^\ast$ half-lives in lighter nuclei were much lower than predicted, these exclusion gains are significant.
+The shaded horizontal bands represent predicted half-life ranges from
+different nuclear-structure approaches, including QRPA, IBM-2, NSM, and EFT-based calculations. The vertical extent of each band reflects the spread of predicted values arising from model assumptions, treatment of nuclear correlations, and uncertainties in nuclear matrix elements. As such, these bands should be interpreted as indicative ranges rather than precise predictions.
+
+The KamLAND-Zen~800 limit lies above the upper edge of the QRPA
+prediction band, thereby excluding the currently available QRPA
+calculations for the $2\nu\beta\beta^\ast$ transition in $^{136}$Xe.
+However, the result remains below the central values of the IBM-2, NSM, and EFT-based predictions, indicating that further sensitivity
+improvements are required to fully probe the favored parameter space of these models. The progression from KLZ-400 to EXO-200 and now to
+KLZ-800 illustrates a steady experimental approach toward the predicted half-life region.
+
+It is noteworthy that for several lighter nuclei, measured
+$2\nu\beta\beta^\ast$ half-lives have historically been significantly
+shorter than early theoretical expectations. In this context, the
+exclusion of a substantial portion of the predicted parameter space
+represents meaningful progress, even in the absence of a positive
+observation. Continued improvements in exposure, background reduction, and energy response modeling in future KamLAND-Zen phases may enable direct tests of the remaining theoretical predictions.

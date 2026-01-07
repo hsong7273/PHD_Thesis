@@ -32,9 +32,7 @@ As PMT channels are lost, degrade, or undergo gain adjustments, the detector ene
         \label{fig:histogram}
     \end{subfigure}
     
-    \caption{Time variation of $^{40}$K peak after correction. (LEFT) Time variation of 
-    energy scale is corrected using $^{40}$K and this figure is a check using $^{40}$K itself. 
-    (RIGHT) Fluctuations among runs are within 1\% (gray band).Figure taken from Reference~\cite{miyake_phd}.}
+    \caption[Time variation of $^{40}$K peak after correction.]{Time variation of $^{40}$K peak after correction. (Left) Time variation of energy scale is corrected using $^{40}$K and this figure is a check using $^{40}$K itself. (Right) Fluctuations among runs are within 1\% (gray band). Figure taken from Reference~\cite{miyake_phd}.}
     \label{fig:figure51}
 \end{figure}
 
@@ -66,7 +64,7 @@ The reconstructed neutron capture peak is observed to be stable within $\pm1\%$ 
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.65]{neutron_escale.png}
-	\caption{Neutron capture energy over KLZ-800 data-taking. The blue and orange points correspond to XeLS and KamLS respectively. Gray bands show $\pm1\%$ deviation from the average. Note that the energy scale is 7\% higher in KamLS due to the higher scintillator light-yield. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Neutron capture energy over KLZ-800 data-taking.]{Neutron capture energy over KLZ-800 data-taking. The blue and orange points correspond to XeLS and KamLS respectively. Gray bands show $\pm1\%$ deviation from the average. Note that the energy scale is 7\% higher in KamLS due to the higher scintillator light-yield. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:neutron_capture_energy}
 \end{figure}
 
@@ -78,7 +76,7 @@ The high-statistics tail of the $2\nu\beta\beta$ decay spectrum provides an addi
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.65]{2nu_trend.png}
-	\caption{The event rate in the \2nbb dominant energy region over KLZ-800 data-taking. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[The event rate in the \2nbb dominant energy region over KLZ-800 data-taking.]{The event rate in the \2nbb dominant energy region over KLZ-800 data-taking. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:2nu_stability}
 \end{figure}
 
@@ -92,7 +90,7 @@ The stability of MoGURA performance is characterized primarily by the neutron ca
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{neutron_capture_trend.png}
-	\caption{Time evolution of the neutron capture rate and neutron tagging efficiency measured by MoGURA over KamLAND-Zen 800 data-taking. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Time evolution of the neutron capture rate and neutron tagging efficiency measured by MoGURA over KamLAND-Zen 800 data-taking.]{Time evolution of the neutron capture rate and neutron tagging efficiency measured by MoGURA over KamLAND-Zen 800 data-taking. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:neutron_capture_trend}
 \end{figure}
 
@@ -112,7 +110,7 @@ The lower bound of the on-time window is chosen to exclude contributions from $^
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{mogura_c10.png}
-	\caption{Characteristic distributions of $^{10}$C decay candidates. Red and blue histograms correspond to on-time and off-time events, respectively. The black markers (or gray histograms) show the background-subtracted distributions (on-time minus off-time). Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[Characteristic distributions of $^{10}$C decay candidates.]{Characteristic distributions of $^{10}$C decay candidates. Red and blue histograms correspond to on-time and off-time events, respectively. The black markers (or gray histograms) show the background-subtracted distributions (on-time minus off-time). Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:c10_mogura}
 \end{figure}
 
@@ -127,7 +125,7 @@ The lower bound of the on-time window is chosen to exclude contributions from $^
         \centering
         \includegraphics[width=\textwidth]{c10_dist.png}
     \end{subfigure}
-    \caption{Time evolution of the $^{10}$C decay rate (left) and the shape of the $dR$ distribution (right) over KamLAND-Zen 800 data-taking. Figure taken from Reference~\cite{miyake_phd}.}
+    \caption[Time evolution of the $^{10}$C decay rate (Left) and the shape of the $dR$ distribution (Right) over KamLAND-Zen 800 data-taking.]{Time evolution of the $^{10}$C decay rate (Left) and the shape of the $dR$ distribution (Right) over KamLAND-Zen 800 data-taking. Figure taken from Reference~\cite{miyake_phd}.}
     \label{fig:C10_stability}
 \end{figure}
 
@@ -144,8 +142,6 @@ The properties of KamLAND liquid scintillator (KamLS), which constitutes the out
 
 \begin{table}[b!]
 \centering
-\caption{Summary of the radioactive calibration source. Estimated intensities correspond to January~17,~2018, the date of the calibration DAQ.}
-\label{tab:calib_soure}
 \begin{tabular}{lccc}
 \hline
 Construction date & \multicolumn{3}{c}{Aug.~24,~2015} \\
@@ -159,6 +155,8 @@ Initial intensity (Bq) & 181 & 419 & 322 \\
 Estimated intensity (Bq) & 180 & 356 & 234 \\
 \hline
 \end{tabular}
+\caption[Summary of the radioactive calibration sources.]{Summary of the radioactive calibration sources. Estimated intensities correspond to January~17,~2018, the date of the calibration DAQ.}
+\label{tab:calib_soure}
 \end{table}
 
 Figure~\ref{fig:calib_source} shows the distributions of the number of hit PMTs ($N_{\mathrm{hit}}$) and total collected charge for the composite source. Distinct $\gamma$-ray peaks corresponding to the source isotopes are clearly visible. These peaks are used to constrain the energy scale nonlinearity in KamLS. The same figure also shows the tuned \texttt{KLG4Sim} spectra, which reproduce the data well after tuning.
@@ -176,14 +174,14 @@ The spatial dependence of the detector response was also studied using the deplo
         \centering
         \includegraphics[width=\textwidth]{calib_source_charge.png}
     \end{subfigure}
-    \caption{$N_{\mathrm{hit}}$ and total charge distributions from source calibration data. Black points show data, while colored histograms (orange: $^{137}$Cs, green: $^{68}$Ge, blue: $^{60}$Co) show MC simulations. The tuned MC reproduces the data well in both observables. Figures from Reference~\cite{ozaki_phd}.}
+    \caption[$N_{\mathrm{hit}}$ and total charge distributions from source calibration data.]{$N_{\mathrm{hit}}$ and total charge distributions from source calibration data. Black points show data, while colored histograms (orange: $^{137}$Cs, green: $^{68}$Ge, blue: $^{60}$Co) show MC simulations. The tuned MC reproduces the data well in both observables. Figures from Reference~\cite{ozaki_phd}.}
     \label{fig:calib_source}
 \end{figure}
 
-\begin{figure}[b!]
+\begin{figure}[t!]
 	\centering
-	\includegraphics[scale=0.35]{calib_source_pos.png}
-	\caption{Position dependence of the total charge peak for each calibration source isotope. Figure from Reference~\cite{ozaki_phd}.}
+	\includegraphics[scale=0.6]{calib_source_pos.png}
+	\caption[Position dependence of the total charge peak for each calibration source isotope.]{Position dependence of the total charge peak for each calibration source isotope. Figure from Reference~\cite{ozaki_phd}.}
 	\label{fig:calib_source_pos}
 \end{figure}
 
@@ -216,7 +214,7 @@ A position dependence of the reconstructed visible energy in XeLS is observed as
     \includegraphics[width=\textwidth]{po214_mc_corr.png}
     \caption{MC (after correction)}
 \end{subfigure}
-\caption{Radius dependence of the total collected charge for $^{214}$Po $\alpha$ decays. Figures from Reference~\cite{ozaki_phd}.}
+\caption[Radius dependence of the total collected charge for $^{214}$Po $\alpha$ decays.]{Radius dependence of the total collected charge for $^{214}$Po $\alpha$ decays. Figures from Reference~\cite{ozaki_phd}.}
 \label{fig:po214_alpha}
 \end{figure}
 
@@ -233,7 +231,7 @@ where $dL/dx$ is the light yield per unit path length, $dE/dx$ is the energy los
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.35]{kb_r_chisquare.png}
-	\caption{$\Delta\chi^2$ scan over Birks’ constant $k_B$ and the Cherenkov-to-scintillation ratio $R$. Figure taken from Reference~\cite{miyake_phd}.}
+	\caption[$\Delta\chi^2$ scan over Birks’ constant $k_B$ and the Cherenkov-to-scintillation ratio $R$.]{$\Delta\chi^2$ scan over Birks’ constant $k_B$ and the Cherenkov-to-scintillation ratio $R$. Figure taken from Reference~\cite{miyake_phd}.}
 	\label{fig:kb_r_chisquare}
 \end{figure}
 
@@ -248,7 +246,7 @@ where $dL/dx$ is the light yield per unit path length, $dE/dx$ is the energy los
         \centering
         \includegraphics[width=\textwidth]{bipo_dR.png}
     \end{subfigure}
-    \caption{Tuned $^{214}$Bi $\beta$-decay energy spectrum and spatial correlation of delayed-coincidence Bi--Po decays. Figures from Reference~\cite{takeuchi_phd}.}
+    \caption[Tuned $^{214}$Bi $\beta$-decay energy spectrum and spatial correlation of delayed-coincidence Bi--Po decays.]{Tuned $^{214}$Bi $\beta$-decay energy spectrum and spatial correlation of delayed-coincidence Bi--Po decays. Figures from Reference~\cite{takeuchi_phd}.}
     \label{fig:bipo_tune}
 \end{figure}
 
@@ -300,7 +298,7 @@ PHYSICS
 & Activated by RADDECAY \\
 \bottomrule
 \end{tabular}
-\caption{FLUKA physics processes enabled in the spallation simulation. From Reference~\cite{klz_xenon_spallation}.}
+\caption[FLUKA physics processes enabled in the spallation simulation.]{FLUKA physics processes enabled in the spallation simulation. From Reference~\cite{klz_xenon_spallation}.}
 \label{tab:fluka_process}
 \end{table}
 
@@ -311,7 +309,7 @@ As described above, FLUKA provides only the production locations and yields of s
 \begin{figure}[t!]
 	\centering
 	\includegraphics[scale=0.5]{xenon_spallation_spectra.png}
-	\caption{Simulated energy spectra of $^{136}$Xe spallation products including their decay chain. Figure from Reference~\cite{miyake_phd}.}
+	\caption[Simulated energy spectra of $^{136}$Xe spallation products including their decay chain.]{Simulated energy spectra of $^{136}$Xe spallation products including their decay chain. Figure from Reference~\cite{miyake_phd}.}
 	\label{fig:xenon_spallation_spectra}
 \end{figure}
 
@@ -356,7 +354,7 @@ $^{126}$Cs & EC/$\beta^+$/$\gamma$ & 4.82 & $9.840 \times 10^1$ & 0.011 & 0.080 
 $^{128}$Cs & EC/$\beta^+$/$\gamma$ & 3.93 & $2.196 \times 10^2$ & 0.031 & 0.229 \\
 \hline
 \end{tabular}
-\caption{Breakdown of $^{136}$Xe spallation products. Isotopes with production rates exceeding 0.01 /day/XeLS-kton in the Region of Interest (ROI) were considered and included in the background model. Values from Reference~\cite{miyake_phd}.}
+\caption[Breakdown of $^{136}$Xe spallation products.]{Breakdown of $^{136}$Xe spallation products. Isotopes with production rates exceeding 0.01 /day/XeLS-kton in the Region of Interest (ROI) were considered and included in the background model. Values from Reference~\cite{miyake_phd}.}
 \label{tab:xenon_spallation_products}
 \end{table}
 
@@ -386,6 +384,6 @@ The sigmoid function $(1 + e^{-\sigma x})^{-1}$ approximates an error-function�
         \centering
         \includegraphics[width=\textwidth]{c10_tune_ENN.png}
     \end{subfigure}
-    \caption{Comparison of tuned FLUKA simulations (red curves) and data (black points) for the $^{10}$C $dR$ (left) and $ENN$ (right) distributions. Figures from Ref.~\cite{miyake_phd}.}
+    \caption[Comparison of tuned FLUKA simulations (red curves) and data (black points) for the $^{10}$C $dR$ (Left) and $ENN$ (Right) distributions.]{Comparison of tuned FLUKA simulations (red curves) and data (black points) for the $^{10}$C $dR$ (Left) and $ENN$ (Right) distributions. Figures from Ref.~\cite{miyake_phd}.}
     \label{fig:fluka_tuning}
 \end{figure}
